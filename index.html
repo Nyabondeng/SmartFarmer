@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartFarmer - Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome to SmartFarmer</h1>
+    <nav>
+      <ul>
+        <li><a href="#education">Educational Resources</a></li>
+        <li><a href="#crop-monitoring">Crop Monitoring</a></li>
+        <li><a href="#login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="education">
+    <h2>Sustainable Farming Education</h2>
+    <p>Access educational content on sustainable farming practices, climate resilience, and more.</p>
+  </section>
+
+  <section id="crop-monitoring">
+    <h2>Crop Monitoring</h2>
+    <form id="cropForm">
+      <label for="cropStatus">Enter Crop Status:</label>
+      <input type="text" id="cropStatus" name="cropStatus" required>
+      <button type="submit">Monitor Crop</button>
+    </form>
+    <div id="cropFeedback"></div>
+  </section>
+
+  <section id="login">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <button type="submit">Login</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 SmartFarmer. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
