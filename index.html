@@ -16,7 +16,8 @@
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul
-      
+      <button id="dark-mode-toggle">🌙</button>
+
     </nav>
   </header>
 
@@ -44,6 +45,16 @@
                 </div>
                 </section>
 
+                <section id="crop-monitoring">
+                  <h2>Crop Monitoring</h2>
+                  <form id="cropform">
+                    <label for="cropstatus">Enter Crop Status:</label>
+                    <input type="text" id="cropStatus" name="cropStatus" required>
+                    <button type="submit">Monitor Crop</button>
+                    </form>
+                    <div id="cropFeedback"></div>
+                </section>
+
             <section id="about">
                 <h2>About Smart Farmer</h2>
                 <p>Our mission is to empower smallholder farmers throughtechnology-driven solutions.</p>
@@ -52,29 +63,17 @@
                 <section id="contact">
                     <h2>Contact Us</h2>
                     <form>
-                        <
-        </div>
-      <input type="text" id="cropStatus" name="cropStatus" required>
-      <button type="submit">Monitor Crop</button>
-    </form>
-    <div id="cropFeedback"></div>
-  </section>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit"Send</button>
+                      </form>
+                  </section>
 
-  <section id="login">
-    <h2>Login</h2>
-    <form id="loginForm">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
-      <button type="submit">Login</button>
-    </form>
-  </section>
 
-  <footer>
-    <p>&copy; 2025 SmartFarmer. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+                  <footer>
+                    <p>&copy; 2025 Smart Farmer. All rights reserved.</p>
+                  </footer>
+                </body>
+                </html>  
+                  
