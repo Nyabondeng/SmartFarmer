@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Center</title>
+    <link rel="stylesheet" href="./styles/community.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script defer src="community.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="./images/smartfarmer.png" alt="Smart Farmer Logo">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="learninghub.html">Learning Hub</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        </nav>
+    </header>
+
+    <section class="comm-section">
+        <div class="comm-content">
+            <h2>Welcome to our Community!</h2>
+            <div class="comm-searchBar">
+                <label for="searchResources" class="sr-only">Search for resources</label>
+                <input type="text" id="searchResources" placeholder="Search for resources">
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-section">
+        <h2>Featured Topics</h2>
+        <div class="featured-cards">
+            <div class="card">
+                <img src="./images/download.jpeg" alt="Smart Tools">
+                <h3>Smart Tools</h3>
+                <p>Smart tools in agriculture refer to the use of advanced technology such as sensors, GPS, and data
+                    analytics
+                    to enhance farming practices. These tools help farmers optimize crop production, monitor
+                    environmental conditions....</p>
+                <div class="card-info">
+                    <img src="./images/download (1).jpeg" alt="Profile">
+                    <span>6 days ago</span>
+                </div>
+                <div class="bottom-left-info">
+                    <span class="views"><strong>80</strong> views</span>
+                    <span class="comments"><strong>10</strong> comments</span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./images/download (1).jpeg" alt="Soil Health">
+                <h3>Soil Health</h3>
+                <p>Soil health is the foundation of successful agriculture, focusing on maintaining the biological,
+                    physical,
+                    and chemical properties of the soil. Healthy soil supports plant growth, enhances....</p>
+                <div class="card-info">
+                    <img src="./images/download (3).jpeg" alt="Profile">
+                    <span>6 days ago</span>
+                </div>
+                <div class="bottom-left-info">
+                    <span class="views"><strong>90</strong> views</span>
+                    <span class="comments"><strong>15</strong> comments</span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./images/village.webp" alt="Livestock Management">
+                <h3>Livestock & Pasture Management</h3>
+                <p> Livestock and pasture management involves the careful monitoring and care of livestock and the land
+                    on which they graze....</p>
+                <div class="card-info">
+                    <img src="./images/download.jpeg" alt="Profile">
+                    <span>6 days ago</span>
+                </div>
+                <div class="bottom-left-info">
+                    <span class="views"><strong>95</strong> views</span>
+                    <span class="comments"><strong>13</strong> comments</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="conversations-section">
+        <h2>Conversations</h2>
+        <div class="convo">
+            <h3>Sort By: <strong>New</strong></h3>
+            <button id="openPostButton" class="open-post-btn">Create a Post</button>
+
+            <!-- Form Modal -->
+            <div id="postModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" id="closeModal">&times;</span>
+                    <h2>Create a Post</h2>
+                    <input type="text" id="postName" placeholder="Enter your name" />
+                    <textarea id="PostPromt" placeholder="Your prompt"></textarea>
+                    <textarea id="postQuestion" placeholder="Your question or suggestion..."></textarea>
+                    <button id="submitPostButton" class="post-btn">Post</button>
+                </div>
+            </div>
+
+            <!-- Posted Discussions -->
+            <div id="discussionContainer"></div>
+        </div>
+    </section>
+
+    <section class="convo-cards">
+        <div class="convo-card-container">
+            <div class="card">
+                <div class="convo-card-info">
+                    <img src="./images/images (1).jpeg" alt="User">
+                    <span class="name">Gordon Muorwel</span>
+                    <h3>What are the best low-cost strategies for improving soil fertility?</h3>
+                    <p>I want to improve my soil fertility while reducing reliance on chemical fertilizers,
+                        but I’m unsure which natural methods work best. I’ve heard about composting, green manure,
+                        and crop rotation, but I’m not sure which one is most effective for my soil type. Has anyone
+                        tried these methods? What results have you seen, and do you have any recommendations for
+                        small-scale
+                        farmers looking for affordable and sustainable soil enrichment techniques?</p>
+                    <div class="convo-card-details">
+                        <span class="likes" onclick="toggleLike(this)">
+                            <i class="fa fa-thumbs-up"></i> <span class="like-count">10</span>
+                        </span>
+                        <span class="messages" onclick="toggleReplies(this)">
+                            <i class="fa fa-comment"></i> <span class="comment-count">0</span>
+                        </span>
+                        <span class="time-info">1 hour ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="convo-card-info">
+                    <img src="./images/pan.jpg" alt="User">
+                    <span class="name">Abuk Chan</span>
+                    <h3>AI-driven farming tools sound like a game-changer...</h3>
+                    <p>AI-driven farming tools sound like a game-changer, especially
+                        for monitoring crops and optimizing resource use. However, the
+                        cost of implementing AI-based solutions can be quite high, making
+                        it challenging for smallholder farmers like me to adopt them.
+                        Are there any affordable or open-source AI tools available that can help
+                        with precision farming? Any tips on grants or funding opportunities that support
+                        farmers in adopting smart technologies?</p>
+                    <div class="convo-card-details">
+                        <span class="likes" onclick="toggleLike(this)">
+                            <i class="fa fa-thumbs-up"></i> <span class="like-count">40</span>
+                        </span>
+                        <span class="messages" onclick="toggleReplies(this)">
+                            <i class="fa fa-comment"></i> <span class="comment-count">0</span>
+                        </span>
+                        <span class="time-info">1 hour ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="convo-card-info">
+                    <img src="./images/pan.jpg" alt="User">
+                    <span class="name">Abuka Chol</span>
+                    <h3>What are the best low-cost strategies for improving soil fertility ......</h3>
+                    <p>I want to improve my soil fertility while reducing reliance on chemical fertilizers,
+                        but I’m unsure which natural methods work best. Has anyone tried composting, green manure,
+                        or biofertilizers? What results have you seen, and which methods do you recommend for
+                        small-scale farmers?</p>
+                    <div class="convo-card-details">
+                        <span class="likes" onclick="toggleLike(this)">
+                            <i class="fa fa-thumbs-up"></i> <span class="like-count">40</span>
+                        </span>
+                        <span class="messages" onclick="toggleReplies(this)">
+                            <i class="fa fa-comment"></i> <span class="comment-count">0</span>
+                        </span>
+                        <span class="time-info">1 hour ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="convo-card-info">
+                    <button>Show More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/script.js"></script>
+
+    <footer>
+        <p>&copy; 2025 Smart Farmer. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

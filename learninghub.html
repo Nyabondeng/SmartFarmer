@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Hub</title>
+    <link rel="stylesheet" href="./styles/learninghub.css">
+    <script defer src="learninghub.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="./images/smartfarmer.png" alt="logo">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="Learninghub.html">Learning Hub</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        </nav>
+    </header>
+
+    <section id="education">
+        <h2>Educational Resources</h2>
+        <p>Learn sustainable farming techniques and improve your agricultural practices.</p>
+        <div class="card-container">
+
+            <div class="card">
+                <img src="./images/soil.jpeg" alt="Soil Health">
+                <h3>Soil Health</h3>
+                <p>Learn how to maintain soil fertility and improve crop yields.</p>
+                <a href="#" class="read-more" data-topic="soil-health">Read More →</a>
+            </div>
+
+            <div class="card">
+                <img src="./images/irrigation.jpeg" alt="Irrigation Techniques">
+                <h3>Irrigation Techniques</h3>
+                <p>Discover efficient water management strategies.</p>
+                <a href="#" class="read-more" data-topic="irrigation-techniques">Read More →</a>
+            </div>
+
+            <div class="card">
+                <img src="./images/pestcontrol.jpeg" alt="Pest Control">
+                <h3>Pest Control</h3>
+                <p>Understand organic and sustainable pest control methods.</p>
+                <a href="#" class="read-more" data-topic="pest-control">Read More →</a>
+            </div>
+
+            <div class="card">
+                <img src="./images/water.jpeg" alt="Water Conservation">
+                <h3>Water Conservation & Rainwater Harvesting</h3>
+                <p>Implement drip irrigation, collect rainwater, and plant drought-resistant crops.</p>
+                <a href="#" class="read-more" data-topic="water-conservation">Read More →</a>
+            </div>
+
+            <div class="card">
+                <img src="./images/organic.jpeg" alt="Organic Farming">
+                <h3>Organic Control</h3>
+                <p>Avoid synthetic pesticides, use compost, and enhance soil microbiomes.</p>
+                <a href="#" class="read-more" data-topic="organic-control">Read More →</a>
+            </div>
+
+            <div class="card">
+                <img src="./images/crop rotation.jpeg" alt="Crop Rotation">
+                <h3>Crop Rotation & Diversification</h3>
+                <p>Rotate crops to maintain soil fertility and grow multiple crops for nutrient balance.</p>
+                <a href="#" class="read-more" data-topic="crop-rotation">Read More →</a>
+            </div>
+
+            <div class="card">
+                <img src="./images/seed.jpeg" alt="Sustainable Seed Selection">
+                <h3>Sustainable Seed Selection & Indigenous Crops</h3>
+                <p>Use drought-resistant, high-yield seeds, and promote indigenous crops.</p>
+                <a href="#" class="read-more" data-topic="seed-selection">Read More →</a>
+            </div>
+
+            <div class="card">
+                <img src="./images/livestock.jpeg" alt="Livestock Management">
+                <h3>Livestock & Pasture Management</h3>
+                <p>Use rotational grazing and feed livestock with organic, locally available sources.</p>
+                <a href="#" class="read-more" data-topic="livestock-management">Read More →</a>
+            </div>
+        </div>
+        <button class="see-more-btn" Action="GET">See more</button>
+    </section>
+
+    <section id="monitoring">
+        <h2>Smart Tools</h2>
+        <p>Leverage technology for more efficient and informed farming decisions.</p>
+        <div class="card-container">
+            <div class="card">
+                <img src="/images/weather.jpeg" alt="Weather Forecasting">
+                <h3>Weather Forecasting Tools</h3>
+                <p>Get real-time weather updates to plan planting and harvesting cycles.</p>
+                <a href="#" class="btn">Read more</a>
+            </div>
+            <div class="card">
+                <img src="/images/AI.jpeg" alt="AI-Driven Monitoring">
+                <h3>AI-Driven Crop Monitoring</h3>
+                <p>Use machine learning to detect plant diseases, track growth, and optimize yields.</p>
+                <a href="#" class="btn">Read more</a>
+            </div>
+            <div class="card">
+                <img src="/images/resource.jpeg" alt="Resource Optimization">
+                <h3>Resource Optimization</h3>
+                <p>Monitor soil moisture, fertilizer levels, and irrigation schedules using smart sensors.</p>
+                <a href="#" class="btn">Read more</a>
+            </div>
+        </div>
+    </section>
+    <section id="climate">
+        <h2>Climate Insights</h2>
+        <p>Stay ahead with climate-smart agriculture strategies.</p>
+        <div class="card-container">
+            <div class="card">
+                <img src="/images/alert.jpeg" alt="Extreme Weather Alerts">
+                <h3>Extreme Weather Alerts</h3>
+                <p>Receive early warnings on droughts, floods, and heatwaves.</p>
+                <a href="#" class="btn">Read more</a>
+            </div>
+            <div class="card">
+                <img src="/images/carbon.jpeg" alt="Carbon Footprint Reduction">
+                <h3>Carbon Footprint Reduction</h3>
+                <p>Learn sustainable farming practices to minimize greenhouse gas emissions.</p>
+                <a href="#" class="btn">Read more</a>
+            </div>
+            <div class="card">
+                <img src="/images/climate.jpeg" alt="Climate Adaptation">
+                <h3>Climate Adaptation Strategies</h3>
+                <p>Access guides on adapting to changing climate conditions.</p>
+                <a href="#" class="btn">Read more</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Smart Farmer. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
