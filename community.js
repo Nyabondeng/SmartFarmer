@@ -80,7 +80,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const openPostButton = document.getElementById("openPostButton");
     const closeModal = document.getElementById("closeModal");
     const submitPostButton = document.getElementById("submitPostButton");
-    const discussionContainer = document.getElementById("discussionContainer");
+    const discussionContainer = document.querySelector(".convo-card-container");
+
+    // Ensure modal is hidden on page load
+    modal.style.display = "none";
 
     // Open Modal
     openPostButton.addEventListener("click", function () {
@@ -111,12 +114,28 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const postElement = document.createElement("div");
-        postElement.classList.add("discussion-post");
+        postElement.classList.add("card");
         postElement.innerHTML = `
-            <h3>${name}</h3>
-            <p><strong>Prompt:</strong> ${prompt}</p>
-            <p>${question}</p>
-            <hr>
+            <div class="convo-card-info">
+                <img src="./images/images (1).jpeg" alt="User">
+                <span class="name">${name}</span>
+                <h3>New Discussion</h3>
+                <p>${question}</p>
+                ${prompt ? `<p><strong>Prompt:</strong> ${prompt}</p>` : ''}
+                <div class="convo-card-details">
+                    <span class="likes" onclick="toggleLike(this)">
+                        <i class="fa fa-thumbs-up"></i> <span class="like-count">0</span>
+                    </span>
+                    <span class="messages" onclick="toggleReplies(this)">
+                        <i class="fa fa-comment"></i> <span class="comment-count">0</span>
+                    </span>
+                    <span class="time-info">Just now</span>
+                </div>
+            </div>
+            <div class="replies-container" style="display: none;">
+                <div class="replies-list"></div>
+                <button onclick="addComment(this)">Add Comment</button>
+            </div>
         `;
 
         discussionContainer.prepend(postElement);
