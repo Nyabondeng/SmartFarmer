@@ -1,4 +1,4 @@
-/* Contact Page Styles */
+/* Crop Information Page Styles */
 
 * {
     margin: 0;
@@ -51,7 +51,7 @@ nav ul li a:hover, nav ul li a.active {
 
 /* Main Content */
 main {
-    max-width: 800px;
+    max-width: 900px;
     margin: 30px auto;
     padding: 20px;
     background-color: white;
@@ -61,70 +61,42 @@ main {
 h2 {
     color: #4a7c59;
     text-align: center;
-    margin-bottom: 10px;
-}
-
-main > p {
-    text-align: center;
     margin-bottom: 25px;
 }
 
-/* Contact Form */
-form {
+/* Crop Cards */
+.crop-card {
     background-color: #e8f0e8;
     padding: 20px;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
-label {
-    display: block;
-    font-weight: bold;
-    margin: 15px 0 5px;
+.crop-card h3 {
     color: #4a7c59;
+    margin-bottom: 10px;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-family: inherit;
-}
-
-button[type="submit"] {
+.voice-btn {
     background-color: #4a7c59;
     color: white;
     border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
+    padding: 8px 16px;
+    border-radius: 20px;
     cursor: pointer;
-    margin-top: 20px;
-    width: 100%;
-    font-size: 1rem;
+    margin-bottom: 15px;
 }
 
-button[type="submit"]:hover {
+.voice-btn:hover {
     background-color: #3a5c45;
 }
 
-#formStatus {
-    margin-top: 15px;
-    text-align: center;
+.crop-info p {
+    margin: 8px 0;
 }
 
-/* Other Contacts */
-.other-contacts {
-    margin-top: 30px;
-    text-align: center;
-    padding: 15px;
-    background-color: #e8f0e8;
-    border-radius: 10px;
-}
-
-.other-contacts h3 {
+.crop-info strong {
     color: #4a7c59;
-    margin-bottom: 10px;
 }
 
 /* Footer */
