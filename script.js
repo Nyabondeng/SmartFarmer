@@ -1,88 +1,147 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // Dark mode toggle
-  const darkModeToggle = document.getElementById("dark-mode-toggle");
-  if (darkModeToggle) {
-    darkModeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-    });
-  }
-});
+// Smart Farmer - Main JavaScript
 
-// Crop monitoring form submission
-const cropForm = document.getElementById("cropform");
-if (cropForm) {
-  cropForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const cropStatus = document.getElementById("cropStatus").value;
-    document.getElementById("cropFeedback").innerText = `Crop status recorded: ${cropStatus}`;
-  });
-}
-
-// Contact form validation
-const contactForm = document.getElementById("contactForm");
-if (contactForm) {
-  contactForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    alert("Thank you for reaching out! We'll get back to you soon.");
-  });
-}
-
-// Menu icon toggle
-function toggleMenu() {
-  document.querySelector(".nav-links").classList.toggle("show");
-}
-
-// Fetch content by category
-async function fetchContentByCategory(category) {
-  try {
-    const response = await fetch(`http://localhost:3000/api/content/category/${encodeURIComponent(category)}`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch content");
+// Voice output using browser speech synthesis
+function playAudio(topic) {
+    let message = '';
+    switch(topic) {
+        case 'sorghum':
+            message = 'Sorghum. Plant in May or June. Space 75 centimeters by 25 centimeters. Watch for armyworms after rain.';
+            break;
+        case 'maize':
+            message = 'Maize. Plant in May or June. Space 75 centimeters by 50 centimeters. Watch for stalk borer.';
+            break;
+        case 'millet':
+            message = 'Millet. Plant in May or June. Space 60 centimeters by 20 centimeters. Watch for birds and stem borers.';
+            break;
+        case 'groundnuts':
+            message = 'Groundnuts. Plant in May or June. Space 50 centimeters by 15 centimeters. Watch for leaf spot and aphids.';
+            break;
+        case 'cassava':
+            message = 'Cassava. Plant in March or April. Space 100 centimeters by 100 centimeters. Watch for cassava mosaic disease. Harvest after 8 to 12 months.';
+            break;
+        case 'planting':
+            message = 'Planting tips. Plant at the beginning of the rainy season. Use clean seeds. Space crops properly. Weed within the first 3 weeks.';
+            break;
+        case 'pest':
+            message = 'Pest control. Check fields daily. Remove armyworms by hand. Use ash around stems for stem borers. Spray soapy water for aphids. Use scarecrows for birds.';
+            break;
+        case 'postharvest':
+            message = 'Post-harvest handling. Harvest when grains are hard and dry. Dry crops completely before storing. Store in clean, dry containers. Use ash to keep insects away.';
+            break;
+        default:
+            message = 'Information available in English. Voice in Bari and Arabic coming soon.';
     }
-    const content = await response.json();
-    return content;
-  } catch (error) {
-    console.error("Error fetching content:", error);
-  }
-}
-
-// Function to post new content
-async function postContent(title, description, category) {
-  try {
-    const response = await fetch('http://localhost:3000/api/content', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ title, description, category }),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to post content');
+    
+    if ('speechSynthesis' in window) {
+        let utterance = new SpeechSynthesisUtterance(message);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.9;
+        speechSynthesis.cancel();
+        speechSynthesis.speak(utterance);
+    } else {
+        alert('Your browser does not support voice output. ' + message);
     }
-
-    const data = await response.json();
-    alert('Content posted successfully!');
-    return data;
-  } catch (error) {
-    console.error('Error posting content:', error);
-    alert('Failed to post content. Please try again.');
-  }
 }
 
-// Example usage: Call this function when a form is submitted
-const contentForm = document.getElementById('contentForm'); // Assuming a form with this ID exists
-if (contentForm) {
-  contentForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
+// Language selector (simplified for demo)
+function setLanguage(lang) {
+    if (lang === 'english') {
+        alert('Language set to English');
+    } else if (lang === 'bari') {
+        alert('Bari language - coming soon');
+    } else if (lang === 'arabic') {
+        alert('Arabic language - coming soon');
+    }
+}
 
-    const title = document.getElementById('contentTitle').value;
-    const description = document.getElementById('contentDescription').value;
-    const category = document.getElementById('contentCategory').value;
+// Crop Log Functions (Local Storage)
+function saveCropLog() {
+    let crop = document.getElementById('cropSelect').value;
+    let date = document.getElementById('plantDate').value;
+    let notes = document.getElementById('notes').value;
+    
+    if (!date) {
+        alert('Please select a planting date');
+        return;
+    }
+    
+    let logs = localStorage.getItem('cropLogs');
+    if (logs) {
+        logs = JSON.parse(logs);
+    } else {
+        logs = [];
+    }
+    
+    logs.push({
+        crop: crop,
+        date: date,
+        notes: notes || '',
+        timestamp: new Date().toISOString()
+    });
+    
+    localStorage.setItem('cropLogs', JSON.stringify(logs));
+    displayCropLogs();
+    
+    document.getElementById('plantDate').value = '';
+    document.getElementById('notes').value = '';
+    
+    alert('Planting record saved!');
+}
 
-    await postContent(title, description, category);
+function displayCropLogs() {
+    let logs = localStorage.getItem('cropLogs');
+    let logList = document.getElementById('logList');
+    
+    if (!logList) return;
+    
+    if (logs && JSON.parse(logs).length > 0) {
+        logs = JSON.parse(logs);
+        let html = '';
+        for (let i = logs.length - 1; i >= 0; i--) {
+            html += '<p><strong>' + logs[i].crop + '</strong> - Planted: ' + logs[i].date;
+            if (logs[i].notes) {
+                html += '<br><small>Note: ' + logs[i].notes + '</small>';
+            }
+            html += '</p>';
+        }
+        logList.innerHTML = html;
+    } else {
+        logList.innerHTML = '<p>No records yet. Save your first planting date above.</p>';
+    }
+}
 
-    // Optionally, clear the form fields after submission
-    contentForm.reset();
-  });
+function clearAllLogs() {
+    if (confirm('Are you sure? This will delete all your saved planting records.')) {
+        localStorage.removeItem('cropLogs');
+        displayCropLogs();
+        alert('All records cleared.');
+    }
+}
+
+// Contact Form Handler
+if (document.getElementById('contactForm')) {
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        let name = document.getElementById('name').value;
+        document.getElementById('formStatus').innerHTML = '<p style="color: green;">Thank you, ' + name + '! Your message has been sent. (Demo)</p>';
+        document.getElementById('contactForm').reset();
+    });
+}
+
+// Load crop logs when crop-log page loads
+if (document.getElementById('logList')) {
+    displayCropLogs();
+}
+
+// Service Worker for Offline Capability
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+                console.log('Service Worker registered successfully');
+            })
+            .catch(error => {
+                console.log('Service Worker registration failed:', error);
+            });
+    });
 }

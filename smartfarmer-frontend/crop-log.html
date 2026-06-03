@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Smart Farmer - My Crop Log</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <h1>🌽 Smart Farmer</h1>
+        <p>Save your planting records</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="crops.html">Crop Info</a>
+        <a href="education.html">Education</a>
+        <a href="crop-log.html">Crop Log</a>
+        <a href="community.html">Community</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main>
+        <h2>My Crop Monitoring Log</h2>
+        <p>Save your planting dates. All data stays on your phone. Works offline.</p>
+
+        <div class="log-form">
+            <label for="cropSelect">Select Crop:</label>
+            <select id="cropSelect">
+                <option value="Sorghum">Sorghum</option>
+                <option value="Maize">Maize</option>
+                <option value="Millet">Millet</option>
+                <option value="Groundnuts">Groundnuts</option>
+                <option value="Cassava">Cassava</option>
+            </select>
+
+            <label for="plantDate">Planting Date:</label>
+            <input type="date" id="plantDate">
+
+            <label for="notes">Notes (optional):</label>
+            <textarea id="notes" rows="2" placeholder="e.g., planted near the river"></textarea>
+
+            <button onclick="saveCropLog()">💾 Save Planting Record</button>
+        </div>
+
+        <div class="saved-logs">
+            <h3>Your Saved Records</h3>
+            <div id="logList">
+                <p>No records yet. Save your first planting date above.</p>
+            </div>
+            <button onclick="clearAllLogs()" class="clear-btn">🗑️ Clear All Records</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

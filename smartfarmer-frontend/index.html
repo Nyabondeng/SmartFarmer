@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Smart Farmer - Empowering Farmers</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="./images/smartfarmer.png" alt="logo">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="crops.html">Crop Info</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="crop-log.html">Crop Log</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        </nav>
+    </header>
+
+    <section class="home-section">
+        <h2>Welcome to Smart Farmer</h2>
+        <p>"Empowering smallholder farmers through education, crop monitoring tools, and climate insights".</p>
+        <button onclick="location.href='crops.html'">Get Started</button>
+    </section>
+
+    <!-- New: What You Can Do Now Section -->
+    <section class="features-section">
+        <h3>What You Can Do Now</h3>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <span>🌾</span>
+                <h4>Crop Information</h4>
+                <p>Learn about sorghum, maize, millet, groundnuts, and cassava</p>
+                <a href="crops.html">View Crops →</a>
+            </div>
+            <div class="feature-card">
+                <span>📚</span>
+                <h4>Education Modules</h4>
+                <p>Planting tips, pest control, and post-harvest handling</p>
+                <a href="education.html">Learn →</a>
+            </div>
+            <div class="feature-card">
+                <span>📝</span>
+                <h4>Crop Log</h4>
+                <p>Save your planting dates. All data stays on your phone.</p>
+                <a href="crop-log.html">Start Logging →</a>
+            </div>
+            <div class="feature-card">
+                <span>🔊</span>
+                <h4>Voice Output</h4>
+                <p>Listen to farming tips in English (Bari and Arabic coming soon)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- New: Offline Demo Notice -->
+    <section class="demo-notice">
+        <p>⚡ <strong>Demo Version</strong> | Works offline after first load | USSD dashboard coming soon</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            nav.classList.toggle('active');
+        }
+        
+        function showAlert() {
+            window.location.href = 'crops.html';
+        }
+    </script>
+</body>
+
+</html>

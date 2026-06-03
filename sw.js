@@ -1,0 +1,55 @@
+// Smart Farmer Service Worker - Enables offline access
+
+const CACHE_NAME = 'smart-farmer-v1';
+const urlsToCache = [
+    '/',
+    '/index.html',
+    '/about.html',
+    '/crops.html',
+    '/education.html',
+    '/crop-log.html',
+    '/community.html',
+    '/contact.html',
+    '/styles/style.css',
+    '/script.js'
+];
+
+self.addEventListener('install', event => {
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(cache => {
+                console.log('Cache opened');
+                return cache.addAll(urlsToCache);
+            })
+            .catch(error => {
+                console.log('Cache failed:', error);
+            })
+    );
+});
+
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.match(event.request)
+            .then(response => {
+                if (response) {
+                    return response;
+                }
+                return fetch(event.request);
+            })
+    );
+});
+
+self.addEventListener('activate', event => {
+    event.waitUntil(
+        caches.keys().then(cacheNames => {
+            return Promise.all(
+                cacheNames.map(cacheName => {
+                    if (cacheName !== CACHE_NAME) {
+                        console.log('Deleting old cache:', cacheName);
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
+    );
+});

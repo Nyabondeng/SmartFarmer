@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Smart Farmer - Crop Information</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <h1>Smart Farmer</h1>
+        <p>Crop information for 5 staple crops</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="crops.html">Crop Info</a>
+        <a href="education.html">Education</a>
+        <a href="crop-log.html">Crop Log</a>
+        <a href="community.html">Community</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main>
+        <h2>Staple Crops of South Sudan</h2>
+
+        <!-- Sorghum -->
+        <div class="crop-card">
+            <h3>Sorghum</h3>
+            <button class="voice-btn" onclick="playAudio('sorghum')">🔊 Listen (English)</button>
+            <div class="crop-info">
+                <p><strong>Planting season:</strong> May - June</p>
+                <p><strong>Spacing:</strong> 75cm x 25cm</p>
+                <p><strong>Pest control:</strong> Watch for armyworms after first rain</p>
+                <p><strong>Harvest:</strong> September - October</p>
+                <p><strong>Storage:</strong> Dry completely before storing in a cool place</p>
+            </div>
+        </div>
+
+        <!-- Maize -->
+        <div class="crop-card">
+            <h3>Maize</h3>
+            <button class="voice-btn" onclick="playAudio('maize')">🔊 Listen (English)</button>
+            <div class="crop-info">
+                <p><strong>Planting season:</strong> May - June</p>
+                <p><strong>Spacing:</strong> 75cm x 50cm</p>
+                <p><strong>Pest control:</strong> Watch for maize stalk borer</p>
+                <p><strong>Harvest:</strong> August - September</p>
+                <p><strong>Storage:</strong> Dry on the cob, then remove kernels</p>
+            </div>
+        </div>
+
+        <!-- Millet -->
+        <div class="crop-card">
+            <h3>Millet</h3>
+            <button class="voice-btn" onclick="playAudio('millet')">🔊 Listen (English)</button>
+            <div class="crop-info">
+                <p><strong>Planting season:</strong> May - June</p>
+                <p><strong>Spacing:</strong> 60cm x 20cm</p>
+                <p><strong>Pest control:</strong> Watch for birds and stem borers</p>
+                <p><strong>Harvest:</strong> September - October</p>
+                <p><strong>Storage:</strong> Store in sealed containers</p>
+            </div>
+        </div>
+
+        <!-- Groundnuts -->
+        <div class="crop-card">
+            <h3>Groundnuts</h3>
+            <button class="voice-btn" onclick="playAudio('groundnuts')">🔊 Listen (English)</button>
+            <div class="crop-info">
+                <p><strong>Planting season:</strong> May - June</p>
+                <p><strong>Spacing:</strong> 50cm x 15cm</p>
+                <p><strong>Pest control:</strong> Watch for leaf spot and aphids</p>
+                <p><strong>Harvest:</strong> October - November</p>
+                <p><strong>Storage:</strong> Dry thoroughly before shelling</p>
+            </div>
+        </div>
+
+        <!-- Cassava -->
+        <div class="crop-card">
+            <h3>Cassava</h3>
+            <button class="voice-btn" onclick="playAudio('cassava')">🔊 Listen (English)</button>
+            <div class="crop-info">
+                <p><strong>Planting season:</strong> March - April (or anytime with rain)</p>
+                <p><strong>Spacing:</strong> 100cm x 100cm</p>
+                <p><strong>Pest control:</strong> Watch for cassava mosaic disease</p>
+                <p><strong>Harvest:</strong> 8-12 months after planting</p>
+                <p><strong>Storage:</strong> Harvest only when needed. Cannot store long.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

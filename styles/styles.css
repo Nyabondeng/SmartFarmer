@@ -233,3 +233,105 @@ button {
 button:hover {
   background: #45a049;
 }
+
+/* Feature Grid Section */
+.features-section {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.features-section h3 {
+    color: #4a7c59;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+}
+
+.feature-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.feature-card {
+    background-color: #e8f0e8;
+    padding: 20px;
+    border-radius: 10px;
+    width: 220px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card span {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.feature-card h4 {
+    color: #4a7c59;
+    margin: 10px 0;
+}
+
+.feature-card p {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.feature-card a {
+    background-color: #4a7c59;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.feature-card a:hover {
+    background-color: #3a5c45;
+}
+
+/* Demo Notice */
+.demo-notice {
+    background-color: #fff3cd;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+    color: #856404;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 5px;
+}
+
+/* Mobile Menu Toggle */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .menu-icon {
+        display: none;
+    }
+}
