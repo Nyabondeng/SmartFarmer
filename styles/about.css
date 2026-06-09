@@ -1,192 +1,117 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    height: auto;
+/* ABOUT PAGE */
+
+.about-page{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
 }
 
-/* General header styles */
-header {
-    background: #2e7d32;
-    color: white;
-    display: flex;
-    height: 60px;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 20px;
+.page-header{
+    text-align:center;
+    margin-bottom:40px;
 }
 
-header .logo {
-    max-width: 180px;
-    height: 20px;
-    margin-top: -85px;
+.page-header h2{
+    color:#1E6A33;
+    margin-bottom:15px;
+    font-size:2rem;
 }
 
-/* Navigation styles */
-nav {
-    position: relative;
+.page-header p{
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
 }
 
-nav ul {
-    display: flex;
-    justify-content: space-between;
-    gap: 25px;
-    list-style: none;
-    padding: 0;
-    margin-right: 450px;
+.about-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
 }
 
-nav ul li {
-    margin-left: 10px;
+.info-card{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+.info-card h3{
+    color:#1E6A33;
+    margin-bottom:15px;
 }
 
-nav ul li a:hover {
-    color: #f4f4f4;
-    font-size: 20px;
+.info-card p{
+    line-height:1.7;
 }
 
-/* Menu Icon - Hidden by Default on Large Screens */
-.menu-icon {
-    font-size: 28px;
-    cursor: pointer;
-    display: none;
-    color: white;
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+.info-card ul{
+    padding-left:20px;
 }
 
-/* Responsive Menu for Small Screens */
-@media (max-width: 768px) {
-    nav ul {
-        display: none;
-        flex-direction: column;
-        background: #03990b;
-        position: relative;
-        top: 90px;
-        right: 0;
-        width: 50%;
-        text-align: center;
-        padding: 10px 0;
-    }
-
-    nav ul.show {
-        display: flex;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    .menu-icon {
-        display: block;
-    }
+.info-card li{
+    margin-bottom:10px;
 }
 
-/* Section styling */
-.about-section {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/images/grass.webp);
-    backdrop-filter: blur(9px);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 60px 20px;
-    text-align: center;
+.active{
+    font-weight:bold;
+    border-bottom:2px solid white;
+}/* ABOUT PAGE */
+
+.about-page{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
 }
 
-.about-content {
-    max-width: 900px;
-    margin: 0 auto;
+.page-header{
+    text-align:center;
+    margin-bottom:40px;
 }
 
-.about-content h1 {
-    font-size: 3rem;
-    font-weight: bolder;
-    color: #398c20;
-    margin-bottom: 20px;
-    font-weight: 700;
+.page-header h2{
+    color:#1E6A33;
+    margin-bottom:15px;
+    font-size:2rem;
 }
 
-.about-text {
-    background: rgb(255, 255, 255, 0.3);
-    backdrop-filter: blur(8px);
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: left;
+.page-header p{
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
 }
 
-.about-text h2 {
-    font-size: 1.8rem;
-    color: #118102;
-    font-weight: bold;
-    margin-bottom: 10px;
+.about-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
 }
 
-.about-text p {
-    font-size: 1rem;
-    color: #181717;
-    text-align: start;
-    line-height: 1.6;
+.info-card{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
 }
 
-.about-text ul {
-    list-style: none;
-    padding: 0;
+.info-card h3{
+    color:#1E6A33;
+    margin-bottom:15px;
 }
 
-.about-text ul li {
-    font-size: 1rem;
-    color: #181717;
-    padding: 8px 0;
-    position: relative;
-    padding-left: 25px;
+.info-card p{
+    line-height:1.7;
 }
 
-.about-text ul li::before {
-    content: "✔";
-    color: #118102;
-    font-weight: bold;
-    position: absolute;
-    left: 0;
-    top: 4px;
+.info-card ul{
+    padding-left:20px;
 }
 
-@media (max-width: 768px) {
-    .about-content {
-        padding: 0 15px;
-    }
-
-    .about-content h1 {
-        font-size: 2rem;
-    }
-
-    .about-text h2 {
-        font-size: 1.5rem;
-    }
-
-    .about-text p,
-    .about-text ul li {
-        font-size: 0.95rem;
-    }
+.info-card li{
+    margin-bottom:10px;
 }
 
-/* Footer styling */
-footer {
-    background: #2e7d32;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+.active{
+    font-weight:bold;
+    border-bottom:2px solid white;
 }
