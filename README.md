@@ -2,60 +2,123 @@
 
 Hello there...
 
-Welcome to Smart Farmer, a web application designed to educate farmers and provide them with crop monitoring tools to help them increase their productivity and sustainability. This platform aims to support smallholder farmers, especially in South Sudan rural areas, with educational content and smart solutions for their agricultural practices.
+Welcome to Smart Farmer. Smart Farmer is a mobile-first agricultural information platform designed to support smallholder farmers in South Sudan. The application provides crop information, educational farming resources, planting records, and a USSD simulator prototype to improve access to agricultural knowledge.
+
+This project was developed as part of the BSc Software Engineering program at African Leadership University.
+
+Developer: Nyabon Deng Adut
+
+Program: BSc Software Engineering
+
+Supervisor: Tunde Isiaq Gbadamosi
+
+Live Demo
+https://smrtfarmer.netlify.app/
+Smart Farmer is deployed on Netlify:
 
 Features
-Farmer Education: Access educational content that covers topics such as crop management, pest control, irrigation methods, and more.
+Educational Modules
 
-Crop Monitoring: Keep track of crop health, growth stages, and soil conditions using integrated tools.
+The platform provides educational content covering:
 
-Data-driven Insights: Receive personalized advice based on your crops, climate, and other environmental factors.
+Planting techniques
+Pest management
+Post-harvest handling
+Crop Information
 
-Installation
-Follow these steps to run Smart Farmer on your local machine:
+Farmers can access information on major crops grown in South Sudan, including:
 
-Clone this repository to your local machine using the following command:
+Sorghum
+Maize
+Millet
+Groundnuts
+Sesame
+Planting Log
 
-bash
-Copy
-Edit
-git clone https://github.com/Nyabondeng/smartfarmer.git
-Navigate to the project directory:
+Farmers can record and manage planting activities through a simple crop monitoring log.
 
-bash
-Copy
-Edit
-cd smartfarmer-backend
-Install dependencies:
+Multi-Language Support
 
-Backend: npm install (Node.js with Express and MongoDB).
+The application supports multiple languages to improve accessibility for diverse users.
 
-Set up the environment:
+USSD Simulator
 
-Create a .env file in the root directory and add the following variables:
+A prototype USSD interface demonstrates how farmers can access agricultural information through feature phones.
 
-ini
-Copy
-Edit
-MONGO_URI=mongodb://localhost:27017/smartfarmer
-PORT=3000
-Start the backend server:
+Voice Assistance
 
-bash
-Copy
-Edit
-npm start
-Open the front end by navigating to the index.html folder and right-click to Open with Live Server if you're using Visual Studio Code, or open the file directly in a browser.
+The application uses browser speech synthesis to read crop information aloud for users with limited literacy.
 
-URL
-Click on the link: https://smrtfarmer.netlify.app/ to access SmartFarmer online.
+Responsive Design
+
+The application follows a mobile-first design approach and adapts to different screen sizes.
 
 Technologies Used
-Frontend: HTML, CSS, JavaScript (for building the user interface and interactive tools)
+Frontend
+HTML5
+CSS3
+JavaScript
 
-Backend: Node.js with Express (for handling server-side logic)
+Design Tools
+Figma
+GitHub
 
-Database: MongoDB (for storing farmer data and educational content)
+Deployment
+Netlify
 
-Feel free to contact me at nyabondeng0@gmail.com for any questions or suggestions regarding Smart Farmer.
-Thank you for using Smart Farmer!
+Running the Project Locally
+Clone the repository:
+git clone https://github.com/Nyabondeng/smartfarmer.git
+Navigate to the project folder.
+Open the project using Visual Studio Code.
+Run the project using the Live Server extension or open index.html directly in a browser.
+
+Design Resources
+Figma Prototype
+
+https://www.figma.com/design/mxazJuKrc45lla3wxTjcgf/Smart-Farmer-App?node-id=0-1&p=f&t=Vns30Do8GynahRZA-0
+
+Wireframes
+
+Wireframes and design documentation are included in the project submission package.
+
+Planned Backend Architecture
+
+The current version focuses on frontend functionality and user experience validation.
+
+The proposed backend architecture includes:
+
+Backend Technologies
+Node.js
+Express.js
+PostgreSQL
+Africa's Talking API (USSD Integration)
+
+Technical Scope: The platform will include:
+USSD dashboard accessible via short code (e.g., *131#) on any phone
+An offline web application for farmers with a smartphone or a basic browser
+Crop information for 5 staple crops
+Educational modules (planting, pest management, post-harvest handling)
+Voice output in Bari and Arabic (on web)
+Basic crop monitoring log using local storage (on web)
+
+Out of Scope:
+AI-based yield predictions
+National deployment
+Native mobile apps
+Integration with government systems or financial services
+Automated sensor-based monitoring
+
+
+Proposed Deployment
+Frontend: Netlify (Already deployed)
+Backend: Render
+Database: PostgreSQL
+
+
+Contact
+Nyabon Deng Adut
+
+Email: nyabondeng0@gmail.com
+
+GitHub: https://github.com/Nyabondeng
