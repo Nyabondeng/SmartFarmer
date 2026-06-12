@@ -16,7 +16,7 @@ Live Demo
 https://smrtfarmer.netlify.app/
 Smart Farmer is deployed on Netlify:
 
-Features
+# Features
 Educational Modules
 
 The platform provides educational content covering:
@@ -32,18 +32,19 @@ Sorghum
 Maize
 Millet
 Groundnuts
-Sesame
+Cassava
+
 Planting Log
 
 Farmers can record and manage planting activities through a simple crop monitoring log.
 
 Multi-Language Support
 
-The application supports multiple languages to improve accessibility for diverse users.
+The application is designed to support Arabic, English and Bari. English voice output is currently implemented; Arabic and Bari are planned for the next phase.
 
 USSD Simulator
 
-A prototype USSD interface demonstrates how farmers can access agricultural information through feature phones.
+A USSD interface has been prototyped in Figma, demonstrating how farmers can access agricultural information through feature phones via 131#.
 
 Voice Assistance
 
@@ -53,17 +54,17 @@ Responsive Design
 
 The application follows a mobile-first design approach and adapts to different screen sizes.
 
-Technologies Used
+# Technologies Used
 Frontend
 HTML5
 CSS3
 JavaScript
 
-Design Tools
+# Design Tools
 Figma
 GitHub
 
-Deployment
+# Deployment
 Netlify
 
 Running the Project Locally
@@ -73,16 +74,16 @@ Navigate to the project folder.
 Open the project using Visual Studio Code.
 Run the project using the Live Server extension or open index.html directly in a browser.
 
-Design Resources
+# Design Resources
 Figma Prototype
 
 https://www.figma.com/design/mxazJuKrc45lla3wxTjcgf/Smart-Farmer-App?node-id=0-1&p=f&t=Vns30Do8GynahRZA-0
 
-Wireframes
+# Wireframes
 
 Wireframes and design documentation are included in the project submission package.
 
-Planned Backend Architecture
+# Planned Backend Architecture
 
 The current version focuses on frontend functionality and user experience validation.
 
@@ -94,7 +95,7 @@ Express.js
 PostgreSQL
 Africa's Talking API (USSD Integration)
 
-Technical Scope: The platform will include:
+# Technical Scope: The platform will include:
 USSD dashboard accessible via short code (e.g., *131#) on any phone
 An offline web application for farmers with a smartphone or a basic browser
 Crop information for 5 staple crops
@@ -102,15 +103,24 @@ Educational modules (planting, pest management, post-harvest handling)
 Voice output in Bari and Arabic (on web)
 Basic crop monitoring log using local storage (on web)
 
-Out of Scope:
+# Out of Scope:
 AI-based yield predictions
 National deployment
 Native mobile apps
 Integration with government systems or financial services
 Automated sensor-based monitoring
 
+## Current Status
 
-Proposed Deployment
+This is an initial software demo. The following pages are 
+fully implemented and live: Home, About, and Crop Info 
+(with English voice output).
+
+Education, Crop Log, and Contact pages are built and in 
+progress. Arabic and Bari voice output, the USSD backend, 
+and database connection are planned for the next phase.
+
+# Proposed Deployment
 Frontend: Netlify (Already deployed)
 Backend: Render
 Database: PostgreSQL
