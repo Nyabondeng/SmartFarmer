@@ -1,89 +1,218 @@
-/* Header and Navigation */
-header {
-    background: #1a5c2a;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    flex-wrap: wrap;
+
+
+{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.logo img {
-    width: 120px;
-    height: auto;
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:#f5f7f5;
+    color:#333;
+    line-height:1.6;
 }
 
-nav {
-    flex: 1;
-    margin-left: 40px;
+
+header{
+    background:#1E6A33;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
-.nav-links {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
+.logo img{
+    width:90px;
+    height:auto;
 }
 
-.nav-links li {
-    list-style: none;
+
+
+nav{
+    display:flex;
+    align-items:center;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    white-space: nowrap;
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:25px;
 }
 
-.nav-links a:hover {
-    color: #4caf6e;
+.nav-links li{
+    list-style:none;
 }
 
-.menu-icon {
-    display: none;
-    color: white;
-    font-size: 28px;
-    cursor: pointer;
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:500;
+    transition:0.3s;
 }
 
-/* Mobile */
-@media screen and (max-width: 768px) {
-    header {
-        padding: 15px 20px;
+.nav-links a:hover{
+    color:#FFD54F;
+}
+
+.menu-icon{
+    display:none;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+}
+
+
+
+main{
+    max-width:900px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+main h2{
+    text-align:center;
+    color:#1E6A33;
+    margin-bottom:35px;
+    font-size:2rem;
+}
+
+
+
+.module-card{
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    transition:0.3s ease;
+}
+
+.module-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+}
+
+.module-card h3{
+    color:#1E6A33;
+    margin-bottom:15px;
+    font-size:1.4rem;
+}
+
+.module-content{
+    margin-top:15px;
+}
+
+.module-content p{
+    margin-bottom:15px;
+}
+
+.module-content ul{
+    padding-left:20px;
+}
+
+.module-content li{
+    margin-bottom:10px;
+}
+
+
+
+.voice-btn{
+    background:#1E6A33;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:25px;
+    cursor:pointer;
+    font-size:15px;
+    transition:0.3s;
+}
+
+.voice-btn:hover{
+    background:#145124;
+}
+
+
+
+footer{
+    background:#1E6A33;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+
+
+@media screen and (max-width:992px){
+
+    header{
+        padding:15px 25px;
     }
-    
-    .logo img {
-        width: 80px;
+
+    .nav-links{
+        gap:15px;
     }
-    
-    .menu-icon {
-        display: block;
+
+    .logo img{
+        width:75px;
     }
-    
-    nav {
-        flex: none;
-        width: 100%;
-        margin-left: 0;
-        margin-top: 15px;
+}
+
+
+
+@media screen and (max-width:768px){
+
+    header{
+        flex-direction:column;
+        align-items:flex-start;
     }
-    
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
+
+    .menu-icon{
+        display:block;
+        margin-top:10px;
     }
-    
-    .nav-links.active {
-        display: flex;
+
+    nav{
+        width:100%;
     }
-    
-    .nav-links li {
-        text-align: center;
-        padding: 12px 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+    .nav-links{
+        display:none;
+        flex-direction:column;
+        width:100%;
+        margin-top:15px;
+        gap:0;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .nav-links li{
+        padding:12px 0;
+        border-top:1px solid rgba(255,255,255,0.15);
+    }
+
+    main{
+        padding:25px 15px;
+    }
+
+    main h2{
+        font-size:1.7rem;
+    }
+
+    .module-card{
+        padding:20px;
+    }
+
+    .voice-btn{
+        width:100%;
+    }
+
+    .logo img{
+        width:65px;
     }
 }
