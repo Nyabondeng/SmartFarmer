@@ -6,15 +6,13 @@ body {
   height: auto;
 }
 
-/* General header styles */
-header {
-  background: #2e7d32;
-  color: white;
-  display: flex;
-  height: 60px;
-  justify-content: space-between;
-  align-items: center;
-  padding: 25px 20px;
+header{
+    background:#1E6A33;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
 header .logo {
@@ -23,37 +21,35 @@ header .logo {
   margin-top: -85px;
 }
 
-/* Navigation styles */
-nav {
-  position: relative;
+nav{
+    display:flex;
+    align-items:center;
 }
 
-nav ul {
-  display: flex;
-  justify-content: space-between;
-  gap: 25px;
-  list-style: none;
-  padding: 0;
-  margin-right: 450px;
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+    margin:0;
+    padding:0;
 }
 
-nav ul li {
-  margin-left: 10px;
+nav ul li{
+    list-style:none;
 }
 
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:500;
+    transition:0.3s;
 }
 
-nav ul li a:hover {
-  color: #f4f4f4;
-  font-size: 20px;
+nav ul li a:hover{
+    color:white;
 }
 
-/* Menu Icon - Hidden by Default on Large Screens */
 .menu-icon {
   font-size: 28px;
   cursor: pointer;
@@ -65,7 +61,6 @@ nav ul li a:hover {
   transform: translateY(-50%);
 }
 
-/* Responsive Menu for Small Screens */
 @media (max-width: 768px) {
   nav ul {
     display: none;
