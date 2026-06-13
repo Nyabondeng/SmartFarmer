@@ -18,8 +18,8 @@ header {
 
 header .logo {
     max-width: 180px;
-    height: 20px;
-    margin-top: -85px;
+    height: auto;
+    margin-top: 0;
 }
 
 nav {
