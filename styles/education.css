@@ -1,6 +1,6 @@
 
 
-{
+*{
     margin:0;
     padding:0;
     box-sizing:border-box;
@@ -67,7 +67,7 @@ nav{
 
 
 main{
-    max-width:900px;
+    max-width:1200px;
     margin:auto;
     padding:40px 20px;
 }
@@ -76,7 +76,13 @@ main h2{
     text-align:center;
     color:#1E6A33;
     margin-bottom:35px;
-    font-size:2rem;
+    font-size:2.3rem;
+}
+
+.modules-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
 }
 
 
@@ -88,6 +94,7 @@ main h2{
     margin-bottom:25px;
     box-shadow:0 4px 15px rgba(0,0,0,0.08);
     transition:0.3s ease;
+    height:100%;
 }
 
 .module-card:hover{
