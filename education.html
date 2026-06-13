@@ -11,15 +11,19 @@
         <div class="logo">
             <img src="images/smartfarmer.png" alt="logo">
         </div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="crops.html">Crop Info</a>
-        <a href="education.html">Education</a>
-        <a href="crop-log.html">Crop Log</a>
-        
-        <a href="contact.html">Contact</a>
-    </nav>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="crops.html">Crop Info</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="crop-log.html">Crop Log</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="ussd.html">USSD</a></li>
+            </ul>
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        </nav>
+    </header>
 
     <main>
         <h2>Educational Modules</h2>
@@ -78,5 +82,11 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            if (nav) nav.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
