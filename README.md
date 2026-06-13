@@ -79,9 +79,12 @@ Figma Prototype
 
 https://www.figma.com/design/mxazJuKrc45lla3wxTjcgf/Smart-Farmer-App?node-id=0-1&p=f&t=Vns30Do8GynahRZA-0
 
-# Wireframes
+The Figma prototype includes wireframes and mockups for all 9 screens: Welcome screen, About, Crop Info, Education, Crop Log, Contact, Language Switcher overlay, and a 3-screen USSD Simulator (*131# main menu, crop submenu, and information screen)
 
-Wireframes and design documentation are included in the project submission package.
+# Wireframes
+Wireframes and design documentation are included 
+
+https://docs.google.com/document/d/1csu_92AEcQ9iLpueJEOzYsfSYh4TSLN3nRx6udDLXoo/edit?tab=t.0
 
 # Planned Backend Architecture
 
