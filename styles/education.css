@@ -81,7 +81,7 @@ main h2{
 
 .modules-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:25px;
 }
 
@@ -91,14 +91,13 @@ main h2{
     background:white;
     border-radius:18px;
     padding:25px;
-    margin-bottom:25px;
     box-shadow:0 4px 15px rgba(0,0,0,0.08);
     transition:0.3s ease;
-    height:100%;
+    margin-bottom:25px;
 }
 
 .module-card:hover{
-    transform:translateY(-4px);
+    transform:translateY(-5px);
     box-shadow:0 8px 20px rgba(0,0,0,0.12);
 }
 
@@ -127,6 +126,7 @@ main h2{
 
 
 .voice-btn{
+    margin-top:15px;
     background:#1E6A33;
     color:white;
     border:none;
