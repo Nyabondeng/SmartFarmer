@@ -6,7 +6,6 @@ body {
     height: auto;
 }
 
-/* General header styles */
 header {
     background: #2e7d32;
     color: white;
@@ -23,7 +22,6 @@ header .logo {
     margin-top: -85px;
 }
 
-/* Navigation styles */
 nav {
     position: relative;
 }
@@ -52,7 +50,6 @@ nav ul li a:hover {
     font-size: 20px;
 }
 
-/* Menu Icon - Hidden by Default on Large Screens */
 .menu-icon {
     font-size: 28px;
     cursor: pointer;
@@ -64,7 +61,6 @@ nav ul li a:hover {
     transform: translateY(-50%);
 }
 
-/* Responsive Menu for Small Screens */
 @media (max-width: 768px) {
     nav ul {
         display: none;
@@ -91,7 +87,6 @@ nav ul li a:hover {
     }
 }
 
-/* Section styling */
 .about-section {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/images/grass.webp);
     backdrop-filter: blur(9px);
