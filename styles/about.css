@@ -23,31 +23,32 @@ header .logo {
 }
 
 nav {
-    position: relative;
+    display:flex;
+    align-items:center;
 }
 
-nav ul {
-    display: flex;
-    justify-content: space-between;
-    gap: 25px;
-    list-style: none;
-    padding: 0;
-    margin-right: 450px;
+.nav-links {
+    display:flex;
+    list-style:none;
+    gap:25px;
+    padding:0;
+    margin:0;
 }
 
-nav ul li {
-    margin-left: 10px;
+.nav-links li {
+    list-style:none;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:500;
+    transition:0.3s;
 }
 
-nav ul li a:hover {
-    color: #f4f4f4;
-    font-size: 20px;
+.nav-links a:hover{
+    color:#FFD54F;
 }
 
 .menu-icon {
