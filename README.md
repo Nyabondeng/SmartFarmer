@@ -15,7 +15,7 @@ Supervisor: Tunde Isiaq Gbadamosi
 Live Demo
 https://smrtfarmer.netlify.app/
 Smart Farmer is deployed on Netlify:
-
+Demo: https://youtu.be/MPbeYiFFmAA
 # Features
 Educational Modules
 
