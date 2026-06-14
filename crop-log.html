@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Smart Farmer - My Crop Log</title>
+    <title>Smart Farmer - Crop Log</title>
     <link rel="stylesheet" href="styles/crop-log.css">
 </head>
 <body>
@@ -12,19 +11,23 @@
         <div class="logo">
             <img src="images/smartfarmer.png" alt="logo">
         </div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="crops.html">Crop Info</a>
-        <a href="education.html">Education</a>
-        <a href="crop-log.html">Crop Log</a>
-        <a href="contact.html">Contact</a>
-        <a href="ussd.html">USSD</a>
-    </nav>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="crops.html">Crop Info</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="crop-log.html">Crop Log</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="ussd.html">USSD</a></li>
+            </ul>
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        </nav>
+    </header>
 
     <main>
         <h2>My Crop Monitoring Log</h2>
-        <p>Save your planting dates. All data stays on your phone. Works offline.</p>
+        <p class="subtitle">Save your planting dates. All data stays on your phone. Works offline.</p>
 
         <div class="log-form">
             <label for="cropSelect">Select Crop:</label>
@@ -42,13 +45,13 @@
             <label for="notes">Notes (optional):</label>
             <textarea id="notes" rows="2" placeholder="e.g., planted near the river"></textarea>
 
-            <button onclick="saveCropLog()">💾 Save Planting Record</button>
+            <button onclick="saveCropLog()">Save Planting Record</button>
         </div>
 
         <div class="saved-logs">
             <h3>Your Saved Records</h3>
             <div id="logList">
-                <p>No records yet. Save your first planting date above.</p>
+                <p class="empty-message">No records yet. Save your first planting date above.</p>
             </div>
             <button onclick="clearAllLogs()" class="clear-btn">🗑️ Clear All Records</button>
         </div>
@@ -58,6 +61,79 @@
         <p>&copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            if (nav) nav.classList.toggle('active');
+        }
+
+        function saveCropLog() {
+            let crop = document.getElementById('cropSelect').value;
+            let date = document.getElementById('plantDate').value;
+            let notes = document.getElementById('notes').value;
+
+            if (!date) {
+                alert('Please select a planting date');
+                return;
+            }
+
+            let logs = localStorage.getItem('cropLogs');
+            if (logs) {
+                logs = JSON.parse(logs);
+            } else {
+                logs = [];
+            }
+
+            logs.push({
+                crop: crop,
+                date: date,
+                notes: notes || '',
+                timestamp: new Date().toISOString()
+            });
+
+            localStorage.setItem('cropLogs', JSON.stringify(logs));
+            displayCropLogs();
+
+            // Clear form
+            document.getElementById('plantDate').value = '';
+            document.getElementById('notes').value = '';
+
+            alert('Planting record saved!');
+        }
+
+        function displayCropLogs() {
+            let logs = localStorage.getItem('cropLogs');
+            let logList = document.getElementById('logList');
+
+            if (!logList) return;
+
+            if (logs && JSON.parse(logs).length > 0) {
+                logs = JSON.parse(logs);
+                let html = '';
+                for (let i = logs.length - 1; i >= 0; i--) {
+                    html += '<div class="log-item">';
+                    html += '<strong>' + logs[i].crop + '</strong> - Planted: ' + logs[i].date;
+                    if (logs[i].notes) {
+                        html += '<br><small>Note: ' + logs[i].notes + '</small>';
+                    }
+                    html += '</div>';
+                }
+                logList.innerHTML = html;
+            } else {
+                logList.innerHTML = '<p class="empty-message">No records yet. Save your first planting date above.</p>';
+            }
+        }
+
+        function clearAllLogs() {
+            if (confirm('Are you sure? This will delete all your saved planting records.')) {
+                localStorage.removeItem('cropLogs');
+                displayCropLogs();
+                alert('All records cleared.');
+            }
+        }
+
+        displayCropLogs();
+    </script>
 </body>
 </html>
