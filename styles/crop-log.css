@@ -15,13 +15,13 @@ body {
 }
 
 header {
-    background-color: #4a7c59;
+    background:#1E6A33;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5%;
-    flex-wrap: wrap;
+    padding:15px 40px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
 .logo img {
@@ -29,21 +29,31 @@ header {
     height: auto;
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
+nav{
+    display:flex;
+    align-items:center;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 5px;
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:25px;
 }
 
-nav ul li a:hover, nav ul li a.active {
-    background-color: #2c4a35;
+.nav-links li{
+    list-style:none;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#FFD54F;
 }
 
 .menu-icon {
@@ -53,20 +63,17 @@ nav ul li a:hover, nav ul li a.active {
 }
 
 /* Main Content */
-main {
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 30px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+main{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
 }
 
-h2 {
-    color: #4a7c59;
-    text-align: center;
-    margin: 0 0 18px;
-    font-size: 2rem;
+main h2{
+    text-align:center;
+    color:#1E6A33;
+    margin-bottom:35px;
+    font-size:2rem;
 }
 
 main > p {
@@ -75,39 +82,40 @@ main > p {
 }
 
 /* Log Form */
-.log-form {
-    background-color: #e8f0e8;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 25px;
+.log-form{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    margin-bottom:25px;
 }
 
-.log-form label {
-    display: block;
-    font-weight: bold;
-    margin: 10px 0 5px;
-    color: #4a7c59;
+.log-form label{
+    display:block;
+    font-weight:600;
+    margin:10px 0 5px;
+    color:#1E6A33;
 }
 
-.log-form select, .log-form input, .log-form textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #dcdcdc;
-    border-radius: 8px;
-    font-size: 1rem;
-    background: #fcfcfc;
-    transition: box-shadow 0.18s, border-color 0.18s;
+.log-form select, .log-form input, .log-form textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #e6e6e6;
+    border-radius:8px;
+    font-size:1rem;
+    background:#fcfcfc;
 }
 
-.log-form button {
-    background-color: #4a7c59;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    margin-top: 15px;
-    width: 100%;
+
+.log-form button{
+    background:#1E6A33;
+    color:#fff;
+    border:none;
+    padding:12px 20px;
+    border-radius:25px;
+    cursor:pointer;
+    margin-top:15px;
+    width:100%;
 }
 
 .log-form button:hover {
@@ -115,11 +123,9 @@ main > p {
 }
 
 /* Saved Logs */
-.saved-logs {
-    background-color: #f7faf7;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+.saved-logs{
+    background:transparent;
+    padding:0;
 }
 
 .saved-logs h3 {
@@ -133,23 +139,29 @@ main > p {
     margin-bottom: 15px;
 }
 
-#logList p {
-    background-color: white;
-    padding: 12px 14px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border-left: 4px solid #4a7c59;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+#logList .log-item{
+    background:white;
+    border-radius:18px;
+    padding:15px;
+    margin:12px 0;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    border-left:4px solid #1E6A33;
 }
 
-.clear-btn {
-    background-color: #a33;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
+#logList .empty-message{
+    background-color:white;
+    padding:12px 14px;
+    border-radius:8px;
+}
+
+.clear-btn{
+    background:#a33;
+    color:#fff;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    width:100%;
 }
 
 .clear-btn:hover {
@@ -157,12 +169,12 @@ main > p {
 }
 
 /* Footer */
-footer {
-    background-color: #3a5c45;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
+footer{
+    background:#1E6A33;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
 }
 
 /* Mobile */
