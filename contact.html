@@ -7,44 +7,60 @@
     <link rel="stylesheet" href="styles/contact.css">
 </head>
 <body>
+
     <header>
         <div class="logo">
-            <img src="images/smartfarmer.png" alt="logo">
+            <img src="images/smartfarmer.png" alt="Smart Farmer Logo">
         </div>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="crops.html">Crop Info</a>
-        <a href="education.html">Education</a>
-        <a href="crop-log.html">Crop Log</a>
-        <a href="ussd.html">USSD</a>
-        <a href="contact.html">Contact</a>
-    </nav>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="crops.html">Crop Info</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="crop-log.html">Crop Log</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="ussd.html">USSD</a></li>
+            </ul>
+
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        </nav>
+    </header>
 
     <main>
         <h2>Contact Us</h2>
-        <p>Have questions or feedback? Reach out to us.</p>
+        <p class="page-description">
+            Have questions, suggestions, or feedback? We'd love to hear from you.
+        </p>
 
-        <form id="contactForm">
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" required>
+        <div class="contact-container">
 
-            <label for="email">Your Email or Phone:</label>
-            <input type="text" id="email" required>
+            <form id="contactForm" class="contact-form">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
 
-            <label for="message">Message:</label>
-            <textarea id="message" rows="4" required></textarea>
+                <label for="email">Your Email or Phone:</label>
+                <input type="text" id="email" name="email" required>
 
-            <button type="submit">Send Message</button>
-        </form>
-        <p id="formStatus"></p>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
 
-        <div class="other-contacts">
-            <h3>Other Ways to Reach Us</h3>
-            <p>📧 Email: smartfarmer@example.com</p>
-            <p>📱 Coming soon: USSD code *131#</p>
+                <button type="submit">Send Message</button>
+            </form>
+
+            <div class="other-contacts">
+                <h3>Other Ways to Reach Us</h3>
+
+                <p>📧 Email: smartfarmer@example.com</p>
+                <p>📱 WhatsApp: +250 XXX XXX XXX</p>
+                <p>🌐 USSD Service: Coming Soon</p>
+                <p>📍 Yei County, South Sudan</p>
+            </div>
+
         </div>
+
+        <p id="formStatus"></p>
     </main>
 
     <footer>
@@ -52,5 +68,13 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            nav.classList.toggle('active');
+        }
+    </script>
+
 </body>
 </html>
