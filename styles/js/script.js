@@ -43,16 +43,88 @@ function playAudio(topic) {
     }
 }
 
-// Language selector (simplified for demo)
-function setLanguage(lang) {
-    if (lang === 'english') {
-        alert('Language set to English');
-    } else if (lang === 'bari') {
-        alert('Bari language - coming soon');
-    } else if (lang === 'arabic') {
-        alert('Arabic language - coming soon');
+// Language Translations
+const translations = {
+    en: {
+        home: "Home",
+        about: "About",
+        crops: "Crop Info",
+        education: "Education",
+        cropLog: "Crop Log",
+        contact: "Contact",
+        ussd: "USSD",
+        welcome: "Welcome to Smart Farmer",
+        tagline: "Empowering smallholder farmers through agricultural information.",
+        getStarted: "Get Started"
+    },
+
+    juba: {
+        home: "Home",
+        about: "About Smart Farmer",
+        crops: "Crop Information",
+        education: "Education",
+        cropLog: "Planting Log",
+        contact: "Contact Us",
+        ussd: "USSD"
+    },
+
+    bari: {
+        home: "Lo Piny",
+        about: "Kony Smart Farmer",
+        crops: "Lonyo lo Kony",
+        education: "Kujju",
+        cropLog: "Buku lo Kony",
+        contact: "Konye",
+        ussd: "USSD"
     }
+};
+
+function translatePage(language) {
+
+    document.querySelectorAll("[data-translate]").forEach(element => {
+
+        const key = element.getAttribute("data-translate");
+
+        if (
+            translations[language] &&
+            translations[language][key]
+        ) {
+            element.textContent = translations[language][key];
+        }
+
+    });
+
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const languageSwitcher =
+        document.getElementById("languageSwitcher");
+
+    if (!languageSwitcher) return;
+
+    const savedLanguage =
+        localStorage.getItem("language") || "en";
+
+    languageSwitcher.value = savedLanguage;
+
+    translatePage(savedLanguage);
+
+    languageSwitcher.addEventListener("change", () => {
+
+        const selectedLanguage =
+            languageSwitcher.value;
+
+        localStorage.setItem(
+            "language",
+            selectedLanguage
+        );
+
+        translatePage(selectedLanguage);
+
+    });
+
+});
 
 // Crop Log Functions (Local Storage)
 function saveCropLog() {

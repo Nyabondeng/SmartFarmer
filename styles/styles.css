@@ -51,7 +51,19 @@ nav ul li a{
 nav ul li a:hover{
     color:white;
 }
+ .language-selector{
+    margin-left:20px;
+}
 
+.language-selector select{
+    padding:8px 12px;
+    border:none;
+    border-radius:8px;
+    background:white;
+    color:#1E6A33;
+    font-weight:600;
+    cursor:pointer;
+}
 .menu-icon {
   font-size: 28px;
   cursor: pointer;
@@ -76,6 +88,14 @@ nav ul li a:hover{
     padding: 10px 0;
   }
 
+  .language-selector{
+    margin-top:10px;
+    width:100%;
+}
+
+.language-selector select{
+    width:100%;
+}
   nav ul.show {
     display: flex;
   }
