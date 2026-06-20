@@ -52,41 +52,7 @@ function playAudio(topic) {
     }
 }
 
-// Language Translations
-const translations = {
-    en: {
-        home: "Home",
-        about: "About",
-        crops: "Crop Info",
-        education: "Education",
-        cropLog: "Crop Log",
-        contact: "Contact",
-        ussd: "USSD",
-        welcome: "Welcome to Smart Farmer",
-        tagline: "Empowering smallholder farmers through agricultural information.",
-        getStarted: "Get Started"
-    },
 
-    juba: {
-        home: "Home",
-        about: "About Smart Farmer",
-        crops: "Crop Information",
-        education: "Education",
-        cropLog: "Planting Log",
-        contact: "Contact Us",
-        ussd: "USSD"
-    },
-
-    bari: {
-        home: "Lo Piny",
-        about: "Kony Smart Farmer",
-        crops: "Lonyo lo Kony",
-        education: "Kujju",
-        cropLog: "Buku lo Kony",
-        contact: "Konye",
-        ussd: "USSD"
-    }
-};
 
 function translatePage(language) {
 
