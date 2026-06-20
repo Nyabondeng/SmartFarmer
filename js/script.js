@@ -28,6 +28,15 @@ function playAudio(topic) {
         case 'postharvest':
             message = 'Post-harvest handling. Harvest when grains are hard and dry. Dry crops completely before storing. Store in clean, dry containers. Use ash to keep insects away.';
             break;
+
+        case 'soil':
+            message = 'Soil management. Clear weeds before planting. Add compost or animal manure to improve soil fertility. Rotate crops regularly and use mulch to conserve moisture and reduce erosion.';
+            break;
+
+        case 'climate':
+            message = 'Climate-smart farming. Plant early when the rainy season begins. Choose drought-resistant crops. Harvest rainwater when possible. Use mulching to reduce water loss and follow weather forecasts before planting.';
+            break;
+        
         default:
             message = 'Information available in English. Voice in Bari and Arabic coming soon.';
     }
