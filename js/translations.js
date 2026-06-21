@@ -17,26 +17,25 @@ const translations = {
         cropLog: "Sijil Zira'a",
         contact: "Ittasil Bina",
         ussd: "USSD",
+            ,
+            aboutTitle: "عن المزارع الذكي",
+            whoWeAreTitle: "من نحن",
+            whoWeAreText: "Smart Farmer huwa nizam zira'i dijitali ma'mul khasan li mazariin soghar fi South Sudan. Bi'idim malumat an zaru'a, durus ta'limiya, wa sijil zira'a yishtighil bila internet.",
+
+            missionTitle: "المهمة",
+            missionText: "Nidii malumat zira'iya sahla li mazariin soghar fi Yei County bi lughaat hum Arabic, English wa Bari bila haja lil internet.",
+
+            visionTitle: "الرؤية",
+            visionText: "Mustaqbal kul mazari fi South Sudan yikunu indahu ma'rifa wa adawat li yizid intaj ta'am wa yugallil khasarat fi mahsul.",
+
+            offersTitle: "ماذا يقدم المزارع الذكي",
+
+            offer1: "Malumat an 5 anwa min mahsulat bi 3 lughaat",
+            offer2: "Durus an zira'a, mukafahat al-afat wa hasad",
+            offer3: "Sawt li mazariin ma bigru kutub kwayyis",
+            offer4: "Sijil zira'a bila internet mahfuz fi talifun",
         welcome: "Marhaba fi Smart Farmer",
-        tagline: "Nusaid mazariin bi ma'lumat zira'iya",
-        getStarted: "Ibda"
-    },
-
-    bari: {
-        home: "Lo Piny",
-        about: "Kony Smart Farmer",
-        crops: "Lonyo lo Kony",
-        education: "Kujju",
-        cropLog: "Buku lo Kony",
-        contact: "Konye",
-        ussd: "USSD"
-        ,
-        aboutTitle: "Kony Smart Farmer",
-
-        whoWeAreTitle: "Ngutu Ke",
-        whoWeAreText: "Smart Farmer ko sistemu lo lonyo lo kony ma ta ronyi ko'di na South Sudan. Epi lonyo lo kony, kujju, ko buku lo kony ma ijo internet.",
-
-        missionTitle: "Mission",
+    
         missionText: "Ti lonyo lo kony ma ronyi ko'di na Yei County ki lugeti ko Arabic, English, ko Bari ma internet.",
 
         visionTitle: "Vision",
