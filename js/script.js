@@ -31,12 +31,48 @@ function playAudio(topic) {
     }
 
     if ('speechSynthesis' in window) {
-        let utterance = new SpeechSynthesisUtterance(message);
-        // set locale for known languages
-        utterance.lang = (lang === 'bari') ? 'en-KE' : (lang === 'juba' ? 'ar-SA' : 'en-US');
-        utterance.rate = 0.9;
-        speechSynthesis.cancel();
-        speechSynthesis.speak(utterance);
+        const speak = (msg, prefLang) => {
+            let voices = speechSynthesis.getVoices();
+
+            const pickVoice = (voicesList, prefer) => {
+                if (!voicesList || voicesList.length === 0) return null;
+                // prefer voices matching Arabic for juba
+                if (prefer === 'juba') {
+                    const v = voicesList.find(v => v.lang && v.lang.startsWith('ar'));
+                    if (v) return v;
+                }
+                // prefer English voices for bari
+                if (prefer === 'bari') {
+                    const v = voicesList.find(v => v.lang && v.lang.startsWith('en'));
+                    if (v) return v;
+                }
+                // otherwise try to match exact language tag
+                const match = voicesList.find(v => v.lang && v.lang.startsWith(prefer));
+                if (match) return match;
+                // fallback to a default voice (first available)
+                return voicesList[0];
+            };
+
+            const voice = pickVoice(voices, prefLang);
+            const utterance = new SpeechSynthesisUtterance(msg);
+            if (voice) {
+                utterance.voice = voice;
+                utterance.lang = voice.lang || utterance.lang;
+            } else {
+                // fallback locales
+                utterance.lang = (prefLang === 'juba') ? 'ar-SA' : 'en-US';
+            }
+            utterance.rate = 0.9;
+            speechSynthesis.cancel();
+            speechSynthesis.speak(utterance);
+        };
+
+        // voices may not be loaded immediately — handle that
+        if (speechSynthesis.getVoices().length === 0) {
+            speechSynthesis.onvoiceschanged = () => speak(message, lang);
+        } else {
+            speak(message, lang);
+        }
     } else {
         alert('Your browser does not support voice output. ' + message);
     }
