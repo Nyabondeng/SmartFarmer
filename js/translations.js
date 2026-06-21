@@ -51,17 +51,17 @@ const translations = {
     },
     // Arabic (Sudanese Arabic) translations
     ar: {
-        aboutTitle: "About Smart Farmer",
-        whoWeAreTitle: "Who We Are",
+        aboutTitle: "عن المزارع الذكي",
+        whoWeAreTitle: "من نحن",
         whoWeAreText: "Smart Farmer huwa nizam zira'i dijitali ma'mul khasan li mazariin soghar fi South Sudan. Bi'idim malumat an zaru'a, durus ta'limiya, wa sijil zira'a yishtighil bila internet.",
 
-        missionTitle: "Mission",
+        missionTitle: "المهمة",
         missionText: "Nidii malumat zira'iya sahla li mazariin soghar fi Yei County bi lughaat hum Arabic, English wa Bari bila haja lil internet.",
 
-        visionTitle: "Vision",
+        visionTitle: "الرؤية",
         visionText: "Mustaqbal kul mazari fi South Sudan yikunu indahu ma'rifa wa adawat li yizid intaj ta'am wa yugallil khasarat fi mahsul.",
 
-        offersTitle: "Smart Farmer Bidii Shinu",
+        offersTitle: "ماذا يقدم المزارع الذكي",
 
         offer1: "Malumat an 5 anwa min mahsulat bi 3 lughaat",
         offer2: "Durus an zira'a, mukafahat al-afat wa hasad",
