@@ -9,6 +9,7 @@ const translations = {
         ussd: "USSD"
     },
 
+    /* Juba Arabic (primary Arabic variant) */
     juba: {
         home: "Bet",
         about: "An Smart Farmer",
@@ -17,25 +18,44 @@ const translations = {
         cropLog: "Sijil Zira'a",
         contact: "Ittasil Bina",
         ussd: "USSD",
-            ,
-            aboutTitle: "عن المزارع الذكي",
-            whoWeAreTitle: "من نحن",
-            whoWeAreText: "Smart Farmer huwa nizam zira'i dijitali ma'mul khasan li mazariin soghar fi South Sudan. Bi'idim malumat an zaru'a, durus ta'limiya, wa sijil zira'a yishtighil bila internet.",
-
-            missionTitle: "المهمة",
-            missionText: "Nidii malumat zira'iya sahla li mazariin soghar fi Yei County bi lughaat hum Arabic, English wa Bari bila haja lil internet.",
-
-            visionTitle: "الرؤية",
-            visionText: "Mustaqbal kul mazari fi South Sudan yikunu indahu ma'rifa wa adawat li yizid intaj ta'am wa yugallil khasarat fi mahsul.",
-
-            offersTitle: "ماذا يقدم المزارع الذكي",
-
-            offer1: "Malumat an 5 anwa min mahsulat bi 3 lughaat",
-            offer2: "Durus an zira'a, mukafahat al-afat wa hasad",
-            offer3: "Sawt li mazariin ma bigru kutub kwayyis",
-            offer4: "Sijil zira'a bila internet mahfuz fi talifun",
         welcome: "Marhaba fi Smart Farmer",
-    
+        tagline: "Nusaid mazariin bi ma'lumat zira'iya",
+        getStarted: "Ibda",
+
+        // About page translations (as requested)
+        aboutTitle: "About Smart Farmer",
+
+        whoWeAreTitle: "Who We Are",
+        whoWeAreText: "Smart Farmer huwa nizam zira'i dijitali ma'mul khasan li mazariin soghar fi South Sudan. Bi'idim malumat an zaru'a, durus ta'limiya, wa sijil zira'a yishtighil bila internet.",
+
+        missionTitle: "Mission",
+        missionText: "Nidii malumat zira'iya sahla li mazariin soghar fi Yei County bi lughaat hum Arabic, English wa Bari bila haja lil internet.",
+
+        visionTitle: "Vision",
+        visionText: "Mustaqbal kul mazari fi South Sudan yikunu indahu ma'rifa wa adawat li yizid intaj ta'am wa yugallil khasarat fi mahsul.",
+
+        offersTitle: "Smart Farmer Bidii Shinu",
+
+        offer1: "Malumat an 5 anwa min mahsulat bi 3 lughaat",
+        offer2: "Durus an zira'a, mukafahat al-afat wa hasad",
+        offer3: "Sawt li mazariin ma bigru kutub kwayyis",
+        offer4: "Sijil zira'a bila internet mahfuz fi talifun"
+    },
+
+    bari: {
+        home: "Lo Piny",
+        about: "Kony Smart Farmer",
+        crops: "Lonyo lo Kony",
+        education: "Kujju",
+        cropLog: "Buku lo Kony",
+        contact: "Konye",
+        ussd: "USSD",
+
+        aboutTitle: "Kony Smart Farmer",
+        whoWeAreTitle: "Ngutu Ke",
+        whoWeAreText: "Smart Farmer ko sistemu lo lonyo lo kony ma ta ronyi ko'di na South Sudan. Epi lonyo lo kony, kujju, ko buku lo kony ma ijo internet.",
+
+        missionTitle: "Mission",
         missionText: "Ti lonyo lo kony ma ronyi ko'di na Yei County ki lugeti ko Arabic, English, ko Bari ma internet.",
 
         visionTitle: "Vision",
@@ -46,27 +66,9 @@ const translations = {
         offer1: "Lonyo lo kony ta mahsulat 5 ki lugeti 3",
         offer2: "Kujju ta kony, afat, ko hasad",
         offer3: "Kony lo yia ma aji kutu",
-        offer4: "Buku lo kony ma internet ti talifun",
+        offer4: "Buku lo kony ma internet ti talifun"
     },
-    // Arabic (Sudanese Arabic) translations
-    ar: {
-        aboutTitle: "عن المزارع الذكي",
-        whoWeAreTitle: "من نحن",
-        whoWeAreText: "Smart Farmer huwa nizam zira'i dijitali ma'mul khasan li mazariin soghar fi South Sudan. Bi'idim malumat an zaru'a, durus ta'limiya, wa sijil zira'a yishtighil bila internet.",
 
-        missionTitle: "المهمة",
-        missionText: "Nidii malumat zira'iya sahla li mazariin soghar fi Yei County bi lughaat hum Arabic, English wa Bari bila haja lil internet.",
-
-        visionTitle: "الرؤية",
-        visionText: "Mustaqbal kul mazari fi South Sudan yikunu indahu ma'rifa wa adawat li yizid intaj ta'am wa yugallil khasarat fi mahsul.",
-
-        offersTitle: "ماذا يقدم المزارع الذكي",
-
-        offer1: "Malumat an 5 anwa min mahsulat bi 3 lughaat",
-        offer2: "Durus an zira'a, mukafahat al-afat wa hasad",
-        offer3: "Sawt li mazariin ma bigru kutub kwayyis",
-        offer4: "Sijil zira'a bila internet mahfuz fi talifun"
-    },
     // Shared/common strings (default to English)
     aboutTitle: "About Us",
     whoWeAreTitle: "Who We Are",
@@ -86,3 +88,5 @@ const translations = {
     offer4: "Offline planting log saved on the farmer's device"
 
 };
+
+export default translations;
