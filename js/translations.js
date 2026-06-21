@@ -55,6 +55,36 @@ const translations = {
         harvestLabel: "Al-hasad:",
         storageLabel: "Al-takhzin:",
         voiceListenLabel: "🔊 استمع",
+        // Per-crop description texts (Juba Arabic)
+        sorghumPlantingText: "May - June",
+        sorghumSpacingText: "75cm x 25cm",
+        sorghumPestText: "Intabih li armyworms ba'd awwal matar",
+        sorghumHarvestText: "September - October",
+        sorghumStorageText: "Jaff kullo qabl ma tahfaz fi makan bared",
+
+        maizePlantingText: "May - June",
+        maizeSpacingText: "75cm x 50cm",
+        maizePestText: "Intabih li maize stalk borer",
+        maizeHarvestText: "August - September",
+        maizeStorageText: "Jaff fi al-qur' aw qabl ma tazal al-hubub",
+
+        milletPlantingText: "May - June",
+        milletSpacingText: "60cm x 20cm",
+        milletPestText: "Intabih li asafir wa stem borers",
+        milletHarvestText: "September - October",
+        milletStorageText: "Hifz fi 7awawit mughlaqa ba'd al-jaff",
+
+        groundnutsPlantingText: "May - June",
+        groundnutsSpacingText: "50cm x 15cm",
+        groundnutsPestText: "Intabih li leaf spot wa aphids",
+        groundnutsHarvestText: "October - November",
+        groundnutsStorageText: "Jaff tamam qabl al-tasrees",
+
+        cassavaPlantingText: "March - April (or anytime with rain)",
+        cassavaSpacingText: "100cm x 100cm",
+        cassavaPestText: "Intabih li cassava mosaic disease",
+        cassavaHarvestText: "8-12 months after planting",
+        cassavaStorageText: "Hasad lama tahtaje. Ma yumkin al-takhzin muddah tawila",
         // Voice message translations (Juba Arabic)
         sorghumVoice: "Sorghum. Zigri fi May au June. Fasila 75 senti bi 25 senti. Intabih li armyworms ba'd al-matar.",
         maizeVoice: "Maize. Zigri fi May au June. Fasila 75 senti bi 50 senti. Intabih li stalk borer.",
@@ -109,6 +139,36 @@ const translations = {
         harvestLabel: "Hasad:",
         storageLabel: "Teren:",
         voiceListenLabel: "🔊 Wiri",
+        // Per-crop description texts (Bari)
+        sorghumPlantingText: "May - June",
+        sorghumSpacingText: "75cm x 25cm",
+        sorghumPestText: "Aki wiri armyworms ba'di lipi",
+        sorghumHarvestText: "September - October",
+        sorghumStorageText: "Dry gbye qabl ma teri i teren",
+
+        maizePlantingText: "May - June",
+        maizeSpacingText: "75cm x 50cm",
+        maizePestText: "Aki wiri stalk borer",
+        maizeHarvestText: "August - September",
+        maizeStorageText: "Dry on the cob, then remove kernels",
+
+        milletPlantingText: "May - June",
+        milletSpacingText: "60cm x 20cm",
+        milletPestText: "Aki wiri birds la stem borers",
+        milletHarvestText: "September - October",
+        milletStorageText: "Store in sealed containers",
+
+        groundnutsPlantingText: "May - June",
+        groundnutsSpacingText: "50cm x 15cm",
+        groundnutsPestText: "Aki wiri leaf spot ka aphids",
+        groundnutsHarvestText: "October - November",
+        groundnutsStorageText: "Dry thoroughly before shelling",
+
+        cassavaPlantingText: "March - April (or anytime with rain)",
+        cassavaSpacingText: "100cm x 100cm",
+        cassavaPestText: "Aki wiri cassava mosaic disease",
+        cassavaHarvestText: "8-12 months after planting",
+        cassavaStorageText: "Harvest only when needed. Cannot store long.",
         // Voice message translations (Bari)
         sorghumVoice: "Sorghum. Lanyi ti lipi May ka June. Fasila 75 senti x 25 senti. Aki wiri armyworms ba'di lipi.",
         maizeVoice: "Maize. Lanyi ti lipi May ka June. Fasila 75 senti x 50 senti. Aki wiri stalk borer.",
