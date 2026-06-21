@@ -60,11 +60,11 @@ function translatePage(language) {
 
         const key = element.getAttribute("data-translate");
 
-        if (
-            translations[language] &&
-            translations[language][key]
-        ) {
+        // Prefer language-specific translation, fall back to shared/default key
+        if (translations[language] && translations[language][key]) {
             element.textContent = translations[language][key];
+        } else if (translations[key]) {
+            element.textContent = translations[key];
         }
 
     });
