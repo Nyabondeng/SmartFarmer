@@ -73,31 +73,32 @@ function translatePage(language) {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const languageSwitcher =
-        document.getElementById("languageSwitcher");
-
-    if (!languageSwitcher) return;
-
     const savedLanguage =
         localStorage.getItem("language") || "en";
 
-    languageSwitcher.value = savedLanguage;
-
     translatePage(savedLanguage);
 
-    languageSwitcher.addEventListener("change", () => {
+    const languageSwitcher =
+        document.getElementById("languageSwitcher");
 
-        const selectedLanguage =
-            languageSwitcher.value;
+    if (languageSwitcher) {
 
-        localStorage.setItem(
-            "language",
-            selectedLanguage
-        );
+        languageSwitcher.value = savedLanguage;
 
-        translatePage(selectedLanguage);
+        languageSwitcher.addEventListener("change", () => {
 
-    });
+            const selectedLanguage =
+                languageSwitcher.value;
+
+            localStorage.setItem(
+                "language",
+                selectedLanguage
+            );
+
+            translatePage(selectedLanguage);
+
+        });
+    }
 
 });
 
