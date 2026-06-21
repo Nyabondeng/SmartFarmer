@@ -82,6 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Normalize code to match keys in translations.js
     let translateKey = savedLanguage;
     if (translateKey === 'ba') translateKey = 'bari';
+    // Map stored shorthand 'ar' (used by main.js) to 'juba' used in translations
+    if (translateKey === 'ar') translateKey = 'juba';
 
     translatePage(translateKey);
 
@@ -89,19 +91,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (languageSwitcher) {
         // Ensure the select shows a compatible value
-        languageSwitcher.value = (savedLanguage === 'ba') ? 'bari' : savedLanguage;
+        languageSwitcher.value = (savedLanguage === 'ba') ? 'bari' : (savedLanguage === 'ar' ? 'juba' : savedLanguage);
 
         languageSwitcher.addEventListener("change", () => {
             const selectedLanguage = languageSwitcher.value; // e.g. 'bari', 'juba', 'en'
 
             // Persist both keys so main.js and this script stay in sync.
             localStorage.setItem("language", selectedLanguage);
-            // main.js expects 'ba' shorthand for Bari; map back when necessary
-            const sfLang = (selectedLanguage === 'bari') ? 'ba' : selectedLanguage;
+            // main.js expects 'ba' and 'ar' shorthands; map back when necessary
+            const sfLang = (selectedLanguage === 'bari') ? 'ba' : (selectedLanguage === 'juba' ? 'ar' : selectedLanguage);
             localStorage.setItem('sf_lang', sfLang);
 
             // Translate using the key matching translations.js
-            translatePage(selectedLanguage === 'ba' ? 'bari' : selectedLanguage);
+            const pageKey = (selectedLanguage === 'bari') ? 'bari' : (selectedLanguage === 'juba' ? 'juba' : selectedLanguage);
+            translatePage(pageKey);
         });
     }
 
