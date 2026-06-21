@@ -85,18 +85,18 @@ const translations = {
         cassavaPestText: "Intabih li cassava mosaic disease",
         cassavaHarvestText: "8-12 months after planting",
         cassavaStorageText: "Hasad lama tahtaje. Ma yumkin al-takhzin muddah tawila",
-        // Voice message translations (Juba Arabic)
-        sorghumVoice: "Sorghum. Zigri fi May au June. Fasila 75 senti bi 25 senti. Intabih li armyworms ba'd al-matar.",
-        maizeVoice: "Maize. Zigri fi May au June. Fasila 75 senti bi 50 senti. Intabih li stalk borer.",
-        milletVoice: "Millet. Zigri fi May au June. Fasila 60 senti bi 20 senti. Intabih li asafir wa stem borers.",
-        groundnutsVoice: "Groundnuts. Zigri fi May au June. Fasila 50 senti bi 15 senti. Intabih li leaf spot wa aphids.",
-        cassavaVoice: "Cassava. Zigri fi March au April. Fasila 100 senti bi 100 senti. Intabih li cassava mosaic disease. Hasad ba'd 8 ila 12 shahr.",
+        // Voice message translations (Juba Arabic) — Arabic script for better TTS pronunciation
+        sorghumVoice: "الذرة الرفيعة. ازرع في مايو أو يونيو. التباعد ٧٥ سم في ٢٥ سم. احذر من ديدان الجيش بعد المطر.",
+        maizeVoice: "الذرة. ازرع في مايو أو يونيو. التباعد ٧٥ سم في ٥٠ سم. احذر من حفار ساق الذرة.",
+        milletVoice: "الدخن. ازرع في مايو أو يونيو. التباعد ٦٠ سم في ٢٠ سم. احذر الطيور وحفارات الساق.",
+        groundnutsVoice: "الفول السوداني. ازرع في مايو أو يونيو. التباعد ٥٠ سم في ١٥ سم. احذر بقع الأوراق والمن.",
+        cassavaVoice: "الكسافا. ازرع في مارس أو أبريل. التباعد ١٠٠ سم في ١٠٠ سم. احذر من مرض فسيفساء الكسافا. احصد بعد ٨ إلى ١٢ شهراً.",
 
-        plantingVoice: "Nasiha al-zira'a. Ziri fi bidayat mawseem al-matar. Istakhdim zira' nadhifa. Adi al-fasila wa izalah al-'shubat' fi thalath asabi'.",
-        pestVoice: "Mokafaha al-afat. Fatah al-husbat yawmiyan. Izala al-caterpillars bi yad. Istakhdim ma'adin basita li afat soghayara.",
-        postharvestVoice: "Ba'd al-hasad. Hasid lama al-hubub yikun jaff wa qawi. Nayish jayyidan qabl al-takhzin. Istakhdim ahdaar nadhifa.",
-        soilVoice: "Idarat al-turab. Azil al-'shrub' qabl al-zira'a. Zid compost aw kharaj al-behemah li taslih al-turab.",
-        climateVoice: "Zira'a mutanassiba ma al-manaakh. Ziri badri fi bidayat al-matar. Ikhtar mahsulat muqaawima lil-jafaf.",
+        plantingVoice: "نصائح الزراعة. ازرع في بداية موسم الأمطار. استخدم بذور نظيفة. اتبع التباعد الصحيح وازرع مبكراً.",
+        pestVoice: "مكافحة الآفات. افحص الحقول يومياً. ازل اليرقات يدوياً. استخدم رماداً حول السيقان لحماية من بعض الآفات.",
+        postharvestVoice: "ما بعد الحصاد. احصد عندما تكون الحبوب جافة وقاسية. جفف المحاصيل تماماً قبل التخزين. خزّن في أوعية نظيفة وجافة.",
+        soilVoice: "إدارة التربة. ازل الأعشاب قبل الزراعة. أضف كمبوست أو روث حيواني لتحسين خصوبة التربة.",
+        climateVoice: "الزراعة المناخية الذكية. ازرع مبكراً مع بداية الأمطار. اختر محاصيل مقاومة للجفاف. استخدم التغطية للحفاظ على الماء.",
     },
 
     bari: {
