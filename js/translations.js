@@ -71,6 +71,24 @@ const translations = {
 
     // Shared/common strings (default to English)
     aboutTitle: "About Us",
+    contactTitle: "Contact Us",
+    contactDesc: "Have questions, suggestions, or feedback? We'd love to hear from you.",
+    contactSendButton: "Send Message",
+
+    cropsTitle: "Staple Crops of South Sudan",
+
+    cropLogTitle: "My Crop Monitoring Log",
+    cropLogSubtitle: "Save your planting dates. All data stays on your phone. Works offline.",
+    selectCrop: "Select Crop:",
+    plantingDate: "Planting Date:",
+    notesLabel: "Notes (optional):",
+    saveRecord: "Save Planting Record",
+
+    educationTitle: "Educational Modules",
+
+    successTitle: "✅ Thank you for reaching out!",
+    successBody: "Your message has been sent successfully. We will get back to you as soon as possible.",
+    returnContact: "Return to Contact Page",
     whoWeAreTitle: "Who We Are",
     whoWeAreText: "Smart Farmer is a digital agricultural information system designed specifically for smallholder farmers in South Sudan. It provides crop information, educational modules, and a planting log that works offline on any device.",
 

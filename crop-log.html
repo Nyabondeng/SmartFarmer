@@ -13,24 +13,31 @@
         </div>
         <nav>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="crops.html">Crop Info</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="crop-log.html">Crop Log</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="ussd.html">USSD</a></li>
+                <li><a href="index.html" data-translate="home">Home</a></li>
+                <li><a href="about.html" data-translate="about">About</a></li>
+                <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
+                <li><a href="education.html" data-translate="education">Education</a></li>
+                <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
+                <li><a href="contact.html" data-translate="contact">Contact</a></li>
+                <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
             </ul>
+            <div class="language-selector">
+                <select id="languageSwitcher">
+                    <option value="en">English</option>
+                    <option value="juba">Juba Arabic</option>
+                    <option value="bari">Bari</option>
+                </select>
+            </div>
             <div class="menu-icon" onclick="toggleMenu()">☰</div>
         </nav>
     </header>
 
     <main>
-        <h2>My Crop Monitoring Log</h2>
-        <p class="subtitle">Save your planting dates. All data stays on your phone. Works offline.</p>
+        <h2 data-translate="cropLogTitle">My Crop Monitoring Log</h2>
+        <p class="subtitle" data-translate="cropLogSubtitle">Save your planting dates. All data stays on your phone. Works offline.</p>
 
         <div class="log-form">
-            <label for="cropSelect">Select Crop:</label>
+            <label for="cropSelect" data-translate="selectCrop">Select Crop:</label>
             <select id="cropSelect">
                 <option value="Sorghum">Sorghum</option>
                 <option value="Maize">Maize</option>
@@ -39,13 +46,13 @@
                 <option value="Cassava">Cassava</option>
             </select>
 
-            <label for="plantDate">Planting Date:</label>
+            <label for="plantDate" data-translate="plantingDate">Planting Date:</label>
             <input type="date" id="plantDate">
 
-            <label for="notes">Notes (optional):</label>
+            <label for="notes" data-translate="notesLabel">Notes (optional):</label>
             <textarea id="notes" rows="2" placeholder="e.g., planted near the river"></textarea>
 
-            <button onclick="saveCropLog()">Save Planting Record</button>
+            <button onclick="saveCropLog()" data-translate="saveRecord">Save Planting Record</button>
         </div>
 
         <div class="saved-logs">

@@ -15,22 +15,30 @@
 
         <nav>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="crops.html">Crop Info</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="crop-log.html">Crop Log</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="ussd.html">USSD</a></li>
+                <li><a href="index.html" data-translate="home">Home</a></li>
+                <li><a href="about.html" data-translate="about">About</a></li>
+                <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
+                <li><a href="education.html" data-translate="education">Education</a></li>
+                <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
+                <li><a href="contact.html" data-translate="contact">Contact</a></li>
+                <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
             </ul>
+
+            <div class="language-selector">
+                <select id="languageSwitcher">
+                    <option value="en">English</option>
+                    <option value="juba">Juba Arabic</option>
+                    <option value="bari">Bari</option>
+                </select>
+            </div>
 
             <div class="menu-icon" onclick="toggleMenu()">☰</div>
         </nav>
     </header>
 
     <main>
-        <h2>Contact Us</h2>
-        <p class="page-description">
+        <h2 data-translate="contactTitle">Contact Us</h2>
+        <p class="page-description" data-translate="contactDesc">
             Have questions, suggestions, or feedback? We'd love to hear from you.
         </p>
 
@@ -49,7 +57,7 @@
                 <textarea id="message" name="message" rows="4" 
                           placeholder="Enter your message" required></textarea>
 
-                <button type="submit">Send Message</button>
+                <button type="submit" data-translate="contactSendButton">Send Message</button>
             </form>
 
             <div class="other-contacts">
