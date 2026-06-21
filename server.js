@@ -74,7 +74,7 @@ function cropMenu(cropNum) {
    Africa's Talking sends POST requests here
    every time a farmer presses a key
    ══════════════════════════════════════ */
-app.post('/ussd/callback', (req, res) => {
+app.post('/ussd', (req, res) => {
   // Extract data from Africa's Talking request
   const { sessionId, phoneNumber, networkCode, text } = req.body;
 
