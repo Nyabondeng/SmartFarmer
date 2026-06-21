@@ -47,6 +47,24 @@ const UI_TEXT = {
     toastDeleted:  '🗑 تم الحذف',
     toastError:    '⚠️ اختر المحصول والتاريخ',
   },
+  // Juba Arabic (same UI text as Arabic)
+  juba: {
+    navHome:       'الرئيسية',
+    navCrops:      'معلومات المحاصيل',
+    navEducation:  'التعليم',
+    navLog:        'سجل الزراعة',
+    navAbout:      'حول',
+    navContact:    'اتصل بنا',
+    langBtn:       '🌐 AR',
+    langTitle:     'اختر لغتك',
+    langCancel:    'إلغاء',
+    footerText:    '© 2026 المزارع الذكي. للمزارعين في جنوب السودان.',
+    voiceListen:   '🔊 استمع بالعربية',
+    voiceStop:     '⏹ إيقاف',
+    toastSaved:    '✅ تم الحفظ بنجاح',
+    toastDeleted:  '🗑 تم الحذف',
+    toastError:    '⚠️ اختر المحصول والتاريخ',
+  },
   ba: {
     navHome:       'Andu',
     navCrops:      'Elikia lo Yini',
@@ -176,7 +194,7 @@ function speakText(text, onEnd) {
   // Stop any current speech first
   window.speechSynthesis.cancel();
 
-  const langMap = { en: 'en-US', ar: 'ar-SA', ba: 'en-US' };
+  const langMap = { en: 'en-US', ar: 'ar-SA', juba: 'ar-SA', ba: 'en-US' };
   const utt     = new SpeechSynthesisUtterance(text);
   utt.lang      = langMap[currentLang] || 'en-US';
   utt.rate      = 0.9;
