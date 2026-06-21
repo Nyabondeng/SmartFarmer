@@ -36,6 +36,12 @@ function playAudio(topic) {
             let voices = speechSynthesis.getVoices();
 
             const pickVoice = (voicesList, prefer) => {
+                // if user selected a specific voice, prefer it
+                const savedVoiceName = localStorage.getItem('sf_voice');
+                if (savedVoiceName) {
+                    const sv = voicesList.find(v => v.name === savedVoiceName);
+                    if (sv) return sv;
+                }
                 if (!voicesList || voicesList.length === 0) return null;
                 // prefer voices matching Arabic for juba
                 if (prefer === 'juba') {
@@ -133,6 +139,33 @@ document.addEventListener("DOMContentLoaded", () => {
             // Translate using the key matching translations.js
             const pageKey = (selectedLanguage === 'bari') ? 'bari' : (selectedLanguage === 'juba' ? 'juba' : selectedLanguage);
             translatePage(pageKey);
+        });
+    }
+
+    // Voice picker: populate with available speechSynthesis voices and persist selection
+    const voicePicker = document.getElementById('voicePicker');
+    if (voicePicker && 'speechSynthesis' in window) {
+        const populateVoices = () => {
+            const voices = speechSynthesis.getVoices();
+            voicePicker.innerHTML = '<option value="">Select voice...</option>';
+            voices.forEach(v => {
+                const opt = document.createElement('option');
+                opt.value = v.name;
+                opt.textContent = `${v.name} — ${v.lang}`;
+                voicePicker.appendChild(opt);
+            });
+            const saved = localStorage.getItem('sf_voice');
+            if (saved) voicePicker.value = saved;
+        };
+
+        // populate now or when voices load
+        populateVoices();
+        speechSynthesis.onvoiceschanged = populateVoices;
+
+        voicePicker.addEventListener('change', () => {
+            const sel = voicePicker.value;
+            if (sel) localStorage.setItem('sf_voice', sel);
+            else localStorage.removeItem('sf_voice');
         });
     }
 
