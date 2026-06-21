@@ -172,7 +172,7 @@ app.get('/api/health', (req, res) => {
 });
 
 /* ── CATCH-ALL: serve index.html for any other route ── */
-app.get('/{*path}', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
