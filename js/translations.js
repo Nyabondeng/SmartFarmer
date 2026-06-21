@@ -88,5 +88,3 @@ const translations = {
     offer4: "Offline planting log saved on the farmer's device"
 
 };
-
-export default translations;
