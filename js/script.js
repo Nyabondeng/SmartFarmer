@@ -2,48 +2,38 @@
 
 // Voice output using browser speech synthesis
 function playAudio(topic) {
-    let message = '';
-    switch(topic) {
-        case 'sorghum':
-            message = 'Sorghum. Plant in May or June. Space 75 centimeters by 25 centimeters. Watch for armyworms after rain.';
-            break;
-        case 'maize':
-            message = 'Maize. Plant in May or June. Space 75 centimeters by 50 centimeters. Watch for stalk borer.';
-            break;
-        case 'millet':
-            message = 'Millet. Plant in May or June. Space 60 centimeters by 20 centimeters. Watch for birds and stem borers.';
-            break;
-        case 'groundnuts':
-            message = 'Groundnuts. Plant in May or June. Space 50 centimeters by 15 centimeters. Watch for leaf spot and aphids.';
-            break;
-        case 'cassava':
-            message = 'Cassava. Plant in March or April. Space 100 centimeters by 100 centimeters. Watch for cassava mosaic disease. Harvest after 8 to 12 months.';
-            break;
-        case 'planting':
-            message = 'Planting tips. Plant at the beginning of the rainy season. Use clean seeds. Space crops properly. Weed within the first 3 weeks.';
-            break;
-        case 'pest':
-            message = 'Pest control. Check fields daily. Remove armyworms by hand. Use ash around stems for stem borers. Spray soapy water for aphids. Use scarecrows for birds.';
-            break;
-        case 'postharvest':
-            message = 'Post-harvest handling. Harvest when grains are hard and dry. Dry crops completely before storing. Store in clean, dry containers. Use ash to keep insects away.';
-            break;
+    // Determine user's selected language (prefer sf_lang, then language)
+    const stored = localStorage.getItem('sf_lang') || localStorage.getItem('language') || 'en';
+    let lang = stored;
+    if (lang === 'ba') lang = 'bari';
+    if (lang === 'ar') lang = 'juba';
 
-        case 'soil':
-            message = 'Soil management. Clear weeds before planting. Add compost or animal manure to improve soil fertility. Rotate crops regularly and use mulch to conserve moisture and reduce erosion.';
-            break;
+    // Build voice key (e.g., 'sorghumVoice') and look up translation
+    const voiceKey = topic + 'Voice';
+    let message = (translations[lang] && translations[lang][voiceKey]) || translations[voiceKey] || '';
 
-        case 'climate':
-            message = 'Climate-smart farming. Plant early when the rainy season begins. Choose drought-resistant crops. Harvest rainwater when possible. Use mulching to reduce water loss and follow weather forecasts before planting.';
-            break;
-        
-        default:
-            message = 'Information available in English. Voice in Bari and Arabic coming soon.';
+    // Fallback to English hardcoded messages if still empty
+    const defaultMessages = {
+        sorghum: 'Sorghum. Plant in May or June. Space 75 centimeters by 25 centimeters. Watch for armyworms after rain.',
+        maize: 'Maize. Plant in May or June. Space 75 centimeters by 50 centimeters. Watch for stalk borer.',
+        millet: 'Millet. Plant in May or June. Space 60 centimeters by 20 centimeters. Watch for birds and stem borers.',
+        groundnuts: 'Groundnuts. Plant in May or June. Space 50 centimeters by 15 centimeters. Watch for leaf spot and aphids.',
+        cassava: 'Cassava. Plant in March or April. Space 100 centimeters by 100 centimeters. Watch for cassava mosaic disease. Harvest after 8 to 12 months.',
+        planting: 'Planting tips. Plant at the beginning of the rainy season. Use clean seeds. Space crops properly. Weed within the first 3 weeks.',
+        pest: 'Pest control. Check fields daily. Remove armyworms by hand. Use ash around stems for stem borers. Spray soapy water for aphids. Use scarecrows for birds.',
+        postharvest: 'Post-harvest handling. Harvest when grains are hard and dry. Dry crops completely before storing. Store in clean, dry containers. Use ash to keep insects away.',
+        soil: 'Soil management. Clear weeds before planting. Add compost or animal manure to improve soil fertility. Rotate crops regularly and use mulch to conserve moisture and reduce erosion.',
+        climate: 'Climate-smart farming. Plant early when the rainy season begins. Choose drought-resistant crops. Harvest rainwater when possible. Use mulching to reduce water loss and follow weather forecasts before planting.'
+    };
+
+    if (!message) {
+        message = defaultMessages[topic] || 'Information available in English. Voice in Bari and Juba Arabic coming soon.';
     }
-    
+
     if ('speechSynthesis' in window) {
         let utterance = new SpeechSynthesisUtterance(message);
-        utterance.lang = 'en-US';
+        // set locale for known languages
+        utterance.lang = (lang === 'bari') ? 'en-KE' : (lang === 'juba' ? 'ar-SA' : 'en-US');
         utterance.rate = 0.9;
         speechSynthesis.cancel();
         speechSynthesis.speak(utterance);

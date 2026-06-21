@@ -40,6 +40,33 @@ const translations = {
         offer2: "Durus an zira'a, mukafahat al-afat wa hasad",
         offer3: "Sawt li mazariin ma bigru kutub kwayyis",
         offer4: "Sijil zira'a bila internet mahfuz fi talifun"
+        ,
+        // Crops page translations (Juba Arabic)
+        cropsTitle: "Malumat an mahsulat",
+        sorghumTitle: "Sorghum",
+        maizeTitle: "Maize",
+        milletTitle: "Millet",
+        groundnutsTitle: "Groundnuts",
+        cassavaTitle: "Cassava",
+
+        plantingSeasonLabel: "Mawseem al-zira'a:",
+        spacingLabel: "Al-fasila:",
+        pestControlLabel: "Mokafahat al-afat:",
+        harvestLabel: "Al-hasad:",
+        storageLabel: "Al-takhzin:",
+        voiceListenLabel: "🔊 استمع",
+        // Voice message translations (Juba Arabic)
+        sorghumVoice: "Sorghum. Zigri fi May au June. Fasila 75 senti bi 25 senti. Intabih li armyworms ba'd al-matar.",
+        maizeVoice: "Maize. Zigri fi May au June. Fasila 75 senti bi 50 senti. Intabih li stalk borer.",
+        milletVoice: "Millet. Zigri fi May au June. Fasila 60 senti bi 20 senti. Intabih li asafir wa stem borers.",
+        groundnutsVoice: "Groundnuts. Zigri fi May au June. Fasila 50 senti bi 15 senti. Intabih li leaf spot wa aphids.",
+        cassavaVoice: "Cassava. Zigri fi March au April. Fasila 100 senti bi 100 senti. Intabih li cassava mosaic disease. Hasad ba'd 8 ila 12 shahr.",
+
+        plantingVoice: "Nasiha al-zira'a. Ziri fi bidayat mawseem al-matar. Istakhdim zira' nadhifa. Adi al-fasila wa izalah al-'shubat' fi thalath asabi'.",
+        pestVoice: "Mokafaha al-afat. Fatah al-husbat yawmiyan. Izala al-caterpillars bi yad. Istakhdim ma'adin basita li afat soghayara.",
+        postharvestVoice: "Ba'd al-hasad. Hasid lama al-hubub yikun jaff wa qawi. Nayish jayyidan qabl al-takhzin. Istakhdim ahdaar nadhifa.",
+        soilVoice: "Idarat al-turab. Azil al-'shrub' qabl al-zira'a. Zid compost aw kharaj al-behemah li taslih al-turab.",
+        climateVoice: "Zira'a mutanassiba ma al-manaakh. Ziri badri fi bidayat al-matar. Ikhtar mahsulat muqaawima lil-jafaf.",
     },
 
     bari: {
@@ -67,6 +94,33 @@ const translations = {
         offer2: "Kujju ta kony, afat, ko hasad",
         offer3: "Kony lo yia ma aji kutu",
         offer4: "Buku lo kony ma internet ti talifun"
+        ,
+        // Crops page translations (Bari)
+        cropsTitle: "Elikia lo Yini",
+        sorghumTitle: "Sorghum",
+        maizeTitle: "Maize",
+        milletTitle: "Millet",
+        groundnutsTitle: "Groundnuts",
+        cassavaTitle: "Cassava",
+
+        plantingSeasonLabel: "Lanyi ti lipi:",
+        spacingLabel: "Fasila:",
+        pestControlLabel: "Kuwere afat:",
+        harvestLabel: "Hasad:",
+        storageLabel: "Teren:",
+        voiceListenLabel: "🔊 Wiri",
+        // Voice message translations (Bari)
+        sorghumVoice: "Sorghum. Lanyi ti lipi May ka June. Fasila 75 senti x 25 senti. Aki wiri armyworms ba'di lipi.",
+        maizeVoice: "Maize. Lanyi ti lipi May ka June. Fasila 75 senti x 50 senti. Aki wiri stalk borer.",
+        milletVoice: "Millet. Lanyi ti lipi May ka June. Fasila 60 senti x 20 senti. Aki wiri birds la stem borers.",
+        groundnutsVoice: "Groundnuts. Lanyi ti lipi May ka June. Fasila 50 senti x 15 senti. Aki wiri leaf spot ka aphids.",
+        cassavaVoice: "Cassava. Lanyi ti lipi March ka April. Fasila 100 senti x 100 senti. Aki wiri cassava mosaic disease. Hasad 8-12 months.",
+
+        plantingVoice: "Lanyi pe lipi. Lanyi pe bidayat lipi. Kony ki seed nadhifa. Fasila ma lipi. Weed pe 3 weeks.",
+        pestVoice: "Kuwere afat. Check fields daily. Remove armyworms by hand. Use ash for stem borers.",
+        postharvestVoice: "Post-harvest. Hasad when dry. Dry fully before storage. Use clean containers.",
+        soilVoice: "Soil management. Clear weeds. Add compost or manure. Rotate crops.",
+        climateVoice: "Climate-smart. Plant early with rains. Choose drought-resistant crops. Mulch to keep water.",
     },
 
     // Shared/common strings (default to English)
