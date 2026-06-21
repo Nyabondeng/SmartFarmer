@@ -10,13 +10,16 @@ const translations = {
     },
 
     juba: {
-        home: "بيت",
-        about: "عن سمارت فارمر",
-        crops: "معلومات المحاصيل",
-        education: "التعليم",
-        cropLog: "سجل الزراعة",
-        contact: "اتصل بنا",
-        ussd: "يو اس اس دي"
+        home: "Bet",
+        about: "An Smart Farmer",
+        crops: "Malumat Zira'iya",
+        education: "Ta'lim",
+        cropLog: "Sijil Zira'a",
+        contact: "Ittasil Bina",
+        ussd: "USSD",
+        welcome: "Marhaba fi Smart Farmer",
+        tagline: "Nusaid mazariin bi ma'lumat zira'iya",
+        getStarted: "Ibda"
     },
 
     bari: {
