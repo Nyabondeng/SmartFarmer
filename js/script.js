@@ -31,6 +31,7 @@ function playAudio(topic) {
     }
 
     if ('speechSynthesis' in window) {
+        console.log('playAudio()', { topic, voiceKey, lang, message });
         const speak = (msg, prefLang) => {
             let voices = speechSynthesis.getVoices();
 
@@ -54,6 +55,7 @@ function playAudio(topic) {
             };
 
             const voice = pickVoice(voices, prefLang);
+            console.log('speechSynthesis voices:', voices.length, 'picked:', voice ? voice.name + ' (' + voice.lang + ')' : null);
             const utterance = new SpeechSynthesisUtterance(msg);
             if (voice) {
                 utterance.voice = voice;
