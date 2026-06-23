@@ -139,6 +139,17 @@ document.addEventListener("DOMContentLoaded", () => {
             // Translate using the key matching translations.js
             const pageKey = (selectedLanguage === 'bari') ? 'bari' : (selectedLanguage === 'juba' ? 'juba' : selectedLanguage);
             translatePage(pageKey);
+            // if user selected Juba and no voice saved, try to auto-select first ar-* voice
+            if (selectedLanguage === 'juba' && !localStorage.getItem('sf_voice') && 'speechSynthesis' in window) {
+                const voices = speechSynthesis.getVoices();
+                const ar = voices.find(v => v.lang && v.lang.startsWith('ar'));
+                if (ar) {
+                    localStorage.setItem('sf_voice', ar.name);
+                    const vp = document.getElementById('voicePicker');
+                    if (vp) vp.value = ar.name;
+                    console.log('Auto-selected Arabic voice for Juba:', ar.name, ar.lang);
+                }
+            }
         });
     }
 
@@ -155,7 +166,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 voicePicker.appendChild(opt);
             });
             const saved = localStorage.getItem('sf_voice');
-            if (saved) voicePicker.value = saved;
+            if (saved) {
+                voicePicker.value = saved;
+            } else {
+                // If current page language is Juba and no saved voice, auto-select first Arabic voice
+                const savedLang = localStorage.getItem('sf_lang') || localStorage.getItem('language') || 'en';
+                let pageKey = savedLang;
+                if (pageKey === 'ba') pageKey = 'bari';
+                if (pageKey === 'ar') pageKey = 'juba';
+                if (pageKey === 'juba') {
+                    const ar = voices.find(v => v.lang && v.lang.startsWith('ar'));
+                    if (ar) {
+                        localStorage.setItem('sf_voice', ar.name);
+                        voicePicker.value = ar.name;
+                        console.log('Auto-selected Arabic voice on load for Juba:', ar.name, ar.lang);
+                    }
+                }
+            }
         };
 
         // populate now or when voices load
