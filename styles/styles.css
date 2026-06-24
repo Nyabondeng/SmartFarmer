@@ -9,6 +9,11 @@ body {
   height: auto;
 }
 
+/* Make footer stick to bottom on short pages */
+html, body { height: 100%; }
+body { display: flex; flex-direction: column; min-height: 100vh; }
+main { flex: 1 0 auto; }
+
 /* Header and navigation are provided by shared navbar.css */
 
 nav{

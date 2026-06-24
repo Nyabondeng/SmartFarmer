@@ -56,4 +56,4 @@ nav { flex:1; display:flex; align-items:center; justify-content:center; }
 }
 
 /* Ensure footer doesn't overlap content */
-body { padding-bottom: 60px; }
+/* removed extra bottom padding to allow sticky footer layout */
