@@ -24,6 +24,17 @@ header.site-header {
   padding: 0 12px;
 }
 
+/* positioning context for absolute placement */
+header.site-header { position: relative; }
+
+.container--nav .logo {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+
 header.site-header .logo img {
   width: 180px !important;
   max-width: 180px !important;
@@ -32,7 +43,7 @@ header.site-header .logo img {
   max-height: none !important;
 }
 
-nav { flex:1; display:flex; align-items:center; justify-content:center; }
+nav { flex:1; display:flex; align-items:center; justify-content:center; position: absolute; left:50%; transform: translateX(-50%); }
 
 .nav-links { display:flex; gap:20px; margin:0; padding:0; list-style:none; align-items:center; }
 .nav-links li { margin:0; }
@@ -41,6 +52,7 @@ nav { flex:1; display:flex; align-items:center; justify-content:center; }
 
 .language-selector { margin-left: auto; }
 .container--nav .logo { margin-right: 8px; }
+.language-selector { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); }
 .language-selector select, #voicePicker { padding:8px 10px; border-radius:6px; border:none; background:#fff; color:#1E6A33; font-weight:600; }
 
 .menu-icon { display:none; font-size:26px; cursor:pointer; color:#fff; background:transparent; border:none; }
@@ -52,6 +64,10 @@ nav { flex:1; display:flex; align-items:center; justify-content:center; }
   .menu-icon { display:block; }
   .language-selector { display:block; margin-top:8px; }
   .container--nav { padding-right:44px; }
+  
+  /* revert absolute positioning on small screens */
+  .container--nav .logo, nav, .language-selector { position: static; transform: none; left: auto; right: auto; }
+  nav { justify-content: flex-start; }
 }
 
 /* Ensure footer doesn't overlap content */
