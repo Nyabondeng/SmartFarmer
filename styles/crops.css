@@ -6,6 +6,15 @@
     box-sizing: border-box;
 }
 
+/* Match site-wide typography */
+body {
+    font-family: 'Noto Sans', Arial, sans-serif;
+    background-color: #f5f7f5;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
 /* =========================
    HEADER & NAVIGATION
    ========================= */
