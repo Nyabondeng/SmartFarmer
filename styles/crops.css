@@ -6,7 +6,9 @@
     box-sizing: border-box;
 }
 
-
+/* =========================
+   HEADER & NAVIGATION
+   ========================= */
 
 header {
     background: #1E6A33;
@@ -90,7 +92,9 @@ nav {
     border: none;
 }
 
-
+/* =========================
+   MAIN CONTENT
+   ========================= */
 
 main {
     max-width: 1200px;
@@ -106,7 +110,9 @@ main h2 {
     font-size: 2rem;
 }
 
-
+/* =========================
+   CROP GRID
+   ========================= */
 
 .crop-grid {
     display: grid;
@@ -114,7 +120,9 @@ main h2 {
     gap: 25px;
 }
 
-
+/* =========================
+   CROP CARDS
+   ========================= */
 
 .crop-card {
     background: white;
@@ -160,7 +168,9 @@ main h2 {
     background: #145124;
 }
 
-
+/* =========================
+   FOOTER
+   ========================= */
 
 footer {
     background: #1E6A33;
@@ -170,7 +180,9 @@ footer {
     margin-top: 40px;
 }
 
-
+/* =========================
+   TABLET (1024px and below)
+   ========================= */
 
 @media screen and (max-width: 1024px) {
     header {
@@ -195,7 +207,9 @@ footer {
     }
 }
 
-
+/* =========================
+   MOBILE (768px and below)
+   ========================= */
 
 @media screen and (max-width: 768px) {
     .container--nav {
@@ -278,7 +292,9 @@ footer {
     }
 }
 
-
+/* =========================
+   SMALL PHONES (480px and below)
+   ========================= */
 
 @media screen and (max-width: 480px) {
     header {

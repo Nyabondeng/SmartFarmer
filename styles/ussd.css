@@ -17,7 +17,9 @@ body {
     color: #333;
 }
 
-
+/* =========================
+   HEADER & NAVIGATION
+   ========================= */
 
 header {
     background: #1E6A33;
@@ -74,7 +76,9 @@ nav {
     cursor: pointer;
 }
 
-
+/* =========================
+   MAIN CONTENT
+   ========================= */
 
 main {
     max-width: 900px;
@@ -107,7 +111,9 @@ main h2 {
     letter-spacing: 1px;
 }
 
-
+/* =========================
+   PHONE FRAME
+   ========================= */
 
 .phone-frame {
     background: #1a1a1a;
@@ -221,7 +227,9 @@ main h2 {
     margin: 16px auto 0;
 }
 
-
+/* =========================
+   INSTRUCTIONS
+   ========================= */
 
 .instructions {
     margin-top: 30px;
@@ -268,7 +276,9 @@ main h2 {
     color: #444;
 }
 
-
+/* =========================
+   FOOTER
+   ========================= */
 
 footer {
     background: #1E6A33;
@@ -278,7 +288,9 @@ footer {
     margin-top: 40px;
 }
 
-
+/* =========================
+   TABLET (768px - 1024px)
+   ========================= */
 
 @media screen and (max-width: 1024px) {
     header {
@@ -298,7 +310,9 @@ footer {
     }
 }
 
-
+/* =========================
+   MOBILE (below 768px)
+   ========================= */
 
 @media screen and (max-width: 768px) {
     header {
@@ -394,7 +408,9 @@ footer {
     }
 }
 
-
+/* =========================
+   SMALL PHONES (below 480px)
+   ========================= */
 
 @media screen and (max-width: 480px) {
     header {

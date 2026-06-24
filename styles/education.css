@@ -13,7 +13,9 @@ body {
     line-height: 1.6;
 }
 
-
+/* =========================
+   HEADER & NAVIGATION
+   ========================= */
 
 header {
     background: #1E6A33;
@@ -70,7 +72,9 @@ nav {
     cursor: pointer;
 }
 
-
+/* =========================
+   MAIN CONTENT
+   ========================= */
 
 main {
     max-width: 1200px;
@@ -85,7 +89,9 @@ main h2 {
     font-size: 2.3rem;
 }
 
-
+/* =========================
+   MODULES GRID
+   ========================= */
 
 .modules-grid {
     display: grid;
@@ -93,7 +99,9 @@ main h2 {
     gap: 25px;
 }
 
-
+/* =========================
+   MODULE CARDS
+   ========================= */
 
 .module-card {
     background: white;
@@ -131,7 +139,9 @@ main h2 {
     margin-bottom: 10px;
 }
 
-
+/* =========================
+   VOICE BUTTON
+   ========================= */
 
 .voice-btn {
     margin-top: 15px;
@@ -149,7 +159,9 @@ main h2 {
     background: #145124;
 }
 
-
+/* =========================
+   FOOTER
+   ========================= */
 
 footer {
     background: #1E6A33;
@@ -159,7 +171,9 @@ footer {
     margin-top: 40px;
 }
 
-
+/* =========================
+   TABLET (768px - 1024px)
+   ========================= */
 
 @media screen and (max-width: 1024px) {
     header {
@@ -179,7 +193,9 @@ footer {
     }
 }
 
-
+/* =========================
+   MOBILE (below 768px)
+   ========================= */
 
 @media screen and (max-width: 768px) {
     header {
@@ -257,7 +273,9 @@ footer {
     }
 }
 
-
+/* =========================
+   SMALL PHONES (below 480px)
+   ========================= */
 
 @media screen and (max-width: 480px) {
     header {
