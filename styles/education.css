@@ -17,13 +17,8 @@ body{
 }
 
 
-header{
-    background:#1E6A33;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 40px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+header.site-header{
+    /* use shared navbar styles */
 }
 
 .logo img{

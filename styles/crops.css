@@ -7,13 +7,8 @@
     box-sizing:border-box;
 }
 
-header{
-    background:#1E6A33;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 40px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+header.site-header{
+    /* page-specific header overrides removed to use shared navbar */
 }
 
 .logo img{
@@ -143,7 +138,7 @@ footer{
 
 @media screen and (max-width:992px){
 
-    header{
+    header.site-header{
         padding:15px 20px;
     }
 
@@ -160,7 +155,7 @@ footer{
 
 @media screen and (max-width:768px){
 
-    header{
+    header.site-header{
         flex-direction:column;
         align-items:flex-start;
     }
