@@ -19,8 +19,9 @@ header.site-header{
 }
 
 .logo img{
-    max-width:180px;
+    max-width:120px;
     height:auto;
+    display:block;
 }
 
 nav{
