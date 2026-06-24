@@ -217,12 +217,11 @@ nav ul li a:hover{
 
 
 footer {
-  background: #2e7d32;
+  background: #1E6A33;
   color: white;
   text-align: center;
-  padding: 12px 10px;
-  position: relative;
-  width: 100%;
+  padding: 20px;
+  margin-top: 40px;
 }
 
 button {
