@@ -45,88 +45,80 @@
 
     <main>
 
-        <h2 data-translate="cropsTitle">Staple Crops of South Sudan</h2>
+        <h2 data-translate="cropsTitle">Crop Information</h2>
+        <p class="page-description" data-translate="cropsDescription">Learn about the best crops for your farm. Click on any crop to see details about planting, care, pests and harvesting.</p>
+
+        <!-- Voice Selector -->
+        <div class="voice-selector">
+            <span>🎤 Select Voice:</span>
+            <select id="voiceSelect" onchange="changeVoice(this.value)">
+                <option value="en">English</option>
+                <option value="ar">Arabic</option>
+                <option value="ba">Bari</option>
+            </select>
+            <button class="listen-btn" onclick="playAudio('all')">🔊 Listen</button>
+        </div>
 
         <div class="crop-grid">
 
             <!-- Sorghum -->
-            <div class="crop-card">
-                <h3 data-translate="sorghumTitle">Sorghum</h3>
-                <button class="voice-btn" onclick="playAudio('sorghum')" data-translate="voiceListenLabel">
-                    🔊 Listen (English)
-                </button>
-
-                <div class="crop-info">
-                    <p><strong data-translate="plantingSeasonLabel">Planting season:</strong> <span data-translate="sorghumPlantingText">May - June</span></p>
-                    <p><strong data-translate="spacingLabel">Spacing:</strong> <span data-translate="sorghumSpacingText">75cm x 25cm</span></p>
-                    <p><strong data-translate="pestControlLabel">Pest control:</strong> <span data-translate="sorghumPestText">Watch for armyworms after first rain</span></p>
-                    <p><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="sorghumHarvestText">September - October</span></p>
-                    <p><strong data-translate="storageLabel">Storage:</strong> <span data-translate="sorghumStorageText">Dry completely before storing in a cool place</span></p>
+            <div class="crop-card" onclick="viewCrop('sorghum')">
+                <div class="crop-icon">
+                    <img src="images/sorghum.jpg" alt="Sorghum crop in South Sudan">
                 </div>
+                <h3 data-translate="sorghumTitle">Sorghum</h3>
+                <p class="crop-desc" data-translate="sorghumDesc">A drought-tolerant staple crop that grows well in South Sudan.</p>
+                <p class="crop-detail"><strong data-translate="plantingSeasonLabel">Planting:</strong> <span data-translate="sorghumPlantingText">May-June</span></p>
+                <p class="crop-detail"><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="sorghumHarvestText">Sept-Oct</span></p>
+                <button class="view-btn">View Details →</button>
             </div>
 
             <!-- Maize -->
-            <div class="crop-card">
-                <h3 data-translate="maizeTitle">Maize</h3>
-                <button class="voice-btn" onclick="playAudio('maize')" data-translate="voiceListenLabel">
-                    🔊 Listen (English)
-                </button>
-
-                <div class="crop-info">
-                    <p><strong data-translate="plantingSeasonLabel">Planting season:</strong> <span data-translate="maizePlantingText">May - June</span></p>
-                    <p><strong data-translate="spacingLabel">Spacing:</strong> <span data-translate="maizeSpacingText">75cm x 50cm</span></p>
-                    <p><strong data-translate="pestControlLabel">Pest control:</strong> <span data-translate="maizePestText">Watch for maize stalk borer</span></p>
-                    <p><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="maizeHarvestText">August - September</span></p>
-                    <p><strong data-translate="storageLabel">Storage:</strong> <span data-translate="maizeStorageText">Dry on the cob, then remove kernels</span></p>
+            <div class="crop-card" onclick="viewCrop('maize')">
+                <div class="crop-icon">
+                    <img src="images/maize.jpg" alt="Maize crop in South Sudan">
                 </div>
+                <h3 data-translate="maizeTitle">Maize</h3>
+                <p class="crop-desc" data-translate="maizeDesc">High-yielding cereal crop widely grown by farmers.</p>
+                <p class="crop-detail"><strong data-translate="plantingSeasonLabel">Planting:</strong> <span data-translate="maizePlantingText">May-June</span></p>
+                <p class="crop-detail"><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="maizeHarvestText">Aug-Sept</span></p>
+                <button class="view-btn">View Details →</button>
             </div>
 
             <!-- Millet -->
-            <div class="crop-card">
-                <h3 data-translate="milletTitle">Millet</h3>
-                <button class="voice-btn" onclick="playAudio('millet')" data-translate="voiceListenLabel">
-                    🔊 Listen (English)
-                </button>
-
-                <div class="crop-info">
-                    <p><strong data-translate="plantingSeasonLabel">Planting season:</strong> <span data-translate="milletPlantingText">May - June</span></p>
-                    <p><strong data-translate="spacingLabel">Spacing:</strong> <span data-translate="milletSpacingText">60cm x 20cm</span></p>
-                    <p><strong data-translate="pestControlLabel">Pest control:</strong> <span data-translate="milletPestText">Watch for birds and stem borers</span></p>
-                    <p><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="milletHarvestText">September - October</span></p>
-                    <p><strong data-translate="storageLabel">Storage:</strong> <span data-translate="milletStorageText">Store in sealed containers</span></p>
+            <div class="crop-card" onclick="viewCrop('millet')">
+                <div class="crop-icon">
+                    <img src="images/millet.jpg" alt="Millet crop in South Sudan">
                 </div>
+                <h3 data-translate="milletTitle">Millet</h3>
+                <p class="crop-desc" data-translate="milletDesc">A hardy grain that grows well in poor soils and dry conditions.</p>
+                <p class="crop-detail"><strong data-translate="plantingSeasonLabel">Planting:</strong> <span data-translate="milletPlantingText">May-June</span></p>
+                <p class="crop-detail"><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="milletHarvestText">Sept-Oct</span></p>
+                <button class="view-btn">View Details →</button>
             </div>
 
             <!-- Groundnuts -->
-            <div class="crop-card">
-                <h3 data-translate="groundnutsTitle">Groundnuts</h3>
-                <button class="voice-btn" onclick="playAudio('groundnuts')" data-translate="voiceListenLabel">
-                    🔊 Listen (English)
-                </button>
-
-                <div class="crop-info">
-                    <p><strong data-translate="plantingSeasonLabel">Planting season:</strong> <span data-translate="groundnutsPlantingText">May - June</span></p>
-                    <p><strong data-translate="spacingLabel">Spacing:</strong> <span data-translate="groundnutsSpacingText">50cm x 15cm</span></p>
-                    <p><strong data-translate="pestControlLabel">Pest control:</strong> <span data-translate="groundnutsPestText">Watch for leaf spot and aphids</span></p>
-                    <p><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="groundnutsHarvestText">October - November</span></p>
-                    <p><strong data-translate="storageLabel">Storage:</strong> <span data-translate="groundnutsStorageText">Dry thoroughly before shelling</span></p>
+            <div class="crop-card" onclick="viewCrop('groundnuts')">
+                <div class="crop-icon">
+                    <img src="images/groundnuts.jpg" alt="Groundnuts crop in South Sudan">
                 </div>
+                <h3 data-translate="groundnutsTitle">Groundnuts</h3>
+                <p class="crop-desc" data-translate="groundnutsDesc">Good source of protein and oil. Improves soil fertility.</p>
+                <p class="crop-detail"><strong data-translate="plantingSeasonLabel">Planting:</strong> <span data-translate="groundnutsPlantingText">May-June</span></p>
+                <p class="crop-detail"><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="groundnutsHarvestText">Oct-Nov</span></p>
+                <button class="view-btn">View Details →</button>
             </div>
 
             <!-- Cassava -->
-            <div class="crop-card">
-                <h3 data-translate="cassavaTitle">Cassava</h3>
-                <button class="voice-btn" onclick="playAudio('cassava')" data-translate="voiceListenLabel">
-                    🔊 Listen (English)
-                </button>
-
-                <div class="crop-info">
-                    <p><strong data-translate="plantingSeasonLabel">Planting season:</strong> <span data-translate="cassavaPlantingText">March - April (or anytime with rain)</span></p>
-                    <p><strong data-translate="spacingLabel">Spacing:</strong> <span data-translate="cassavaSpacingText">100cm x 100cm</span></p>
-                    <p><strong data-translate="pestControlLabel">Pest control:</strong> <span data-translate="cassavaPestText">Watch for cassava mosaic disease</span></p>
-                    <p><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="cassavaHarvestText">8-12 months after planting</span></p>
-                    <p><strong data-translate="storageLabel">Storage:</strong> <span data-translate="cassavaStorageText">Harvest only when needed. Cannot store long.</span></p>
+            <div class="crop-card" onclick="viewCrop('cassava')">
+                <div class="crop-icon">
+                    <img src="images/cassava.jpg" alt="Cassava crop in South Sudan">
                 </div>
+                <h3 data-translate="cassavaTitle">Cassava</h3>
+                <p class="crop-desc" data-translate="cassavaDesc">A versatile root crop that grows in poor soils and provides food year-round.</p>
+                <p class="crop-detail"><strong data-translate="plantingSeasonLabel">Planting:</strong> <span data-translate="cassavaPlantingText">March-April</span></p>
+                <p class="crop-detail"><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="cassavaHarvestText">8-12 months</span></p>
+                <button class="view-btn">View Details →</button>
             </div>
 
         </div>
@@ -145,6 +137,18 @@
     <script>
         function toggleMenu() {
             document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        function changeVoice(lang) {
+            alert('Voice changed to: ' + lang);
+        }
+
+        function playAudio() {
+            alert('🔊 Playing audio...');
+        }
+
+        function viewCrop(crop) {
+            alert('📖 Viewing details for: ' + crop);
         }
     </script>
 

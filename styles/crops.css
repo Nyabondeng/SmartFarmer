@@ -362,3 +362,192 @@ footer {
         padding: 12px;
     }
 }
+
+
+/* ============================================
+   NEW STYLES FOR CROP IMAGES (ADD THIS SECTION)
+   ============================================ */
+
+/* Page Description */
+.page-description {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* Voice Selector */
+.voice-selector {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.voice-selector select {
+    padding: 10px 15px;
+    border: 2px solid #1E6A33;
+    border-radius: 8px;
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+}
+
+.listen-btn {
+    background: #1E6A33;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.listen-btn:hover {
+    background: #145124;
+}
+
+/* Crop Grid - Updated for Images */
+.crop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+/* Crop Cards - Updated for Images */
+.crop-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease;
+    cursor: pointer;
+    padding-bottom: 20px;
+}
+
+.crop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Crop Images */
+.crop-icon {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #e8f0e8;
+}
+
+.crop-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s ease;
+}
+
+.crop-card:hover .crop-icon img {
+    transform: scale(1.05);
+}
+
+/* Card Content */
+.crop-card h3 {
+    color: #1E6A33;
+    font-size: 1.4rem;
+    padding: 15px 15px 5px 15px;
+    margin: 0;
+}
+
+.crop-desc {
+    font-size: 14px;
+    color: #555;
+    padding: 0 15px 10px 15px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.crop-detail {
+    font-size: 13px;
+    color: #444;
+    padding: 0 15px;
+    margin: 4px 0;
+}
+
+.crop-detail strong {
+    color: #1E6A33;
+}
+
+/* View Details Button */
+.view-btn {
+    margin: 12px 15px 0 15px;
+    width: calc(100% - 30px);
+    background: #1E6A33;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.view-btn:hover {
+    background: #145124;
+}
+
+/* Mobile Adjustments for Images */
+@media screen and (max-width: 768px) {
+    .crop-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .crop-card h3 {
+        font-size: 1.2rem;
+        padding: 12px 12px 5px 12px;
+    }
+
+    .crop-icon {
+        height: 150px;
+    }
+
+    .crop-desc {
+        font-size: 13px;
+        padding: 0 12px 8px 12px;
+    }
+
+    .crop-detail {
+        font-size: 12px;
+        padding: 0 12px;
+    }
+
+    .view-btn {
+        font-size: 13px;
+        padding: 8px 15px;
+        margin: 10px 12px 0 12px;
+        width: calc(100% - 24px);
+    }
+
+    .voice-selector {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .crop-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .crop-icon {
+        height: 180px;
+    }
+
+    .crop-card h3 {
+        font-size: 1.3rem;
+    }
+}
