@@ -150,181 +150,182 @@
     <script src="js/script.js"></script>
 
     <script>
+
         // Toggle mobile menu
-        function toggleMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
+    function toggleMenu() {
+        document.querySelector('.nav-links').classList.toggle('active');
+    }
+
+    // ============================================
+    // CROP DATA
+    // ============================================
+
+    const cropData = {
+        sorghum: {
+            name: 'Sorghum',
+            planting: 'May - June',
+            spacing: '75cm x 25cm',
+            pest: 'Watch for armyworms after first rain',
+            harvest: 'September - October',
+            storage: 'Dry completely before storing in a cool place'
+        },
+        maize: {
+            name: 'Maize',
+            planting: 'May - June',
+            spacing: '75cm x 50cm',
+            pest: 'Watch for maize stalk borer',
+            harvest: 'August - September',
+            storage: 'Dry on the cob, then remove kernels'
+        },
+        millet: {
+            name: 'Millet',
+            planting: 'May - June',
+            spacing: '60cm x 20cm',
+            pest: 'Watch for birds and stem borers',
+            harvest: 'September - October',
+            storage: 'Store in sealed containers'
+        },
+        groundnuts: {
+            name: 'Groundnuts',
+            planting: 'May - June',
+            spacing: '50cm x 15cm',
+            pest: 'Watch for leaf spot and aphids',
+            harvest: 'October - November',
+            storage: 'Dry thoroughly before shelling'
+        },
+        cassava: {
+            name: 'Cassava',
+            planting: 'March - April (or anytime with rain)',
+            spacing: '100cm x 100cm',
+            pest: 'Watch for cassava mosaic disease',
+            harvest: '8-12 months after planting',
+            storage: 'Harvest only when needed. Cannot store long.'
         }
+    };
 
-        // ============================================
-        // CROP DATA
-        // ============================================
+    // ============================================
+    // VOICE FUNCTIONS USING TRANSLATIONS.JS
+    // ============================================
 
-        const cropData = {
-            sorghum: {
-                name: 'Sorghum',
-                planting: 'May - June',
-                spacing: '75cm x 25cm',
-                pest: 'Watch for armyworms after first rain',
-                harvest: 'September - October',
-                storage: 'Dry completely before storing in a cool place'
-            },
-            maize: {
-                name: 'Maize',
-                planting: 'May - June',
-                spacing: '75cm x 50cm',
-                pest: 'Watch for maize stalk borer',
-                harvest: 'August - September',
-                storage: 'Dry on the cob, then remove kernels'
-            },
-            millet: {
-                name: 'Millet',
-                planting: 'May - June',
-                spacing: '60cm x 20cm',
-                pest: 'Watch for birds and stem borers',
-                harvest: 'September - October',
-                storage: 'Store in sealed containers'
-            },
-            groundnuts: {
-                name: 'Groundnuts',
-                planting: 'May - June',
-                spacing: '50cm x 15cm',
-                pest: 'Watch for leaf spot and aphids',
-                harvest: 'October - November',
-                storage: 'Dry thoroughly before shelling'
-            },
-            cassava: {
-                name: 'Cassava',
-                planting: 'March - April (or anytime with rain)',
-                spacing: '100cm x 100cm',
-                pest: 'Watch for cassava mosaic disease',
-                harvest: '8-12 months after planting',
-                storage: 'Harvest only when needed. Cannot store long.'
-            }
+    function getCropText(crop, lang) {
+        // Get the translation object for the selected language
+        const t = translations[lang] || translations.en;
+        
+        // Get crop-specific voice translations
+        const cropVoices = {
+            sorghum: t.sorghumVoice || 'Sorghum. Planting season: May-June. Spacing: 75cm x 25cm. Pest control: Watch for armyworms after first rain. Harvest: September-October. Storage: Dry completely before storing.',
+            maize: t.maizeVoice || 'Maize. Planting season: May-June. Spacing: 75cm x 50cm. Pest control: Watch for maize stalk borer. Harvest: August-September. Storage: Dry on the cob, then remove kernels.',
+            millet: t.milletVoice || 'Millet. Planting season: May-June. Spacing: 60cm x 20cm. Pest control: Watch for birds and stem borers. Harvest: September-October. Storage: Store in sealed containers.',
+            groundnuts: t.groundnutsVoice || 'Groundnuts. Planting season: May-June. Spacing: 50cm x 15cm. Pest control: Watch for leaf spot and aphids. Harvest: October-November. Storage: Dry thoroughly before shelling.',
+            cassava: t.cassavaVoice || 'Cassava. Planting season: March-April. Spacing: 100cm x 100cm. Pest control: Watch for cassava mosaic disease. Harvest: 8-12 months after planting. Storage: Harvest only when needed.'
         };
 
-        // ============================================
-        // VOICE FUNCTIONS
-        // ============================================
+        return cropVoices[crop] || 'Crop information not available.';
+    }
 
-        function getCropText(crop, lang) {
-            const data = cropData[crop];
-            if (!data) return 'Crop not found';
+    function playCropAudio(crop) {
+        // Get the selected language from the voice selector
+        const langSelect = document.getElementById('voiceSelect');
+        const lang = langSelect ? langSelect.value : 'en';
+        
+        const text = getCropText(crop, lang);
 
-            let text = '';
-            switch (lang) {
-                case 'en':
-                    text = `${data.name}. Planting season: ${data.planting}. Spacing: ${data.spacing}. Pest control: ${data.pest}. Harvest: ${data.harvest}. Storage: ${data.storage}.`;
-                    break;
-                case 'ar':
-                    text = `${data.name}. موسم الزراعة: ${data.planting}. التباعد: ${data.spacing}. مكافحة الآفات: ${data.pest}. الحصاد: ${data.harvest}. التخزين: ${data.storage}.`;
-                    break;
-                case 'ba':
-                    text = `${data.name}. Planting season: ${data.planting}. Spacing: ${data.spacing}. Pest control: ${data.pest}. Harvest: ${data.harvest}. Storage: ${data.storage}. (Bari translation coming soon)`;
-                    break;
-                default:
-                    text = `${data.name}. Planting season: ${data.planting}. Spacing: ${data.spacing}. Pest control: ${data.pest}. Harvest: ${data.harvest}. Storage: ${data.storage}.`;
-            }
-            return text;
-        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
 
-        function playCropAudio(crop) {
-            const lang = document.getElementById('voiceSelect').value;
-            const text = getCropText(crop, lang);
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = 0.85;
 
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.rate = 0.9;
-
-                if (lang === 'ar') utterance.lang = 'ar-SA';
-                else if (lang === 'ba') utterance.lang = 'en-US';
-                else utterance.lang = 'en-US';
-
-                utterance.onstart = function() {
-                    console.log('Speaking...');
-                };
-
-                utterance.onend = function() {
-                    console.log('Finished speaking');
-                };
-
-                utterance.onerror = function() {
-                    alert('Sorry, voice is not available. Please try again.');
-                };
-
-                window.speechSynthesis.speak(utterance);
+            // Set language for better pronunciation
+            if (lang === 'juba' || lang === 'ar') {
+                utterance.lang = 'ar-SA';
+            } else if (lang === 'bari') {
+                utterance.lang = 'en-US';
             } else {
-                alert('Your browser does not support voice output. Here is the information: ' + text);
+                utterance.lang = 'en-US';
             }
+
+            utterance.onstart = function() {
+                console.log('🔊 Speaking in ' + lang + '...');
+            };
+
+            utterance.onend = function() {
+                console.log('Finished speaking');
+            };
+
+            utterance.onerror = function() {
+                alert('Sorry, voice is not available. Please try again.');
+            };
+
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert('Your browser does not support voice output. Here is the information: ' + text);
         }
+    }
 
-        function playSelectedCropAudio() {
-            const firstCrop = document.querySelector('.crop-card');
-            if (firstCrop) {
-                const crop = firstCrop.dataset.crop;
-                playCropAudio(crop);
-            }
+    function playSelectedCropAudio() {
+        const firstCrop = document.querySelector('.crop-card');
+        if (firstCrop) {
+            const crop = firstCrop.dataset.crop;
+            playCropAudio(crop);
         }
+    }
 
-        // ============================================
-        // VIEW DETAILS FUNCTION (Modal)
-        // ============================================
+    // ============================================
+    // VIEW DETAILS FUNCTION (Modal)
+    // ============================================
 
-        function viewCropDetails(crop) {
-            const data = cropData[crop];
-            if (!data) return;
+    function viewCropDetails(crop) {
+        const data = cropData[crop];
+        if (!data) return;
 
-            const modal = document.getElementById('cropModal');
-            const modalBody = document.getElementById('modalBody');
+        const modal = document.getElementById('cropModal');
+        const modalBody = document.getElementById('modalBody');
 
-            modalBody.innerHTML = `
-                <h2>${data.name}</h2>
-                <div class="modal-crop-details">
-                    <p><strong>Planting season:</strong> ${data.planting}</p>
-                    <p><strong>Spacing:</strong> ${data.spacing}</p>
-                    <p><strong>Pest control:</strong> ${data.pest}</p>
-                    <p><strong>Harvest:</strong> ${data.harvest}</p>
-                    <p><strong>Storage:</strong> ${data.storage}</p>
-                </div>
-                <button class="voice-btn" onclick="playCropAudio('${crop}')">Listen to this information</button>
-                <button class="close-modal-btn" onclick="closeModal()">Close</button>
-            `;
+        modalBody.innerHTML = `
+            <h2>${data.name}</h2>
+            <div class="modal-crop-details">
+                <p><strong>Planting season:</strong> ${data.planting}</p>
+                <p><strong>Spacing:</strong> ${data.spacing}</p>
+                <p><strong>Pest control:</strong> ${data.pest}</p>
+                <p><strong>Harvest:</strong> ${data.harvest}</p>
+                <p><strong>Storage:</strong> ${data.storage}</p>
+            </div>
+            <button class="voice-btn" onclick="playCropAudio('${crop}')">Listen to this information</button>
+            <button class="close-modal-btn" onclick="closeModal()">Close</button>
+        `;
 
-            modal.style.display = 'block';
+        modal.style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('cropModal').style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        const modal = document.getElementById('cropModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
         }
+    }
 
-        function closeModal() {
-            document.getElementById('cropModal').style.display = 'none';
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeModal();
         }
+    });
 
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('cropModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
+    // ============================================
+    // LANGUAGE SELECTOR
+    // ============================================
 
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
+    document.getElementById('languageSwitcher').addEventListener('change', function() {
+        const lang = this.value;
+        alert('Language changed to: ' + lang);
+    });
 
-        // ============================================
-        // LANGUAGE SELECTOR (Basic Implementation)
-        // ============================================
-
-        document.getElementById('languageSwitcher').addEventListener('change', function() {
-            const lang = this.value;
-            alert('Language changed to: ' + lang);
-        });
-
-        console.log('Smart Farmer - Crop Info Page Loaded');
-        console.log('Voice and View Details features are ready!');
-    </script>
-
-</body>
-</html>
+    console.log('Smart Farmer - Crop Info Page Loaded');
+    console.log('Voice and View Details features are ready!');
+</script>
