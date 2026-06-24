@@ -7,30 +7,32 @@
     <link rel="stylesheet" href="styles/contact.css">
 </head>
 <body>
-
-    <header>
-        <div class="logo">
-            <img src="images/smartfarmer.png" alt="Smart Farmer Logo">
-        </div>
-
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html" data-translate="home">Home</a></li>
-                <li><a href="about.html" data-translate="about">About</a></li>
-                <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
-                <li><a href="education.html" data-translate="education">Education</a></li>
-                <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
-                <li><a href="contact.html" data-translate="contact">Contact</a></li>
-                <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
-            </ul>
-
-            <div class="language-selector">
-                <select id="languageSwitcher">
-                    <option value="en">English</option>
-                    <option value="juba">Juba Arabic</option>
-                    <option value="bari">Bari</option>
-                </select>
+        <header>
+            <div class="container--nav">
+                <div class="logo">
+                    <img src="./images/smartfarmer.png" alt="Smart Farmer logo">
+                </div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="index.html" data-translate="home">Home</a></li>
+                        <li><a href="about.html" data-translate="about">About</a></li>
+                        <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
+                        <li><a href="education.html" data-translate="education">Education</a></li>
+                        <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
+                        <li><a href="contact.html" data-translate="contact">Contact</a></li>
+                        <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
+                    </ul>
+                    <div class="language-selector">
+                        <select id="languageSwitcher">
+                            <option value="en">English</option>
+                            <option value="juba">Juba Arabic</option>
+                            <option value="bari">Bari</option>
+                        </select>
+                    </div>
+                </nav>
+                <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
             </div>
+        </header>
 
             <div class="menu-icon" onclick="toggleMenu()">☰</div>
         </nav>

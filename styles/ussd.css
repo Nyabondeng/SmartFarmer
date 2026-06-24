@@ -3,6 +3,8 @@
    Author: Nyabon Deng Adut
    ============================================ */
 
+@import url('navbar.css');
+
 main {
     max-width: 900px;
     margin: 0 auto;

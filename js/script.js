@@ -277,6 +277,15 @@ if (document.getElementById('logList')) {
     displayCropLogs();
 }
 
+// Improved mobile menu toggle (centralized)
+function toggleMenu() {
+    const nav = document.querySelector('.nav-links');
+    const btn = document.querySelector('.menu-icon');
+    if (!nav) return;
+    nav.classList.toggle('active');
+    if (btn) btn.setAttribute('aria-expanded', nav.classList.contains('active'));
+}
+
 // Service Worker for Offline Capability
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
