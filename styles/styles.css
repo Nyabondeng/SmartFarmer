@@ -226,8 +226,11 @@ footer {
   color: white;
   text-align: center;
   padding: 20px;
-  margin-top: 40px;
+  margin-top: 0;
 }
+
+/* Remove extra gap between page background sections and footer */
+.home-section, .about-section { margin-bottom: 0; }
 
 button {
   background: #4caf50;
