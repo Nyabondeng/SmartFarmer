@@ -6,118 +6,147 @@
     <title>Smart Farmer - Crop Information</title>
     <link rel="stylesheet" href="styles/crops.css">
 </head>
+
 <body>
-        <header class="site-header">
-            <div class="container--nav">
-                <div class="logo">
-                    <img src="images/smartfarmer.png" alt="Smart Farmer logo">
-                </div>
-                <nav>
-                    <ul class="nav-links">
-                        <li><a href="index.html" data-translate="home">Home</a></li>
-                        <li><a href="about.html" data-translate="about">About</a></li>
-                        <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
-                        <li><a href="education.html" data-translate="education">Education</a></li>
-                        <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
-                        <li><a href="contact.html" data-translate="contact">Contact</a></li>
-                        <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
-                    </ul>
-                    <div class="language-selector">
-                        <select id="languageSwitcher">
-                            <option value="en">English</option>
-                            <option value="juba">Juba Arabic</option>
-                            <option value="bari">Bari</option>
-                        </select>
-                        <select id="voicePicker" title="Choose voice">
-                            <option value="">Select voice...</option>
-                        </select>
-                    </div>
-                </nav>
-                <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+
+    <header class="site-header">
+        <div class="container--nav">
+
+            <div class="logo">
+                <img src="images/smartfarmer.png" alt="Smart Farmer logo">
             </div>
-        </header>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-translate="home">Home</a></li>
+                    <li><a href="about.html" data-translate="about">About</a></li>
+                    <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
+                    <li><a href="education.html" data-translate="education">Education</a></li>
+                    <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
+                    <li><a href="contact.html" data-translate="contact">Contact</a></li>
+                    <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
+                </ul>
+            </nav>
+
+            <div class="language-selector">
+                <select id="languageSwitcher">
+                    <option value="en">English</option>
+                    <option value="juba">Juba Arabic</option>
+                    <option value="bari">Bari</option>
+                </select>
+            </div>
+
+            <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">
+                ☰
+            </button>
+
+        </div>
+    </header>
 
     <main>
+
         <h2 data-translate="cropsTitle">Staple Crops of South Sudan</h2>
+
         <div class="crop-grid">
 
-        <!-- Sorghum -->
-        <div class="crop-card">
-            <h3 data-translate="sorghumTitle">Sorghum</h3>
-            <button class="voice-btn" onclick="playAudio('sorghum')" data-translate="voiceListenLabel">🔊 Listen (English)</button>
-            <div class="crop-info">
-                <p><strong data-translate="plantingSeasonLabel">Planting season:</strong> <span data-translate="sorghumPlantingText">May - June</span></p>
-                <p><strong data-translate="spacingLabel">Spacing:</strong> <span data-translate="sorghumSpacingText">75cm x 25cm</span></p>
-                <p><strong data-translate="pestControlLabel">Pest control:</strong> <span data-translate="sorghumPestText">Watch for armyworms after first rain</span></p>
-                <p><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="sorghumHarvestText">September - October</span></p>
-                <p><strong data-translate="storageLabel">Storage:</strong> <span data-translate="sorghumStorageText">Dry completely before storing in a cool place</span></p>
+            <!-- Sorghum -->
+            <div class="crop-card">
+                <h3 data-translate="sorghumTitle">Sorghum</h3>
+                <button class="voice-btn" onclick="playAudio('sorghum')" data-translate="voiceListenLabel">
+                    🔊 Listen (English)
+                </button>
+
+                <div class="crop-info">
+                    <p><strong data-translate="plantingSeasonLabel">Planting season:</strong> <span data-translate="sorghumPlantingText">May - June</span></p>
+                    <p><strong data-translate="spacingLabel">Spacing:</strong> <span data-translate="sorghumSpacingText">75cm x 25cm</span></p>
+                    <p><strong data-translate="pestControlLabel">Pest control:</strong> <span data-translate="sorghumPestText">Watch for armyworms after first rain</span></p>
+                    <p><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="sorghumHarvestText">September - October</span></p>
+                    <p><strong data-translate="storageLabel">Storage:</strong> <span data-translate="sorghumStorageText">Dry completely before storing in a cool place</span></p>
+                </div>
             </div>
+
+            <!-- Maize -->
+            <div class="crop-card">
+                <h3 data-translate="maizeTitle">Maize</h3>
+                <button class="voice-btn" onclick="playAudio('maize')" data-translate="voiceListenLabel">
+                    🔊 Listen (English)
+                </button>
+
+                <div class="crop-info">
+                    <p><strong data-translate="plantingSeasonLabel">Planting season:</strong> <span data-translate="maizePlantingText">May - June</span></p>
+                    <p><strong data-translate="spacingLabel">Spacing:</strong> <span data-translate="maizeSpacingText">75cm x 50cm</span></p>
+                    <p><strong data-translate="pestControlLabel">Pest control:</strong> <span data-translate="maizePestText">Watch for maize stalk borer</span></p>
+                    <p><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="maizeHarvestText">August - September</span></p>
+                    <p><strong data-translate="storageLabel">Storage:</strong> <span data-translate="maizeStorageText">Dry on the cob, then remove kernels</span></p>
+                </div>
+            </div>
+
+            <!-- Millet -->
+            <div class="crop-card">
+                <h3 data-translate="milletTitle">Millet</h3>
+                <button class="voice-btn" onclick="playAudio('millet')" data-translate="voiceListenLabel">
+                    🔊 Listen (English)
+                </button>
+
+                <div class="crop-info">
+                    <p><strong data-translate="plantingSeasonLabel">Planting season:</strong> <span data-translate="milletPlantingText">May - June</span></p>
+                    <p><strong data-translate="spacingLabel">Spacing:</strong> <span data-translate="milletSpacingText">60cm x 20cm</span></p>
+                    <p><strong data-translate="pestControlLabel">Pest control:</strong> <span data-translate="milletPestText">Watch for birds and stem borers</span></p>
+                    <p><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="milletHarvestText">September - October</span></p>
+                    <p><strong data-translate="storageLabel">Storage:</strong> <span data-translate="milletStorageText">Store in sealed containers</span></p>
+                </div>
+            </div>
+
+            <!-- Groundnuts -->
+            <div class="crop-card">
+                <h3 data-translate="groundnutsTitle">Groundnuts</h3>
+                <button class="voice-btn" onclick="playAudio('groundnuts')" data-translate="voiceListenLabel">
+                    🔊 Listen (English)
+                </button>
+
+                <div class="crop-info">
+                    <p><strong data-translate="plantingSeasonLabel">Planting season:</strong> <span data-translate="groundnutsPlantingText">May - June</span></p>
+                    <p><strong data-translate="spacingLabel">Spacing:</strong> <span data-translate="groundnutsSpacingText">50cm x 15cm</span></p>
+                    <p><strong data-translate="pestControlLabel">Pest control:</strong> <span data-translate="groundnutsPestText">Watch for leaf spot and aphids</span></p>
+                    <p><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="groundnutsHarvestText">October - November</span></p>
+                    <p><strong data-translate="storageLabel">Storage:</strong> <span data-translate="groundnutsStorageText">Dry thoroughly before shelling</span></p>
+                </div>
+            </div>
+
+            <!-- Cassava -->
+            <div class="crop-card">
+                <h3 data-translate="cassavaTitle">Cassava</h3>
+                <button class="voice-btn" onclick="playAudio('cassava')" data-translate="voiceListenLabel">
+                    🔊 Listen (English)
+                </button>
+
+                <div class="crop-info">
+                    <p><strong data-translate="plantingSeasonLabel">Planting season:</strong> <span data-translate="cassavaPlantingText">March - April (or anytime with rain)</span></p>
+                    <p><strong data-translate="spacingLabel">Spacing:</strong> <span data-translate="cassavaSpacingText">100cm x 100cm</span></p>
+                    <p><strong data-translate="pestControlLabel">Pest control:</strong> <span data-translate="cassavaPestText">Watch for cassava mosaic disease</span></p>
+                    <p><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="cassavaHarvestText">8-12 months after planting</span></p>
+                    <p><strong data-translate="storageLabel">Storage:</strong> <span data-translate="cassavaStorageText">Harvest only when needed. Cannot store long.</span></p>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Maize -->
-        <div class="crop-card">
-            <h3 data-translate="maizeTitle">Maize</h3>
-            <button class="voice-btn" onclick="playAudio('maize')" data-translate="voiceListenLabel">🔊 Listen (English)</button>
-            <div class="crop-info">
-                <p><strong data-translate="plantingSeasonLabel">Planting season:</strong> <span data-translate="maizePlantingText">May - June</span></p>
-                <p><strong data-translate="spacingLabel">Spacing:</strong> <span data-translate="maizeSpacingText">75cm x 50cm</span></p>
-                <p><strong data-translate="pestControlLabel">Pest control:</strong> <span data-translate="maizePestText">Watch for maize stalk borer</span></p>
-                <p><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="maizeHarvestText">August - September</span></p>
-                <p><strong data-translate="storageLabel">Storage:</strong> <span data-translate="maizeStorageText">Dry on the cob, then remove kernels</span></p>
-            </div>
-        </div>
-
-        <!-- Millet -->
-        <div class="crop-card">
-            <h3 data-translate="milletTitle">Millet</h3>
-            <button class="voice-btn" onclick="playAudio('millet')" data-translate="voiceListenLabel">🔊 Listen (English)</button>
-            <div class="crop-info">
-                <p><strong data-translate="plantingSeasonLabel">Planting season:</strong> <span data-translate="milletPlantingText">May - June</span></p>
-                <p><strong data-translate="spacingLabel">Spacing:</strong> <span data-translate="milletSpacingText">60cm x 20cm</span></p>
-                <p><strong data-translate="pestControlLabel">Pest control:</strong> <span data-translate="milletPestText">Watch for birds and stem borers</span></p>
-                <p><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="milletHarvestText">September - October</span></p>
-                <p><strong data-translate="storageLabel">Storage:</strong> <span data-translate="milletStorageText">Store in sealed containers</span></p>
-            </div>
-        </div>
-
-        <!-- Groundnuts -->
-        <div class="crop-card">
-            <h3 data-translate="groundnutsTitle">Groundnuts</h3>
-            <button class="voice-btn" onclick="playAudio('groundnuts')" data-translate="voiceListenLabel">🔊 Listen (English)</button>
-            <div class="crop-info">
-                <p><strong data-translate="plantingSeasonLabel">Planting season:</strong> <span data-translate="groundnutsPlantingText">May - June</span></p>
-                <p><strong data-translate="spacingLabel">Spacing:</strong> <span data-translate="groundnutsSpacingText">50cm x 15cm</span></p>
-                <p><strong data-translate="pestControlLabel">Pest control:</strong> <span data-translate="groundnutsPestText">Watch for leaf spot and aphids</span></p>
-                <p><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="groundnutsHarvestText">October - November</span></p>
-                <p><strong data-translate="storageLabel">Storage:</strong> <span data-translate="groundnutsStorageText">Dry thoroughly before shelling</span></p>
-            </div>
-        </div>
-
-        <!-- Cassava -->
-        <div class="crop-card">
-            <h3 data-translate="cassavaTitle">Cassava</h3>
-            <button class="voice-btn" onclick="playAudio('cassava')" data-translate="voiceListenLabel">🔊 Listen (English)</button>
-            <div class="crop-info">
-                <p><strong data-translate="plantingSeasonLabel">Planting season:</strong> <span data-translate="cassavaPlantingText">March - April (or anytime with rain)</span></p>
-                <p><strong data-translate="spacingLabel">Spacing:</strong> <span data-translate="cassavaSpacingText">100cm x 100cm</span></p>
-                <p><strong data-translate="pestControlLabel">Pest control:</strong> <span data-translate="cassavaPestText">Watch for cassava mosaic disease</span></p>
-                <p><strong data-translate="harvestLabel">Harvest:</strong> <span data-translate="cassavaHarvestText">8-12 months after planting</span></p>
-                <p><strong data-translate="storageLabel">Storage:</strong> <span data-translate="cassavaStorageText">Harvest only when needed. Cannot store long.</span></p>
-            </div>
-        </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.</p>
+        <p data-translate="footerText">
+            &copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.
+        </p>
     </footer>
 
     <script src="js/translations.js"></script>
     <script src="js/script.js"></script>
+
     <script>
         function toggleMenu() {
-            const nav = document.querySelector('.nav-links');
-            nav.classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('active');
         }
     </script>
+
 </body>
 </html>
