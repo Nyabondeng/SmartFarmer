@@ -100,15 +100,17 @@ main h2 {
 }
 
 .ussd-code {
-    display: inline-block;
+    display: block;
+    width: max-content;
+    margin: 14px auto 30px;
     background: #1E6A33;
     color: white;
     padding: 6px 18px;
     border-radius: 20px;
     font-size: 15px;
     font-weight: 700;
-    margin-bottom: 30px;
     letter-spacing: 1px;
+    text-align: center;
 }
 
 /* =========================
