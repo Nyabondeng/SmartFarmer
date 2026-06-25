@@ -3,68 +3,94 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Farmer - Empowering Farmers</title>
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
 <body>
-        <header class="site-header">
-            <div class="container--nav">
-                <div class="logo">
-                    <img src="./images/smartfarmer.png" alt="Smart Farmer logo">
-                </div>
-                <nav>
-                    <ul class="nav-links">
-                        <li><a href="index.html" data-translate="home">Home</a></li>
-                        <li><a href="about.html" data-translate="about">About</a></li>
-                        <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
-                        <li><a href="education.html" data-translate="education">Education</a></li>
-                        <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
-                        <li><a href="contact.html" data-translate="contact">Contact</a></li>
-                        <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
-                    </ul>
 
-                    <div class="language-selector">
-                        <select id="languageSwitcher">
-                            <option value="en">English</option>
-                            <option value="juba">Juba Arabic</option>
-                            <option value="bari">Bari</option>
-                        </select>
-                    </div>
-                </nav>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container--nav">
 
-                <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+            <div class="logo">
+                <img src="./images/smartfarmer.png" alt="Smart Farmer Logo">
             </div>
-        </header>
 
-    <section class="home-section">
-        <h2 data-translate="welcome">Welcome to Smart Farmer</h2>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-translate="home">Home</a></li>
+                    <li><a href="about.html" data-translate="about">About</a></li>
+                    <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
+                    <li><a href="education.html" data-translate="education">Education</a></li>
+                    <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
+                    <li><a href="contact.html" data-translate="contact">Contact</a></li>
+                    <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
+                </ul>
+
+                <div class="language-selector">
+                    <select id="languageSwitcher">
+                        <option value="en">English</option>
+                        <option value="juba">Juba Arabic</option>
+                        <option value="bari">Bari</option>
+                    </select>
+                </div>
+            </nav>
+
+            <button class="menu-icon"
+                    onclick="toggleMenu()"
+                    aria-label="Toggle Navigation">
+                ☰
+            </button>
+
+        </div>
+    </header>
+
+    <!-- Modern Hero Section -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Smart Farming <br>
+                Starts Here
+            </h1>
+
             <p data-translate="tagline">
-               Empowering smallholder farmers through agricultural informations.
-        </p>
-        <button onclick="location.href='crops.html'"
-                data-translate="getStarted">
-           Get Started
-        </button>
+                Information. Education. Better Harvests.<br>
+                All in your language, all offline.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="crops.html" class="btn-primary">
+                    Explore Crops
+                </a>
+
+                <a href="education.html" class="btn-secondary">
+                    Start Learning
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-image">
+            <img src="./images/farmer-field.jpg"
+                 alt="Farmer working in field">
+        </div>
+
     </section>
+
+    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.</p>
     </footer>
 
-</body>
     <script src="js/translations.js"></script>
     <script src="js/script.js"></script>
-    <script>
-        function toggleMenu() {
-            const nav = document.querySelector('.nav-links');
-            nav.classList.toggle('active');
-        }
-        
-        function showAlert() {
-            window.location.href = 'crops.html';
-        }
-    </script>
+
 </body>
 
 </html>

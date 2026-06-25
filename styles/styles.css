@@ -135,41 +135,81 @@ nav ul li a:hover {
   }
 }
 
+
 .home-section {
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/images/farmer.jpg);
+  min-height: calc(100vh - 90px);
+  display: flex;
+  align-items: center;
+  padding: 60px 8%;
+  background:
+    linear-gradient(
+      to right,
+      rgba(248, 248, 244, 0.95) 0%,
+      rgba(248, 248, 244, 0.90) 40%,
+      rgba(248, 248, 244, 0.20) 70%,
+      rgba(248, 248, 244, 0.05) 100%
+    ),
+    url("../images/farmer.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: white;
-  backdrop-filter: blur(10px);
-  height: 100vh;
-  padding: 20px;
-  text-align: center;
+}
+
+.hero-content {
+  max-width: 650px;
 }
 
 .home-section h2 {
-  font-size: 3.5rem;
-  margin-top: 10rem;
-  font-weight: bold;
+  font-size: 4.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+  color: #166534;
+  margin-bottom: 20px;
 }
 
 .home-section p {
-  font-size: 1rem;
-  margin-bottom: 10px;
-  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: #4b5563;
+  margin-bottom: 35px;
+  font-style: normal;
 }
 
-.home-section button {
-  background-color: #03990ba6;
-  /* Dark green */
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.primary-btn {
+  background: #166534;
   color: white;
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
   text-decoration: none;
-  margin-top: 20px;
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.primary-btn:hover {
+  background: #14532d;
+  transform: translateY(-3px);
+}
+
+.secondary-btn {
+  background: white;
+  color: #166534;
+  border: 2px solid #166534;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.secondary-btn:hover {
+  background: #f0fdf4;
+  transform: translateY(-3px);
 }
 
 /* Section styling */
@@ -356,7 +396,6 @@ button:hover {
   border-radius: 5px;
 }
 
-/* Mobile Menu Toggle */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -376,8 +415,58 @@ button:hover {
   }
 }
 
+
+@media (max-width: 768px) {
+
+  .home-section {
+    padding: 40px 20px;
+    text-align: center;
+    justify-content: center;
+    min-height: 80vh;
+  }
+
+  .hero-content {
+    max-width: 700px;
+  }
+
+  .home-section h2 {
+    font-size: 5rem;
+  }
+
+  .home-section p {
+    font-size: 1.05rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+}
+
 @media (min-width: 769px) {
   .menu-icon {
     display: none;
+  }
+}
+
+.hero-content {
+  animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
