@@ -8,9 +8,14 @@ const urlsToCache = [
     '/crops.html',
     '/education.html',
     '/crop-log.html',
-    '/community.html',
     '/contact.html',
+    '/ussd.html',
     '/styles/style.css',
+    '/styles/crops.css',
+    '/styles/education.css',
+    '/styles/crop-log.css',
+    '/styles/contact.css',
+    '/styles/about.css',
     '/script.js'
 ];
 
