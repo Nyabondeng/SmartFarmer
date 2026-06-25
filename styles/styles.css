@@ -141,7 +141,7 @@ nav ul li a:hover {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    gap: 50px;
+    gap: 30px;
 }
 
 .hero-content {
@@ -174,7 +174,7 @@ nav ul li a:hover {
 
 .hero-image img {
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     height: auto;
     border-radius: 16px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
