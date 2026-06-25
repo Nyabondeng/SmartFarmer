@@ -44,9 +44,9 @@ function playAudio(topic) {
         const audio = new Audio(audioPath);
         
         audio.addEventListener('error', () => {
-            // If audio file not found, fall back to speechSynthesis with English
-            console.log(`Audio file not found: ${audioPath}. Falling back to speechSynthesis.`);
-            speakWithSynthesis(message, 'en');
+            // If audio file not found, fall back to speechSynthesis with the translated message
+            console.log(`Audio file not found: ${audioPath}. Falling back to speechSynthesis with ${lang} text.`);
+            speakWithSynthesis(message, lang);
         });
 
         audio.addEventListener('ended', () => {
@@ -55,13 +55,13 @@ function playAudio(topic) {
 
         try {
             audio.play().catch(err => {
-                console.log(`Could not play audio: ${err}. Falling back to speechSynthesis.`);
-                speakWithSynthesis(message, 'en');
+                console.log(`Could not play audio: ${err}. Falling back to speechSynthesis with ${lang} text.`);
+                speakWithSynthesis(message, lang);
             });
             return; // Exit early; audio is playing or will handle fallback
         } catch (err) {
-            console.log(`Error loading audio: ${err}. Falling back to speechSynthesis.`);
-            speakWithSynthesis(message, 'en');
+            console.log(`Error loading audio: ${err}. Falling back to speechSynthesis with ${lang} text.`);
+            speakWithSynthesis(message, lang);
             return;
         }
     }
