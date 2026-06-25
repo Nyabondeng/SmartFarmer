@@ -11,7 +11,10 @@ const urlsToCache = [
     '/community.html',
     '/contact.html',
     '/styles/style.css',
-    '/script.js'
+    '/script.js',
+    // Audio files for Juba Arabic and Bari (add specific files as they are recorded)
+    '/audio/juba/',
+    '/audio/bari/'
 ];
 
 self.addEventListener('install', event => {

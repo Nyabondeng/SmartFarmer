@@ -1,6 +1,6 @@
 // Smart Farmer - Main JavaScript
 
-// Voice output using browser speech synthesis
+// Voice output: try pre-recorded audio files for Juba/Bari, fall back to speechSynthesis for English
 function playAudio(topic) {
     // Determine user's selected language (prefer sf_lang, then language)
     const stored = localStorage.getItem('sf_lang') || localStorage.getItem('language') || 'en';
@@ -36,8 +36,43 @@ function playAudio(topic) {
         message = defaultMessages[topic] || 'Information available in English. Voice in Bari and Juba Arabic coming soon.';
     }
 
+    console.log('playAudio()', { topic, voiceKey, lang, message });
+
+    // For Juba and Bari, try to load pre-recorded audio files first
+    if ((lang === 'juba' || lang === 'bari') && topic) {
+        const audioPath = `/audio/${lang}/${topic}.mp3`;
+        const audio = new Audio(audioPath);
+        
+        audio.addEventListener('error', () => {
+            // If audio file not found, fall back to speechSynthesis with English
+            console.log(`Audio file not found: ${audioPath}. Falling back to speechSynthesis.`);
+            speakWithSynthesis(message, 'en');
+        });
+
+        audio.addEventListener('ended', () => {
+            console.log(`Finished playing: ${audioPath}`);
+        });
+
+        try {
+            audio.play().catch(err => {
+                console.log(`Could not play audio: ${err}. Falling back to speechSynthesis.`);
+                speakWithSynthesis(message, 'en');
+            });
+            return; // Exit early; audio is playing or will handle fallback
+        } catch (err) {
+            console.log(`Error loading audio: ${err}. Falling back to speechSynthesis.`);
+            speakWithSynthesis(message, 'en');
+            return;
+        }
+    }
+
+    // For English or as fallback, use speechSynthesis
+    speakWithSynthesis(message, lang);
+}
+
+// Helper function: speak text using Web Speech API
+function speakWithSynthesis(message, lang) {
     if ('speechSynthesis' in window) {
-        console.log('playAudio()', { topic, voiceKey, lang, message });
         const speak = (msg, prefLang) => {
             let voices = speechSynthesis.getVoices();
 
@@ -84,7 +119,7 @@ function playAudio(topic) {
                 utterance.lang = voice.lang || utterance.lang;
             } else {
                 // fallback locales
-                utterance.lang = (prefLang === 'juba') ? 'ar-SA' : 'en-US';
+                utterance.lang = (prefLang === 'juba') ? 'ar-SA' : ((prefLang === 'bari') ? 'en-US' : prefLang);
             }
             utterance.rate = 0.9;
             speechSynthesis.cancel();
