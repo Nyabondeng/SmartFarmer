@@ -412,7 +412,8 @@ button:hover {
     padding: 60px 0 60px 60px;  
     padding-right: 0;  
     width: 100%;
-    max-width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     overflow: hidden;
   }
 
@@ -432,6 +433,8 @@ button:hover {
     width: 100%;
     flex: 0 0 50%;
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
     overflow: hidden;
   }
 
@@ -439,6 +442,7 @@ button:hover {
     max-width: 100%;
     width: 100%;
     height: auto;
+    object-fit: cover;
   }
 
   .hero-buttons {
