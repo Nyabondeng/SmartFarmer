@@ -132,9 +132,7 @@ nav ul li a:hover {
   }
 }
 
-/* =========================
-   HERO SECTION
-   ========================= */
+
 
 .hero-container {
     display: flex;
@@ -142,6 +140,7 @@ nav ul li a:hover {
     justify-content: space-between;
     width: 100%;
     gap: 30px;
+    padding-right: 0,
 }
 
 .hero-content {
@@ -168,15 +167,16 @@ nav ul li a:hover {
 .hero-image {
     flex: 1;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    margin-right: -20px;
 }
 
 .hero-image img {
     width: 100%;
     max-width: 600px;
     height: auto;
-    border-radius: 16px;
+    border-radius: 16px 0 0 16px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     object-fit: cover;
 }
@@ -218,7 +218,6 @@ nav ul li a:hover {
   transform: translateY(-3px);
 }
 
-/* Section styling */
 #education {
   padding: 40px 20px;
   background-color: #f4f9f4;
@@ -315,7 +314,6 @@ button:hover {
   background: #45a049;
 }
 
-/* Feature Grid Section */
 .features-section {
   max-width: 1000px;
   margin: 40px auto;
