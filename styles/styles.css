@@ -298,7 +298,27 @@ footer {
   margin-top: 0;
 }
 
-.home-section,
+.home-section {
+  min-height: calc(100vh - 90px);
+  display: flex;
+  align-items: center;
+  padding: 60px 8%;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(248,248,244,0.95) 0%,
+      rgba(248,248,244,0.90) 40%,
+      rgba(248,248,244,0.20) 70%,
+      rgba(248,248,244,0.05) 100%
+    ),
+    url("../images/farmer-field.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .about-section {
   margin-bottom: 0;
 }
@@ -408,17 +428,7 @@ button:hover {
     font-size: 1.5rem;
   }
 
-  .hero-container {
-    flex-direction: column;
-    text-align: center;
-    gap: 30px;
-    padding: 40px 20px;  
-    padding-right: 0;  
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
+ 
   .hero-content {
     max-width: 100%;
   }
@@ -432,21 +442,6 @@ button:hover {
     font-size: 1.05rem;
   }
 
-  .hero-image {
-    width: 100%;
-    flex: 0 0 50%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    overflow: hidden;
-  }
-
-  .hero-image img {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
 
   .hero-buttons {
     justify-content: center;
