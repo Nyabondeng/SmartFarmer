@@ -10,7 +10,13 @@ function playAudio(topic) {
 
     // Build voice key (e.g., 'sorghumVoice') and look up translation
     const voiceKey = topic + 'Voice';
-    let message = (translations[lang] && translations[lang][voiceKey]) || translations[voiceKey] || '';
+    // Prefer the chosen language, then fall back to English translations
+    let message = '';
+    if (translations[lang] && translations[lang][voiceKey]) {
+        message = translations[lang][voiceKey];
+    } else if (translations['en'] && translations['en'][voiceKey]) {
+        message = translations['en'][voiceKey];
+    }
 
     // Fallback to English hardcoded messages if still empty
     const defaultMessages = {
@@ -35,28 +41,38 @@ function playAudio(topic) {
         const speak = (msg, prefLang) => {
             let voices = speechSynthesis.getVoices();
 
+            // map our page language keys to voice language prefixes
+            const mapPref = (p) => {
+                if (!p) return '';
+                if (p === 'juba') return 'ar';
+                if (p === 'bari') return 'en';
+                return p;
+            };
+
             const pickVoice = (voicesList, prefer) => {
-                // if user selected a specific voice, prefer it
                 const savedVoiceName = localStorage.getItem('sf_voice');
                 if (savedVoiceName) {
                     const sv = voicesList.find(v => v.name === savedVoiceName);
                     if (sv) return sv;
                 }
                 if (!voicesList || voicesList.length === 0) return null;
-                // prefer voices matching Arabic for juba
-                if (prefer === 'juba') {
-                    const v = voicesList.find(v => v.lang && v.lang.startsWith('ar'));
+
+                const prefCode = mapPref(prefer);
+                // 1) exact lang match (startsWith)
+                if (prefCode) {
+                    const v = voicesList.find(v => v.lang && v.lang.toLowerCase().startsWith(prefCode.toLowerCase()));
                     if (v) return v;
                 }
-                // prefer English voices for bari
-                if (prefer === 'bari') {
-                    const v = voicesList.find(v => v.lang && v.lang.startsWith('en'));
+                // 2) name contains language hint (e.g., 'Arabic', 'عربي')
+                const nameHint = (prefCode === 'ar') ? ['arabic', 'عرب'] : (prefCode === 'en' ? ['english', 'en'] : []);
+                for (const hint of nameHint) {
+                    const v = voicesList.find(voice => voice.name && voice.name.toLowerCase().includes(hint));
                     if (v) return v;
                 }
-                // otherwise try to match exact language tag
-                const match = voicesList.find(v => v.lang && v.lang.startsWith(prefer));
-                if (match) return match;
-                // fallback to a default voice (first available)
+                // 3) fallback to first voice matching region-neutral same script (e.g., any 'ar' in lang)
+                const anyAr = voicesList.find(v => v.lang && v.lang.toLowerCase().includes('ar'));
+                if (prefCode === 'ar' && anyAr) return anyAr;
+                // 4) fallback to first available voice
                 return voicesList[0];
             };
 
