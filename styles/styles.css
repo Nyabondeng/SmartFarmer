@@ -176,7 +176,6 @@ nav ul li a:hover {
     width: 100%;
     max-width: 600px;
     height: auto;
-    border-radius: 16px 0 0 16px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     object-fit: cover;
 }
@@ -410,6 +409,11 @@ button:hover {
     flex-direction: column;
     text-align: center;
     gap: 30px;
+    padding: 60px 0 60px 60px;  
+    padding-right: 0;  
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .hero-content {
@@ -426,10 +430,15 @@ button:hover {
 
   .hero-image {
     width: 100%;
+    flex: 0 0 50%;
+    display: flex;
+    overflow: hidden;
   }
 
   .hero-image img {
     max-width: 100%;
+    width: 100%;
+    height: auto;
   }
 
   .hero-buttons {
