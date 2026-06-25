@@ -10,58 +10,77 @@ body {
 }
 
 /* Make footer stick to bottom on short pages */
-html, body { height: 100%; }
-body { display: flex; flex-direction: column; min-height: 100vh; }
-main { flex: 1 0 auto; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.logo {
+    position: relative;
+    right: 40px;
+}
+
+main {
+  flex: 1 0 auto;
+}
 
 /* Header and navigation are provided by shared navbar.css */
 
-nav{
-    display:flex;
-    align-items:center;
+nav {
+  display: flex;
+  align-items: center;
 }
 
-nav ul{
-    display:flex;
-    list-style:none;
-    gap:25px;
-    margin:0;
-    padding:0;
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
 }
 
-nav ul li{
-    list-style:none;
+nav ul li {
+  list-style: none;
 }
 
-nav ul li a{
-    color:white;
-    text-decoration:none;
-    font-size:16px;
-    font-weight:500;
-    transition:0.3s;
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
-nav ul li a:hover{
-    color:white;
-}
- .language-selector{
-    margin-left:20px;
+nav ul li a:hover {
+  color: white;
 }
 
-.language-selector select{
-    padding:8px 12px;
-    border:none;
-    border-radius:8px;
-    background:white;
-    color:#1E6A33;
-    font-weight:600;
-    cursor:pointer;
+.language-selector {
+  margin-left: 20px;
 }
+
+.language-selector select {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  color: #1E6A33;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .menu-icon {
   font-size: 28px;
   cursor: pointer;
   display: none;
   color: white;
+  background: none;
   position: absolute;
   right: 20px;
   top: 50%;
@@ -81,14 +100,15 @@ nav ul li a:hover{
     padding: 10px 0;
   }
 
-  .language-selector{
-    margin-top:10px;
-    width:100%;
-}
+  .language-selector {
+    margin-top: 10px;
+    width: 100%;
+  }
 
-.language-selector select{
-    width:100%;
-}
+  .language-selector select {
+    width: 100%;
+  }
+
   nav ul.show {
     display: flex;
   }
@@ -98,10 +118,22 @@ nav ul li a:hover{
   }
 
   .menu-icon {
-    display: block;
+    font-size: 28px;
+    cursor: pointer;
+    display: none;
+    color: white;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
 }
-
 
 .home-section {
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/images/farmer.jpg);
@@ -230,7 +262,10 @@ footer {
 }
 
 /* Remove extra gap between page background sections and footer */
-.home-section, .about-section { margin-bottom: 0; }
+.home-section,
+.about-section {
+  margin-bottom: 0;
+}
 
 button {
   background: #4caf50;
@@ -247,102 +282,102 @@ button:hover {
 
 /* Feature Grid Section */
 .features-section {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 20px;
-    text-align: center;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
 }
 
 .features-section h3 {
-    color: #4a7c59;
-    font-size: 1.8rem;
-    margin-bottom: 30px;
+  color: #4a7c59;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
 }
 
 .feature-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .feature-card {
-    background-color: #e8f0e8;
-    padding: 20px;
-    border-radius: 10px;
-    width: 220px;
-    text-align: center;
-    transition: transform 0.2s;
+  background-color: #e8f0e8;
+  padding: 20px;
+  border-radius: 10px;
+  width: 220px;
+  text-align: center;
+  transition: transform 0.2s;
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .feature-card span {
-    font-size: 3rem;
-    display: block;
-    margin-bottom: 10px;
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .feature-card h4 {
-    color: #4a7c59;
-    margin: 10px 0;
+  color: #4a7c59;
+  margin: 10px 0;
 }
 
 .feature-card p {
-    font-size: 0.9rem;
-    color: #333;
-    margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 15px;
 }
 
 .feature-card a {
-    background-color: #4a7c59;
-    color: white;
-    text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    display: inline-block;
+  background-color: #4a7c59;
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  display: inline-block;
 }
 
 .feature-card a:hover {
-    background-color: #3a5c45;
+  background-color: #3a5c45;
 }
 
 /* Demo Notice */
 .demo-notice {
-    background-color: #fff3cd;
-    text-align: center;
-    padding: 10px;
-    font-size: 0.9rem;
-    color: #856404;
-    margin: 20px auto;
-    max-width: 800px;
-    border-radius: 5px;
+  background-color: #fff3cd;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #856404;
+  margin: 20px auto;
+  max-width: 800px;
+  border-radius: 5px;
 }
 
 /* Mobile Menu Toggle */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-    }
-    
-    .nav-links.active {
-        display: flex;
-    }
-    
-    .menu-icon {
-        display: block;
-        cursor: pointer;
-        font-size: 1.5rem;
-    }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
 }
 
 @media (min-width: 769px) {
-    .menu-icon {
-        display: none;
-    }
+  .menu-icon {
+    display: none;
+  }
 }
