@@ -9,7 +9,6 @@ body {
   height: auto;
 }
 
-/* Make footer stick to bottom on short pages */
 html,
 body {
   height: 100%;
@@ -29,8 +28,6 @@ body {
 main {
   flex: 1 0 auto;
 }
-
-/* Header and navigation are provided by shared navbar.css */
 
 nav {
   display: flex;
@@ -135,44 +132,53 @@ nav ul li a:hover {
   }
 }
 
+/* =========================
+   HERO SECTION
+   ========================= */
 
-.home-section {
-  min-height: calc(100vh - 90px);
-  display: flex;
-  align-items: center;
-  padding: 60px 8%;
-  background:
-    linear-gradient(
-      to right,
-      rgba(248, 248, 244, 0.95) 0%,
-      rgba(248, 248, 244, 0.90) 40%,
-      rgba(248, 248, 244, 0.20) 70%,
-      rgba(248, 248, 244, 0.05) 100%
-    ),
-    url("../images/farmer.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 50px;
 }
 
 .hero-content {
-  max-width: 650px;
+    flex: 1;
+    max-width: 55%;
+    animation: fadeUp 1s ease;
 }
 
-.home-section h2 {
-  font-size: 4.5rem;
-  line-height: 1.1;
-  font-weight: 800;
-  color: #166534;
-  margin-bottom: 20px;
+.hero-content h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    font-weight: 800;
+    color: #166534;
+    margin-bottom: 20px;
 }
 
-.home-section p {
-  font-size: 1.3rem;
-  line-height: 1.7;
-  color: #4b5563;
-  margin-bottom: 35px;
-  font-style: normal;
+.hero-content p {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    color: #4b5563;
+    margin-bottom: 35px;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    object-fit: cover;
 }
 
 .hero-buttons {
@@ -216,7 +222,6 @@ nav ul li a:hover {
 #education {
   padding: 40px 20px;
   background-color: #f4f9f4;
-  /* Light green background */
   text-align: center;
   font-family: Arial, sans-serif;
 }
@@ -224,21 +229,18 @@ nav ul li a:hover {
 #education h2 {
   font-size: 2.5rem;
   color: #2d6a4f;
-  /* Dark green */
   margin-bottom: 10px;
 }
 
 #education p {
   font-size: 1.1rem;
   color: #4a4a4a;
-  /* Gray */
   margin-bottom: 30px;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Card container styling */
 .card-container {
   display: flex;
   justify-content: space-around;
@@ -247,7 +249,6 @@ nav ul li a:hover {
   margin-top: 20px;
 }
 
-/* Individual card styling */
 .card {
   background-color: #ffffff;
   border-radius: 8px;
@@ -260,17 +261,14 @@ nav ul li a:hover {
 .card h3 {
   font-size: 1.5rem;
   color: #2d6a4f;
-  /* Dark green */
   margin-bottom: 10px;
 }
 
 .card p {
   font-size: 1rem;
   color: #6d6d6d;
-  /* Light gray */
 }
 
-/* Card hover effect */
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
@@ -278,7 +276,6 @@ nav ul li a:hover {
 
 .btn {
   background-color: #2d6a4f;
-  /* Dark green */
   color: white;
   padding: 10px 20px;
   width: 150px;
@@ -292,7 +289,6 @@ nav ul li a:hover {
   text-decoration: none;
 }
 
-
 footer {
   background: #1E6A33;
   color: white;
@@ -301,7 +297,6 @@ footer {
   margin-top: 0;
 }
 
-/* Remove extra gap between page background sections and footer */
 .home-section,
 .about-section {
   margin-bottom: 0;
@@ -384,7 +379,6 @@ button:hover {
   background-color: #3a5c45;
 }
 
-/* Demo Notice */
 .demo-notice {
   background-color: #fff3cd;
   text-align: center;
@@ -413,32 +407,53 @@ button:hover {
     cursor: pointer;
     font-size: 1.5rem;
   }
-}
 
-
-@media (max-width: 768px) {
-
-  .home-section {
-    padding: 40px 20px;
+  .hero-container {
+    flex-direction: column;
     text-align: center;
-    justify-content: center;
-    min-height: 80vh;
+    gap: 30px;
   }
 
   .hero-content {
-    max-width: 700px;
+    max-width: 100%;
   }
 
-  .home-section h2 {
-    font-size: 5rem;
+  .hero-content h1 {
+    font-size: 2.5rem;
   }
 
-  .home-section p {
+  .hero-content p {
     font-size: 1.05rem;
+  }
+
+  .hero-image {
+    width: 100%;
+  }
+
+  .hero-image img {
+    max-width: 100%;
   }
 
   .hero-buttons {
     justify-content: center;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
   }
 
   .primary-btn,
@@ -464,88 +479,8 @@ button:hover {
     opacity: 0;
     transform: translateY(25px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-
-
-.hero-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    gap: 50px;
-}
-
-.hero-content {
-    flex: 1;
-    max-width: 55%;
-    animation: fadeUp 1s ease;
-}
-
-.hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero-image img {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    object-fit: cover;
-}
-
-
-@media (max-width: 768px) {
-    .hero-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-    }
-
-    .hero-content {
-        max-width: 100%;
-    }
-
-    .hero-image {
-        width: 100%;
-    }
-
-    .hero-image img {
-        max-width: 100%;
-    }
-
-    .home-section h2 {
-        font-size: 2.5rem !important;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .home-section h2 {
-        font-size: 1.8rem !important;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .primary-btn,
-    .secondary-btn {
-        width: 100%;
-        max-width: 280px;
-        text-align: center;
-    }
 }
