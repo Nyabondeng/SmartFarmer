@@ -11,10 +11,7 @@ const urlsToCache = [
     '/community.html',
     '/contact.html',
     '/styles/style.css',
-    '/script.js',
-    // Audio files for Juba Arabic and Bari (add specific files as they are recorded)
-    '/audio/juba/',
-    '/audio/bari/'
+    '/script.js'
 ];
 
 self.addEventListener('install', event => {
@@ -37,7 +34,13 @@ self.addEventListener('fetch', event => {
                 if (response) {
                     return response;
                 }
-                return fetch(event.request);
+                return fetch(event.request).catch(() => {
+                    // Return index.html for any navigation request when offline
+                    if (event.request.mode === 'navigate') {
+                        return caches.match('/index.html');
+                    }
+                    return new Response('Offline');
+                });
             })
     );
 });
