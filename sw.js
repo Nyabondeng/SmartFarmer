@@ -16,7 +16,11 @@ const urlsToCache = [
     '/styles/crop-log.css',
     '/styles/contact.css',
     '/styles/about.css',
-    '/script.js'
+    '/js/script.js',
+    '/js/translations.js',
+    '/js/main.js',
+    '/js/contact.js',
+    '/js/ussd.js',
 ];
 
 self.addEventListener('install', event => {
