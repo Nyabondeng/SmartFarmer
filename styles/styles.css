@@ -12,6 +12,7 @@ body {
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -138,14 +139,16 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 40px;
     width: 100%;
-    gap: 30px;
-    padding-right: 0,
+    gap: 50px;
 }
 
 .hero-content {
     flex: 1;
-    max-width: 55%;
+    max-width: 650px;
     animation: fadeUp 1s ease;
 }
 
@@ -169,15 +172,15 @@ nav ul li a:hover {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-right: -20px;
 }
 
 .hero-image img {
     width: 100%;
-    max-width: 600px;
+    max-width: 650px;
     height: auto;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     object-fit: cover;
+    display: block;
 }
 
 .hero-buttons {
@@ -409,12 +412,11 @@ button:hover {
     flex-direction: column;
     text-align: center;
     gap: 30px;
-    padding: 60px 0 60px 60px;  
+    padding: 40px 20px;  
     padding-right: 0;  
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    overflow: hidden;
   }
 
   .hero-content {
@@ -423,6 +425,7 @@ button:hover {
 
   .hero-content h1 {
     font-size: 2.5rem;
+    line-height: 1.2;
   }
 
   .hero-content p {
@@ -459,7 +462,8 @@ button:hover {
 
 @media (max-width: 480px) {
   .hero-content h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
+    line-height: 1.2;
   }
 
   .hero-buttons {
