@@ -1,14 +1,7 @@
-// ============================================
-// SMART FARMER - COMPLETE TRANSLATIONS
-// English | Juba Arabic | Bari
-// ============================================
-
 const translations = {
-    // ============================================
-    // ENGLISH (Default)
-    // ============================================
+   
     en: {
-        // Navigation
+
         home: "Home",
         about: "About",
         crops: "Crop Info",
@@ -17,12 +10,12 @@ const translations = {
         contact: "Contact",
         ussd: "USSD",
 
-        // Home Page
+
         welcome: "Welcome to Smart Farmer",
         tagline: "Empowering smallholder farmers through education, crop monitoring tools, and climate insights.",
         getStarted: "Get Started",
 
-        // About Page
+       
         aboutTitle: "About Smart Farmer",
         whoWeAreTitle: "Who We Are",
         whoWeAreText: "Smart Farmer is a digital agricultural information system designed specifically for smallholder farmers in South Sudan. It provides crop information, educational modules, and a planting log that works offline on any device.",
@@ -36,7 +29,7 @@ const translations = {
         offer3: "Voice output for low-literacy farmers",
         offer4: "Offline planting log saved on the farmer's device",
 
-        // Crops Page
+
         cropsTitle: "Crop Information",
         cropsDescription: "Learn about the best crops for your farm. Click on any crop to see details about planting, care, pests, and harvesting.",
         sorghumTitle: "Sorghum",
@@ -81,15 +74,15 @@ const translations = {
         cassavaStorageText: "Harvest only when needed. Cannot store long.",
         viewDetails: "View Details",
 
-        // Crop Voice Messages (for TTS)
+
         sorghumVoice: "Sorghum. Planting season: May-June. Spacing: 75 centimeters by 25 centimeters. Pest control: Watch for armyworms after first rain. Harvest: September to October. Storage: Dry completely before storing in a cool place.",
         maizeVoice: "Maize. Planting season: May-June. Spacing: 75 centimeters by 50 centimeters. Pest control: Watch for maize stalk borer. Harvest: August to September. Storage: Dry on the cob, then remove kernels.",
         milletVoice: "Millet. Planting season: May-June. Spacing: 60 centimeters by 20 centimeters. Pest control: Watch for birds and stem borers. Harvest: September to October. Storage: Store in sealed containers.",
         groundnutsVoice: "Groundnuts. Planting season: May-June. Spacing: 50 centimeters by 15 centimeters. Pest control: Watch for leaf spot and aphids. Harvest: October to November. Storage: Dry thoroughly before shelling.",
         cassavaVoice: "Cassava. Planting season: March-April. Spacing: 100 centimeters by 100 centimeters. Pest control: Watch for cassava mosaic disease. Harvest: 8 to 12 months after planting. Storage: Harvest only when needed. Cannot store long.",
 
-        // Education Page
-        educationTitle: "Educational Modules",
+
+        educationTitle: "Grow smarter with practical knowledge",
         module1Title: "Module 1: Planting Techniques",
         module2Title: "Module 2: Pest Management",
         module3Title: "Module 3: Post-Harvest Handling",
@@ -126,14 +119,14 @@ const translations = {
         module5Li4: "Use mulching to reduce water loss.",
         module5Li5: "Follow local weather forecasts before planting.",
 
-        // Education Voice Messages
+
         plantingVoice: "Planting tips. Plant at the beginning of the rainy season. Use clean seeds. Space crops properly. Weed within the first 3 weeks.",
         pestVoice: "Pest control. Check fields daily. Remove armyworms by hand. Use ash around stems for stem borers. Spray soapy water for aphids. Use scarecrows for birds.",
         postharvestVoice: "Post-harvest handling. Harvest when grains are hard and dry. Dry crops completely before storing. Store in clean, dry containers. Use ash to keep insects away.",
         soilVoice: "Soil management. Clear weeds before planting. Add compost or animal manure to improve fertility. Rotate crops every season.",
         climateVoice: "Climate-smart farming. Plant early when the rainy season begins. Choose drought-resistant crops. Use mulching to reduce water loss.",
 
-        // Crop Log Page
+
         cropLogTitle: "My Crop Monitoring Log",
         cropLogSubtitle: "Save your planting dates. All data stays on your phone. Works offline.",
         selectCrop: "Select Crop:",
@@ -146,7 +139,7 @@ const translations = {
         recordsCleared: "All records cleared.",
         confirmClear: "Are you sure? This will delete all your saved planting records.",
 
-        // Contact Page
+
         contactTitle: "Contact Us",
         contactDesc: "Have questions or feedback? Reach out to us.",
         contactName: "Your Name:",
@@ -158,15 +151,14 @@ const translations = {
         contactEmailLabel: "Email:",
         contactUssdLabel: "Coming soon: USSD code *131#",
 
-        // Footer
+
         footerText: "© 2026 Smart Farmer. For smallholder farmers in South Sudan."
     },
 
-    // ============================================
-    // JUBA ARABIC (Arabic script)
-    // ============================================
+   
+
     juba: {
-        // Navigation
+
         home: "البيت",
         about: "من نحن",
         crops: "المحاصيل",
@@ -175,12 +167,12 @@ const translations = {
         contact: "اتصل بنا",
         ussd: "USSD",
 
-        // Home Page
+
         welcome: "مرحباً بكم في المزارع الذكي",
         tagline: "تمكين المزارعين أصحاب الحيازات الصغيرة من خلال التعليم، أدوات مراقبة المحاصيل، ورؤى المناخ.",
         getStarted: "ابدأ الآن",
 
-        // About Page
+
         aboutTitle: "من نحن",
         whoWeAreTitle: "من نحن",
         whoWeAreText: "المزارع الذكي هو نظام معلومات زراعية رقمي مصمم خصيصاً للمزارعين أصحاب الحيازات الصغيرة في جنوب السودان. يوفر معلومات عن المحاصيل، وحدات تعليمية، وسجل زراعي يعمل دون اتصال بالإنترنت على أي جهاز.",
@@ -194,7 +186,7 @@ const translations = {
         offer3: "إخراج صوتي للمزارعين ذوي المعرفة المحدودة بالقراءة",
         offer4: "سجل زراعي غير متصل بالإنترنت محفوظ على جهاز المزارع",
 
-        // Crops Page
+
         cropsTitle: "معلومات المحاصيل",
         cropsDescription: "تعرف على أفضل المحاصيل لمزرعتك. انقر على أي محصول لرؤية التفاصيل حول الزراعة والرعاية والآفات والحصاد.",
         sorghumTitle: "الذرة الرفيعة",
@@ -239,14 +231,14 @@ const translations = {
         cassavaStorageText: "الحصاد فقط عند الحاجة. لا يمكن تخزينها طويلاً",
         viewDetails: "عرض التفاصيل",
 
-        // Crop Voice Messages (Juba Arabic)
+
         sorghumVoice: "الذرة الرفيعة. موسم الزراعة: مايو إلى يونيو. التباعد: 75 سم في 25 سم. مكافحة الآفات: احترس من دودة الحشد بعد أول مطر. الحصاد: سبتمبر إلى أكتوبر. التخزين: تجفيف كامل قبل التخزين في مكان بارد.",
         maizeVoice: "الذرة الشامية. موسم الزراعة: مايو إلى يونيو. التباعد: 75 سم في 50 سم. مكافحة الآفات: احترس من حفار ساق الذرة. الحصاد: أغسطس إلى سبتمبر. التخزين: تجفيف على الكوز ثم إزالة الحبوب.",
         milletVoice: "الدخن. موسم الزراعة: مايو إلى يونيو. التباعد: 60 سم في 20 سم. مكافحة الآفات: احترس من الطيور وحفار الساق. الحصاد: سبتمبر إلى أكتوبر. التخزين: تخزين في حاويات محكمة الإغلاق.",
         groundnutsVoice: "الفول السوداني. موسم الزراعة: مايو إلى يونيو. التباعد: 50 سم في 15 سم. مكافحة الآفات: احترس من تبقع الأوراق والمن. الحصاد: أكتوبر إلى نوفمبر. التخزين: تجفيف جيداً قبل التقشير.",
         cassavaVoice: "الكسافا. موسم الزراعة: مارس إلى أبريل. التباعد: 100 سم في 100 سم. مكافحة الآفات: احترس من مرض تبرقش الكسافا. الحصاد: 8 إلى 12 شهراً بعد الزراعة. التخزين: الحصاد فقط عند الحاجة. لا يمكن تخزينها طويلاً.",
 
-        // Education Page
+
         educationTitle: "الوحدات التعليمية",
         module1Title: "الوحدة 1: تقنيات الزراعة",
         module2Title: "الوحدة 2: مكافحة الآفات",
@@ -284,14 +276,14 @@ const translations = {
         module5Li4: "استخدم التغطية لتقليل فقدان الماء",
         module5Li5: "تابع توقعات الطقس المحلية قبل الزراعة",
 
-        // Education Voice Messages (Juba Arabic)
+
         plantingVoice: "نصائح الزراعة. ازرع في بداية موسم الأمطار. استخدم بذوراً نظيفة. اترك مسافات مناسبة بين النباتات. أزل الأعشاب خلال الأسابيع الثلاثة الأولى.",
         pestVoice: "مكافحة الآفات. افحص الحقول يومياً. أزل دودة الحشد باليد. استخدم الرماد حول السيقان لحماية من حفار الساق. رش بالماء والصابون للمن. استخدم الفزاعات للطيور.",
         postharvestVoice: "معالجة ما بعد الحصاد. احصد عندما تكون الحبوب صلبة وجافة. جفف المحاصيل تماماً قبل التخزين. خزن في حاويات نظيفة وجافة. استخدم الرماد لإبعاد الحشرات.",
         soilVoice: "إدارة التربة. أزل الأعشاب قبل الزراعة. أضف السماد العضوي أو روث الحيوانات لتحسين الخصوبة. دَوّر المحاصيل كل موسم.",
         climateVoice: "الزراعة الذكية مناخياً. ازرع مبكراً عند بداية موسم الأمطار. اختر محاصيل مقاومة للجفاف. استخدم التغطية لتقليل فقدان الماء.",
 
-        // Crop Log Page
+
         cropLogTitle: "سجل مراقبة المحاصيل",
         cropLogSubtitle: "احفظ تواريخ الزراعة الخاصة بك. جميع البيانات تبقى على هاتفك. يعمل دون اتصال بالإنترنت.",
         selectCrop: "اختر المحصول:",
@@ -304,7 +296,7 @@ const translations = {
         recordsCleared: "تم مسح جميع السجلات.",
         confirmClear: "هل أنت متأكد؟ هذا سيحذف جميع سجلات الزراعة المحفوظة.",
 
-        // Contact Page
+
         contactTitle: "اتصل بنا",
         contactDesc: "لديك أسئلة أو ملاحظات؟ تواصل معنا.",
         contactName: "اسمك:",
@@ -316,15 +308,14 @@ const translations = {
         contactEmailLabel: "البريد الإلكتروني:",
         contactUssdLabel: "قريباً: رمز USSD *131#",
 
-        // Footer
+
         footerText: "© 2026 المزارع الذكي. للمزارعين أصحاب الحيازات الصغيرة في جنوب السودان."
     },
 
-    // ============================================
-    // BARI
-    // ============================================
+    
+
     bari: {
-        // Navigation
+
         home: "Piny",
         about: "Kony e",
         crops: "Kony lo korop",
@@ -333,12 +324,12 @@ const translations = {
         contact: "Konye",
         ussd: "USSD",
 
-        // Home Page
+
         welcome: "Jom i Smart Farmer",
         tagline: "Kony lo korop ki kujju, kit lo korop, ki kit lo korop ki awi.",
         getStarted: "Konye",
 
-        // About Page
+
         aboutTitle: "Kony e Smart Farmer",
         whoWeAreTitle: "Ngutu ke",
         whoWeAreText: "Smart Farmer ko sistemu lo kony lo korop ma ti ronyi ko'di na South Sudan. Epi kony lo korop, kujju, ki buku lo korop ma ijo internet.",
@@ -352,7 +343,7 @@ const translations = {
         offer3: "Kony lo yia ma aji kutu",
         offer4: "Buku lo korop ma internet ti talifun",
 
-        // Crops Page
+
         cropsTitle: "Kony lo Korop",
         cropsDescription: "Wali korop ma maje kanyo i piny. Didi korop kuny le wali kinyi gua korop, le miri, le gworo, le korop, le woro.",
         sorghumTitle: "Sorghum",
@@ -397,14 +388,14 @@ const translations = {
         cassavaStorageText: "Harvest only when needed. Cannot store long.",
         viewDetails: "Wali kinyi",
 
-        // Crop Voice Messages (Bari)
+
         sorghumVoice: "Sorghum. Lanyi ti lipi May ka June. Fasila 75 senti x 25 senti. Aki wiri armyworms ba'di lipi. Woro September ka October. Teren dry completamente.",
         maizeVoice: "Maize. Lanyi ti lipi May ka June. Fasila 75 senti x 50 senti. Aki wiri stalk borer. Woro August ka September. Teren dry on cob, then remove kernels.",
         milletVoice: "Millet. Lanyi ti lipi May ka June. Fasila 60 senti x 20 senti. Aki wiri birds la stem borers. Woro September ka October. Teren i sealed containers.",
         groundnutsVoice: "Groundnuts. Lanyi ti lipi May ka June. Fasila 50 senti x 15 senti. Aki wiri leaf spot ka aphids. Woro October ka November. Teren dry thoroughly.",
         cassavaVoice: "Cassava. Lanyi ti lipi March ka April. Fasila 100 senti x 100 senti. Aki wiri cassava mosaic disease. Woro 8-12 months. Teren only when needed.",
 
-        // Education Page
+
         educationTitle: "Kujju",
         module1Title: "Moduli 1: Lanyi ti lipi",
         module2Title: "Moduli 2: Afat",
@@ -442,14 +433,14 @@ const translations = {
         module5Li4: "Use mulching to reduce water loss.",
         module5Li5: "Follow local weather forecasts before planting.",
 
-        // Education Voice Messages (Bari)
+
         plantingVoice: "Planting tips. Plant at beginning of rainy season. Use clean seeds. Space crops properly. Weed within first 3 weeks.",
         pestVoice: "Pest control. Check fields daily. Remove armyworms by hand. Use ash around stems. Spray soapy water for aphids.",
         postharvestVoice: "Post-harvest handling. Harvest when dry. Dry crops completely before storing. Store in clean containers. Use ash to keep insects away.",
         soilVoice: "Soil management. Clear weeds before planting. Add compost or manure. Rotate crops every season.",
         climateVoice: "Climate-smart farming. Plant early with rains. Choose drought-resistant crops. Use mulching to reduce water loss.",
 
-        // Crop Log Page
+
         cropLogTitle: "Buku lo Korop",
         cropLogSubtitle: "Save your planting dates. All data stays on your phone. Works offline.",
         selectCrop: "Select Crop:",
@@ -462,7 +453,7 @@ const translations = {
         recordsCleared: "All records cleared.",
         confirmClear: "Are you sure? This will delete all your saved planting records.",
 
-        // Contact Page
+
         contactTitle: "Konye",
         contactDesc: "Have questions or feedback? Reach out to us.",
         contactName: "Your Name:",
@@ -474,7 +465,7 @@ const translations = {
         contactEmailLabel: "Email:",
         contactUssdLabel: "Coming soon: USSD code *131#",
 
-        // Footer
+
         footerText: "© 2026 Smart Farmer. For smallholder farmers in South Sudan."
     }
 };
