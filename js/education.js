@@ -152,3 +152,21 @@
     init();
 
 })();
+
+// Filter modules by category
+document.querySelectorAll('.filter-pill').forEach(btn => {
+    btn.addEventListener('click', function () {
+        document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        const selected = this.textContent.trim().toLowerCase();
+        document.querySelectorAll('.module-card').forEach(card => {
+            const category = card.getAttribute('data-category').toLowerCase();
+            if (selected === 'all modules' || category === selected) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});

@@ -353,16 +353,8 @@ main {
     color: white;
 }
 .voice-btn:hover { opacity: 0.88; }
-.m1 .voice-btn { background: var(--green-dark); }
-.m2 .voice-btn { background: var(--brown); }
-.m3 .voice-btn { background: #1e3a8a; }
-.m4 .voice-btn { background: var(--teal); }
-.m5 .voice-btn { background: var(--purple); }
-.m6 .voice-btn { background: #006064; }
-.m7 .voice-btn { background: var(--orange); }
-.m8 .voice-btn { background: var(--indigo); }
-.m9 .voice-btn { background: var(--rose); }
-.m10 .voice-btn { background: var(--slate); }
+ .voice-btn { background: var(--green-dark); }
+
 
 
 .ussd-banner {
