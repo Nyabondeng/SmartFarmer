@@ -57,6 +57,7 @@ nav { display: flex; align-items: center; gap: 1.5rem; margin-left: auto; }
     color: rgba(255,255,255,0.75);
     text-decoration: none;
     font-size: 14px;
+    font-weight: 500;
     transition: color 0.15s;
     white-space: nowrap;
 }
@@ -359,7 +360,7 @@ footer {
     color: rgba(255,255,255,0.55);
     text-align: center;
     padding: 1.5rem;
-    font-size: 13px;
+    font-size: 14px;
     margin-top: 1rem;
 }
 
