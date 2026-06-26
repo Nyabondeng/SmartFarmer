@@ -323,16 +323,8 @@ main {
     flex-shrink: 0;
     margin-top: 6px;
 }
-.m1 li::before { background: var(--green-mid); }
-.m2 li::before { background: var(--amber); }
-.m3 li::before { background: var(--blue); }
-.m4 li::before { background: var(--teal); }
-.m5 li::before { background: var(--purple); }
-.m6 li::before { background: #0097a7; }
-.m7 li::before { background: var(--orange); }
-.m8 li::before { background: var(--indigo); }
-.m9 li::before { background: var(--rose); }
-.m10 li::before { background: var(--slate); }
+.module-content li::before { background: var(--green-mid); }
+
 
 .card-footer { border-top: 1px solid var(--border); padding-top: 12px; }
 
