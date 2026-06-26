@@ -16,11 +16,7 @@ body {
     color: #2c2c2c;
 }
 
-/* Header and nav now come from shared navbar.css */
 
-/* =========================
-   MAIN CONTENT
-   ========================= */
 
 main {
     max-width: 1200px;
@@ -40,9 +36,7 @@ main > p {
     margin-bottom: 25px;
 }
 
-/* =========================
-   LOG FORM
-   ========================= */
+
 
 .log-form {
     background: white;
@@ -89,9 +83,7 @@ main > p {
     background: #145124;
 }
 
-/* =========================
-   SAVED LOGS
-   ========================= */
+
 
 .saved-logs {
     background: transparent;
@@ -124,9 +116,7 @@ main > p {
     border-radius: 8px;
 }
 
-/* =========================
-   CLEAR BUTTON
-   ========================= */
+
 
 .clear-btn {
     background: #a33;
@@ -142,9 +132,7 @@ main > p {
     background: #822;
 }
 
-/* =========================
-   FOOTER
-   ========================= */
+
 
 footer {
     background: #1E6A33;
@@ -154,9 +142,7 @@ footer {
     margin-top: 40px;
 }
 
-/* =========================
-   TABLET (768px - 1024px)
-   ========================= */
+
 
 @media screen and (max-width: 1024px) {
     header {
@@ -176,9 +162,7 @@ footer {
     }
 }
 
-/* =========================
-   MOBILE (below 768px)
-   ========================= */
+
 
 @media screen and (max-width: 768px) {
     header {
