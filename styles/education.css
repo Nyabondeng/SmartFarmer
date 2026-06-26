@@ -241,8 +241,9 @@ main {
     font-size: 10px; font-weight: 600;
     padding: 3px 10px; border-radius: 20px;
     letter-spacing: 0.3px; text-transform: uppercase;
+    background:  #dcfce7;
+    color: #166534;
 }
-.card-badge-green  { background: #dcfce7; color: #166534; }
 
 
 .card-num {
