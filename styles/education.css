@@ -43,7 +43,7 @@ body {
     padding: 0 1.5rem;
     display: flex;
     align-items: center;
-    height: 64px;
+    height: auto;
     gap: 1.5rem;
 }
 .logo img { height: auto; max-width: 180px; display: block; }
