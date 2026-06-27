@@ -7,70 +7,103 @@
     <link rel="stylesheet" href="styles/contact.css">
 </head>
 <body>
-        <header class="site-header">
-            <div class="container--nav">
-                <div class="logo">
-                    <img src="./images/smartfarmer.png" alt="Smart Farmer logo">
-                </div>
-                <nav>
-                    <ul class="nav-links">
-                        <li><a href="index.html" data-translate="home">Home</a></li>
-                        <li><a href="about.html" data-translate="about">About</a></li>
-                        <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
-                        <li><a href="education.html" data-translate="education">Education</a></li>
-                        <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
-                        <li><a href="contact.html" data-translate="contact">Contact</a></li>
-                        <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
-                    </ul>
-                    <div class="language-selector">
-                        <select id="languageSwitcher">
-                            <option value="en">English</option>
-                            <option value="juba">Juba Arabic</option>
-                            <option value="bari">Bari</option>
-                        </select>
-                    </div>
-                </nav>
-                <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+
+    <header class="site-header">
+        <div class="container--nav">
+            <div class="logo">
+                <img src="./images/smartfarmer.png" alt="Smart Farmer logo">
             </div>
-        </header>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-translate="home">Home</a></li>
+                    <li><a href="about.html" data-translate="about">About</a></li>
+                    <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
+                    <li><a href="education.html" data-translate="education">Education</a></li>
+                    <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
+                    <li><a href="contact.html" data-translate="contact">Contact</a></li>
+                    <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
+                </ul>
+                <div class="language-selector">
+                    <select id="languageSwitcher">
+                        <option value="en">English</option>
+                        <option value="juba">Juba Arabic</option>
+                        <option value="bari">Bari</option>
+                    </select>
+                </div>
+            </nav>
+            <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+        </div>
+    </header>
 
-    
+
+    <div class="contact-hero">
+        <div class="hero-eyebrow">Get In Touch</div>
+        <h1 data-translate="contactTitle">Contact <em>Smart Farmer</em></h1>
+        <p data-translate="contactDesc">Have questions, suggestions, or feedback? We'd love to hear from you.</p>
+    </div>
+
     <main>
-        <h2 data-translate="contactTitle">Contact Us</h2>
-        <p class="page-description" data-translate="contactDesc">
-            Have questions, suggestions, or feedback? We'd love to hear from you.
-        </p>
+        <div class="contact-layout">
 
-        <div class="contact-container">
 
-            <form id="contactForm" class="contact-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" 
-                       placeholder="Enter your full name" required>
+            <div class="contact-panel">
+                <div class="section-label">Send a Message</div>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email or Phone</label>
+                        <input type="text" id="email" name="email" placeholder="Enter your email or phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+                    </div>
+                    <button type="submit" class="send-btn" data-translate="contactSendButton">
+                        Send Message
+                    </button>
+                    <p id="formStatus"></p>
+                </form>
+            </div>
 
-                <label for="email">Email or Phone:</label>
-                <input type="text" id="email" name="email"
-                       placeholder="Enter your email or phone number" required>
 
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" 
-                          placeholder="Enter your message" required></textarea>
-
-                <button type="submit" data-translate="contactSendButton">Send Message</button>
-            </form>
-
-            <div class="other-contacts">
-                <h3>Other Ways to Reach Us</h3>
-
-                <p>📧 Email: nyabondeng0@gmail.com</p>
-                <p>📱 WhatsApp: +211928470444</p>
-                <p>🌐 USSD Service: Coming Soon</p>
-                <p>📍 Yei County, South Sudan</p>
+            <div class="contact-panel">
+                <div class="section-label">Other Ways to Reach Us</div>
+                <div class="other-contacts">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📧</div>
+                        <div>
+                            <p class="contact-item-label">Email</p>
+                            <p class="contact-item-value">nyabondeng0@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📱</div>
+                        <div>
+                            <p class="contact-item-label">WhatsApp</p>
+                            <p class="contact-item-value">+211928470444</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">🌐</div>
+                        <div>
+                            <p class="contact-item-label">USSD Service</p>
+                            <p class="contact-item-value">Coming Soon</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div>
+                            <p class="contact-item-label">Location</p>
+                            <p class="contact-item-value">Yei County, South Sudan</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
-
-        <p id="formStatus"></p>
     </main>
 
     <footer>
@@ -79,7 +112,6 @@
 
     <script src="js/translations.js"></script>
     <script src="js/script.js"></script>
-
     <script>
         function toggleMenu() {
             const nav = document.querySelector('.nav-links');
