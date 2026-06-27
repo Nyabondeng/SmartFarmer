@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap');
-@import url('navbar.css');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -12,6 +11,62 @@ body {
     background: #fff;
 }
 
+.site-header {
+    background: #0f5c2e;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.container--nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    height: auto;
+    min-height: 64px;
+    gap: 1.5rem;
+}
+.logo img { width: 180px; height: auto; display: block; }
+nav { display: flex; align-items: center; margin-left: auto; }
+.nav-links { display: flex; gap: 1.5rem; list-style: none; }
+.nav-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    transition: color 0.15s;
+    white-space: nowrap;
+}
+.nav-links a:hover { color: white; }
+.language-selector select {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    font-size: 13px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 1.5rem;
+}
+.menu-icon {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    margin-left: auto;
+}
+@media (max-width: 768px) {
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--green-dark); padding: 1rem 1.5rem; gap: 1rem; z-index: 99; }
+    .nav-links.active { display: flex; }
+    .menu-icon { display: block; }
+}
+@media (max-width: 480px) {
+    .container--nav { padding: 0 1rem; }
+}
 
 .home-section {
     display: flex;
