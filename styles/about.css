@@ -22,7 +22,7 @@ body {
     line-height: 1.6;
 }
 
-/* ── HERO ── */
+
 .about-hero {
     background: linear-gradient(135deg, var(--green-dark) 0%, #1a6b3a 100%);
     padding: 3.5rem 1.5rem;
@@ -48,21 +48,8 @@ body {
     background: rgba(37,194,110,0.06);
     pointer-events: none;
 }
-.hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(37,194,110,0.15);
-    border: none;
-    color: var(--green-accent);
-    font-size: 11px;
-    font-weight: 500;
-    padding: 5px 14px;
-    border-radius: 20px;
-    margin-bottom: 16px;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-}
+
+
 .about-hero h1 {
     font-family: 'Fraunces', serif;
     font-size: clamp(26px, 5vw, 42px);
@@ -79,7 +66,7 @@ body {
     margin: 0 auto;
 }
 
-/* ── MAIN ── */
+
 main {
     max-width: 1100px;
     margin: 0 auto;
@@ -99,7 +86,7 @@ main {
 }
 .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-/* ── ABOUT GRID ── */
+
 .about-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -121,21 +108,13 @@ main {
     transform: translateY(-3px);
     box-shadow: 0 12px 32px rgba(0,0,0,0.07);
 }
-.about-card-icon {
-    font-size: 28px;
-    width: 52px;
-    height: 52px;
-    background: var(--green-light);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
+
 .about-card h2 {
     font-family: 'Fraunces', serif;
     font-size: 20px;
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--green-dark);
 }
 .about-card p {
     font-size: 14px;
@@ -143,7 +122,7 @@ main {
     line-height: 1.7;
 }
 
-/* ── OFFERS CARD ── */
+
 .offers-card {
     background: white;
     border-radius: 16px;
@@ -175,17 +154,15 @@ main {
     border-radius: 10px;
     padding: 12px 14px;
 }
-.offer-icon {
-    font-size: 20px;
-    flex-shrink: 0;
-}
+
+
 .offer-item p {
     font-size: 13px;
     color: var(--text-secondary);
     line-height: 1.6;
 }
 
-/* ── FOOTER ── */
+
 footer {
     background: var(--green-dark);
     color: rgba(255,255,255,0.55);
@@ -195,7 +172,7 @@ footer {
     margin-top: 3rem;
 }
 
-/* ── FADEUP ANIMATION ── */
+
 .fadeup {
     opacity: 0;
     transform: translateY(30px);
@@ -208,7 +185,7 @@ footer {
 .about-card:nth-child(2) { transition-delay: 0.1s; }
 .about-card:nth-child(3) { transition-delay: 0.2s; }
 
-/* ── RESPONSIVE ── */
+
 @media (max-width: 768px) {
     main { padding: 1.5rem 1rem; }
     .about-grid { grid-template-columns: 1fr; }
