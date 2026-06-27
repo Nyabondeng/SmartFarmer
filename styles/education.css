@@ -37,8 +37,15 @@ body {
     z-index: 100;
     border-bottom: 1px solid rgba(255,255,255,0.08);
 }
-
-
+.container--nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    height: auto;
+    gap: 1.5rem;
+}
 .logo img { height: auto; max-width: 180px; display: block; }
 nav { display: flex; align-items: center; gap: 1.5rem; margin-left: auto; }
 .nav-links {
