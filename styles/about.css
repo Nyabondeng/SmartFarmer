@@ -138,7 +138,7 @@ main {
     font-family: 'Fraunces', serif;
     font-size: 20px;
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--green-dark);
     margin-bottom: 1.25rem;
 }
 .offers-grid {
