@@ -4,84 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Farmer - USSD</title>
-    <link rel="stylesheet" href="styles/contact.css">
     <link rel="stylesheet" href="styles/ussd.css">
 </head>
 <body>
-        <header class="site-header">
-            <div class="container--nav">
-                <div class="logo">
-                    <img src="./images/smartfarmer.png" alt="Smart Farmer logo">
-                </div>
-                <nav>
-                    <ul class="nav-links">
-                        <li><a href="index.html" data-translate="home">Home</a></li>
-                        <li><a href="about.html" data-translate="about">About</a></li>
-                        <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
-                        <li><a href="education.html" data-translate="education">Education</a></li>
-                        <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
-                        <li><a href="contact.html" data-translate="contact">Contact</a></li>
-                        <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
-                    </ul>
-                    <div class="language-selector">
-                        <select id="languageSwitcher">
-                            <option value="en">English</option>
-                            <option value="juba">Juba Arabic</option>
-                            <option value="bari">Bari</option>
-                        </select>
-                    </div>
-                </nav>
-                <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
-            </div>
-        </header>
-        <div class="ussd-code">Dial *384*12990# on any phone (Sandbox)</div>
 
-        <div class="phone-frame">
-            <div class="phone-speaker"></div>
-            <div class="ussd-screen">
-                <div class="ussd-header" id="ussd-header">*384*12990#</div>
-                <div class="ussd-body" id="ussd-body">
-                    <div class="ussd-title">Smart Farmer</div>
-                    <div class="ussd-subtitle">Farming Info System</div>
-                    <div>Welcome! Choose a crop:</div>
-                    <div><br></div>
-                    <div>1. Sorghum</div>
-                    <div>2. Maize</div>
-                    <div>3. Millet</div>
-                    <div>4. Groundnuts</div>
-                    <div>5. Cassava</div>
-                    <div><br></div>
-                    <div>0. Back</div>
-                </div>
-                <div class="ussd-input-area" id="ussd-input-area">
-                    <input type="text" class="ussd-input" id="ussd-input"
-                           placeholder="Enter number..." maxlength="2">
-                    <button class="ussd-send-btn" onclick="handleInput()">Send</button>
-                </div>
-                <button class="ussd-back-btn" id="ussd-back-btn"
-                        style="display:none" onclick="goBack()">0. Back</button>
+    <header class="site-header">
+        <div class="container--nav">
+            <div class="logo">
+                <img src="./images/smartfarmer.png" alt="Smart Farmer logo">
             </div>
-            <div class="phone-home"></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-translate="home">Home</a></li>
+                    <li><a href="about.html" data-translate="about">About</a></li>
+                    <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
+                    <li><a href="education.html" data-translate="education">Education</a></li>
+                    <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
+                    <li><a href="contact.html" data-translate="contact">Contact</a></li>
+                    <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
+                </ul>
+                <div class="language-selector">
+                    <select id="languageSwitcher">
+                        <option value="en">English</option>
+                        <option value="juba">Juba Arabic</option>
+                        <option value="bari">Bari</option>
+                    </select>
+                </div>
+            </nav>
+            <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
         </div>
+    </header>
 
-        <div class="instructions">
-            <h3>📖 How to use this simulator:</h3>
-            <div class="step">
-                <div class="step-num">1</div>
-                <p>Type a number (1–5) to select a crop and press <strong>Send</strong></p>
+
+    <div class="ussd-hero">
+        <div class="hero-eyebrow">📱 Offline Access</div>
+        <h1>Access Smart Farmer <em>without internet</em></h1>
+        <p>Use our USSD service on any phone — no data, no smartphone needed.</p>
+        <div class="ussd-dial-badge">Dial <strong>*384*12990#</strong> on any phone</div>
+    </div>
+
+    <main>
+        <div class="ussd-layout">
+
+
+            <div class="simulator-panel">
+                <div class="section-label">USSD Simulator</div>
+                <div class="phone-frame">
+                    <div class="phone-speaker"></div>
+                    <div class="ussd-screen">
+                        <div class="ussd-header" id="ussd-header">*384*12990#</div>
+                        <div class="ussd-body" id="ussd-body">
+                            <div class="ussd-title">Smart Farmer</div>
+                            <div class="ussd-subtitle">Farming Info System</div>
+                            <div>Welcome! Choose a crop:</div>
+                            <div><br></div>
+                            <div>1. Sorghum</div>
+                            <div>2. Maize</div>
+                            <div>3. Millet</div>
+                            <div>4. Groundnuts</div>
+                            <div>5. Cassava</div>
+                            <div><br></div>
+                            <div>0. Back</div>
+                        </div>
+                        <div class="ussd-input-area" id="ussd-input-area">
+                            <input type="text" class="ussd-input" id="ussd-input"
+                                   placeholder="Enter number..." maxlength="2">
+                            <button class="ussd-send-btn" onclick="handleInput()">Send</button>
+                        </div>
+                        <button class="ussd-back-btn" id="ussd-back-btn"
+                                style="display:none" onclick="goBack()">0. Back</button>
+                    </div>
+                    <div class="phone-home"></div>
+                </div>
             </div>
-            <div class="step">
-                <div class="step-num">2</div>
-                <p>Type 1, 2, or 3 to choose Planting Guide, Pest Control, or Harvest Guide</p>
+
+
+            <div class="instructions-panel">
+                <div class="section-label">How to Use</div>
+                <div class="instructions-card">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div>
+                            <p class="step-title">Select a crop</p>
+                            <p class="step-desc">Type a number (1–5) to select a crop and press <strong>Send</strong></p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div>
+                            <p class="step-title">Choose a topic</p>
+                            <p class="step-desc">Type 1, 2, or 3 to choose Planting Guide, Pest Control, or Harvest Guide</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div>
+                            <p class="step-title">Go back</p>
+                            <p class="step-desc">Press <strong>0. Back</strong> to return to the previous menu</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div>
+                            <p class="step-title">Use on a real phone</p>
+                            <p class="step-desc">Dial <strong>*384*12990#</strong> on any phone to access this service</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INFO CARDS -->
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="info-card-icon">📵</div>
+                        <div>
+                            <p class="info-card-title">No internet needed</p>
+                            <p class="info-card-desc">Works on any basic phone with no data connection</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">🌍</div>
+                        <div>
+                            <p class="info-card-title">3 languages</p>
+                            <p class="info-card-desc">Available in English, Juba Arabic and Bari</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">🆓</div>
+                        <div>
+                            <p class="info-card-title">Free to use</p>
+                            <p class="info-card-desc">No cost to farmers — always free</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="step">
-                <div class="step-num">3</div>
-                <p>Press <strong>0. Back</strong> to return to the previous menu</p>
-            </div>
-            <div class="step">
-                <div class="step-num">4</div>
-                <p>On a real phone dial <strong>*384*12990#</strong> to access this service</p>
-            </div>
+
         </div>
     </main>
 
@@ -90,6 +146,12 @@
     </footer>
 
     <script src="js/ussd.js"></script>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            if (nav) nav.classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>
