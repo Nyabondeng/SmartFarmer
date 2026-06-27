@@ -1,9 +1,5 @@
-/* ============================================
-   SMART FARMER - USSD Page Styles
-   Author: Nyabon Deng Adut
-   ============================================ */
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+@import url('navbar.css');
 
 * {
     margin: 0;
@@ -17,9 +13,7 @@ body {
     color: #333;
 }
 
-/* =========================
-   HEADER & NAVIGATION
-   ========================= */
+
 
 header {
     background: #1E6A33;
@@ -32,7 +26,7 @@ header {
 }
 
 .logo img {
-    max-width: 180px;  /* Matching crops page */
+    max-width: 180px;  
     height: auto;
     display: block;
 }
@@ -76,9 +70,7 @@ nav {
     cursor: pointer;
 }
 
-/* =========================
-   MAIN CONTENT
-   ========================= */
+
 
 main {
     max-width: 900px;
@@ -113,9 +105,7 @@ main h2 {
     text-align: center;
 }
 
-/* =========================
-   PHONE FRAME
-   ========================= */
+
 
 .phone-frame {
     background: #1a1a1a;
@@ -229,9 +219,7 @@ main h2 {
     margin: 16px auto 0;
 }
 
-/* =========================
-   INSTRUCTIONS
-   ========================= */
+
 
 .instructions {
     margin-top: 30px;
@@ -278,9 +266,7 @@ main h2 {
     color: #444;
 }
 
-/* =========================
-   FOOTER
-   ========================= */
+
 
 footer {
     background: #1E6A33;
@@ -290,9 +276,7 @@ footer {
     margin-top: 40px;
 }
 
-/* =========================
-   TABLET (768px - 1024px)
-   ========================= */
+
 
 @media screen and (max-width: 1024px) {
     header {
@@ -312,9 +296,7 @@ footer {
     }
 }
 
-/* =========================
-   MOBILE (below 768px)
-   ========================= */
+
 
 @media screen and (max-width: 768px) {
     header {
@@ -410,9 +392,7 @@ footer {
     }
 }
 
-/* =========================
-   SMALL PHONES (below 480px)
-   ========================= */
+
 
 @media screen and (max-width: 480px) {
     header {
