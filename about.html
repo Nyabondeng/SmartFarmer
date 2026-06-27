@@ -1,76 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>About Us - Smart Farmer</title>
     <link rel="stylesheet" href="./styles/about.css">
 </head>
-
 <body>
-        <header class="site-header">
-            <div class="container--nav">
-                <div class="logo">
-                    <img src="./images/smartfarmer.png" alt="Smart Farmer logo">
-                </div>
-                <nav>
-                    <ul class="nav-links">
-                        <li><a href="index.html" data-translate="home">Home</a></li>
-                        <li><a href="about.html" data-translate="about">About</a></li>
-                        <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
-                        <li><a href="education.html" data-translate="education">Education</a></li>
-                        <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
-                        <li><a href="contact.html" data-translate="contact">Contact</a></li>
-                        <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
-                    </ul>
-                    <div class="language-selector">
-                        <select id="languageSwitcher">
-                            <option value="en">English</option>
-                            <option value="juba">Juba Arabic</option>
-                            <option value="bari">Bari</option>
-                        </select>
-                    </div>
-                </nav>
-                <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
-            </div>
-        </header>
 
-    <section class="about-section">
-        <div class="about-content">
-            <h1 data-translate="aboutTitle">About Us</h1>
-            <div class="about-text">
-                <h2 data-translate="whoWeAreTitle">Who We Are</h2>
-                <p data-translate="whoWeAreText">Smart Farmer is a digital agricultural information 
-                system designed specifically for smallholder farmers 
-                in South Sudan. It provides crop information, 
-                educational modules, and a planting log that works 
-                offline on any device.</p>
+    <header class="site-header">
+        <div class="container--nav">
+            <div class="logo">
+                <img src="./images/smartfarmer.png" alt="Smart Farmer logo">
             </div>
-            <div class="about-text">
-                <h2 data-translate="missionTitle">Mission</h2>
-                <p data-translate="missionText">To provide accessible farming information to 
-                smallholder farmers in Yei County, South Sudan, 
-                in their own languages, Arabic, English, and Bari 
-                 without requiring internet access.</p>
-            </div>
-            <div class="about-text">
-                <h2 data-translate="visionTitle">Vision</h2>
-                <p data-translate="visionText">A future where every farmer in South Sudan has 
-                the knowledge and tools to grow more food, reduce 
-                crop losses, and improve their family's food security.</p>
-            </div>
-            <div class="about-text">
-                <h2 data-translate="offersTitle">What Smart Farmer Offers</h2>
-                <ul>
-                    <li data-translate="offer1">Crop information for 5 staple crops in 3 languages</li>
-                    <li data-translate="offer2">Educational modules on planting, pest control and harvesting</li>
-                    <li data-translate="offer3">Voice output for low-literacy farmers</li>
-                    <li data-translate="offer4">Offline planting log saved on the farmer's device</li>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-translate="home">Home</a></li>
+                    <li><a href="about.html" data-translate="about">About</a></li>
+                    <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
+                    <li><a href="education.html" data-translate="education">Education</a></li>
+                    <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
+                    <li><a href="contact.html" data-translate="contact">Contact</a></li>
+                    <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
                 </ul>
+                <div class="language-selector">
+                    <select id="languageSwitcher">
+                        <option value="en">English</option>
+                        <option value="juba">Juba Arabic</option>
+                        <option value="bari">Bari</option>
+                    </select>
+                </div>
+            </nav>
+            <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <div class="about-hero">
+        <div class="hero-eyebrow">🌱 Smart Farmer</div>
+        <h1 data-translate="aboutTitle">About <em>Smart Farmer</em></h1>
+        <p>Empowering smallholder farmers in South Sudan with knowledge, tools, and technology — in their own language.</p>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <div class="section-label">Our Story</div>
+
+        <div class="about-grid">
+
+            <!-- Who We Are -->
+            <div class="about-card fadeup">
+                <div class="about-card-icon">🌾</div>
+                <h2 data-translate="whoWeAreTitle">Who We Are</h2>
+                <p data-translate="whoWeAreText">Smart Farmer is a digital agricultural information system designed specifically for smallholder farmers in South Sudan. It provides crop information, educational modules, and a planting log that works offline on any device.</p>
+            </div>
+
+            <!-- Mission -->
+            <div class="about-card fadeup">
+                <div class="about-card-icon">🎯</div>
+                <h2 data-translate="missionTitle">Mission</h2>
+                <p data-translate="missionText">To provide accessible farming information to smallholder farmers in Yei County, South Sudan, in their own languages — Arabic, English, and Bari — without requiring internet access.</p>
+            </div>
+
+            <!-- Vision -->
+            <div class="about-card fadeup">
+                <div class="about-card-icon">🔭</div>
+                <h2 data-translate="visionTitle">Vision</h2>
+                <p data-translate="visionText">A future where every farmer in South Sudan has the knowledge and tools to grow more food, reduce crop losses, and improve their family's food security.</p>
+            </div>
+
+        </div>
+
+        <!-- What We Offer -->
+        <div class="section-label" style="margin-top: 2.5rem;">What We Offer</div>
+
+        <div class="offers-card fadeup">
+            <h2 data-translate="offersTitle">What Smart Farmer Offers</h2>
+            <div class="offers-grid">
+                <div class="offer-item">
+                    <div class="offer-icon">🌿</div>
+                    <div>
+                        <p data-translate="offer1">Crop information for 5 staple crops in 3 languages</p>
+                    </div>
+                </div>
+                <div class="offer-item">
+                    <div class="offer-icon">📚</div>
+                    <div>
+                        <p data-translate="offer2">Educational modules on planting, pest control and harvesting</p>
+                    </div>
+                </div>
+                <div class="offer-item">
+                    <div class="offer-icon">🔊</div>
+                    <div>
+                        <p data-translate="offer3">Voice output for low-literacy farmers</p>
+                    </div>
+                </div>
+                <div class="offer-item">
+                    <div class="offer-icon">📱</div>
+                    <div>
+                        <p data-translate="offer4">Offline planting log saved on the farmer's device</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+
+    </main>
 
     <footer>
         <p>&copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.</p>
@@ -83,7 +117,18 @@
             const nav = document.querySelector('.nav-links');
             nav.classList.toggle('active');
         }
-    </script>
-</body>
 
+        // FadeUp animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fadeup').forEach(el => observer.observe(el));
+    </script>
+
+</body>
 </html>
