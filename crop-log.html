@@ -7,62 +7,100 @@
     <link rel="stylesheet" href="styles/crop-log.css">
 </head>
 <body>
-        <header class="site-header">
-            <div class="container--nav">
-                <div class="logo">
-                    <img src="images/smartfarmer.png" alt="Smart Farmer logo">
-                </div>
-                <nav>
-                    <ul class="nav-links">
-                        <li><a href="index.html" data-translate="home">Home</a></li>
-                        <li><a href="about.html" data-translate="about">About</a></li>
-                        <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
-                        <li><a href="education.html" data-translate="education">Education</a></li>
-                        <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
-                        <li><a href="contact.html" data-translate="contact">Contact</a></li>
-                        <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
-                    </ul>
-                    <div class="language-selector">
-                        <select id="languageSwitcher">
-                            <option value="en">English</option>
-                            <option value="juba">Juba Arabic</option>
-                            <option value="bari">Bari</option>
-                        </select>
-                    </div>
-                </nav>
-                <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+
+    <header class="site-header">
+        <div class="container--nav">
+            <div class="logo">
+                <img src="images/smartfarmer.png" alt="Smart Farmer logo">
             </div>
-        </header>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-translate="home">Home</a></li>
+                    <li><a href="about.html" data-translate="about">About</a></li>
+                    <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
+                    <li><a href="education.html" data-translate="education">Education</a></li>
+                    <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
+                    <li><a href="contact.html" data-translate="contact">Contact</a></li>
+                    <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
+                </ul>
+                <div class="language-selector">
+                    <select id="languageSwitcher">
+                        <option value="en">English</option>
+                        <option value="juba">Juba Arabic</option>
+                        <option value="bari">Bari</option>
+                    </select>
+                </div>
+            </nav>
+            <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+        </div>
+    </header>
+
+
+    <div class="croplog-hero">
+        <div class="hero-eyebrow">Smart Farmer</div>
+        <h1 data-translate="cropLogTitle">My Crop <em>Monitoring Log</em></h1>
+        <p data-translate="cropLogSubtitle">Save your planting dates. All data stays on your phone. Works offline.</p>
+        <div class="hero-stats">
+            <div>
+                <div class="hero-stat-num">5</div>
+                <div class="hero-stat-label">Crops</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div>
+                <div class="hero-stat-num">Offline</div>
+                <div class="hero-stat-label">Works always</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div>
+                <div class="hero-stat-num">Private</div>
+                <div class="hero-stat-label">Stays on device</div>
+            </div>
+        </div>
+    </div>
 
     <main>
-        <h2 data-translate="cropLogTitle">My Crop Monitoring Log</h2>
-        <p class="subtitle" data-translate="cropLogSubtitle">Save your planting dates. All data stays on your phone. Works offline.</p>
+        <div class="log-layout">
 
-        <div class="log-form">
-            <label for="cropSelect" data-translate="selectCrop">Select Crop:</label>
-            <select id="cropSelect">
-                <option value="Sorghum">Sorghum</option>
-                <option value="Maize">Maize</option>
-                <option value="Millet">Millet</option>
-                <option value="Groundnuts">Groundnuts</option>
-                <option value="Cassava">Cassava</option>
-            </select>
 
-            <label for="plantDate" data-translate="plantingDate">Planting Date:</label>
-            <input type="date" id="plantDate">
-
-            <label for="notes" data-translate="notesLabel">Notes (optional):</label>
-            <textarea id="notes" rows="2" placeholder="e.g., planted near the river"></textarea>
-
-            <button onclick="saveCropLog()" data-translate="saveRecord">Save Planting Record</button>
-        </div>
-
-        <div class="saved-logs">
-            <h3>Your Saved Records</h3>
-            <div id="logList">
-                <p class="empty-message">No records yet. Save your first planting date above.</p>
+            <div class="log-panel">
+                <div class="section-label">New Record</div>
+                <div class="log-form">
+                    <div class="form-group">
+                        <label for="cropSelect" data-translate="selectCrop">Select Crop</label>
+                        <select id="cropSelect">
+                            <option value="Sorghum">Sorghum</option>
+                            <option value="Maize">Maize</option>
+                            <option value="Millet">Millet</option>
+                            <option value="Groundnuts">Groundnuts</option>
+                            <option value="Cassava">Cassava</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="plantDate" data-translate="plantingDate">Planting Date</label>
+                        <input type="date" id="plantDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="notes" data-translate="notesLabel">Notes (optional)</label>
+                        <textarea id="notes" rows="3" placeholder="e.g., planted near the river"></textarea>
+                    </div>
+                    <button class="save-btn" onclick="saveCropLog()" data-translate="saveRecord">
+                        Save Planting Record
+                    </button>
+                </div>
             </div>
-            <button onclick="clearAllLogs()" class="clear-btn">🗑️ Clear All Records</button>
+
+            <div class="log-panel">
+                <div class="section-label">Saved Records</div>
+                <div class="saved-logs">
+                    <div id="logList">
+                        <div class="empty-message">
+                            <p>No records yet. Save your first planting date.</p>
+                        </div>
+                    </div>
+                    <button onclick="clearAllLogs()" class="clear-btn">Clear All Records</button>
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -72,80 +110,5 @@
 
     <script src="js/translations.js"></script>
     <script src="js/script.js"></script>
-
-    <script>
-
-        function toggleMenu() {
-            const nav = document.querySelector('.nav-links');
-            if (nav) nav.classList.toggle('active');
-        }
-
-        function saveCropLog() {
-            let crop = document.getElementById('cropSelect').value;
-            let date = document.getElementById('plantDate').value;
-            let notes = document.getElementById('notes').value;
-
-            if (!date) {
-                alert('Please select a planting date');
-                return;
-            }
-
-            let logs = localStorage.getItem('cropLogs');
-            if (logs) {
-                logs = JSON.parse(logs);
-            } else {
-                logs = [];
-            }
-
-            logs.push({
-                crop: crop,
-                date: date,
-                notes: notes || '',
-                timestamp: new Date().toISOString()
-            });
-
-            localStorage.setItem('cropLogs', JSON.stringify(logs));
-            displayCropLogs();
-
-            // Clear form
-            document.getElementById('plantDate').value = '';
-            document.getElementById('notes').value = '';
-
-            alert('Planting record saved!');
-        }
-
-        function displayCropLogs() {
-            let logs = localStorage.getItem('cropLogs');
-            let logList = document.getElementById('logList');
-
-            if (!logList) return;
-
-            if (logs && JSON.parse(logs).length > 0) {
-                logs = JSON.parse(logs);
-                let html = '';
-                for (let i = logs.length - 1; i >= 0; i--) {
-                    html += '<div class="log-item">';
-                    html += '<strong>' + logs[i].crop + '</strong> - Planted: ' + logs[i].date;
-                    if (logs[i].notes) {
-                        html += '<br><small>Note: ' + logs[i].notes + '</small>';
-                    }
-                    html += '</div>';
-                }
-                logList.innerHTML = html;
-            } else {
-                logList.innerHTML = '<p class="empty-message">No records yet. Save your first planting date above.</p>';
-            }
-        }
-
-        function clearAllLogs() {
-            if (confirm('Are you sure? This will delete all your saved planting records.')) {
-                localStorage.removeItem('cropLogs');
-                displayCropLogs();
-                alert('All records cleared.');
-            }
-        }
-
-        displayCropLogs();
-    </script>
 </body>
 </html>

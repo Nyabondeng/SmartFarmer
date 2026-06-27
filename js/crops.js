@@ -1,38 +1,68 @@
 function toggleMenu() {
-    document.querySelector('.nav-links').classList.toggle('active');
-}
+            const nav = document.querySelector('.nav-links');
+            if (nav) nav.classList.toggle('active');
+        }
 
+        function saveCropLog() {
+            let crop = document.getElementById('cropSelect').value;
+            let date = document.getElementById('plantDate').value;
+            let notes = document.getElementById('notes').value;
 
-function getCropText(crop, lang) {
-    const t = translations[lang] || translations.en;
-    const cropVoices = {
-        sorghum:    t.sorghumVoice    || 'Sorghum. Planting season: May-June. Spacing: 75cm x 25cm. Pest control: Watch for armyworms after first rain. Harvest: September-October. Storage: Dry completely before storing.',
-        maize:      t.maizeVoice      || 'Maize. Planting season: May-June. Spacing: 75cm x 50cm. Pest control: Watch for maize stalk borer. Harvest: August-September. Storage: Dry on the cob, then remove kernels.',
-        millet:     t.milletVoice     || 'Millet. Planting season: May-June. Spacing: 60cm x 20cm. Pest control: Watch for birds and stem borers. Harvest: September-October. Storage: Store in sealed containers.',
-        groundnuts: t.groundnutsVoice || 'Groundnuts. Planting season: May-June. Spacing: 50cm x 15cm. Pest control: Watch for leaf spot and aphids. Harvest: October-November. Storage: Dry thoroughly before shelling.',
-        cassava:    t.cassavaVoice    || 'Cassava. Planting season: March-April. Spacing: 100cm x 100cm. Pest control: Watch for cassava mosaic disease. Harvest: 8-12 months after planting. Storage: Harvest only when needed.'
-    };
-    return cropVoices[crop] || 'Crop information not available.';
-}
+            if (!date) {
+                alert('Please select a planting date');
+                return;
+            }
 
+            let logs = localStorage.getItem('cropLogs');
+            logs = logs ? JSON.parse(logs) : [];
 
-function playCropAudio(crop) {
-    const lang = document.getElementById('languageSwitcher').value;
-    const text = getCropText(crop, lang);
-    if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = 0.85;
-        utterance.lang = (lang === 'juba' || lang === 'ar') ? 'ar-SA' : 'en-US';
-        utterance.onerror = () => alert('Sorry, voice is not available. Please try again.');
-        window.speechSynthesis.speak(utterance);
-    } else {
-        alert('Your browser does not support voice output. Here is the information: ' + text);
-    }
-}
+            logs.push({
+                crop: crop,
+                date: date,
+                notes: notes || '',
+                timestamp: new Date().toISOString()
+            });
 
+            localStorage.setItem('cropLogs', JSON.stringify(logs));
+            displayCropLogs();
 
-document.getElementById('languageSwitcher').addEventListener('change', function () {
-    const lang = this.value;
-    if (typeof applyTranslations === 'function') applyTranslations(lang);
-});
+            document.getElementById('plantDate').value = '';
+            document.getElementById('notes').value = '';
+            alert('Planting record saved!');
+        }
+
+        function displayCropLogs() {
+            let logs = localStorage.getItem('cropLogs');
+            let logList = document.getElementById('logList');
+            if (!logList) return;
+
+            if (logs && JSON.parse(logs).length > 0) {
+                logs = JSON.parse(logs);
+                let html = '';
+                for (let i = logs.length - 1; i >= 0; i--) {
+                    html += `<div class="log-item">
+                        <div class="log-item-header">
+                            <span class="log-crop">${logs[i].crop}</span>
+                            <span class="log-date">${logs[i].date}</span>
+                        </div>
+                        ${logs[i].notes ? `<p class="log-note">${logs[i].notes}</p>` : ''}
+                    </div>`;
+                }
+                logList.innerHTML = html;
+            } else {
+                logList.innerHTML = `<div class="empty-message">
+                    <div class="empty-icon">🌱</div>
+                    <p>No records yet. Save your first planting date.</p>
+                </div>`;
+            }
+        }
+
+        function clearAllLogs() {
+            if (confirm('Are you sure? This will delete all your saved planting records.')) {
+                localStorage.removeItem('cropLogs');
+                displayCropLogs();
+                alert('All records cleared.');
+            }
+        }
+
+        displayCropLogs();
