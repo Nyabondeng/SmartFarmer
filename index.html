@@ -5,19 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Farmer - Empowering Farmers</title>
-    <link rel="stylesheet" href="./styles/styles.css">
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
+        
 
-<body>
-
-    <!-- Header -->
     <header class="site-header">
         <div class="container--nav">
-
             <div class="logo">
                 <img src="./images/smartfarmer.png" alt="Smart Farmer Logo">
             </div>
-
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html" data-translate="home">Home</a></li>
@@ -28,7 +24,6 @@
                     <li><a href="contact.html" data-translate="contact">Contact</a></li>
                     <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
                 </ul>
-
                 <div class="language-selector">
                     <select id="languageSwitcher">
                         <option value="en">English</option>
@@ -37,39 +32,55 @@
                     </select>
                 </div>
             </nav>
-
-            <button class="menu-icon"
-                    onclick="toggleMenu()"
-                    aria-label="Toggle Navigation">
-                ☰
-            </button>
-
+            <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle Navigation">☰</button>
         </div>
     </header>
 
 
     <section class="home-section">
 
-    <div class="hero-content">
-        <h1>
-            Smart Farming <br>
-            Starts Here
-        </h1>
 
-        <p data-translate="tagline">
-            Information. Education. Better Harvests.<br>
-            All in your language, all offline.
-        </p>
-
-        <div class="hero-buttons">
-            <a href="crops.html" class="primary-btn">Explore Crops</a>
-            <a href="education.html" class="secondary-btn">Start Learning</a>
+        <div class="hero-content">
+            <h1>Smart Farming <br>Starts Here</h1>
+            <p data-translate="tagline">
+                Information. Education. Better Harvests.<br>
+                All in your language, all offline.
+            </p>
+            <div class="hero-buttons">
+                <a href="crops.html" class="primary-btn">Explore Crops</a>
+                <a href="education.html" class="secondary-btn">Start Learning</a>
+            </div>
+            <div class="hero-trust">
+                <div class="trust-item">
+                    <span class="trust-num">5</span>
+                    <span class="trust-label">Crops</span>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-item">
+                    <span class="trust-num">10</span>
+                    <span class="trust-label">Modules</span>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-item">
+                    <span class="trust-num">3</span>
+                    <span class="trust-label">Languages</span>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-item">
+                    <span class="trust-num">Free</span>
+                    <span class="trust-label">Always</span>
+                </div>
+            </div>
         </div>
-    </div>
 
-</section>
+        
+        <div class="hero-image">
+            <img src="./images/farmer-field.jpg" alt="Farmer in the field">
+        </div>
 
-    <!-- Footer -->
+    </section>
+
+
     <footer>
         <p>&copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.</p>
     </footer>
@@ -78,5 +89,4 @@
     <script src="js/script.js"></script>
 
 </body>
-
 </html>
