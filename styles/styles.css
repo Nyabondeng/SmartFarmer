@@ -29,7 +29,7 @@
         }
         .logo img { width: 180px; height: auto; display: block; }
         nav { flex: 1; display: flex; align-items: center; justify-content: center; }
-        .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; margin-left: auto; }
         .nav-links a {
             color: white;
             text-decoration: none;
