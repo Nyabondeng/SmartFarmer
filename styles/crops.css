@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap');*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-@import url('navbar.css');
         :root {
             --green-dark: #0f5c2e;
             --green-mid: #1a8a4a;
@@ -37,6 +36,7 @@
             height: auto;
             min-height: 64px;
             gap: 1.5rem;
+            position: relative;
         }
         .logo img { width: 180px; height: auto; display: block; }
         nav { display: flex; align-items: center; gap: 1.5rem; margin-left: auto; }

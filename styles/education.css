@@ -45,6 +45,7 @@ body {
     align-items: center;
     height: auto;
     gap: 1.5rem;
+    position: relative;
 }
 .logo img { height: auto; max-width: 180px; display: block; }
 nav { display: flex; align-items: center; gap: 1.5rem; margin-left: auto; }

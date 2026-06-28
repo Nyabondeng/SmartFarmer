@@ -37,6 +37,7 @@ body {
     height: auto;
     min-height: 64px;
     gap: 1.5rem;
+    position: relative;
 }
 .logo img { width: 180px; height: auto; display: block; }
 nav { display: flex; align-items: center; gap: 1.5rem; margin-left: auto; }
