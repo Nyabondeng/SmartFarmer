@@ -61,7 +61,7 @@ nav { display: flex; align-items: center; gap: 1.5rem; margin-left: auto; }
     cursor: pointer;
     margin-left: auto;
 }
-@media (max-width: 768px) {
+@media (max-width: 820px) {
     .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: #0f5c2e; padding: 1rem 1.5rem; gap: 1rem; z-index: 99; }
     .nav-links.active { display: flex; }
     .menu-icon { display: block; }
@@ -73,8 +73,11 @@ nav { display: flex; align-items: center; gap: 1.5rem; margin-left: auto; }
 }
 @media (max-width: 480px) {
     .container--nav { padding: 0 1rem; }
+    .logo img { width: 120px; }
 }
-
+@media (min-width: 821px) {
+    .menu-icon { display: none; }
+}
 
 .home-section {
     display: flex;
