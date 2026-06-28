@@ -15,7 +15,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background: var(--bg);
-            color: var(--green-dark);
+            color: var(--text-primary);
             line-height: 1.6;
         }
 
@@ -112,7 +112,7 @@
             text-transform: uppercase;
         }
         .crops-hero h2 {
-            font-family: 'Fraunces', serif;
+            font-family: 'Inter', serif;
             font-size: clamp(26px, 5vw, 42px);
             font-weight: 700;
             color: white;
