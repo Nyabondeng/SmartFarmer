@@ -74,6 +74,10 @@ nav { display: flex; align-items: center; gap: 1.5rem; margin-left: auto; }
     .nav-links.active { display: flex; }
     .menu-icon { display: block; }
     nav { gap: 0.75rem; }
+    .stat-divider { display: none; }
+    .hero-stats { gap: 1.5rem; }
+    .filter-bar { padding: 0.5rem 1rem; }
+    .lang-switcher { margin-left: 0; }
 }
 @media (max-width: 480px) {
     .container--nav { padding: 0 1rem; }
