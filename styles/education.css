@@ -371,3 +371,34 @@ footer {
 @media (min-width: 821px) {
     .menu-icon { display: none; }
 }
+
+
+.card-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.learn-more-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: var(--green-light);
+    color: var(--green-dark);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s;
+    width: 100%;
+    border: 1px solid var(--green-mid);
+}
+
+.learn-more-btn:hover {
+    background: var(--green-dark);
+    color: white;
+    gap: 12px;
+    border-color: var(--green-dark);
+}
