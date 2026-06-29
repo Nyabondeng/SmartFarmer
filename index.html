@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Farmer - Empowering Farmers</title>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/images/icon-192x192.png">
+    <meta name="theme-color" content="#1E6A33">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
@@ -35,6 +40,19 @@
             <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle Navigation">☰</button>
         </div>
     </header>
+
+    <!-- Install App Banner -->
+<section class="install-banner" id="installBanner" style="display:none;">
+    <div class="install-content">
+        <div class="install-icon">📱</div>
+        <div class="install-text">
+            <h3>Install Smart Farmer</h3>
+            <p>Save this app to your phone for offline access</p>
+        </div>
+        <button class="install-btn" id="installBtn">Install</button>
+        <button class="close-install" onclick="document.getElementById('installBanner').style.display='none'">✕</button>
+    </div>
+</section>
 
     <section class="home-section">
 

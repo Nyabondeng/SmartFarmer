@@ -349,3 +349,104 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+
+
+// ============================================
+// SMART FARMER - INSTALL BANNER (PWA)
+// ============================================
+
+let deferredPrompt;
+
+// ─── DISMISS BANNER ────────────────────────────────
+function dismissInstallBanner() {
+    const banner = document.getElementById('installBanner');
+    if (banner) {
+        banner.style.display = 'none';
+        localStorage.setItem('installBannerDismissed', 'true');
+    }
+}
+
+// ─── SHOW BANNER ────────────────────────────────────
+function showInstallBanner() {
+    const banner = document.getElementById('installBanner');
+    if (!banner) return;
+
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+    const isDismissed = localStorage.getItem('installBannerDismissed');
+
+    if (isMobile && !isStandalone && !isDismissed) {
+        setTimeout(() => {
+            banner.style.display = 'block';
+        }, 3000);
+    }
+}
+
+// ─── INSTALL PROMPT ─────────────────────────────────
+window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredPrompt = event;
+    const banner = document.getElementById('installBanner');
+    if (banner) {
+        banner.style.display = 'block';
+    }
+});
+
+// ─── INSTALL BUTTON CLICK ──────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    const installBtn = document.getElementById('installBtn');
+    if (installBtn) {
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const choiceResult = await deferredPrompt.userChoice;
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('✅ Smart Farmer installed');
+                    const banner = document.getElementById('installBanner');
+                    if (banner) banner.style.display = 'none';
+                } else {
+                    console.log('❌ Install dismissed');
+                }
+                deferredPrompt = null;
+            }
+        });
+    }
+
+    // Close button
+    const closeBtn = document.querySelector('.close-install');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', dismissInstallBanner);
+    }
+
+    // Show the banner on page load
+    showInstallBanner();
+});
+
+// ─── APP INSTALLED ──────────────────────────────────
+window.addEventListener('appinstalled', () => {
+    console.log('✅ Smart Farmer installed successfully');
+    const banner = document.getElementById('installBanner');
+    if (banner) banner.style.display = 'none';
+});
+
+// ─── HIDE BANNER IF ALREADY INSTALLED ──────────────
+if (window.matchMedia('(display-mode: standalone)').matches) {
+    const banner = document.getElementById('installBanner');
+    if (banner) banner.style.display = 'none';
+}
+
+// ─── EXPOSE FUNCTIONS GLOBALLY ─────────────────────
+window.dismissInstallBanner = dismissInstallBanner;
+window.showInstallBanner = showInstallBanner;
+
+// ─── SERVICE WORKER REGISTRATION ────────────────────
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+            console.log('✅ Service Worker registered successfully');
+        })
+        .catch(error => {
+            console.log('❌ Service Worker registration failed:', error);
+        });
+}
