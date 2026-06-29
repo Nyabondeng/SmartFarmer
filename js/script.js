@@ -398,6 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (installBtn) {
         installBtn.addEventListener('click', async () => {
             if (deferredPrompt) {
+                // Native install prompt
                 deferredPrompt.prompt();
                 const choiceResult = await deferredPrompt.userChoice;
                 if (choiceResult.outcome === 'accepted') {
@@ -408,6 +409,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log('❌ Install dismissed');
                 }
                 deferredPrompt = null;
+            } else {
+                // FALLBACK: If native prompt is not available, show instructions
+                alert('To install Smart Farmer:\n\n1. Tap the Share icon\n2. Scroll down and tap "Add to Home Screen"\n3. Tap "Add" to install');
             }
         });
     }
@@ -438,15 +442,3 @@ if (window.matchMedia('(display-mode: standalone)').matches) {
 // ─── EXPOSE FUNCTIONS GLOBALLY ─────────────────────
 window.dismissInstallBanner = dismissInstallBanner;
 window.showInstallBanner = showInstallBanner;
-
-// ─── SERVICE WORKER REGISTRATION ────────────────────
-
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-        .then(registration => {
-            console.log('✅ Service Worker registered successfully');
-        })
-        .catch(error => {
-            console.log('❌ Service Worker registration failed:', error);
-        });
-}
