@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Smart Farmer - Pest Management</title>
+    <link rel="stylesheet" href="../styles/module-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar"></div>
+
+<!-- Header -->
+<header class="site-header">
+    <div class="container--nav">
+        <div class="logo">
+            <img src="../images/smartfarmer.png" alt="Smart Farmer logo">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../crops.html">Crop Info</a></li>
+                <li><a href="../education.html">Education</a></li>
+                <li><a href="../crop-log.html">Crop Log</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+                <li><a href="../ussd.html">USSD</a></li>
+            </ul>
+            <div class="language-selector">
+                <select id="languageSwitcher">
+                    <option value="en">English</option>
+                    <option value="juba">Juba Arabic</option>
+                    <option value="bari">Bari</option>
+                </select>
+            </div>
+        </nav>
+        <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+    </div>
+</header>
+
+<!-- Back Navigation -->
+<div class="back-nav">
+    <a href="../education.html" class="back-link">← Back to Education</a>
+</div>
+
+<!-- Hero -->
+<section class="module-hero">
+    <div class="module-number">Module 02</div>
+    <h1>🐛 Pest <span class="highlight">Management</span></h1>
+    <p>Learn how to identify and control common pests that threaten your crops in South Sudan.</p>
+    <button class="pulse-btn" onclick="playModuleAudio('pest')">
+        🔊 Listen to this module
+    </button>
+</section>
+
+<!-- Content -->
+<div class="module-content">
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-number" data-target="6">0</div>
+            <div class="stat-label">Key Tips</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="4">0</div>
+            <div class="stat-label">Minute Read</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="5">0</div>
+            <div class="stat-label">Pests Covered</div>
+        </div>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="content-section slide-left">
+        <h2><span class="emoji">🐜</span> Common Pests in South Sudan</h2>
+        <p>Pests are one of the biggest threats to farming in South Sudan. Here are the most common pests you will face:</p>
+        <ul>
+            <li><span class="check">✓</span> <strong>Armyworms:</strong> Eat leaves and destroy crops quickly</li>
+            <li><span class="check">✓</span> <strong>Stem borers:</strong> Bore into stems, causing plants to die</li>
+            <li><span class="check">✓</span> <strong>Aphids:</strong> Suck sap from plants, weakening them</li>
+            <li><span class="check">✓</span> <strong>Birds:</strong> Eat seeds and grains during harvest</li>
+            <li><span class="check">✓</span> <strong>Locusts:</strong> Swarm and eat entire fields</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>Check your fields every morning. Pests are most active at dawn and dusk.</p>
+        </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="content-section slide-right">
+        <h2><span class="emoji">🔍</span> How to Identify Pests</h2>
+        <p>Knowing which pest is attacking your crops is the first step to controlling them.</p>
+        <ul>
+            <li><span class="check">✓</span> <strong>Armyworms:</strong> Look for caterpillars on leaves and holes in leaves</li>
+            <li><span class="check">✓</span> <strong>Stem borers:</strong> Look for holes in stems and sawdust-like material</li>
+            <li><span class="check">✓</span> <strong>Aphids:</strong> Look for small green or black insects on stems and leaves</li>
+            <li><span class="check">✓</span> <strong>Birds:</strong> Look for damaged grains and bird droppings</li>
+            <li><span class="check">✓</span> <strong>Locusts:</strong> Look for large swarms and eaten crops</li>
+        </ul>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="content-section slide-left">
+        <h2><span class="emoji">🌿</span> Natural Pest Control Methods</h2>
+        <p>Many pests can be controlled without chemicals:</p>
+        <ul>
+            <li><span class="check">✓</span> <strong>Armyworms:</strong> Remove by hand and crush them</li>
+            <li><span class="check">✓</span> <strong>Stem borers:</strong> Use ash or neem powder around plant stems</li>
+            <li><span class="check">✓</span> <strong>Aphids:</strong> Spray with soapy water</li>
+            <li><span class="check">✓</span> <strong>Birds:</strong> Use scarecrows or nets during harvest time</li>
+            <li><span class="check">✓</span> <strong>Locusts:</strong> Use noise to scare them away</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>Neem powder is a natural pesticide. You can buy it or make your own by grinding neem leaves.</p>
+        </div>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="content-section slide-right">
+        <h2><span class="emoji">🧪</span> Chemical Control</h2>
+        <p>Only use chemicals when pests are too many to control naturally.</p>
+        <ul>
+            <li><span class="check">✓</span> Use recommended pesticides only</li>
+            <li><span class="check">✓</span> Follow the instructions on the label</li>
+            <li><span class="check">✓</span> Wear protective clothing when spraying</li>
+            <li><span class="check">✓</span> Spray in the early morning or late evening</li>
+            <li><span class="check">✓</span> Do not spray near water sources</li>
+        </ul>
+        <div class="tip-box">
+            <strong>⚠️ Warning:</strong>
+            <p>Always store pesticides in a safe place, away from children and food.</p>
+        </div>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="content-section slide-left">
+        <h2><span class="emoji">🛡️</span> Prevention Strategies</h2>
+        <p>Preventing pests is better than controlling them. Here is how:</p>
+        <ul>
+            <li><span class="check">✓</span> Rotate crops every season</li>
+            <li><span class="check">✓</span> Keep fields clean and free of weeds</li>
+            <li><span class="check">✓</span> Plant pest-resistant varieties</li>
+            <li><span class="check">✓</span> Plant early to avoid peak pest seasons</li>
+            <li><span class="check">✓</span> Use intercropping to confuse pests</li>
+        </ul>
+    </div>
+
+    <!-- Section 6 -->
+    <div class="content-section slide-right">
+        <h2><span class="emoji">📌</span> Summary</h2>
+        <p><strong>Key takeaways:</strong></p>
+        <ul>
+            <li><span class="check">✓</span> Identify pests early by checking fields daily</li>
+            <li><span class="check">✓</span> Try natural methods first before using chemicals</li>
+            <li><span class="check">✓</span> Prevention is better than cure</li>
+            <li><span class="check">✓</span> Keep your fields clean and rotate crops</li>
+        </ul>
+    </div>
+
+    <!-- Navigation -->
+    <div class="module-nav">
+        <a href="module-planting.html" class="prev">← Previous Module</a>
+        <a href="module-postharvest.html" class="next">Next Module →</a>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.</p>
+</footer>
+
+<script src="../js/translations.js"></script>
+<script src="../js/module-detail.js"></script>
+<script>
+    document.getElementById('languageSwitcher').addEventListener('change', function() {
+        const lang = this.value;
+        localStorage.setItem('smartfarmer_lang', lang);
+        if (typeof translatePage === 'function') translatePage();
+    });
+</script>
+
+</body>
+</html>

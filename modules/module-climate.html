@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Smart Farmer - Climate-Smart Farming</title>
+    <link rel="stylesheet" href="../styles/module-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="progress-bar"></div>
+
+<header class="site-header">
+    <div class="container--nav">
+        <div class="logo">
+            <img src="../images/smartfarmer.png" alt="Smart Farmer logo">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../crops.html">Crop Info</a></li>
+                <li><a href="../education.html">Education</a></li>
+                <li><a href="../crop-log.html">Crop Log</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+                <li><a href="../ussd.html">USSD</a></li>
+            </ul>
+            <div class="language-selector">
+                <select id="languageSwitcher">
+                    <option value="en">English</option>
+                    <option value="juba">Juba Arabic</option>
+                    <option value="bari">Bari</option>
+                </select>
+            </div>
+        </nav>
+        <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+    </div>
+</header>
+
+<div class="back-nav">
+    <a href="../education.html" class="back-link">← Back to Education</a>
+</div>
+
+<section class="module-hero">
+    <div class="module-number">Module 05</div>
+    <h1>☀️ Climate-Smart <span class="highlight">Farming</span></h1>
+    <p>Adapt your farming to changing weather conditions in South Sudan.</p>
+    <button class="pulse-btn" onclick="playModuleAudio('climate')">
+        🔊 Listen to this module
+    </button>
+</section>
+
+<div class="module-content">
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-number" data-target="5">0</div>
+            <div class="stat-label">Key Tips</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="4">0</div>
+            <div class="stat-label">Minute Read</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="3">0</div>
+            <div class="stat-label">Resilient Crops</div>
+        </div>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="content-section slide-left">
+        <h2><span class="emoji">🌤️</span> Understanding Climate Change in South Sudan</h2>
+        <p>Climate change is making farming harder in South Sudan. Rains are becoming more unpredictable. Droughts and floods are more common. Farmers need to adapt to survive.</p>
+        <p>In the past, farmers knew when to plant based on the seasons. Now, the seasons are changing. Some years the rain comes late. Other years it stops early. Farmers who adapt to these changes will have better harvests.</p>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>Pay attention to weather patterns in your area. Talk to older farmers about what they have seen.</p>
+        </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="content-section slide-right">
+        <h2><span class="emoji">🌾</span> Drought-Resistant Crops</h2>
+        <p>Some crops can survive dry conditions better than others. Plant these when rain is uncertain:</p>
+        <ul>
+            <li><span class="check">✓</span> <strong>Sorghum:</strong> Very drought-resistant, grows well in dry areas</li>
+            <li><span class="check">✓</span> <strong>Millet:</strong> Another hardy grain that tolerates drought</li>
+            <li><span class="check">✓</span> <strong>Cassava:</strong> Can survive dry periods and poor soils</li>
+            <li><span class="check">✓</span> <strong>Groundnuts:</strong> Tolerate dry conditions and improve soil</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>If you expect less rain, plant more sorghum and millet. They are reliable even in hard times.</p>
+        </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="content-section slide-left">
+        <h2><span class="emoji">💧</span> Rainwater Harvesting</h2>
+        <p>Collecting rainwater can help you cope with dry spells.</p>
+        <ul>
+            <li><span class="check">✓</span> Build simple water collection systems</li>
+            <li><span class="check">✓</span> Store water in tanks or barrels</li>
+            <li><span class="check">✓</span> Use stored water for irrigation during dry periods</li>
+            <li><span class="check">✓</span> Dig ponds to collect runoff water</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>Even a small tank can make a big difference during a dry spell.</p>
+        </div>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="content-section slide-right">
+        <h2><span class="emoji">🌱</span> Early Planting</h2>
+        <p>Planting early can help your crops get enough water before the rains stop.</p>
+        <ul>
+            <li><span class="check">✓</span> Plant as soon as the first rains arrive</li>
+            <li><span class="check">✓</span> Use short-maturing varieties that finish before the dry season</li>
+            <li><span class="check">✓</span> Prepare your land early so you are ready when rain comes</li>
+        </ul>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="content-section slide-left">
+        <h2><span class="emoji">📻</span> Weather Forecasts</h2>
+        <p>Knowing the weather helps you plan your farming.</p>
+        <ul>
+            <li><span class="check">✓</span> Listen to local weather reports on the radio</li>
+            <li><span class="check">✓</span> Use the Smart Farmer USSD service for updates (*131#)</li>
+            <li><span class="check">✓</span> Watch for signs in nature (birds, insects, clouds)</li>
+            <li><span class="check">✓</span> Share weather information with other farmers</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>Older farmers know a lot about weather patterns. Learn from them.</p>
+        </div>
+    </div>
+
+    <!-- Section 6 -->
+    <div class="content-section slide-right">
+        <h2><span class="emoji">📌</span> Summary</h2>
+        <ul>
+            <li><span class="check">✓</span> Climate change is making farming harder in South Sudan</li>
+            <li><span class="check">✓</span> Plant drought-resistant crops like sorghum, millet, and cassava</li>
+            <li><span class="check">✓</span> Harvest rainwater and plant early</li>
+            <li><span class="check">✓</span> Listen to weather forecasts</li>
+        </ul>
+    </div>
+
+    <div class="module-nav">
+        <a href="module-soil.html" class="prev">← Previous Module</a>
+        <a href="module-water.html" class="next">Next Module →</a>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.</p>
+</footer>
+
+<script src="../js/translations.js"></script>
+<script src="../js/module-detail.js"></script>
+<script>
+    document.getElementById('languageSwitcher').addEventListener('change', function() {
+        const lang = this.value;
+        localStorage.setItem('smartfarmer_lang', lang);
+        if (typeof translatePage === 'function') translatePage();
+    });
+</script>
+
+</body>
+</html>

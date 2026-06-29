@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Smart Farmer - Crop Disease Control</title>
+    <link rel="stylesheet" href="../styles/module-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="progress-bar"></div>
+
+<header class="site-header">
+    <div class="container--nav">
+        <div class="logo">
+            <img src="../images/smartfarmer.png" alt="Smart Farmer logo">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../crops.html">Crop Info</a></li>
+                <li><a href="../education.html">Education</a></li>
+                <li><a href="../crop-log.html">Crop Log</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+                <li><a href="../ussd.html">USSD</a></li>
+            </ul>
+            <div class="language-selector">
+                <select id="languageSwitcher">
+                    <option value="en">English</option>
+                    <option value="juba">Juba Arabic</option>
+                    <option value="bari">Bari</option>
+                </select>
+            </div>
+        </nav>
+        <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+    </div>
+</header>
+
+<div class="back-nav">
+    <a href="../education.html" class="back-link">← Back to Education</a>
+</div>
+
+<section class="module-hero">
+    <div class="module-number">Module 09</div>
+    <h1>🦠 Crop Disease <span class="highlight">Control</span></h1>
+    <p>Spot and stop crop diseases early to protect your harvest.</p>
+    <button class="pulse-btn" onclick="playModuleAudio('disease')">
+        🔊 Listen to this module
+    </button>
+</section>
+
+<div class="module-content">
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-number" data-target="5">0</div>
+            <div class="stat-label">Key Tips</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="4">0</div>
+            <div class="stat-label">Minute Read</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="3">0</div>
+            <div class="stat-label">Common Diseases</div>
+        </div>
+    </div>
+
+    <div class="content-section slide-left">
+        <h2><span class="emoji">🔍</span> Common Crop Diseases</h2>
+        <p>Knowing the signs of disease helps you act quickly.</p>
+        <ul>
+            <li><span class="check">✓</span> <strong>Cassava Mosaic Disease:</strong> Yellow and distorted leaves on cassava</li>
+            <li><span class="check">✓</span> <strong>Leaf Spot:</strong> Brown or yellow spots on leaves</li>
+            <li><span class="check">✓</span> <strong>Rust:</strong> Orange or brown powder on leaves</li>
+            <li><span class="check">✓</span> <strong>Wilting:</strong> Plants droop and die suddenly</li>
+            <li><span class="check">✓</span> <strong>Rot:</strong> Soft, decaying areas on stems or fruits</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>Check your fields weekly. Early detection is key to controlling disease.</p>
+        </div>
+    </div>
+
+    <div class="content-section slide-right">
+        <h2><span class="emoji">🔎</span> How to Spot Disease</h2>
+        <p>Look for these signs of disease in your crops:</p>
+        <ul>
+            <li><span class="check">✓</span> Spots on leaves (brown, yellow, or black)</li>
+            <li><span class="check">✓</span> Wilting or drooping plants</li>
+            <li><span class="check">✓</span> Rotting stems or fruits</li>
+            <li><span class="check">✓</span> Leaves turning yellow or falling off</li>
+            <li><span class="check">✓</span> White or powdery growth on leaves</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>Look under leaves and at the base of plants. Diseases often start in hidden places.</p>
+        </div>
+    </div>
+
+    <div class="content-section slide-left">
+        <h2><span class="emoji">🛡️</span> Prevention</h2>
+        <p>Preventing disease is better than curing it:</p>
+        <ul>
+            <li><span class="check">✓</span> Use disease-resistant seed varieties</li>
+            <li><span class="check">✓</span> Rotate crops every season</li>
+            <li><span class="check">✓</span> Keep fields clean and free of weeds</li>
+            <li><span class="check">✓</span> Space plants properly for air circulation</li>
+            <li><span class="check">✓</span> Water the soil, not the leaves</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>Healthy plants resist disease better. Feed your soil and water regularly.</p>
+        </div>
+    </div>
+
+    <div class="content-section slide-right">
+        <h2><span class="emoji">🧹</span> What to Do When Disease Appears</h2>
+        <p>Act fast when you see signs of disease:</p>
+        <ul>
+            <li><span class="check">✓</span> Remove and burn diseased plants immediately</li>
+            <li><span class="check">✓</span> Do not compost diseased plants</li>
+            <li><span class="check">✓</span> Avoid walking through wet fields</li>
+            <li><span class="check">✓</span> Use disease-free seeds next season</li>
+            <li><span class="check">✓</span> Ask your extension officer for help</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>Burning diseased plants is the best way to stop disease from spreading.</p>
+        </div>
+    </div>
+
+    <div class="content-section slide-left">
+        <h2><span class="emoji">🧼</span> Clean Tools and Fields</h2>
+        <p>Disease can spread through dirty tools and fields.</p>
+        <ul>
+            <li><span class="check">✓</span> Clean tools after working in diseased fields</li>
+            <li><span class="check">✓</span> Use clean water and soap</li>
+            <li><span class="check">✓</span> Let tools dry in the sun</li>
+            <li><span class="check">✓</span> Remove crop residue after harvest</li>
+        </ul>
+    </div>
+
+    <div class="content-section slide-right">
+        <h2><span class="emoji">📌</span> Summary</h2>
+        <ul>
+            <li><span class="check">✓</span> Know the signs of common diseases</li>
+            <li><span class="check">✓</span> Inspect your fields weekly</li>
+            <li><span class="check">✓</span> Prevent disease with resistant varieties and crop rotation</li>
+            <li><span class="check">✓</span> Remove and burn diseased plants</li>
+            <li><span class="check">✓</span> Keep tools and fields clean</li>
+        </ul>
+    </div>
+
+    <div class="module-nav">
+        <a href="module-fertilizer.html" class="prev">← Previous Module</a>
+        <a href="module-tools.html" class="next">Next Module →</a>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.</p>
+</footer>
+
+<script src="../js/translations.js"></script>
+<script src="../js/module-detail.js"></script>
+<script>
+    document.getElementById('languageSwitcher').addEventListener('change', function() {
+        const lang = this.value;
+        localStorage.setItem('smartfarmer_lang', lang);
+        if (typeof translatePage === 'function') translatePage();
+    });
+</script>
+
+</body>
+</html>

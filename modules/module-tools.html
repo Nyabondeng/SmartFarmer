@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Smart Farmer - Farm Tools</title>
+    <link rel="stylesheet" href="../styles/module-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="progress-bar"></div>
+
+<header class="site-header">
+    <div class="container--nav">
+        <div class="logo">
+            <img src="../images/smartfarmer.png" alt="Smart Farmer logo">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../crops.html">Crop Info</a></li>
+                <li><a href="../education.html">Education</a></li>
+                <li><a href="../crop-log.html">Crop Log</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+                <li><a href="../ussd.html">USSD</a></li>
+            </ul>
+            <div class="language-selector">
+                <select id="languageSwitcher">
+                    <option value="en">English</option>
+                    <option value="juba">Juba Arabic</option>
+                    <option value="bari">Bari</option>
+                </select>
+            </div>
+        </nav>
+        <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+    </div>
+</header>
+
+<div class="back-nav">
+    <a href="../education.html" class="back-link">← Back to Education</a>
+</div>
+
+<section class="module-hero">
+    <div class="module-number">Module 10</div>
+    <h1>🔧 Farm Tools & <span class="highlight">Equipment</span></h1>
+    <p>Use and care for your farm tools to make work easier and last longer.</p>
+    <button class="pulse-btn" onclick="playModuleAudio('tools')">
+        🔊 Listen to this module
+    </button>
+</section>
+
+<div class="module-content">
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-number" data-target="6">0</div>
+            <div class="stat-label">Key Tips</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="3">0</div>
+            <div class="stat-label">Minute Read</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="5">0</div>
+            <div class="stat-label">Essential Tools</div>
+        </div>
+    </div>
+
+    <div class="content-section slide-left">
+        <h2><span class="emoji">🛠️</span> Essential Farm Tools</h2>
+        <p>Every farmer needs a basic set of tools. Here are the essentials for South Sudan:</p>
+        <ul>
+            <li><span class="check">✓</span> <strong>Hoe:</strong> For digging, weeding, and preparing soil</li>
+            <li><span class="check">✓</span> <strong>Machete:</strong> For cutting grass, clearing land, and harvesting</li>
+            <li><span class="check">✓</span> <strong>Watering can:</strong> For watering small gardens and seedlings</li>
+            <li><span class="check">✓</span> <strong>Hand rake:</strong> For leveling soil and removing weeds</li>
+            <li><span class="check">✓</span> <strong>Sickle:</strong> For harvesting grains</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>Invest in quality tools. Cheap tools break easily and cost more in the long run.</p>
+        </div>
+    </div>
+
+    <div class="content-section slide-right">
+        <h2><span class="emoji">🧹</span> Cleaning Tools</h2>
+        <p>Clean tools last longer and prevent disease spread.</p>
+        <ul>
+            <li><span class="check">✓</span> Remove mud and dirt after every use</li>
+            <li><span class="check">✓</span> Wash tools with water and soap</li>
+            <li><span class="check">✓</span> Dry tools before storing</li>
+            <li><span class="check">✓</span> Oil metal parts to prevent rust</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>Rust is the biggest enemy of metal tools. Dry them thoroughly after cleaning.</p>
+        </div>
+    </div>
+
+    <div class="content-section slide-left">
+        <h2><span class="emoji">✨</span> Sharpening Tools</h2>
+        <p>Sharp tools make work easier and faster.</p>
+        <ul>
+            <li><span class="check">✓</span> Sharpen hoes and machetes regularly</li>
+            <li><span class="check">✓</span> Use a sharpening stone or file</li>
+            <li><span class="check">✓</span> Keep a consistent angle while sharpening</li>
+            <li><span class="check">✓</span> Test sharpness by cutting grass or paper</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>A sharp tool is safer than a dull one. It requires less force and reduces the risk of slipping.</p>
+        </div>
+    </div>
+
+    <div class="content-section slide-right">
+        <h2><span class="emoji">🏠</span> Storing Tools</h2>
+        <p>Good storage keeps your tools in good condition.</p>
+        <ul>
+            <li><span class="check">✓</span> Store tools in a dry, shaded place</li>
+            <li><span class="check">✓</span> Hang tools on hooks to keep them off the ground</li>
+            <li><span class="check">✓</span> Keep tools out of direct sunlight</li>
+            <li><span class="check">✓</span> Store tools away from children</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>Hanging tools on a wall saves space and keeps them organized.</p>
+        </div>
+    </div>
+
+    <div class="content-section slide-left">
+        <h2><span class="emoji">🤝</span> Sharing and Borrowing</h2>
+        <p>Not every farmer can afford every tool. Sharing is a good option.</p>
+        <ul>
+            <li><span class="check">✓</span> Share tools with neighbors</li>
+            <li><span class="check">✓</span> Borrow tools you only need occasionally</li>
+            <li><span class="check">✓</span> Return tools in good condition</li>
+            <li><span class="check">✓</span> Start a tool-lending group in your community</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>A tool-lending group helps everyone. You can share the cost of expensive tools.</p>
+        </div>
+    </div>
+
+    <div class="content-section slide-right">
+        <h2><span class="emoji">📌</span> Summary</h2>
+        <ul>
+            <li><span class="check">✓</span> Use the right tool for the right job</li>
+            <li><span class="check">✓</span> Clean tools after every use</li>
+            <li><span class="check">✓</span> Sharpen tools regularly</li>
+            <li><span class="check">✓</span> Store tools in a dry place</li>
+            <li><span class="check">✓</span> Share tools with neighbors to save money</li>
+        </ul>
+    </div>
+
+    <div class="module-nav">
+        <a href="module-disease.html" class="prev">← Previous Module</a>
+        <a href="#" class="next disabled">End of Modules</a>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.</p>
+</footer>
+
+<script src="../js/translations.js"></script>
+<script src="../js/module-detail.js"></script>
+<script>
+    document.getElementById('languageSwitcher').addEventListener('change', function() {
+        const lang = this.value;
+        localStorage.setItem('smartfarmer_lang', lang);
+        if (typeof translatePage === 'function') translatePage();
+    });
+</script>
+
+</body>
+</html>

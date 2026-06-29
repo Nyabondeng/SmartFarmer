@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Smart Farmer - Fertilizer Use</title>
+    <link rel="stylesheet" href="../styles/module-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="progress-bar"></div>
+
+<header class="site-header">
+    <div class="container--nav">
+        <div class="logo">
+            <img src="../images/smartfarmer.png" alt="Smart Farmer logo">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../crops.html">Crop Info</a></li>
+                <li><a href="../education.html">Education</a></li>
+                <li><a href="../crop-log.html">Crop Log</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+                <li><a href="../ussd.html">USSD</a></li>
+            </ul>
+            <div class="language-selector">
+                <select id="languageSwitcher">
+                    <option value="en">English</option>
+                    <option value="juba">Juba Arabic</option>
+                    <option value="bari">Bari</option>
+                </select>
+            </div>
+        </nav>
+        <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+    </div>
+</header>
+
+<div class="back-nav">
+    <a href="../education.html" class="back-link">← Back to Education</a>
+</div>
+
+<section class="module-hero">
+    <div class="module-number">Module 08</div>
+    <h1>🧪 Fertilizer <span class="highlight">Use</span></h1>
+    <p>Feed your crops the right way for healthy growth and better yields.</p>
+    <button class="pulse-btn" onclick="playModuleAudio('fertilizer')">
+        🔊 Listen to this module
+    </button>
+</section>
+
+<div class="module-content">
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-number" data-target="5">0</div>
+            <div class="stat-label">Key Tips</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="3">0</div>
+            <div class="stat-label">Minute Read</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="2">0</div>
+            <div class="stat-label">Fertilizer Types</div>
+        </div>
+    </div>
+
+    <div class="content-section slide-left">
+        <h2><span class="emoji">🌱</span> Natural Fertilizers</h2>
+        <p>Natural fertilizers are the best option for most farmers in South Sudan. They are cheap, available, and good for the soil.</p>
+        <ul>
+            <li><span class="check">✓</span> <strong>Compost:</strong> Made from decomposed organic matter (kitchen waste, leaves, grass)</li>
+            <li><span class="check">✓</span> <strong>Animal manure:</strong> Cow, goat, sheep, or chicken manure</li>
+            <li><span class="check">✓</span> <strong>Green manure:</strong> Plant cover crops and plough them into the soil</li>
+            <li><span class="check">✓</span> <strong>Ash:</strong> Wood ash contains potassium and other nutrients</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>Compost is the most complete natural fertilizer. It adds organic matter and nutrients to the soil.</p>
+        </div>
+    </div>
+
+    <div class="content-section slide-right">
+        <h2><span class="emoji">⏰</span> When to Apply</h2>
+        <p>Applying fertilizer at the right time is important.</p>
+        <ul>
+            <li><span class="check">✓</span> Apply compost or manure before planting</li>
+            <li><span class="check">✓</span> Apply nitrogen fertilizer when plants are growing (2-4 weeks after planting)</li>
+            <li><span class="check">✓</span> Apply phosphorus and potassium at planting time</li>
+            <li><span class="check">✓</span> Do not apply fertilizer during the dry season</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>Apply fertilizer when the soil is moist. This helps it dissolve and reach the roots.</p>
+        </div>
+    </div>
+
+    <div class="content-section slide-left">
+        <h2><span class="emoji">🖐️</span> How to Apply</h2>
+        <p>How you apply fertilizer matters as much as what you use.</p>
+        <ul>
+            <li><span class="check">✓</span> Mix fertilizer into the top 10-15cm of soil</li>
+            <li><span class="check">✓</span> Place fertilizer near the roots, not on the leaves</li>
+            <li><span class="check">✓</span> Spread fertilizer evenly across the field</li>
+            <li><span class="check">✓</span> Water after applying fertilizer to help it absorb</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>Do not put fertilizer directly on the plant stem. It can burn and damage the plant.</p>
+        </div>
+    </div>
+
+    <div class="content-section slide-right">
+        <h2><span class="emoji">🚫</span> Avoid Over-Fertilizing</h2>
+        <p>Too much fertilizer can harm your crops and waste money.</p>
+        <ul>
+            <li><span class="check">✓</span> More is not always better</li>
+            <li><span class="check">✓</span> Too much nitrogen causes weak stems and attracts pests</li>
+            <li><span class="check">✓</span> Over-fertilizing can burn roots</li>
+            <li><span class="check">✓</span> Use only what your crops need</li>
+        </ul>
+        <div class="tip-box">
+            <strong>💡 Farmer's Tip:</strong>
+            <p>A soil test is the best way to know what your soil needs. Ask your local extension officer for help.</p>
+        </div>
+    </div>
+
+    <div class="content-section slide-left">
+        <h2><span class="emoji">💧</span> Watering After Fertilizer</h2>
+        <p>Water helps fertilizer reach the roots.</p>
+        <ul>
+            <li><span class="check">✓</span> Water the field after applying fertilizer</li>
+            <li><span class="check">✓</span> Watering helps the fertilizer dissolve and go down to the roots</li>
+            <li><span class="check">✓</span> Do not apply fertilizer if no rain is expected</li>
+        </ul>
+    </div>
+
+    <div class="content-section slide-right">
+        <h2><span class="emoji">📌</span> Summary</h2>
+        <ul>
+            <li><span class="check">✓</span> Use natural fertilizers like compost and manure</li>
+            <li><span class="check">✓</span> Apply at the right time and in the right way</li>
+            <li><span class="check">✓</span> Do not over-fertilize</li>
+            <li><span class="check">✓</span> Water after applying fertilizer</li>
+        </ul>
+    </div>
+
+    <div class="module-nav">
+        <a href="module-market.html" class="prev">← Previous Module</a>
+        <a href="module-disease.html" class="next">Next Module →</a>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.</p>
+</footer>
+
+<script src="../js/translations.js"></script>
+<script src="../js/module-detail.js"></script>
+<script>
+    document.getElementById('languageSwitcher').addEventListener('change', function() {
+        const lang = this.value;
+        localStorage.setItem('smartfarmer_lang', lang);
+        if (typeof translatePage === 'function') translatePage();
+    });
+</script>
+
+</body>
+</html>
