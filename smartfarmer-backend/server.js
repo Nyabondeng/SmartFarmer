@@ -317,7 +317,7 @@ app.get('/api/ussd-logs', async (req, res) => {
 });
 
 /* ── CATCH-ALL: serve index.html for any other route ── */
-app.get('*', (req, res) => {
+app.use((req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
