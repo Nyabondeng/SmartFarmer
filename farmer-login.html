@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Farmer - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/farmer-auth.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container--nav">
+            <div class="logo">
+                <img src="./images/smartfarmer.png" alt="Smart Farmer Logo">
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="crops.html">Crop Info</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="crop-log.html">Crop Log</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="ussd.html">USSD</a></li>
+                </ul>
+                <div class="language-selector">
+                    <select id="languageSwitcher">
+                        <option value="en">English</option>
+                        <option value="juba">Juba Arabic</option>
+                        <option value="bari">Bari</option>
+                    </select>
+                </div>
+            </nav>
+            <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle Navigation">☰</button>
+        </div>
+    </header>
+
+    <!-- Farmer Banner -->
+    <div class="farmer-banner" id="farmerBanner" style="display:none;"></div>
+
+    <main>
+        <div class="auth-container" id="loginForm">
+            <h2>Farmer Login</h2>
+            <p class="auth-subtitle">Login with your phone number</p>
+
+            <div class="message" id="authMessage"></div>
+
+            <label for="loginPhone">Phone Number</label>
+            <input type="tel" id="loginPhone" placeholder="e.g., 0712345678" required>
+
+            <button onclick="loginFarmer()">Login</button>
+
+            <div class="switch-link">
+                Don't have an account? <a href="farmer-register.html">Register here</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.</p>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/farmer-auth.js"></script>
+
+</body>
+</html>
