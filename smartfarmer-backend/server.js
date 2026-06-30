@@ -1,36 +1,25 @@
-/* ============================================
-   SMART FARMER - Backend Server
-   Author: Nyabon Deng Adut
-   Description: Node.js/Express server that
-   handles USSD requests from Africa's Talking,
-   serves the Smart Farmer web app, and
-   stores data in PostgreSQL
-   ============================================ */
-
 const express = require('express');
 const { Pool } = require('pg');
 const app     = express();
 const PORT    = process.env.PORT || 3000;
 
-/* ── MIDDLEWARE ── */
-// Parse form data from Africa's Talking
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Serve all frontend files from root folder
+
 app.use(express.static(__dirname));
 
-/* ── DATABASE CONNECTION ──────────────────────────── */
 
-// Create a connection pool to PostgreSQL
+
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
-        rejectUnauthorized: false // Required for Render PostgreSQL
+        rejectUnauthorized: false 
     }
 });
 
-// Test the database connection
+
 pool.connect((err, client, release) => {
     if (err) {
         console.error('Error connecting to database:', err.stack);
@@ -40,12 +29,12 @@ pool.connect((err, client, release) => {
     }
 });
 
-/* ── CREATE TABLES ────────────────────────────────── */
+
 
 async function createTables() {
     try {
-        // Farmers table
-        await pool.query(`
+
+      await pool.query(`
             CREATE TABLE IF NOT EXISTS farmers (
                 id SERIAL PRIMARY KEY,
                 name VARCHAR(100),
@@ -55,7 +44,7 @@ async function createTables() {
             )
         `);
 
-        // Crop logs table
+
         await pool.query(`
             CREATE TABLE IF NOT EXISTS crop_logs (
                 id SERIAL PRIMARY KEY,
@@ -68,7 +57,7 @@ async function createTables() {
             )
         `);
 
-        // USSD logs table
+
         await pool.query(`
             CREATE TABLE IF NOT EXISTS ussd_logs (
                 id SERIAL PRIMARY KEY,
@@ -85,12 +74,10 @@ async function createTables() {
     }
 }
 
-// Call the function to create tables
+
 createTables();
 
-/* ══════════════════════════════════════
-   CROP DATA (unchanged)
-   ══════════════════════════════════════ */
+
 const CROPS = {
   '1': {
     name: 'Sorghum',
@@ -124,31 +111,23 @@ const CROPS = {
   }
 };
 
-/* ══════════════════════════════════════
-   MAIN MENU TEXT
-   ══════════════════════════════════════ */
+
 function mainMenu() {
   return `CON Smart Farmer\nFarming Info System\n\nWelcome! Choose a crop:\n\n1. Sorghum\n2. Maize\n3. Millet\n4. Groundnuts\n5. Cassava`;
 }
 
-/* ══════════════════════════════════════
-   CROP SUBMENU TEXT
-   ══════════════════════════════════════ */
+
 function cropMenu(cropNum) {
   const crop = CROPS[cropNum];
   return `CON Smart Farmer\n${crop.name}\n\nSelect information:\n\n1. Planting Guide\n2. Pest Control\n3. Harvest Guide\n\n0. Back to crops`;
 }
 
-/* ══════════════════════════════════════
-   USSD CALLBACK ENDPOINT
-   Africa's Talking sends POST requests here
-   every time a farmer presses a key
-   ══════════════════════════════════════ */
+
 app.post('/ussd', async (req, res) => {
-  // Extract data from Africa's Talking request
+
   const { sessionId, phoneNumber, networkCode, text } = req.body;
 
-  // Log USSD request to database
+
   try {
     await pool.query(
       'INSERT INTO ussd_logs (phone, session_id, menu_path) VALUES ($1, $2, $3)',
@@ -158,17 +137,17 @@ app.post('/ussd', async (req, res) => {
     console.error('Error logging USSD:', error.message);
   }
 
-  // Split input by * to get each menu selection
+
   const textArray = text ? text.split('*') : [];
   const level     = textArray.length;
 
   let response = '';
 
-  /* ── LEVEL 0: First dial — show main menu ── */
+
   if (text === '') {
     response = mainMenu();
 
-  /* ── LEVEL 1: Farmer selected a crop ── */
+
   } else if (level === 1) {
     const cropChoice = textArray[0];
 
@@ -178,7 +157,7 @@ app.post('/ussd', async (req, res) => {
       response = `CON Smart Farmer\n\nInvalid option.\nPlease try again.\n\n0. Back to main menu`;
     }
 
-  /* ── LEVEL 2: Farmer selected information type ── */
+
   } else if (level === 2) {
     const cropChoice = textArray[0];
     const infoChoice = textArray[1];
@@ -201,7 +180,7 @@ app.post('/ussd', async (req, res) => {
       response = mainMenu();
     }
 
-  /* ── LEVEL 3: Handle back navigation ── */
+
   } else if (level === 3) {
     const cropChoice = textArray[0];
     const infoChoice = textArray[1];
@@ -223,12 +202,8 @@ app.post('/ussd', async (req, res) => {
   res.send(response);
 });
 
-/* ══════════════════════════════════════
-   REST API ENDPOINTS (with Database)
-   ══════════════════════════════════════ */
 
-/* GET /api/crops — returns all 5 crops */
-app.get('/api/crops', (req, res) => {
+   app.get('/api/crops', (req, res) => {
   const crops = Object.keys(CROPS).map(key => ({
     id:    key,
     name:  CROPS[key].name,
@@ -236,7 +211,7 @@ app.get('/api/crops', (req, res) => {
   res.json({ success: true, data: crops });
 });
 
-/* GET /api/health — checks server is running */
+
 app.get('/api/health', (req, res) => {
   res.json({
     success:   true,
@@ -245,9 +220,8 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-/* ── DATABASE API ENDPOINTS ────────────────────────── */
 
-// GET all farmers
+
 app.get('/api/farmers', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM farmers ORDER BY id');
@@ -257,7 +231,7 @@ app.get('/api/farmers', async (req, res) => {
   }
 });
 
-// POST a new farmer
+
 app.post('/api/farmers', async (req, res) => {
   const { name, phone, location } = req.body;
 
@@ -272,7 +246,7 @@ app.post('/api/farmers', async (req, res) => {
   }
 });
 
-// GET all crop logs
+
 app.get('/api/logs', async (req, res) => {
   try {
     const result = await pool.query(`
@@ -287,7 +261,7 @@ app.get('/api/logs', async (req, res) => {
   }
 });
 
-// POST a new crop log
+
 app.post('/api/logs', async (req, res) => {
   const { farmer_id, crop, planting_date, harvest_date, notes } = req.body;
 
@@ -304,7 +278,7 @@ app.post('/api/logs', async (req, res) => {
   }
 });
 
-// GET USSD logs
+
 app.get('/api/ussd-logs', async (req, res) => {
   try {
     const result = await pool.query(
@@ -316,12 +290,12 @@ app.get('/api/ussd-logs', async (req, res) => {
   }
 });
 
-/* ── CATCH-ALL: serve index.html for any other route ── */
+
 app.use((req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/../index.html');
 });
 
-/* ── START SERVER ── */
+
 app.listen(PORT, () => {
   console.log('=========================================');
   console.log('  Smart Farmer server is running!');
