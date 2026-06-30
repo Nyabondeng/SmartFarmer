@@ -469,3 +469,74 @@ const translations = {
         footerText: "© 2026 Smart Farmer. For smallholder farmers in South Sudan."
     }
 };
+
+
+// Add these keys to the `en`, `juba`, and `bari` objects
+
+// Crop Titles
+cowpeasTitle; "Cowpeas",
+sesameTitle; "Sesame",
+sweetpotatoTitle; "Sweet Potato",
+beansTitle; "Beans",
+okraTitle; "Okra",
+tomatoTitle; "Tomato",
+onionTitle; "Onion",
+pumpkinTitle; "Pumpkin",
+yamTitle; "Yam",
+sugarcaneTitle; "Sugarcane",
+riceTitle; "Rice",
+sunflowerTitle; "Sunflower",
+bananaTitle; "Banana",
+watermelonTitle; "Watermelon",
+cabbageTitle; "Cabbage",
+
+// Crop Descriptions
+cowpeasDesc; "A protein-rich legume that improves soil fertility.",
+sesameDesc; "A valuable oilseed crop with high market demand.",
+sweetpotatoDesc; "A nutritious root crop that grows well in poor soils.",
+beansDesc; "A staple legume rich in protein and fiber.",
+okraDesc; "A popular vegetable that grows quickly and yields well.",
+tomatoDesc; "A high-value vegetable with good market demand.",
+onionDesc; "An essential vegetable with good storage life.",
+pumpkinDesc; "A hardy crop that provides food and income.",
+yamDesc; "A valuable root crop with high market demand.",
+sugarcaneDesc; "A cash crop grown for sugar and juice production.",
+riceDesc; "A staple grain grown in irrigated and rainfed areas.",
+sunflowerDesc; "A valuable oilseed crop with good market demand.",
+bananaDesc; "A staple fruit with multiple uses and year-round production.",
+watermelonDesc; "A popular fruit with high market demand.",
+cabbageDesc; "A leafy vegetable with good market demand.",
+
+// Planting Texts
+cowpeasPlantingText; "May-June",
+sesamePlantingText; "May-June",
+sweetpotatoPlantingText; "May-June",
+beansPlantingText; "May-June",
+okraPlantingText; "May-June",
+tomatoPlantingText; "May-June",
+onionPlantingText; "May-June",
+pumpkinPlantingText; "May-June",
+yamPlantingText; "May-June",
+sugarcanePlantingText; "May-June",
+ricePlantingText; "May-June",
+sunflowerPlantingText; "May-June",
+bananaPlantingText; "Year-round",
+watermelonPlantingText; "May-June",
+cabbagePlantingText; "May-June",
+
+// Harvest Texts
+cowpeasHarvestText; "Sept-Oct",
+sesameHarvestText; "Oct-Nov",
+sweetpotatoHarvestText; "4-6 months",
+beansHarvestText; "Sept-Oct",
+okraHarvestText; "Sept-Oct",
+tomatoHarvestText; "Sept-Oct",
+onionHarvestText; "Oct-Nov",
+pumpkinHarvestText; "Oct-Nov",
+yamHarvestText; "Oct-Nov",
+sugarcaneHarvestText; "10-12 months",
+riceHarvestText; "Oct-Nov",
+sunflowerHarvestText; "Oct-Nov",
+bananaHarvestText; "8-12 months",
+watermelonHarvestText; "Sept-Oct",
+cabbageHarvestText; "Sept-Oct."
