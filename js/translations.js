@@ -540,3 +540,37 @@ sunflowerHarvestText; "Oct-Nov",
 bananaHarvestText; "8-12 months",
 watermelonHarvestText; "Sept-Oct",
 cabbageHarvestText; "Sept-Oct."
+
+// Add to `en` object
+cowpeasVoice: "Cowpeas. Plant in May or June. Space 60 centimeters by 20 centimeters. Watch for aphids and pod borers. Harvest in September or October. Dry thoroughly in pods, then shell.",
+sesameVoice; "Sesame. Plant in May or June. Space 45 centimeters by 15 centimeters. Watch for leaf spot and aphids. Harvest in October or November. Dry well, store in sealed containers.",
+sweetpotatoVoice; "Sweet Potato. Plant in May or June. Space 30 centimeters by 20 centimeters. Watch for weevils and leaf beetles. Harvest in 4 to 6 months. Store in a cool, dry, dark place.",
+beansVoice; "Beans. Plant in May or June. Space 50 centimeters by 10 centimeters. Watch for aphids and bean beetles. Harvest in September or October. Dry completely before storing.",
+okraVoice; "Okra. Plant in May or June. Space 60 centimeters by 30 centimeters. Watch for aphids and fruit borers. Harvest in September or October. Store in a cool, dry place.",
+tomatoVoice; "Tomato. Plant in May or June. Space 60 centimeters by 40 centimeters. Watch for tomato blight and fruit borers. Harvest in September or October. Store at room temperature.",
+onionVoice; "Onion. Plant in May or June. Space 30 centimeters by 10 centimeters. Watch for thrips and onion flies. Harvest in October or November. Store in a dry, ventilated place.",
+pumpkinVoice; "Pumpkin. Plant in May or June. Space 150 centimeters by 100 centimeters. Watch for fruit flies and powdery mildew. Harvest in October or November. Store in a cool, dry place.",
+yamVoice; "Yam. Plant in May or June. Space 100 centimeters by 100 centimeters. Watch for yam beetles and nematodes. Harvest in October or November. Store in a cool, dark, well-ventilated place.",
+sugarcaneVoice; "Sugarcane. Plant in May or June. Space 150 centimeters by 60 centimeters. Watch for stalk borers and aphids. Harvest in 10 to 12 months. Process soon after harvest.",
+riceVoice; "Rice. Plant in May or June. Space 20 centimeters by 20 centimeters. Watch for rice weevils and stem borers. Harvest in October or November. Dry completely, store in sealed containers.",
+sunflowerVoice; "Sunflower. Plant in May or June. Space 60 centimeters by 30 centimeters. Watch for birds and head caterpillars. Harvest in October or November. Dry thoroughly, store in sealed bags.",
+bananaVoice; "Banana. Plant year-round. Space 300 centimeters by 300 centimeters. Watch for weevils and leaf spot. Harvest in 8 to 12 months. Harvest green, ripen at room temperature.",
+watermelonVoice; "Watermelon. Plant in May or June. Space 200 centimeters by 100 centimeters. Watch for fruit flies and powdery mildew. Harvest in September or October. Store in a cool, dry place.",
+cabbageVoice; "Cabbage. Plant in May or June. Space 60 centimeters by 40 centimeters. Watch for aphids and caterpillars. Harvest in September or October. Store in a cool, ventilated place."
+
+// Add to juba object (Juba Arabic)
+cowpeasVoice: "الفول السوداني. ازرع في مايو أو يونيو...",
+sesameVoice; "السمسم. ازرع في مايو أو يونيو...",
+sweetpotatoVoice; "البطاطا الحلوة. ازرع في مايو أو يونيو...",
+beansVoice; "الفول. ازرع في مايو أو يونيو...",
+okraVoice; "البامية. ازرع في مايو أو يونيو...",
+tomatoVoice; "الطماطم. ازرع في مايو أو يونيو...",
+onionVoice; "البصل. ازرع في مايو أو يونيو...",
+pumpkinVoice; "القرع. ازرع في مايو أو يونيو...",
+yamVoice; "اليام. ازرع في مايو أو يونيو...",
+sugarcaneVoice; "قصب السكر. ازرع في مايو أو يونيو...",
+riceVoice; "الأرز. ازرع في مايو أو يونيو...",
+sunflowerVoice; "دوار الشمس. ازرع في مايو أو يونيو...",
+bananaVoice; "الموز. ازرع على مدار السنة...",
+watermelonVoice; "البطيخ. ازرع في مايو أو يونيو...",
+cabbageVoice; "الملفوف. ازرع في مايو أو يونيو..."
