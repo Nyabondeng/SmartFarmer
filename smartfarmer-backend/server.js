@@ -292,7 +292,7 @@ app.get('/api/ussd-logs', async (req, res) => {
 
 
 app.use((req, res) => {
-  res.sendFile(__dirname + '/../index.html');
+ res.sendFile(path.join(__dirname, '..', '..', 'index.html'));
 });
 
 
