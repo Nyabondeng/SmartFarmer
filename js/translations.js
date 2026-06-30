@@ -559,7 +559,7 @@ watermelonVoice; "Watermelon. Plant in May or June. Space 200 centimeters by 100
 cabbageVoice; "Cabbage. Plant in May or June. Space 60 centimeters by 40 centimeters. Watch for aphids and caterpillars. Harvest in September or October. Store in a cool, ventilated place."
 
 // Add to juba object (Juba Arabic)
-cowpeasVoice: "الفول السوداني. ازرع في مايو أو يونيو...",
+cowpeasVoice; "الفول السوداني. ازرع في مايو أو يونيو...",
 sesameVoice; "السمسم. ازرع في مايو أو يونيو...",
 sweetpotatoVoice; "البطاطا الحلوة. ازرع في مايو أو يونيو...",
 beansVoice; "الفول. ازرع في مايو أو يونيو...",
@@ -574,3 +574,25 @@ sunflowerVoice; "دوار الشمس. ازرع في مايو أو يونيو..."
 bananaVoice; "الموز. ازرع على مدار السنة...",
 watermelonVoice; "البطيخ. ازرع في مايو أو يونيو...",
 cabbageVoice; "الملفوف. ازرع في مايو أو يونيو..."
+
+ // Crop Voice Messages (Bari)
+    sorghumVoice; "Sorghum. Lanyi ti lipi May ka June. Fasila 75 senti x 25 senti. Aki wiri armyworms ba'di lipi. Woro September ka October. Teren dry completamente.",
+    maizeVoice; "Maize. Lanyi ti lipi May ka June. Fasila 75 senti x 50 senti. Aki wiri stalk borer. Woro August ka September. Teren dry on cob, then remove kernels.",
+    milletVoice; "Millet. Lanyi ti lipi May ka June. Fasila 60 senti x 20 senti. Aki wiri birds la stem borers. Woro September ka October. Teren i sealed containers.",
+    groundnutsVoice; "Groundnuts. Lanyi ti lipi May ka June. Fasila 50 senti x 15 senti. Aki wiri leaf spot ka aphids. Woro October ka November. Teren dry thoroughly.",
+    cassavaVoice; "Cassava. Lanyi ti lipi March ka April. Fasila 100 senti x 100 senti. Aki wiri cassava mosaic disease. Woro 8-12 months. Teren only when needed.",
+    cowpeasVoice; "Cowpeas. Lanyi ti lipi May ka June. Fasila 60 senti x 20 senti. Aki wiri aphids ka pod borers. Woro September ka October. Teren dry thoroughly i pods, then shell.",
+    sesameVoice; "Sesame. Lanyi ti lipi May ka June. Fasila 45 senti x 15 senti. Aki wiri leaf spot ka aphids. Woro October ka November. Teren dry well, store i sealed containers.",
+    sweetpotatoVoice; "Sweet Potato. Lanyi ti lipi May ka June. Fasila 30 senti x 20 senti. Aki wiri weevils ka leaf beetles. Woro 4-6 months. Teren i cool, dry, dark place.",
+    beansVoice; "Beans. Lanyi ti lipi May ka June. Fasila 50 senti x 10 senti. Aki wiri aphids ka bean beetles. Woro September ka October. Teren dry completely before storing.",
+    okraVoice; "Okra. Lanyi ti lipi May ka June. Fasila 60 senti x 30 senti. Aki wiri aphids ka fruit borers. Woro September ka October. Teren i cool, dry place.",
+    tomatoVoice; "Tomato. Lanyi ti lipi May ka June. Fasila 60 senti x 40 senti. Aki wiri tomato blight ka fruit borers. Woro September ka October. Teren at room temperature, not refrigerated.",
+    onionVoice; "Onion. Lanyi ti lipi May ka June. Fasila 30 senti x 10 senti. Aki wiri thrips ka onion flies. Woro October ka November. Teren i dry, ventilated place.",
+    pumpkinVoice; "Pumpkin. Lanyi ti lipi May ka June. Fasila 150 senti x 100 senti. Aki wiri fruit flies ka powdery mildew. Woro October ka November. Teren i cool, dry place.",
+    yamVoice; "Yam. Lanyi ti lipi May ka June. Fasila 100 senti x 100 senti. Aki wiri yam beetles ka nematodes. Woro October ka November. Teren i cool, dark, well-ventilated place.",
+    sugarcaneVoice; "Sugarcane. Lanyi ti lipi May ka June. Fasila 150 senti x 60 senti. Aki wiri stalk borers ka aphids. Woro 10-12 months. Teren process soon after harvest.",
+    riceVoice; "Rice. Lanyi ti lipi May ka June. Fasila 20 senti x 20 senti. Aki wiri rice weevils ka stem borers. Woro October ka November. Teren dry completely, store i sealed containers.",
+    sunflowerVoice; "Sunflower. Lanyi ti lipi May ka June. Fasila 60 senti x 30 senti. Aki wiri birds ka head caterpillars. Woro October ka November. Teren dry thoroughly, store i sealed bags.",
+    bananaVoice; "Banana. Lanyi ti lipi year-round. Fasila 300 senti x 300 senti. Aki wiri weevils ka leaf spot. Woro 8-12 months. Teren harvest green, ripen at room temperature.",
+    watermelonVoice; "Watermelon. Lanyi ti lipi May ka June. Fasila 200 senti x 100 senti. Aki wiri fruit flies ka powdery mildew. Woro September ka October. Teren i cool, dry place.",
+    cabbageVoice; "Cabbage. Lanyi ti lipi May ka June. Fasila 60 senti x 40 senti. Aki wiri aphids ka caterpillars. Woro September ka October. Teren i cool, ventilated place."
