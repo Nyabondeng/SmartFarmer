@@ -1,15 +1,12 @@
 const express = require('express');
 const { Pool } = require('pg');
-const app     = express();
-const PORT    = process.env.PORT || 3000;
+const path = require('path');
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-
-app.use(express.static(__dirname));
-
 
 
 const pool = new Pool({
@@ -116,7 +113,6 @@ function mainMenu() {
   return `CON Smart Farmer\nFarming Info System\n\nWelcome! Choose a crop:\n\n1. Sorghum\n2. Maize\n3. Millet\n4. Groundnuts\n5. Cassava`;
 }
 
-
 function cropMenu(cropNum) {
   const crop = CROPS[cropNum];
   return `CON Smart Farmer\n${crop.name}\n\nSelect information:\n\n1. Planting Guide\n2. Pest Control\n3. Harvest Guide\n\n0. Back to crops`;
@@ -124,8 +120,7 @@ function cropMenu(cropNum) {
 
 
 app.post('/ussd', async (req, res) => {
-
-  const { sessionId, phoneNumber, networkCode, text } = req.body;
+  const { sessionId, phoneNumber, text } = req.body;
 
 
   try {
@@ -137,27 +132,19 @@ app.post('/ussd', async (req, res) => {
     console.error('Error logging USSD:', error.message);
   }
 
-
   const textArray = text ? text.split('*') : [];
-  const level     = textArray.length;
-
+  const level = textArray.length;
   let response = '';
-
 
   if (text === '') {
     response = mainMenu();
-
-
   } else if (level === 1) {
     const cropChoice = textArray[0];
-
     if (CROPS[cropChoice]) {
       response = cropMenu(cropChoice);
     } else {
       response = `CON Smart Farmer\n\nInvalid option.\nPlease try again.\n\n0. Back to main menu`;
     }
-
-
   } else if (level === 2) {
     const cropChoice = textArray[0];
     const infoChoice = textArray[1];
@@ -166,7 +153,6 @@ app.post('/ussd', async (req, res) => {
       response = mainMenu();
     } else if (CROPS[cropChoice]) {
       const crop = CROPS[cropChoice];
-
       if (infoChoice === '1') {
         response = `END ${crop.planting}`;
       } else if (infoChoice === '2') {
@@ -179,13 +165,9 @@ app.post('/ussd', async (req, res) => {
     } else {
       response = mainMenu();
     }
-
-
   } else if (level === 3) {
     const cropChoice = textArray[0];
-    const infoChoice = textArray[1];
     const backChoice = textArray[2];
-
     if (backChoice === '0') {
       response = cropMenu(cropChoice);
     } else if (backChoice === '00') {
@@ -193,7 +175,6 @@ app.post('/ussd', async (req, res) => {
     } else {
       response = mainMenu();
     }
-
   } else {
     response = mainMenu();
   }
@@ -203,24 +184,21 @@ app.post('/ussd', async (req, res) => {
 });
 
 
-   app.get('/api/crops', (req, res) => {
+app.get('/api/crops', (req, res) => {
   const crops = Object.keys(CROPS).map(key => ({
-    id:    key,
-    name:  CROPS[key].name,
+    id: key,
+    name: CROPS[key].name,
   }));
   res.json({ success: true, data: crops });
 });
 
-
 app.get('/api/health', (req, res) => {
   res.json({
-    success:   true,
-    message:   'Smart Farmer server is running',
+    success: true,
+    message: 'Smart Farmer server is running',
     timestamp: new Date().toISOString()
   });
 });
-
-
 
 app.get('/api/farmers', async (req, res) => {
   try {
@@ -231,10 +209,8 @@ app.get('/api/farmers', async (req, res) => {
   }
 });
 
-
 app.post('/api/farmers', async (req, res) => {
   const { name, phone, location } = req.body;
-
   try {
     const result = await pool.query(
       'INSERT INTO farmers (name, phone, location) VALUES ($1, $2, $3) RETURNING *',
@@ -245,7 +221,6 @@ app.post('/api/farmers', async (req, res) => {
     res.status(500).json({ success: false, error: error.message });
   }
 });
-
 
 app.get('/api/logs', async (req, res) => {
   try {
@@ -261,10 +236,8 @@ app.get('/api/logs', async (req, res) => {
   }
 });
 
-
 app.post('/api/logs', async (req, res) => {
   const { farmer_id, crop, planting_date, harvest_date, notes } = req.body;
-
   try {
     const result = await pool.query(
       `INSERT INTO crop_logs (farmer_id, crop, planting_date, harvest_date, notes)
@@ -278,7 +251,6 @@ app.post('/api/logs', async (req, res) => {
   }
 });
 
-
 app.get('/api/ussd-logs', async (req, res) => {
   try {
     const result = await pool.query(
@@ -290,12 +262,13 @@ app.get('/api/ussd-logs', async (req, res) => {
   }
 });
 
+
+
 app.use(express.static(path.join(__dirname, '..')));
 
 
-
 app.use((req, res) => {
- res.sendFile(path.join(__dirname, '..', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 
@@ -304,6 +277,6 @@ app.listen(PORT, () => {
   console.log('  Smart Farmer server is running!');
   console.log(`  Open: http://localhost:${PORT}`);
   console.log(`  USSD endpoint: http://localhost:${PORT}/ussd`);
-  console.log(`  Database: PostgreSQL`);
+  console.log('  Database: PostgreSQL');
   console.log('=========================================');
 });
