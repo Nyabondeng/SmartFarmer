@@ -263,6 +263,10 @@ app.get('/api/ussd-logs', async (req, res) => {
 });
 
 
+app.get('/', (req, res) => {
+  res.send('Smart Farmer Backend Running');
+});
+
 
 app.use(express.static(path.join(__dirname, '..')));
 
@@ -271,8 +275,11 @@ app.use((req, res) => {
   res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
+console.log('PORT from Render:', process.env.PORT);
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server listening on port ${PORT}`);
+
   console.log('=========================================');
   console.log('  Smart Farmer server is running!');
   console.log(`  Open: http://localhost:${PORT}`);
