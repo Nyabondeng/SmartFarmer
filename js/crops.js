@@ -98,9 +98,9 @@ function startSpeaking(crop) {
             currentUtterance = null;
             updateButtonState(crop, 'listen');
 
-            
+
             if (event.error !== 'interrupted' && event.error !== 'canceled') {
-            console.warn('Speech error:', event.error); // Log it for debugging
+            console.warn('Speech error:', event); // Log it for debugging
             alert('Sorry, voice is not available. Please try again.');
     }
 };
