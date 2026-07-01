@@ -81,6 +81,60 @@ const translations = {
         groundnutsVoice: "Groundnuts. Planting season: May-June. Spacing: 50 centimeters by 15 centimeters. Pest control: Watch for leaf spot and aphids. Harvest: October to November. Storage: Dry thoroughly before shelling.",
         cassavaVoice: "Cassava. Planting season: March-April. Spacing: 100 centimeters by 100 centimeters. Pest control: Watch for cassava mosaic disease. Harvest: 8 to 12 months after planting. Storage: Harvest only when needed. Cannot store long.",
 
+        pigeonpeasTitle: "Pigeon Peas",
+        pigeonpeasDesc: "A drought-tolerant legume that enriches soil nitrogen and produces nutritious seeds.",
+        pigeonpeasPlantingText: "May-June",
+        pigeonpeasHarvestText: "Oct-Nov",
+        pigeonpeasVoice: "Pigeon Peas. Planting season: May-June. Spacing: 75cm x 30cm. Pest control: Watch for pod borers and wilt. Harvest: October-November. Storage: Dry thoroughly, store in sealed containers.",
+
+        mangoesTitle: "Mangoes",
+        mangoesDesc: "Sweet and juicy fruits that are a favorite across the country.",
+        mangoesPlantingText: "March-April",
+        mangoesHarvestText: "Nov-Jan",
+        mangoesVoice: "Mangoes. Planting season: March-April. Spacing: 1000cm x 800cm. Pest control: Watch for fruit flies and mealybugs. Harvest: November-January. Storage: Store at room temperature until ripe.",
+
+        coffeeTitle: "Coffee",
+        coffeeDesc: "A valuable cash crop that grows well in the Green Belt with abundant rainfall and moderate temperatures.",
+        coffeePlantingText: "Beginning of rains",
+        coffeeHarvestText: "Dry season",
+        coffeeVoice: "Coffee. Planting season: Beginning of rains. Spacing: 250cm x 250cm. Pest control: Watch for coffee berry borer. Harvest: Dry season. Storage: Dry and store in cool, dry place.",
+
+        teaTitle: "Tea",
+        teaDesc: "An important cash crop introduced in the 1970s, grown in the Green Belt with abundant rainfall and moderate temperatures.",
+        teaPlantingText: "Rainy season",
+        teaHarvestText: "Year-round",
+        teaVoice: "Tea. Planting season: Rainy season. Spacing: 100cm x 75cm. Pest control: Watch for tea mosquito bug. Harvest: Year-round. Storage: Process and dry soon after harvest.",
+
+        tobaccoTitle: "Tobacco",
+        tobaccoDesc: "A cash crop grown in the Green Belt region, particularly in Yei, Kajo-Keji, Maridi, and Magwi.",
+        tobaccoPlantingText: "Beginning of rains",
+        tobaccoHarvestText: "Dry season",
+        tobaccoVoice: "Tobacco. Planting season: Beginning of rains. Spacing: 90cm x 60cm. Pest control: Watch for aphids and hornworms. Harvest: Dry season. Storage: Cure and dry before storage.",
+
+        cottonTitle: "Cotton",
+        cottonDesc: "An oil seed cash crop introduced in the 1940s, with great potential for the Green Belt and Upper Nile regions.",
+        cottonPlantingText: "May-June",
+        cottonHarvestText: "Oct-Nov",
+        cottonVoice: "Cotton. Planting season: May-June. Spacing: 100cm x 30cm. Pest control: Watch for bollworms and aphids. Harvest: October-November. Storage: Keep dry and protected from pests.",
+
+        soybeanTitle: "Soybean",
+        soybeanDesc: "A valuable bean variety with high nutritional value, grown in the Green Belt and Equatoria regions.",
+        soybeanPlantingText: "May-June",
+        soybeanHarvestText: "Sept-Oct",
+        soybeanVoice: "Soybean. Planting season: May-June. Spacing: 50cm x 10cm. Pest control: Watch for pod borers. Harvest: September-October. Storage: Dry completely before storing.",
+
+        fingermilletTitle: "Finger Millet",
+        fingermilletDesc: "An indigenous crop variety that thrives in low rainfall areas. Important part of traditional farming systems.",
+        fingermilletPlantingText: "May-June",
+        fingermilletHarvestText: "Sept-Oct",
+        fingermilletVoice: "Finger Millet. Planting season: May-June. Spacing: 45cm x 15cm. Pest control: Watch for birds and stem borers. Harvest: September-October. Storage: Store in sealed containers.",
+
+        pearlmilletTitle: "Pearl Millet",
+        pearlmilletDesc: "A hardy grain that grows well in areas with low rainfall, particularly in Warrap, Bahr el Gazal, and Unity states.",
+        pearlmilletPlantingText: "May-June",
+        pearlmilletHarvestText: "Sept-Oct",
+        pearlmilletVoice: "Pearl Millet. Planting season: May-June. Spacing: 60cm x 20cm. Pest control: Watch for birds and stem borers. Harvest: September-October. Storage: Store in sealed containers.",
+
 
         educationTitle: "Grow smarter with practical knowledge",
         module1Title: "Module 1: Planting Techniques",
@@ -149,7 +203,7 @@ const translations = {
         contactSuccess: "Thank you, {name}! Your message has been sent.",
         otherContacts: "Other Ways to Reach Us",
         contactEmailLabel: "Email:",
-        contactUssdLabel: "Coming soon: USSD code *131#",
+        contactUssdLabel: "USSD code *384*12990#",
 
 
         footerText: "© 2026 Smart Farmer. For smallholder farmers in South Sudan."
@@ -237,6 +291,60 @@ const translations = {
         milletVoice: "الدخن. موسم الزراعة: مايو إلى يونيو. التباعد: 60 سم في 20 سم. مكافحة الآفات: احترس من الطيور وحفار الساق. الحصاد: سبتمبر إلى أكتوبر. التخزين: تخزين في حاويات محكمة الإغلاق.",
         groundnutsVoice: "الفول السوداني. موسم الزراعة: مايو إلى يونيو. التباعد: 50 سم في 15 سم. مكافحة الآفات: احترس من تبقع الأوراق والمن. الحصاد: أكتوبر إلى نوفمبر. التخزين: تجفيف جيداً قبل التقشير.",
         cassavaVoice: "الكسافا. موسم الزراعة: مارس إلى أبريل. التباعد: 100 سم في 100 سم. مكافحة الآفات: احترس من مرض تبرقش الكسافا. الحصاد: 8 إلى 12 شهراً بعد الزراعة. التخزين: الحصاد فقط عند الحاجة. لا يمكن تخزينها طويلاً.",
+
+        pigeonpeasTitle: "اللوبيا",
+        pigeonpeasDesc: "بقولية تتحمل الجفاف وتثري التربة بالنيتروجين وتنتج بذوراً مغذية.",
+        pigeonpeasPlantingText: "مايو-يونيو",
+        pigeonpeasHarvestText: "أكتوبر-نوفمبر",
+        pigeonpeasVoice: "اللوبيا. موسم الزراعة: مايو-يونيو. التباعد: 75 سم × 30 سم. مكافحة الآفات: احترس من حفار القرون والذبول. الحصاد: أكتوبر-نوفمبر. التخزين: جفف جيداً، خزن في حاويات محكمة الإغلاق.",
+
+        mangoesTitle: "المانجو",
+        mangoesDesc: "فاكهة حلوة وعصيرية محبوبة في جميع أنحاء البلاد.",
+        mangoesPlantingText: "مارس-أبريل",
+        mangoesHarvestText: "نوفمبر-يناير",
+        mangoesVoice: "المانجو. موسم الزراعة: مارس-أبريل. التباعد: 1000 سم × 800 سم. مكافحة الآفات: احترس من ذباب الفاكهة والبق الدقيقي. الحصاد: نوفمبر-يناير. التخزين: خزن في درجة حرارة الغرفة حتى النضج.",
+
+        coffeeTitle: "القهوة",
+        coffeeDesc: "محصول نقدي قيم ينمو بشكل جيد في الحزام الأخضر مع هطول أمطار غزيرة ودرجات حرارة معتدلة.",
+        coffeePlantingText: "بداية الأمطار",
+        coffeeHarvestText: "موسم الجفاف",
+        coffeeVoice: "القهوة. موسم الزراعة: بداية الأمطار. التباعد: 250 سم × 250 سم. مكافحة الآفات: احترس من حفار ثمار القهوة. الحصاد: موسم الجفاف. التخزين: جفف وخزن في مكان بارد وجاف.",
+
+        teaTitle: "الشاي",
+        teaDesc: "محصول نقدي مهم تم إدخاله في السبعينيات، يزرع في الحزام الأخضر مع هطول أمطار غزيرة ودرجات حرارة معتدلة.",
+        teaPlantingText: "موسم الأمطار",
+        teaHarvestText: "على مدار السنة",
+        teaVoice: "الشاي. موسم الزراعة: موسم الأمطار. التباعد: 100 سم × 75 سم. مكافحة الآفات: احترس من حشرة البق. الحصاد: على مدار السنة. التخزين: عالج وجفف مباشرة بعد الحصاد.",
+
+        tobaccoTitle: "التبغ",
+        tobaccoDesc: "محصول نقدي يزرع في منطقة الحزام الأخضر، خاصة في يي، كاجو كيجي، مريدي، ومقوي.",
+        tobaccoPlantingText: "بداية الأمطار",
+        tobaccoHarvestText: "موسم الجفاف",
+        tobaccoVoice: "التبغ. موسم الزراعة: بداية الأمطار. التباعد: 90 سم × 60 سم. مكافحة الآفات: احترس من المن واليرقات. الحصاد: موسم الجفاف. التخزين: عالج وجفف قبل التخزين.",
+
+        cottonTitle: "القطن",
+        cottonDesc: "محصول نقدي للبذور الزيتية تم إدخاله في الأربعينيات، مع إمكانيات كبيرة لمنطقتي الحزام الأخضر وأعالي النيل.",
+        cottonPlantingText: "مايو-يونيو",
+        cottonHarvestText: "أكتوبر-نوفمبر",
+        cottonVoice: "القطن. موسم الزراعة: مايو-يونيو. التباعد: 100 سم × 30 سم. مكافحة الآفات: احترس من ديدان اللوز والمن. الحصاد: أكتوبر-نوفمبر. التخزين: حافظ على جفافه ومحمياً من الآفات.",
+
+        soybeanTitle: "فول الصويا",
+        soybeanDesc: "صنف فول قيم ذو قيمة غذائية عالية، يزرع في منطقتي الحزام الأخضر والاستوائية.",
+        soybeanPlantingText: "مايو-يونيو",
+        soybeanHarvestText: "سبتمبر-أكتوبر",
+        soybeanVoice: "فول الصويا. موسم الزراعة: مايو-يونيو. التباعد: 50 سم × 10 سم. مكافحة الآفات: احترس من حفار القرون. الحصاد: سبتمبر-أكتوبر. التخزين: جفف تماماً قبل التخزين.",
+
+        fingermilletTitle: "دخن الإصبع",
+        fingermilletDesc: "صنف محلي يزدهر في مناطق الأمطار المنخفضة. جزء مهم من أنظمة الزراعة التقليدية.",
+        fingermilletPlantingText: "مايو-يونيو",
+        fingermilletHarvestText: "سبتمبر-أكتوبر",
+        fingermilletVoice: "دخن الإصبع. موسم الزراعة: مايو-يونيو. التباعد: 45 سم × 15 سم. مكافحة الآفات: احترس من الطيور وحفار الساق. الحصاد: سبتمبر-أكتوبر. التخزين: خزن في حاويات محكمة الإغلاق.",
+
+        pearlmilletTitle: "دخن اللؤلؤ",
+        pearlmilletDesc: "حبة قوية تنمو بشكل جيد في مناطق الأمطار المنخفضة، خاصة في واراب، بحر الغزال، والوحدة.",
+        pearlmilletPlantingText: "مايو-يونيو",
+        pearlmilletHarvestText: "سبتمبر-أكتوبر",
+        pearlmilletVoice: "دخن اللؤلؤ. موسم الزراعة: مايو-يونيو. التباعد: 60 سم × 20 سم. مكافحة الآفات: احترس من الطيور وحفار الساق. الحصاد: سبتمبر-أكتوبر. التخزين: خزن في حاويات محكمة الإغلاق.",
 
 
         educationTitle: "الوحدات التعليمية",
@@ -394,6 +502,60 @@ const translations = {
         milletVoice: "Millet. Lanyi ti lipi May ka June. Fasila 60 senti x 20 senti. Aki wiri birds la stem borers. Woro September ka October. Teren i sealed containers.",
         groundnutsVoice: "Groundnuts. Lanyi ti lipi May ka June. Fasila 50 senti x 15 senti. Aki wiri leaf spot ka aphids. Woro October ka November. Teren dry thoroughly.",
         cassavaVoice: "Cassava. Lanyi ti lipi March ka April. Fasila 100 senti x 100 senti. Aki wiri cassava mosaic disease. Woro 8-12 months. Teren only when needed.",
+
+        pigeonpeasTitle: "Pigeon Peas",
+        pigeonpeasDesc: "Legume ma jing gworo ki miri gworo na soil nitrogen ka produces seeds ma maje.",
+        pigeonpeasPlantingText: "May-June",
+        pigeonpeasHarvestText: "Oct-Nov",
+        pigeonpeasVoice: "Pigeon Peas. Lanyi ti lipi May ka June. Fasila 75 senti x 30 senti. Aki wiri pod borers ka wilt. Woro October ka November. Teren dry thoroughly, store i sealed containers.",
+
+        mangoesTitle: "Mangoes",
+        mangoesDesc: "Fruits ma kuju ka juicy ma maje na piny dutu.",
+        mangoesPlantingText: "March-April",
+        mangoesHarvestText: "Nov-Jan",
+        mangoesVoice: "Mangoes. Lanyi ti lipi March ka April. Fasila 1000 senti x 800 senti. Aki wiri fruit flies ka mealybugs. Woro November ka January. Teren at room temperature until ripe.",
+
+        coffeeTitle: "Coffee",
+        coffeeDesc: "Cash crop ma maje na Green Belt ki lipi ma kwoi ka temperatures ma mede.",
+        coffeePlantingText: "Beginning of rains",
+        coffeeHarvestText: "Dry season",
+        coffeeVoice: "Coffee. Lanyi ti lipi beginning of rains. Fasila 250 senti x 250 senti. Aki wiri coffee berry borer. Woro dry season. Teren dry ka store i cool, dry place.",
+
+        teaTitle: "Tea",
+        teaDesc: "Cash crop ma kony na 1970s, ki lipi ma kwoi ka temperatures ma mede na Green Belt.",
+        teaPlantingText: "Rainy season",
+        teaHarvestText: "Year-round",
+        teaVoice: "Tea. Lanyi ti lipi rainy season. Fasila 100 senti x 75 senti. Aki wiri tea mosquito bug. Woro year-round. Teren process ka dry soon after harvest.",
+
+        tobaccoTitle: "Tobacco",
+        tobaccoDesc: "Cash crop ma maje na Green Belt, especially i Yei, Kajo-Keji, Maridi, ka Magwi.",
+        tobaccoPlantingText: "Beginning of rains",
+        tobaccoHarvestText: "Dry season",
+        tobaccoVoice: "Tobacco. Lanyi ti lipi beginning of rains. Fasila 90 senti x 60 senti. Aki wiri aphids ka hornworms. Woro dry season. Teren cure ka dry before storage.",
+
+        cottonTitle: "Cotton",
+        cottonDesc: "Oil seed cash crop ma kony na 1940s, ma maje na Green Belt ka Upper Nile.",
+        cottonPlantingText: "May-June",
+        cottonHarvestText: "Oct-Nov",
+        cottonVoice: "Cotton. Lanyi ti lipi May ka June. Fasila 100 senti x 30 senti. Aki wiri bollworms ka aphids. Woro October ka November. Teren keep dry ka protected from pests.",
+
+        soybeanTitle: "Soybean",
+        soybeanDesc: "Bean ma maje ki nutritional value ma kwoi, ma maje na Green Belt ka Equatoria.",
+        soybeanPlantingText: "May-June",
+        soybeanHarvestText: "Sept-Oct",
+        soybeanVoice: "Soybean. Lanyi ti lipi May ka June. Fasila 50 senti x 10 senti. Aki wiri pod borers. Woro September ka October. Teren dry completely before storing.",
+
+        fingermilletTitle: "Finger Millet",
+        fingermilletDesc: "Indigenous crop ma maje na low rainfall areas. Important part of traditional farming.",
+        fingermilletPlantingText: "May-June",
+        fingermilletHarvestText: "Sept-Oct",
+        fingermilletVoice: "Finger Millet. Lanyi ti lipi May ka June. Fasila 45 senti x 15 senti. Aki wiri birds ka stem borers. Woro September ka October. Teren i sealed containers.",
+
+        pearlmilletTitle: "Pearl Millet",
+        pearlmilletDesc: "Grain ma jing gworo na areas ma lipi ti kwoi, especially i Warrap, Bahr el Gazal, ka Unity.",
+        pearlmilletPlantingText: "May-June",
+        pearlmilletHarvestText: "Sept-Oct",
+        pearlmilletVoice: "Pearl Millet. Lanyi ti lipi May ka June. Fasila 60 senti x 20 senti. Aki wiri birds ka stem borers. Woro September ka October. Teren i sealed containers.",
 
 
         educationTitle: "Kujju",

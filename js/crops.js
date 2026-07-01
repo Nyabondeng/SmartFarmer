@@ -26,7 +26,16 @@ function getCropText(crop, lang) {
         sunflower:  t.sunflowerVoice  || 'Sunflower. Planting season: May-June. Spacing: 60cm x 30cm. Pest control: Watch for birds and head caterpillars. Harvest: October-November. Storage: Dry thoroughly, store in sealed bags.',
         banana:     t.bananaVoice     || 'Banana. Planting season: Year-round. Spacing: 300cm x 300cm. Pest control: Watch for weevils and leaf spot. Harvest: 8-12 months. Storage: Harvest green, ripen at room temperature.',
         watermelon: t.watermelonVoice || 'Watermelon. Planting season: May-June. Spacing: 200cm x 100cm. Pest control: Watch for fruit flies and powdery mildew. Harvest: September-October. Storage: Store in a cool, dry place.',
-        cabbage:    t.cabbageVoice    || 'Cabbage. Planting season: May-June. Spacing: 60cm x 40cm. Pest control: Watch for aphids and caterpillars. Harvest: September-October. Storage: Store in a cool, ventilated place.'
+        cabbage:    t.cabbageVoice    || 'Cabbage. Planting season: May-June. Spacing: 60cm x 40cm. Pest control: Watch for aphids and caterpillars. Harvest: September-October. Storage: Store in a cool, ventilated place.',
+        pigeonpeas:    t.pigeonpeasVoice    || 'Pigeon Peas. Planting season: May-June. Spacing: 75cm x 30cm. Pest control: Watch for pod borers and wilt. Harvest: October-November. Storage: Dry thoroughly, store in sealed containers.',
+        mangoes:       t.mangoesVoice       || 'Mangoes. Planting season: March-April. Spacing: 1000cm x 800cm. Pest control: Watch for fruit flies and mealybugs. Harvest: November-January. Storage: Store at room temperature until ripe.',
+        coffee:        t.coffeeVoice        || 'Coffee. Planting season: Beginning of rains. Spacing: 250cm x 250cm. Pest control: Watch for coffee berry borer. Harvest: Dry season. Storage: Dry and store in cool, dry place.',
+        tea:           t.teaVoice           || 'Tea. Planting season: Rainy season. Spacing: 100cm x 75cm. Pest control: Watch for tea mosquito bug. Harvest: Year-round. Storage: Process and dry soon after harvest.',
+        tobacco:       t.tobaccoVoice       || 'Tobacco. Planting season: Beginning of rains. Spacing: 90cm x 60cm. Pest control: Watch for aphids and hornworms. Harvest: Dry season. Storage: Cure and dry before storage.',
+        cotton:        t.cottonVoice        || 'Cotton. Planting season: May-June. Spacing: 100cm x 30cm. Pest control: Watch for bollworms and aphids. Harvest: October-November. Storage: Keep dry and protected from pests.',
+        soybean:       t.soybeanVoice       || 'Soybean. Planting season: May-June. Spacing: 50cm x 10cm. Pest control: Watch for pod borers. Harvest: September-October. Storage: Dry completely before storing.',
+        fingermillet:  t.fingermilletVoice  || 'Finger Millet. Planting season: May-June. Spacing: 45cm x 15cm. Pest control: Watch for birds and stem borers. Harvest: September-October. Storage: Store in sealed containers.',
+        pearlmillet:   t.pearlmilletVoice   || 'Pearl Millet. Planting season: May-June. Spacing: 60cm x 20cm. Pest control: Watch for birds and stem borers. Harvest: September-October. Storage: Store in sealed containers.'
     };
     return cropVoices[crop] || 'Crop information not available.';
 }
