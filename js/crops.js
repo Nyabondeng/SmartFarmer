@@ -92,14 +92,18 @@ function startSpeaking(crop) {
             updateButtonState(crop, 'listen');
         };
         
-        utterance.onerror = function() {
+        utterance.onerror = function(event) {
             isSpeaking = false;
             isPaused = false;
             currentUtterance = null;
             updateButtonState(crop, 'listen');
+
+            
+            if (event.error !== 'interrupted' && event.error !== 'canceled') {
+            console.warn('Speech error:', event.error); // Log it for debugging
             alert('Sorry, voice is not available. Please try again.');
-        };
-        
+    }
+};
         currentUtterance = utterance;
         window.speechSynthesis.speak(utterance);
         updateButtonState(crop, 'pause');
