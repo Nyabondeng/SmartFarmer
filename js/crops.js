@@ -70,7 +70,15 @@ function playCropAudio(crop) {
     const text = getCropText(crop, lang);
     
     if ('speechSynthesis' in window) {
+        if (isPaused && currentUtterance) {
+            window.speechSynthesis.resume();
+            isPaused = false;
+            updateButtonStates(true, false, true);
+            return;
+        }
+
         window.speechSynthesis.cancel();
+
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.rate = 0.85;
         utterance.lang = (lang === 'juba' || lang === 'ar') ? 'ar-SA' : 'en-US';
@@ -79,6 +87,35 @@ function playCropAudio(crop) {
     } else {
         alert('Your browser does not support voice output. Here is the information: ' + text);
     }
+}
+
+function pauseAudio() {
+    if ('speechSynthesis' in window && !isPaused && currentUtterance) {
+        window.speechSynthesis.pause();
+        isPaused = true;
+        updateButtonStates(true, false, true);
+    }
+}
+
+function stopAudio() {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        isPaused = false;
+        currentUtterance = null;
+        updateButtonStates(true, false, false);
+    }
+}
+
+function updateButtonStates(listenEnabled, pauseEnabled, stopEnabled) {
+    document.querySelectorAll('.voice-btn').forEach(btn => {
+        btn.disabled = !listenEnabled;
+    });
+    document.querySelectorAll('.pause-btn').forEach(btn => {
+        btn.disabled = !pauseEnabled;
+    });
+    document.querySelectorAll('.stop-btn').forEach(btn => {
+        btn.disabled = !stopEnabled;
+    });
 }
 
 document.getElementById('languageSwitcher').addEventListener('change', function () {

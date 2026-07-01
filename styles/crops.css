@@ -309,3 +309,62 @@
 @media (min-width: 821px) {
     .menu-icon { display: none; }
 }
+
+
+.crop-card-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+.voice-btn,
+.pause-btn,
+.stop-btn {
+    width: 100%;
+    padding: 9px 16px;
+    border-radius: 8px;
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+}
+
+.voice-btn {
+    background: var(--green-dark);
+    color: white;
+}
+.voice-btn:hover {
+    background: var(--green-mid);
+}
+.voice-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pause-btn {
+    background: #f59e0b;
+    color: white;
+}
+.pause-btn:hover {
+    background: #d97706;
+}
+.pause-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.stop-btn {
+    background: #ef4444;
+    color: white;
+}
+.stop-btn:hover {
+    background: #dc2626;
+}
+.stop-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
