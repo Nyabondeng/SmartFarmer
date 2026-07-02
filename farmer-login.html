@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Farmer - Login</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/farmer-auth.css">
 </head>
 <body>
@@ -17,13 +16,15 @@
             </div>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="crops.html">Crop Info</a></li>
-                    <li><a href="education.html">Education</a></li>
-                    <li><a href="crop-log.html">Crop Log</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="ussd.html">USSD</a></li>
+                    <li><a href="index.html" data-translate="home">Home</a></li>
+                    <li><a href="about.html" data-translate="about">About</a></li>
+                    <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
+                    <li><a href="education.html" data-translate="education">Education</a></li>
+                    <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
+                    <li><a href="farmer-register.html" data-translate="register">Register</a></li>
+                    <li><a href="farmer-login.html" data-translate="login">Login</a></li>
+                    <li><a href="contact.html" data-translate="contact">Contact</a></li>
+                    <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
                 </ul>
                 <div class="language-selector">
                     <select id="languageSwitcher">
@@ -37,26 +38,66 @@
         </div>
     </header>
 
-    <!-- Farmer Banner -->
     <div class="farmer-banner" id="farmerBanner" style="display:none;"></div>
 
-    <main>
-        <div class="auth-container" id="loginForm">
-            <h2>Farmer Login</h2>
-            <p class="auth-subtitle">Login with your phone number</p>
+    <div class="auth-page">
 
-            <div class="message" id="authMessage"></div>
-
-            <label for="loginPhone">Phone Number</label>
-            <input type="tel" id="loginPhone" placeholder="e.g., 0712345678" required>
-
-            <button onclick="loginFarmer()">Login</button>
-
-            <div class="switch-link">
-                Don't have an account? <a href="farmer-register.html">Register here</a>
+        <!-- LEFT: branding panel -->
+        <div class="auth-left">
+            <div class="auth-left-content">
+                <div class="auth-brand-icon">🌱</div>
+                <h2>Welcome Back</h2>
+                <p>Login to access your planting records, crop logs and personalized farming information.</p>
+                <div class="auth-benefits">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">📋</span>
+                        <span>View your crop log records</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">📊</span>
+                        <span>Track your planting history</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🔔</span>
+                        <span>Get seasonal reminders</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🌾</span>
+                        <span>Access all crop information</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </main>
+
+        <!-- RIGHT: form -->
+        <div class="auth-right">
+            <div class="auth-container" id="loginForm">
+                <div class="auth-header">
+                    <h2>Farmer Login</h2>
+                    <p class="auth-subtitle">Login with your phone number</p>
+                </div>
+
+                <div class="message" id="authMessage"></div>
+
+                <div class="form-group">
+                    <label for="loginPhone">Phone Number</label>
+                    <div class="input-wrap">
+                        <span class="input-icon">📱</span>
+                        <input type="tel" id="loginPhone" placeholder="e.g., 0712345678" required>
+                    </div>
+                </div>
+
+                <button class="auth-btn" onclick="loginFarmer()">
+                    Login →
+                </button>
+
+                <div class="switch-link">
+                    Don't have an account? <a href="farmer-register.html">Register here</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <footer>
         <p>&copy; 2026 Smart Farmer. For smallholder farmers in South Sudan.</p>
