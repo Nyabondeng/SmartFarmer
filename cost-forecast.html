@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Smart Farmer - Fertilizer Guide</title>
+    <title>Smart Farmer - Cost Forecast</title>
 
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -14,7 +14,7 @@
     <meta name="theme-color" content="#1E6A33">
 
     <link rel="stylesheet" href="styles/crops.css?v=3">
-    <link rel="stylesheet" href="styles/fertilizer.css?v=1">
+    <link rel="stylesheet" href="styles/cost-forecast.css?v=1">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -31,8 +31,8 @@
                     <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
                     <li><a href="education.html" data-translate="education">Education</a></li>
                     <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
-                    <li><a href="cost-forecast.html" data-translate="costForecast">Cost Forecast</a></li>
-                    <li><a href="fertilizer.html" data-translate="fertilizer" style="color: var(--green-accent);">Fertilizer</a></li>
+                    <li><a href="cost-forecast.html" data-translate="costForecast" style="color: var(--green-accent);">Cost Forecast</a></li>
+                    <li><a href="fertilizer.html" data-translate="fertilizer">Fertilizer</a></li>
                     <li><a href="farmer-register.html" data-translate="register">Register</a></li>
                     <li><a href="farmer-login.html" data-translate="login">Login</a></li>
                     <li><a href="contact.html" data-translate="contact">Contact</a></li>
@@ -50,31 +50,141 @@
         </div>
     </header>
 
-    <div class="fertilizer-hero">
-        <h2 data-translate="fertilizerTitle">Feed your soil, <em>feed your crops</em></h2>
-        <p data-translate="fertilizerDesc">Learn which fertilizer to use, how much to apply, and when to apply it for maximum yields.</p>
+    <div class="forecast-hero">
+        <h2 data-translate="forecastTitle">Plan your farm, <em>maximize your profit</em></h2>
+        <p data-translate="forecastDesc">Estimate costs, yields, and profits before you plant. Know the right season to plant for best results.</p>
     </div>
 
     <main>
-        <div class="fertilizer-container">
-            <div class="section-label" data-translate="fertilizerGuide">Fertilizer Application Guide</div>
+        <div class="forecast-container">
+            <div class="section-label" data-translate="costSimulator">Cost Simulator</div>
 
-            <div class="fertilizer-grid">
-                <!-- Crop Selector -->
-                <div class="fertilizer-selector">
-                    <h3 data-translate="selectCropFertilizer">Select a Crop</h3>
-                    <p class="subtitle" data-translate="selectCropSubtitle">Choose a crop to see detailed fertilizer recommendations.</p>
+            <div class="forecast-grid">
+                <!-- Form -->
+                <div class="forecast-form">
+                    <h3 data-translate="enterFarmDetails">Enter Your Farm Details</h3>
+                    <p class="subtitle" data-translate="simulatorSubtitle">Select a crop and enter your land size to get cost estimates and planting season guidance.</p>
 
-                    <input type="text" class="crop-search" id="cropSearch" placeholder="Search crops..." data-translate="searchCrops">
-
-                    <div class="crop-list" id="cropList">
-                        <!-- Crops will be inserted by JavaScript -->
+                    <div class="form-group">
+                        <label for="cropSelect" data-translate="selectCrop">Select Crop</label>
+                        <select id="cropSelect">
+                            <option value="">— Select a crop —</option>
+                            <option value="sorghum">Sorghum</option>
+                            <option value="maize">Maize</option>
+                            <option value="millet">Millet</option>
+                            <option value="groundnuts">Groundnuts</option>
+                            <option value="cassava">Cassava</option>
+                            <option value="cowpeas">Cowpeas</option>
+                            <option value="sesame">Sesame</option>
+                            <option value="sweetpotato">Sweet Potato</option>
+                            <option value="beans">Beans</option>
+                            <option value="okra">Okra</option>
+                            <option value="tomato">Tomato</option>
+                            <option value="onion">Onion</option>
+                            <option value="pumpkin">Pumpkin</option>
+                            <option value="yam">Yam</option>
+                            <option value="sugarcane">Sugarcane</option>
+                            <option value="rice">Rice</option>
+                            <option value="sunflower">Sunflower</option>
+                            <option value="banana">Banana</option>
+                            <option value="watermelon">Watermelon</option>
+                            <option value="cabbage">Cabbage</option>
+                            <option value="pigeonpeas">Pigeon Peas</option>
+                            <option value="mangoes">Mangoes</option>
+                            <option value="coffee">Coffee</option>
+                            <option value="tea">Tea</option>
+                            <option value="tobacco">Tobacco</option>
+                            <option value="cotton">Cotton</option>
+                            <option value="soybean">Soybean</option>
+                            <option value="fingermillet">Finger Millet</option>
+                            <option value="pearlmillet">Pearl Millet</option>
+                            <option value="eggplant">Eggplant</option>
+                        </select>
                     </div>
+
+                    <div class="form-group">
+                        <label for="landSize" data-translate="landSize">Land Size (acres)</label>
+                        <input type="number" id="landSize" min="0.1" step="0.1" placeholder="e.g. 2.5">
+                        <div class="hint" data-translate="landSizeHint">Enter the size of your farm in acres (1 acre ≈ 0.4 hectares)</div>
+                    </div>
+
+                    <button class="calculate-btn" id="calculateBtn" data-translate="calculateCost">Calculate Cost &amp; Profit</button>
                 </div>
 
-                <!-- Fertilizer Details -->
-                <div class="fertilizer-details" id="fertilizerDetails">
-                    <!-- Content inserted by JavaScript -->
+                <!-- Results -->
+                <div class="forecast-results" id="resultsPanel">
+                    <div class="results-header">
+                        <h3 data-translate="resultsTitle">Results for <span class="crop-name" id="resultCropName">—</span></h3>
+                    </div>
+
+                    <!-- Season Information -->
+                    <div class="season-info" id="seasonInfo">
+                        <div class="row">
+                            <span class="label">🌧 Best Planting Season</span>
+                            <span class="value" id="seasonValue">—</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">🌾 Growing Period</span>
+                            <span class="value" id="growingPeriod">—</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">⏰ Harvest Time</span>
+                            <span class="value" id="harvestTime">—</span>
+                        </div>
+                    </div>
+
+                    <!-- Season Warning -->
+                    <div class="season-warning" id="seasonWarning">
+                        <div class="title" id="warningTitle">⚠️ Warning: Sub-optimal Planting Season</div>
+                        <div class="desc" id="warningDesc">Planting outside the recommended season can significantly reduce your harvest.</div>
+                        <div class="yield-impact" id="yieldImpact">
+                            Estimated yield reduction: <span class="highlight" id="yieldReduction">—</span>
+                        </div>
+                    </div>
+
+                    <div class="results-grid">
+                        <div class="result-card highlight">
+                            <div class="label" data-translate="totalCost">Total Cost</div>
+                            <div class="value" id="totalCostValue">—</div>
+                        </div>
+                        <div class="result-card highlight">
+                            <div class="label" data-translate="estimatedYield">Estimated Yield</div>
+                            <div class="value" id="yieldValue">—</div>
+                        </div>
+                        <div class="result-card highlight">
+                            <div class="label" data-translate="estimatedRevenue">Estimated Revenue</div>
+                            <div class="value positive" id="revenueValue">—</div>
+                        </div>
+                        <div class="result-card highlight">
+                            <div class="label" data-translate="estimatedProfit">Estimated Profit</div>
+                            <div class="value positive" id="profitValue">—</div>
+                        </div>
+                    </div>
+
+                    <div class="result-breakdown">
+                        <h4 data-translate="costBreakdown">Cost Breakdown</h4>
+                        <div class="breakdown-item">
+                            <span class="label" data-translate="seedCost">Seeds</span>
+                            <span class="value" id="seedCost">—</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="label" data-translate="fertilizerCost">Fertilizer</span>
+                            <span class="value" id="fertilizerCost">—</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="label" data-translate="laborCost">Labor</span>
+                            <span class="value" id="laborCost">—</span>
+                        </div>
+                        <div class="breakdown-item" style="font-weight: 600; border-top: 2px solid var(--border); padding-top: 12px; margin-top: 4px;">
+                            <span class="label" data-translate="totalCost">Total Cost</span>
+                            <span class="value" id="totalCostBreakdown">—</span>
+                        </div>
+                    </div>
+
+                    <div class="result-note">
+                        <span class="icon">ℹ️</span>
+                        <span data-translate="resultNote">These are estimated figures based on average market prices in South Sudan. Actual costs and yields may vary depending on your location, weather conditions, and farming practices.</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,6 +196,6 @@
 
     <script src="js/translations.js?v=3"></script>
     <script src="js/script.js?v=3"></script>
-    <script src="js/fertilizer.js?v=1"></script>
+    <script src="js/cost-forecast.js?v=1"></script>
 </body>
 </html>

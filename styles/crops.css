@@ -368,3 +368,65 @@
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+/* Crop Action Buttons */
+.crop-action-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.btn-forecast,
+.btn-fertilizer {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-forecast {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.btn-forecast:hover {
+    background: #f59e0b;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.btn-fertilizer {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.btn-fertilizer:hover {
+    background: #22c55e;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.btn-forecast .icon,
+.btn-fertilizer .icon {
+    font-size: 16px;
+    transition: transform 0.2s ease;
+}
+
+.btn-forecast:hover .icon {
+    transform: scale(1.3) rotate(-10deg);
+}
+
+.btn-fertilizer:hover .icon {
+    transform: scale(1.3) rotate(10deg);
+}
