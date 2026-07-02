@@ -54,7 +54,7 @@ nav { display: flex; align-items: center; gap: 1.5rem; margin-left: auto; }
 .nav-links a:hover { color: white; }
 .nav-links a[href="crop-log.html"] { color: var(--green-accent); }
 .language-selector select {
-    background: rgba(255,255,255,0.1);
+    background: #0f5c2e;
     border: 1px solid rgba(255,255,255,0.2);
     color: white;
     font-size: 13px;
