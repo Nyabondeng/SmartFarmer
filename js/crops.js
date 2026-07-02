@@ -11,42 +11,40 @@ function getCropText(crop, lang) {
         maize:      t.maizeVoice      || 'Maize. Planting season: May-June. Spacing: 75cm x 50cm. Pest control: Watch for maize stalk borer. Harvest: August-September. Storage: Dry on the cob, then remove kernels.',
         millet:     t.milletVoice     || 'Millet. Planting season: May-June. Spacing: 60cm x 20cm. Pest control: Watch for birds and stem borers. Harvest: September-October. Storage: Store in sealed containers.',
         groundnuts: t.groundnutsVoice || 'Groundnuts. Planting season: May-June. Spacing: 50cm x 15cm. Pest control: Watch for leaf spot and aphids. Harvest: October-November. Storage: Dry thoroughly before shelling.',
-        cassava:    t.cassavaVoice    || 'Cassava. Planting season: March-April. Spacing: 100cm x 100cm. Pest control: Watch for cassava mosaic disease. Harvest: 8-12 months after planting. Storage: Harvest only when needed.',
+        cassava:    t.cassavaVoice    || 'Cassava. Planting season: March-April. Spacing: 100cm x 100cm. Pest control: Watch for cassava mosaic disease. Harvest: 8 to 12 months after planting. Storage: Harvest only when needed.',
         cowpeas:    t.cowpeasVoice    || 'Cowpeas. Planting season: May-June. Spacing: 60cm x 20cm. Pest control: Watch for aphids and pod borers. Harvest: September-October. Storage: Dry thoroughly in pods, then shell.',
         sesame:     t.sesameVoice     || 'Sesame. Planting season: May-June. Spacing: 45cm x 15cm. Pest control: Watch for leaf spot and aphids. Harvest: October-November. Storage: Dry well, store in sealed containers.',
-        sweetpotato: t.sweetpotatoVoice || 'Sweet Potato. Planting season: May-June. Spacing: 30cm x 20cm. Pest control: Watch for weevils and leaf beetles. Harvest: 4-6 months. Storage: Store in a cool, dry, dark place.',
+        sweetpotato: t.sweetpotatoVoice || 'Sweet Potato. Planting season: May-June. Spacing: 30cm x 20cm. Pest control: Watch for weevils and leaf beetles. Harvest: 4 to 6 months. Storage: Store in a cool, dry, dark place.',
         beans:      t.beansVoice      || 'Beans. Planting season: May-June. Spacing: 50cm x 10cm. Pest control: Watch for aphids and bean beetles. Harvest: September-October. Storage: Dry completely before storing.',
         okra:       t.okraVoice       || 'Okra. Planting season: May-June. Spacing: 60cm x 30cm. Pest control: Watch for aphids and fruit borers. Harvest: September-October. Storage: Store in a cool, dry place.',
         tomato:     t.tomatoVoice     || 'Tomato. Planting season: May-June. Spacing: 60cm x 40cm. Pest control: Watch for tomato blight and fruit borers. Harvest: September-October. Storage: Store at room temperature, not refrigerated.',
         onion:      t.onionVoice      || 'Onion. Planting season: May-June. Spacing: 30cm x 10cm. Pest control: Watch for thrips and onion flies. Harvest: October-November. Storage: Store in a dry, ventilated place.',
         pumpkin:    t.pumpkinVoice    || 'Pumpkin. Planting season: May-June. Spacing: 150cm x 100cm. Pest control: Watch for fruit flies and powdery mildew. Harvest: October-November. Storage: Store in a cool, dry place.',
         yam:        t.yamVoice        || 'Yam. Planting season: May-June. Spacing: 100cm x 100cm. Pest control: Watch for yam beetles and nematodes. Harvest: October-November. Storage: Store in a cool, dark, well-ventilated place.',
-        sugarcane:  t.sugarcaneVoice  || 'Sugarcane. Planting season: May-June. Spacing: 150cm x 60cm. Pest control: Watch for stalk borers and aphids. Harvest: 10-12 months. Storage: Process soon after harvest.',
+        sugarcane:  t.sugarcaneVoice  || 'Sugarcane. Planting season: May-June. Spacing: 150cm x 60cm. Pest control: Watch for stalk borers and aphids. Harvest: 10 to 12 months. Storage: Process soon after harvest.',
         rice:       t.riceVoice       || 'Rice. Planting season: May-June. Spacing: 20cm x 20cm. Pest control: Watch for rice weevils and stem borers. Harvest: October-November. Storage: Dry completely, store in sealed containers.',
         sunflower:  t.sunflowerVoice  || 'Sunflower. Planting season: May-June. Spacing: 60cm x 30cm. Pest control: Watch for birds and head caterpillars. Harvest: October-November. Storage: Dry thoroughly, store in sealed bags.',
-        banana:     t.bananaVoice     || 'Banana. Planting season: Year-round. Spacing: 300cm x 300cm. Pest control: Watch for weevils and leaf spot. Harvest: 8-12 months. Storage: Harvest green, ripen at room temperature.',
+        banana:     t.bananaVoice     || 'Banana. Planting season: Year-round. Spacing: 300cm x 300cm. Pest control: Watch for weevils and leaf spot. Harvest: 8 to 12 months. Storage: Harvest green, ripen at room temperature.',
         watermelon: t.watermelonVoice || 'Watermelon. Planting season: May-June. Spacing: 200cm x 100cm. Pest control: Watch for fruit flies and powdery mildew. Harvest: September-October. Storage: Store in a cool, dry place.',
         cabbage:    t.cabbageVoice    || 'Cabbage. Planting season: May-June. Spacing: 60cm x 40cm. Pest control: Watch for aphids and caterpillars. Harvest: September-October. Storage: Store in a cool, ventilated place.',
-        pigeonpeas:    t.pigeonpeasVoice    || 'Pigeon Peas. Planting season: May-June. Spacing: 75cm x 30cm. Pest control: Watch for pod borers and wilt. Harvest: October-November. Storage: Dry thoroughly, store in sealed containers.',
-        mangoes:       t.mangoesVoice       || 'Mangoes. Planting season: March-April. Spacing: 1000cm x 800cm. Pest control: Watch for fruit flies and mealybugs. Harvest: November-January. Storage: Store at room temperature until ripe.',
-        coffee:        t.coffeeVoice        || 'Coffee. Planting season: Beginning of rains. Spacing: 250cm x 250cm. Pest control: Watch for coffee berry borer. Harvest: Dry season. Storage: Dry and store in cool, dry place.',
-        tea:           t.teaVoice           || 'Tea. Planting season: Rainy season. Spacing: 100cm x 75cm. Pest control: Watch for tea mosquito bug. Harvest: Year-round. Storage: Process and dry soon after harvest.',
-        tobacco:       t.tobaccoVoice       || 'Tobacco. Planting season: Beginning of rains. Spacing: 90cm x 60cm. Pest control: Watch for aphids and hornworms. Harvest: Dry season. Storage: Cure and dry before storage.',
-        cotton:        t.cottonVoice        || 'Cotton. Planting season: May-June. Spacing: 100cm x 30cm. Pest control: Watch for bollworms and aphids. Harvest: October-November. Storage: Keep dry and protected from pests.',
-        soybean:       t.soybeanVoice       || 'Soybean. Planting season: May-June. Spacing: 50cm x 10cm. Pest control: Watch for pod borers. Harvest: September-October. Storage: Dry completely before storing.',
-        fingermillet:  t.fingermilletVoice  || 'Finger Millet. Planting season: May-June. Spacing: 45cm x 15cm. Pest control: Watch for birds and stem borers. Harvest: September-October. Storage: Store in sealed containers.',
-        pearlmillet:   t.pearlmilletVoice   || 'Pearl Millet. Planting season: May-June. Spacing: 60cm x 20cm. Pest control: Watch for birds and stem borers. Harvest: September-October. Storage: Store in sealed containers.'
+        pigeonpeas: t.pigeonpeasVoice || 'Pigeon Peas. Planting season: May-June. Spacing: 75cm x 30cm. Pest control: Watch for pod borers and wilt. Harvest: October-November. Storage: Dry thoroughly, store in sealed containers.',
+        mangoes:    t.mangoesVoice    || 'Mangoes. Planting season: March-April. Spacing: 1000cm x 800cm. Pest control: Watch for fruit flies and mealybugs. Harvest: November-January. Storage: Store at room temperature until ripe.',
+        coffee:     t.coffeeVoice     || 'Coffee. Planting season: Beginning of rains. Spacing: 250cm x 250cm. Pest control: Watch for coffee berry borer. Harvest: Dry season. Storage: Dry and store in cool, dry place.',
+        tea:        t.teaVoice        || 'Tea. Planting season: Rainy season. Spacing: 100cm x 75cm. Pest control: Watch for tea mosquito bug. Harvest: Year-round. Storage: Process and dry soon after harvest.',
+        tobacco:    t.tobaccoVoice    || 'Tobacco. Planting season: Beginning of rains. Spacing: 90cm x 60cm. Pest control: Watch for aphids and hornworms. Harvest: Dry season. Storage: Cure and dry before storage.',
+        cotton:     t.cottonVoice     || 'Cotton. Planting season: May-June. Spacing: 100cm x 30cm. Pest control: Watch for bollworms and aphids. Harvest: October-November. Storage: Keep dry and protected from pests.',
+        soybean:    t.soybeanVoice    || 'Soybean. Planting season: May-June. Spacing: 50cm x 10cm. Pest control: Watch for pod borers. Harvest: September-October. Storage: Dry completely before storing.',
+        fingermillet: t.fingermilletVoice || 'Finger Millet. Planting season: May-June. Spacing: 45cm x 15cm. Pest control: Watch for birds and stem borers. Harvest: September-October. Storage: Store in sealed containers.',
+        pearlmillet: t.pearlmilletVoice || 'Pearl Millet. Planting season: May-June. Spacing: 60cm x 20cm. Pest control: Watch for birds and stem borers. Harvest: September-October. Storage: Store in sealed containers.',
+        eggplant:   t.eggplantVoice   || 'Eggplant. Planting season: May-June. Spacing: 60cm x 45cm. Pest control: Watch for flea beetles and fruit borers. Harvest: August-October. Storage: Store in a cool, dry place.'
     };
     return cropVoices[crop] || 'Crop information not available.';
 }
 
-
 function toggleCropAudio(crop) {
     console.log('🔊 toggleCropAudio called for:', crop);
     
-    // If this is a new crop or no speech is active, start fresh
     if (currentCrop !== crop || !isSpeaking) {
-        // Cancel any ongoing speech
         if ('speechSynthesis' in window) {
             window.speechSynthesis.cancel();
         }
@@ -57,16 +55,13 @@ function toggleCropAudio(crop) {
         return;
     }
 
-
     if (isSpeaking && !isPaused) {
-        // Pause
         if ('speechSynthesis' in window) {
             window.speechSynthesis.pause();
             isPaused = true;
             updateButtonState(crop, 'resume');
         }
     } else if (isPaused) {
-        // Resume
         if ('speechSynthesis' in window) {
             window.speechSynthesis.resume();
             isPaused = false;
@@ -74,7 +69,6 @@ function toggleCropAudio(crop) {
         }
     }
 }
-
 
 function startSpeaking(crop) {
     const lang = document.getElementById('languageSwitcher').value;
@@ -85,8 +79,50 @@ function startSpeaking(crop) {
     
     if ('speechSynthesis' in window) {
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = 0.85;
-        utterance.lang = (lang === 'juba' || lang === 'ar') ? 'ar-SA' : 'en-US';
+        
+        // ===== EAST AFRICAN ENGLISH VOICE SETTINGS =====
+        // Slower rate for better comprehension
+        utterance.rate = 0.75;
+        utterance.pitch = 1.0;
+        utterance.volume = 1.0;
+        
+        // Try to find East African English voices (Kenyan & Ugandan)
+        let voices = window.speechSynthesis.getVoices();
+        
+        // Prioritize East African voices (Kenyan and Ugandan first)
+        const preferredVoices = [
+            'en-KE',    // Kenyan English (East Africa)
+            'en-UG',    // Ugandan English (East Africa)
+            'en-TZ',    // Tanzanian English (East Africa)
+            'en-ZA',    // South African English
+            'en-NG',    // Nigerian English
+            'en-GH',    // Ghanaian English
+            'en-ZW',    // Zimbabwean English
+        ];
+        
+        let selectedVoice = null;
+        
+        // Try to find an East African voice
+        for (let langCode of preferredVoices) {
+            selectedVoice = voices.find(v => v.lang === langCode);
+            if (selectedVoice) break;
+        }
+        
+        // If no African voice found, try any English voice
+        if (!selectedVoice) {
+            selectedVoice = voices.find(v => v.lang.startsWith('en-') && v.lang !== 'en-US' && v.lang !== 'en-GB') 
+                || voices.find(v => v.lang === 'en-GB')
+                || voices.find(v => v.lang === 'en-US')
+                || voices[0];
+        }
+        
+        if (selectedVoice) {
+            utterance.voice = selectedVoice;
+            utterance.lang = selectedVoice.lang;
+        } else {
+            // Fallback - use English
+            utterance.lang = (lang === 'juba' || lang === 'ar') ? 'ar-SA' : 'en-US';
+        }
         
         utterance.onstart = function() {
             isSpeaking = true;
@@ -101,18 +137,18 @@ function startSpeaking(crop) {
             updateButtonState(crop, 'listen');
         };
         
-  utterance.onerror = function(event) {
-    console.error('FULL SPEECH ERROR:', event);
-
-    isSpeaking = false;
-    isPaused = false;
-    currentUtterance = null;
-
-    updateButtonState(crop, 'listen');
-
-    alert('Speech error: ' + event.error);
-};
-
+        utterance.onerror = function(event) {
+            console.error('Speech error:', event);
+            isSpeaking = false;
+            isPaused = false;
+            currentUtterance = null;
+            updateButtonState(crop, 'listen');
+            
+            // Silent fail for permissions
+            if (event.error !== 'not-allowed' && event.error !== 'canceled') {
+                alert('Speech error: ' + event.error);
+            }
+        };
 
         currentUtterance = utterance;
         window.speechSynthesis.speak(utterance);
@@ -142,8 +178,9 @@ function updateButtonState(crop, state) {
     }
 }
 
-
+// ===== INITIALIZE =====
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize voice buttons
     document.querySelectorAll('.voice-btn').forEach(btn => {
         const crop = btn.getAttribute('data-crop');
         if (crop) {
@@ -151,9 +188,20 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.className = 'voice-btn idle';
         }
     });
+    
+    // Preload voices for faster response
+    if ('speechSynthesis' in window) {
+        setTimeout(() => {
+            window.speechSynthesis.getVoices();
+        }, 100);
+        
+        window.speechSynthesis.onvoiceschanged = function() {
+            window.speechSynthesis.getVoices();
+        };
+    }
 });
 
-
+// Language switcher - cancel speech when language changes
 document.getElementById('languageSwitcher').addEventListener('change', function () {
     const lang = this.value;
 
@@ -169,6 +217,5 @@ document.getElementById('languageSwitcher').addEventListener('change', function 
     });
     if (typeof applyTranslations === 'function') applyTranslations(lang);
 });
-
 
 window.toggleCropAudio = toggleCropAudio;
