@@ -420,7 +420,6 @@ function renderCropList(filter = '') {
         const crop = fertilizerData[key];
         return `
             <div class="crop-option" data-crop="${key}" onclick="selectCrop('${key}')">
-                <span class="icon">${crop.icon || '🌱'}</span>
                 <span class="name">${crop.name}</span>
             </div>
         `;
@@ -461,7 +460,6 @@ function showCropDetails(key) {
 
     detailsPanel.innerHTML = `
         <div class="crop-header">
-            <span class="icon">${crop.icon || '🌱'}</span>
             <h3>${crop.name}</h3>
         </div>
 
