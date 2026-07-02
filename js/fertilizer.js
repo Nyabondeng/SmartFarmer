@@ -1,7 +1,6 @@
 const fertilizerData = {
     sorghum: {
         name: 'Sorghum',
-        icon: '🌾',
         fertilizerTypes: [
             { name: 'NPK 15-15-15', amount: '50 kg/acre', timing: 'At planting', description: 'Apply at planting for balanced nutrition' },
             { name: 'Urea (46% N)', amount: '25 kg/acre', timing: '6-8 weeks after planting', description: 'Apply as top dressing during vegetative growth' }
@@ -14,7 +13,6 @@ const fertilizerData = {
     },
     maize: {
         name: 'Maize',
-        icon: '🌽',
         fertilizerTypes: [
             { name: 'NPK 15-15-15', amount: '60 kg/acre', timing: 'At planting', description: 'Apply at planting for strong root development' },
             { name: 'Urea (46% N)', amount: '50 kg/acre', timing: '4-6 weeks after planting', description: 'Apply when plants are knee-high' },
@@ -29,7 +27,6 @@ const fertilizerData = {
     },
     millet: {
         name: 'Millet',
-        icon: '🌾',
         fertilizerTypes: [
             { name: 'NPK 15-15-15', amount: '40 kg/acre', timing: 'At planting', description: 'Apply at planting for balanced nutrition' },
             { name: 'Urea (46% N)', amount: '20 kg/acre', timing: '5-7 weeks after planting', description: 'Apply as top dressing before flowering' }
@@ -42,7 +39,6 @@ const fertilizerData = {
     },
     groundnuts: {
         name: 'Groundnuts',
-        icon: '🥜',
         fertilizerTypes: [
             { name: 'Single Super Phosphate (SSP)', amount: '50 kg/acre', timing: 'At planting', description: 'Apply at planting for root and pod development' },
             { name: 'Potassium Chloride (KCl)', amount: '20 kg/acre', timing: 'At planting', description: 'Apply at planting for pod filling' }
@@ -68,7 +64,6 @@ const fertilizerData = {
     },
     cowpeas: {
         name: 'Cowpeas',
-        icon: '🫘',
         fertilizerTypes: [
             { name: 'Single Super Phosphate (SSP)', amount: '40 kg/acre', timing: 'At planting', description: 'Apply at planting for root development' },
             { name: 'Potassium Chloride (KCl)', amount: '15 kg/acre', timing: 'At planting', description: 'Apply at planting for pod filling' }
@@ -81,7 +76,6 @@ const fertilizerData = {
     },
     sesame: {
         name: 'Sesame',
-        icon: '🌱',
         fertilizerTypes: [
             { name: 'NPK 10-20-10', amount: '50 kg/acre', timing: 'At planting', description: 'Apply at planting for oil development' },
             { name: 'Urea (46% N)', amount: '15 kg/acre', timing: '4-6 weeks after planting', description: 'Apply before flowering' }
@@ -94,7 +88,6 @@ const fertilizerData = {
     },
     sweetpotato: {
         name: 'Sweet Potato',
-        icon: '🍠',
         fertilizerTypes: [
             { name: 'NPK 15-15-15', amount: '40 kg/acre', timing: 'At planting', description: 'Apply at planting for vine development' },
             { name: 'Potassium Chloride (KCl)', amount: '30 kg/acre', timing: '4-6 weeks after planting', description: 'Apply for root development' }
@@ -107,7 +100,6 @@ const fertilizerData = {
     },
     beans: {
         name: 'Beans',
-        icon: '🫘',
         fertilizerTypes: [
             { name: 'Single Super Phosphate (SSP)', amount: '45 kg/acre', timing: 'At planting', description: 'Apply at planting for root development' },
             { name: 'Potassium Chloride (KCl)', amount: '20 kg/acre', timing: 'At planting', description: 'Apply at planting for pod development' }
@@ -120,7 +112,6 @@ const fertilizerData = {
     },
     okra: {
         name: 'Okra',
-        icon: '🥬',
         fertilizerTypes: [
             { name: 'NPK 15-15-15', amount: '50 kg/acre', timing: 'At planting', description: 'Apply at planting for establishment' },
             { name: 'Urea (46% N)', amount: '30 kg/acre', timing: '4 weeks after planting', description: 'Apply for vegetative growth' }
@@ -134,7 +125,6 @@ const fertilizerData = {
     },
     tomato: {
         name: 'Tomato',
-        icon: '🍅',
         fertilizerTypes: [
             { name: 'NPK 15-15-15', amount: '80 kg/acre', timing: 'At planting', description: 'Apply at planting for establishment' },
             { name: 'CAN (25% N)', amount: '60 kg/acre', timing: '3-4 weeks after planting', description: 'Apply for vegetative growth' },
@@ -149,7 +139,6 @@ const fertilizerData = {
     },
     onion: {
         name: 'Onion',
-        icon: '🧅',
         fertilizerTypes: [
             { name: 'NPK 12-12-17', amount: '60 kg/acre', timing: 'At planting', description: 'Apply at planting for establishment' },
             { name: 'Urea (46% N)', amount: '30 kg/acre', timing: '3-4 weeks after planting', description: 'Apply for bulb development' },
@@ -164,7 +153,6 @@ const fertilizerData = {
     },
     pumpkin: {
         name: 'Pumpkin',
-        icon: '🎃',
         fertilizerTypes: [
             { name: 'NPK 15-15-15', amount: '50 kg/acre', timing: 'At planting', description: 'Apply at planting for vine development' },
             { name: 'Urea (46% N)', amount: '25 kg/acre', timing: '4 weeks after planting', description: 'Apply for vine growth' },
@@ -179,7 +167,6 @@ const fertilizerData = {
     },
     yam: {
         name: 'Yam',
-        icon: '🍠',
         fertilizerTypes: [
             { name: 'NPK 12-12-17', amount: '70 kg/acre', timing: 'At planting', description: 'Apply at planting for tuber development' },
             { name: 'Potassium Chloride (KCl)', amount: '40 kg/acre', timing: '4-6 months after planting', description: 'Apply for tuber filling' }
@@ -192,7 +179,6 @@ const fertilizerData = {
     },
     sugarcane: {
         name: 'Sugarcane',
-        icon: '🌿',
         fertilizerTypes: [
             { name: 'NPK 15-15-15', amount: '100 kg/acre', timing: 'At planting', description: 'Apply at planting for establishment' },
             { name: 'Urea (46% N)', amount: '80 kg/acre', timing: '2-3 months after planting', description: 'Apply for cane development' },
@@ -207,7 +193,6 @@ const fertilizerData = {
     },
     rice: {
         name: 'Rice',
-        icon: '🌾',
         fertilizerTypes: [
             { name: 'NPK 15-15-15', amount: '50 kg/acre', timing: 'At planting', description: 'Apply at planting for establishment' },
             { name: 'Urea (46% N)', amount: '60 kg/acre', timing: '4 weeks after planting', description: 'Apply for tillering' },
@@ -222,7 +207,6 @@ const fertilizerData = {
     },
     sunflower: {
         name: 'Sunflower',
-        icon: '🌻',
         fertilizerTypes: [
             { name: 'NPK 10-20-10', amount: '50 kg/acre', timing: 'At planting', description: 'Apply at planting for oil development' },
             { name: 'Urea (46% N)', amount: '30 kg/acre', timing: '4-6 weeks after planting', description: 'Apply during vegetative growth' }
@@ -235,7 +219,6 @@ const fertilizerData = {
     },
     banana: {
         name: 'Banana',
-        icon: '🍌',
         fertilizerTypes: [
             { name: 'NPK 12-12-17', amount: '80 kg/acre', timing: 'At planting', description: 'Apply at planting for establishment' },
             { name: 'Urea (46% N)', amount: '60 kg/acre', timing: '3-4 months after planting', description: 'Apply for vegetative growth' },
@@ -250,7 +233,6 @@ const fertilizerData = {
     },
     watermelon: {
         name: 'Watermelon',
-        icon: '🍉',
         fertilizerTypes: [
             { name: 'NPK 15-15-15', amount: '60 kg/acre', timing: 'At planting', description: 'Apply at planting for vine development' },
             { name: 'Urea (46% N)', amount: '30 kg/acre', timing: '4 weeks after planting', description: 'Apply for vine growth' },
@@ -265,7 +247,6 @@ const fertilizerData = {
     },
     cabbage: {
         name: 'Cabbage',
-        icon: '🥬',
         fertilizerTypes: [
             { name: 'NPK 15-15-15', amount: '60 kg/acre', timing: 'At planting', description: 'Apply at planting for establishment' },
             { name: 'Urea (46% N)', amount: '40 kg/acre', timing: '3-4 weeks after planting', description: 'Apply during head formation' }
@@ -278,7 +259,6 @@ const fertilizerData = {
     },
     pigeonpeas: {
         name: 'Pigeon Peas',
-        icon: '🌱',
         fertilizerTypes: [
             { name: 'Single Super Phosphate (SSP)', amount: '40 kg/acre', timing: 'At planting', description: 'Apply at planting for root development' },
             { name: 'Potassium Chloride (KCl)', amount: '15 kg/acre', timing: 'At planting', description: 'Apply at planting for pod development' }
@@ -291,7 +271,6 @@ const fertilizerData = {
     },
     mangoes: {
         name: 'Mangoes',
-        icon: '🥭',
         fertilizerTypes: [
             { name: 'NPK 12-12-17', amount: '60 kg/acre', timing: 'At planting', description: 'Apply at planting for establishment' },
             { name: 'Urea (46% N)', amount: '40 kg/acre', timing: '3-4 months after planting', description: 'Apply for vegetative growth' },
@@ -306,7 +285,6 @@ const fertilizerData = {
     },
     coffee: {
         name: 'Coffee',
-        icon: '☕',
         fertilizerTypes: [
             { name: 'NPK 12-12-17', amount: '70 kg/acre', timing: 'At planting', description: 'Apply at planting for establishment' },
             { name: 'Urea (46% N)', amount: '50 kg/acre', timing: 'Beginning of rains', description: 'Apply for vegetative growth' },
@@ -321,7 +299,6 @@ const fertilizerData = {
     },
     tea: {
         name: 'Tea',
-        icon: '🍵',
         fertilizerTypes: [
             { name: 'NPK 12-12-17', amount: '60 kg/acre', timing: 'At planting', description: 'Apply at planting for establishment' },
             { name: 'Urea (46% N)', amount: '50 kg/acre', timing: '3-4 weeks after planting', description: 'Apply for leaf development' },
@@ -336,7 +313,6 @@ const fertilizerData = {
     },
     tobacco: {
         name: 'Tobacco',
-        icon: '🚬',
         fertilizerTypes: [
             { name: 'NPK 12-12-17', amount: '70 kg/acre', timing: 'At planting', description: 'Apply at planting for establishment' },
             { name: 'Urea (46% N)', amount: '50 kg/acre', timing: '4-6 weeks after planting', description: 'Apply for leaf development' },
@@ -351,7 +327,6 @@ const fertilizerData = {
     },
     cotton: {
         name: 'Cotton',
-        icon: '🧶',
         fertilizerTypes: [
             { name: 'NPK 15-15-15', amount: '60 kg/acre', timing: 'At planting', description: 'Apply at planting for establishment' },
             { name: 'Urea (46% N)', amount: '50 kg/acre', timing: '4-6 weeks after planting', description: 'Apply for vegetative growth' },
@@ -366,7 +341,6 @@ const fertilizerData = {
     },
     soybean: {
         name: 'Soybean',
-        icon: '🫘',
         fertilizerTypes: [
             { name: 'Single Super Phosphate (SSP)', amount: '45 kg/acre', timing: 'At planting', description: 'Apply at planting for root development' },
             { name: 'Potassium Chloride (KCl)', amount: '20 kg/acre', timing: 'At planting', description: 'Apply at planting for pod development' },
@@ -380,7 +354,6 @@ const fertilizerData = {
     },
     fingermillet: {
         name: 'Finger Millet',
-        icon: '🌾',
         fertilizerTypes: [
             { name: 'NPK 15-15-15', amount: '40 kg/acre', timing: 'At planting', description: 'Apply at planting for establishment' },
             { name: 'Urea (46% N)', amount: '20 kg/acre', timing: '5-6 weeks after planting', description: 'Apply for grain development' }
@@ -393,7 +366,6 @@ const fertilizerData = {
     },
     pearlmillet: {
         name: 'Pearl Millet',
-        icon: '🌾',
         fertilizerTypes: [
             { name: 'NPK 15-15-15', amount: '40 kg/acre', timing: 'At planting', description: 'Apply at planting for establishment' },
             { name: 'Urea (46% N)', amount: '25 kg/acre', timing: '5-6 weeks after planting', description: 'Apply for grain development' }
@@ -406,7 +378,6 @@ const fertilizerData = {
     },
     eggplant: {
         name: 'Eggplant',
-        icon: '🍆',
         fertilizerTypes: [
             { name: 'NPK 15-15-15', amount: '50 kg/acre', timing: 'At planting', description: 'Apply at planting for establishment' },
             { name: 'Urea (46% N)', amount: '30 kg/acre', timing: '4-6 weeks after planting', description: 'Apply for vegetative growth' },
@@ -507,7 +478,6 @@ function showCropDetails(key) {
         </div>
 
         <div class="fertilizer-tip">
-            <span class="icon">💡</span>
             <span><strong>Tip:</strong> ${crop.tips}</span>
         </div>
     `;
