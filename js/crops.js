@@ -41,6 +41,45 @@ function getCropText(crop, lang) {
     return cropVoices[crop] || 'Crop information not available.';
 }
 
+
+function updateButtonState(crop, state) {
+    const button = document.querySelector(`.voice-btn[data-crop="${crop}"]`);
+    if (!button) return;
+    
+    switch(state) {
+        case 'listen':
+            button.textContent = '🔊 Listen';
+            button.className = 'voice-btn idle';
+            break;
+        case 'pause':
+            button.textContent = '⏸️ Pause';
+            button.className = 'voice-btn playing';
+            break;
+        case 'resume':
+            button.textContent = '▶️ Resume';
+            button.className = 'voice-btn paused';
+            break;
+    }
+}function updateButtonState(crop, state) {
+    const button = document.querySelector(`.voice-btn[data-crop="${crop}"]`);
+    if (!button) return;
+    
+    switch(state) {
+        case 'listen':
+            button.textContent = '🔊 Listen';
+            button.className = 'voice-btn idle';
+            break;
+        case 'pause':
+            button.textContent = '⏸️ Pause';
+            button.className = 'voice-btn playing';
+            break;
+        case 'resume':
+            button.textContent = '▶️ Resume';
+            button.className = 'voice-btn paused';
+            break;
+    }
+}
+
 function toggleCropAudio(crop) {
     console.log('🔊 toggleCropAudio called for:', crop);
     
