@@ -43,7 +43,11 @@ const common = {
 
         // Footer
         footerText: "© 2026 Smart Farmer. For smallholder farmers in South Sudan.",
-        footerCopy: "© 2026 Smart Farmer. All rights reserved."
+        footerCopy: "© 2026 Smart Farmer. All rights reserved.",
+        installBannerTitle: "Install Smart Farmer",
+        installBannerText: "Save this app to your phone for offline access",
+        installButton: "Install",
+        footerLocation: "📍 Yei County, South Sudan"
     },
     juba: {
         // Navigation
@@ -80,7 +84,11 @@ const common = {
 
         // Footer
         footerText: "© 2026 المزارع الذكي. للمزارعين أصحاب الحيازات الصغيرة في جنوب السودان.",
-        footerCopy: "© ٢٠٢٦ المزارع الذكي. جميع الحقوق محفوظة."
+        footerCopy: "© ٢٠٢٦ المزارع الذكي. جميع الحقوق محفوظة.",
+        installBannerTitle: "تثبيت المزارع الذكي",
+        installBannerText: "احفظ هذا التطبيق على هاتفك للوصول دون اتصال",
+        installButton: "تثبيت",
+        footerLocation: "📍 مقاطعة يي، جنوب السودان"
     },
     bari: {
         // Navigation
@@ -117,7 +125,11 @@ const common = {
 
         // Footer
         footerText: "© 2026 Smart Farmer. For smallholder farmers in South Sudan.",
-        footerCopy: "© 2026 Smart Farmer. All rights reserved."
+        footerCopy: "© 2026 Smart Farmer. All rights reserved.",
+        installBannerTitle: "Install Smart Farmer",
+        installBannerText: "Save this app to your phone for offline access",
+        installButton: "Install",
+        footerLocation: "📍 Yei County, South Sudan"
     }
 };
 
