@@ -28,72 +28,6 @@
     }
 
 
-    function playAudio(topic) {
-
-
-        if (typeof translations !== 'undefined') {
-            const langSelect = document.getElementById('languageSwitcher');
-            const lang = langSelect ? langSelect.value : 'en';
-            const t = translations[lang] || translations.en;
-
-
-            const voiceMap = {
-                planting: t.plantingVoice,
-                pest: t.pestVoice,
-                postharvest: t.postharvestVoice,
-                soil: t.soilVoice,
-                climate: t.climateVoice,
-                water: t.waterVoice || t.climateVoice,
-                market: t.marketVoice || t.climateVoice,
-                fertilizer: t.fertilizerVoice || t.climateVoice,
-                disease: t.diseaseVoice || t.climateVoice,
-                tools: t.toolsVoice || t.climateVoice
-            };
-
-            let text = voiceMap[topic];
-            if (!text) {
-                text = 'Audio content coming soon.';
-            }
-
-
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.rate = 0.85;
-                if (lang === 'juba' || lang === 'ar') {
-                    utterance.lang = 'ar-SA';
-                } else {
-                    utterance.lang = 'en-US';
-                }
-
-
-                const voices = window.speechSynthesis.getVoices();
-                let matchingVoice = null;
-                for (let v of voices) {
-                    if (lang === 'juba' && v.lang.startsWith('ar')) {
-                        matchingVoice = v;
-                        break;
-                    } else if (lang === 'en' && v.lang.startsWith('en')) {
-                        matchingVoice = v;
-                        break;
-                    }
-                }
-                if (matchingVoice) {
-                    utterance.voice = matchingVoice;
-                }
-
-                utterance.onerror = function(e) {
-                    console.warn('Speech error:', e);
-                };
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert(text);
-            }
-        } else {
-            alert('Audio content coming soon.');
-        }
-    }
-
 
     function updateButtonState(moduleId, state) {
     const button = document.querySelector(`.voice-btn[data-module="${moduleId}"]`);
@@ -246,10 +180,6 @@ document.querySelectorAll('.filter-pill').forEach(btn => {
 });
 
 // ===== EXPOSE FUNCTIONS GLOBALLY =====
-window.toggleModuleAudio = toggleModuleAudio;
-window.pauseModuleAudio = pauseModuleAudio;
-window.stopModuleAudio = stopModuleAudio;
-window.translatePage = translatePage;
-window.getModuleText = getModuleText;
-window.initVoiceButtons = initVoiceButtons;
 window.toggleMenu = toggleMenu;
+window.playAudio = playAudio;
+window.translatePage = translatePage;
