@@ -223,6 +223,15 @@ const crops = {
         harvestLabel: "Harvest:",
         storageLabel: "Storage:",
         viewDetails: "View Details",
+        allCropsLabel: "All Crops",
+        forecastButton: "Forecast",
+        fertilizerButton: "Fertilizer",
+        cropsHeroStatsCrops: "Crops",
+        cropsHeroStatsLanguages: "Languages",
+        cropsHeroStatsAudioValue: "Audio",
+        cropsHeroStatsAvailable: "Available",
+        cropsHeroStatsFreeValue: "Free",
+        cropsHeroStatsAlways: "Always",
 
         // Planting Texts
         sorghumPlantingText: "May-June",
@@ -491,6 +500,15 @@ const crops = {
         harvestLabel: "الحصاد:",
         storageLabel: "التخزين:",
         viewDetails: "عرض التفاصيل",
+        allCropsLabel: "جميع المحاصيل",
+        forecastButton: "التوقعات",
+        fertilizerButton: "الأسمدة",
+        cropsHeroStatsCrops: "المحاصيل",
+        cropsHeroStatsLanguages: "اللغات",
+        cropsHeroStatsAudioValue: "الصوت",
+        cropsHeroStatsAvailable: "متوفر",
+        cropsHeroStatsFreeValue: "مجاني",
+        cropsHeroStatsAlways: "دائماً",
 
         // Planting Texts
         sorghumPlantingText: "مايو-يونيو",

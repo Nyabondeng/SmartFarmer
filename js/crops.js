@@ -60,25 +60,60 @@ function updateButtonState(crop, state) {
             button.className = 'voice-btn paused';
             break;
     }
-}function updateButtonState(crop, state) {
+}function getCurrentTranslateLanguage() {
+    const selector = document.getElementById('languageSwitcher');
+    const selected = selector ? selector.value : 'en';
+    return selected === 'ba' ? 'bari' : (selected === 'ar' ? 'juba' : selected);
+}
+
+function applyCropsPageTranslations() {
+    const lang = getCurrentTranslateLanguage();
+    const t = translations[lang] || translations.en || {};
+
+    const sectionLabel = document.querySelector('.section-label');
+    if (sectionLabel && t.allCropsLabel) {
+        sectionLabel.textContent = t.allCropsLabel;
+    }
+
+    document.querySelectorAll('.btn-forecast').forEach(btn => {
+        if (t.forecastButton) btn.textContent = t.forecastButton;
+    });
+
+    document.querySelectorAll('.btn-fertilizer').forEach(btn => {
+        if (t.fertilizerButton) btn.textContent = t.fertilizerButton;
+    });
+}
+
+function updateButtonState(crop, state) {
     const button = document.querySelector(`.voice-btn[data-crop="${crop}"]`);
     if (!button) return;
+
+    const lang = getCurrentTranslateLanguage();
+    const t = translations[lang] || translations.en || {};
     
     switch(state) {
         case 'listen':
-            button.textContent = '🔊 Listen';
+            button.textContent = t.voiceListenLabel || '🔊 Listen';
             button.className = 'voice-btn idle';
             break;
         case 'pause':
-            button.textContent = '⏸️ Pause';
+            button.textContent = t.voicePauseLabel || '⏸ Pause';
             button.className = 'voice-btn playing';
             break;
         case 'resume':
-            button.textContent = '▶️ Resume';
+            button.textContent = t.voiceResumeLabel || '▶ Resume';
             button.className = 'voice-btn paused';
             break;
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    applyCropsPageTranslations();
+});
+
+document.addEventListener('languagechange', () => {
+    applyCropsPageTranslations();
+});
 
 function toggleCropAudio(crop) {
     console.log('🔊 toggleCropAudio called for:', crop);

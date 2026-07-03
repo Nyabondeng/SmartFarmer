@@ -275,12 +275,20 @@ function speakWithSynthesis(message, lang) {
 
 
 function translatePage(language) {
-    document.querySelectorAll("[data-translate]").forEach(element => {
-        const key = element.getAttribute("data-translate");
-        if (translations[language] && translations[language][key]) {
-            element.textContent = translations[language][key];
-        } else if (translations[key]) {
-            element.textContent = translations[key];
+    document.querySelectorAll("[data-translate], [data-translate-html]").forEach(element => {
+        const key = element.getAttribute("data-translate") || element.getAttribute("data-translate-html");
+        if (!key) return;
+
+        const value = (translations[language] && translations[language][key])
+            || translations[key]
+            || (translations.en && translations.en[key]);
+
+        if (value !== undefined && value !== null) {
+            if (element.hasAttribute('data-translate-html')) {
+                element.innerHTML = value;
+            } else {
+                element.textContent = value;
+            }
         }
     });
 }
@@ -626,6 +634,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const pageKey = (selectedLanguage === 'bari') ? 'bari' : (selectedLanguage === 'juba' ? 'juba' : selectedLanguage);
             translatePage(pageKey);
+            document.dispatchEvent(new CustomEvent('languagechange', { detail: { language: pageKey } }));
             
             if (selectedLanguage === 'juba' && !localStorage.getItem('sf_voice') && 'speechSynthesis' in window) {
                 const voices = speechSynthesis.getVoices();
