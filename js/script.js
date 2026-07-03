@@ -300,13 +300,10 @@ function updateUserNav() {
     const navLinks = document.querySelector('.nav-links');
     if (!navLinks) return;
 
-    const existingLogin = document.querySelector('.nav-login-link');
-    const existingRegister = document.querySelector('.nav-register-link');
     const existingUser = document.querySelector('.nav-user-link');
     const existingLogout = document.querySelector('.nav-logout-link');
-    
-    if (existingLogin) existingLogin.remove();
-    if (existingRegister) existingRegister.remove();
+    const existingAccount = navLinks.querySelector('a[href="farmer-login.html"], a[href="farmer-register.html"]');
+
     if (existingUser) existingUser.remove();
     if (existingLogout) existingLogout.remove();
 
@@ -314,24 +311,18 @@ function updateUserNav() {
         const userLi = document.createElement('li');
         userLi.className = 'nav-user-link';
         userLi.innerHTML = `<a href="#">👤 ${user.name || 'User'}</a>`;
-        
+
         const logoutLi = document.createElement('li');
         logoutLi.className = 'nav-logout-link';
         logoutLi.innerHTML = `<a href="#" onclick="apiLogoutUser(); return false;">Logout</a>`;
-        
+
         navLinks.appendChild(userLi);
         navLinks.appendChild(logoutLi);
-    } else {
-        const loginLi = document.createElement('li');
-        loginLi.className = 'nav-login-link';
-        loginLi.innerHTML = `<a href="farmer-login.html">Login</a>`;
-        
-        const registerLi = document.createElement('li');
-        registerLi.className = 'nav-register-link';
-        registerLi.innerHTML = `<a href="farmer-register.html">Register</a>`;
-        
-        navLinks.appendChild(loginLi);
-        navLinks.appendChild(registerLi);
+    } else if (!existingAccount) {
+        const accountLi = document.createElement('li');
+        accountLi.className = 'nav-account-link';
+        accountLi.innerHTML = '<a href="farmer-login.html" data-translate="login">Account</a>';
+        navLinks.appendChild(accountLi);
     }
 }
 
