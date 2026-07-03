@@ -244,3 +244,12 @@ document.querySelectorAll('.filter-pill').forEach(btn => {
         });
     });
 });
+
+// ===== EXPOSE FUNCTIONS GLOBALLY =====
+window.toggleModuleAudio = toggleModuleAudio;
+window.pauseModuleAudio = pauseModuleAudio;
+window.stopModuleAudio = stopModuleAudio;
+window.translatePage = translatePage;
+window.getModuleText = getModuleText;
+window.initVoiceButtons = initVoiceButtons;
+window.toggleMenu = toggleMenu;
