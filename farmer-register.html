@@ -124,5 +124,38 @@
     <script src="/js/script.js"></script>
     <script src="/js/farmer-auth.js"></script>
 
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    if (isLoggedIn()) {
+        window.location.href = 'index.html';
+        return;
+    }
+
+    document.getElementById('registerForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const userData = {
+            name: document.getElementById('regName').value,
+            phone: document.getElementById('regPhone').value,
+            location: document.getElementById('regLocation').value || 'Unknown'
+        };
+        const msg = document.getElementById('registerMessage');
+        
+        msg.textContent = 'Registering...';
+        msg.style.color = 'blue';
+        
+        const result = await apiRegisterUser(userData);
+        
+        if (result.success) {
+            msg.textContent = 'Registration successful! Redirecting...';
+            msg.style.color = 'green';
+            setTimeout(() => window.location.href = 'index.html', 1000);
+        } else {
+            msg.textContent = result.error || 'Registration failed. Please try again.';
+            msg.style.color = 'red';
+        }
+    });
+});
+</script>
+
 </body>
 </html>
