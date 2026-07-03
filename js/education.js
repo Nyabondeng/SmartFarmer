@@ -174,6 +174,24 @@
         return text;
     }
 
+    function getButtonLabel(state) {
+        const lang = normalizeLanguage(localStorage.getItem('smartfarmer_lang')
+            || localStorage.getItem('sf_lang')
+            || localStorage.getItem('language')
+            || 'en');
+        const t = translations[lang] || translations.en || {};
+
+        switch(state) {
+            case 'pause':
+                return t.voicePauseLabel || '⏸ Pause';
+            case 'resume':
+                return lang === 'juba' ? '▶️ استئناف' : (t.voicePauseLabel || '▶️ Resume');
+            case 'listen':
+            default:
+                return t.voiceListenLabel || '🔊 Listen';
+        }
+    }
+
     // ===== UPDATE BUTTON STATE =====
     function updateButtonState(moduleId, state) {
         const button = document.querySelector(`.voice-btn[data-module="${moduleId}"]`);
@@ -181,15 +199,15 @@
         
         switch(state) {
             case 'listen':
-                button.textContent = '🔊 Listen';
+                button.textContent = getButtonLabel('listen');
                 button.className = 'voice-btn idle';
                 break;
             case 'pause':
-                button.textContent = '⏸️ Pause';
+                button.textContent = getButtonLabel('pause');
                 button.className = 'voice-btn playing';
                 break;
             case 'resume':
-                button.textContent = '▶️ Resume';
+                button.textContent = getButtonLabel('resume');
                 button.className = 'voice-btn paused';
                 break;
         }
@@ -427,7 +445,7 @@
         document.querySelectorAll('.voice-btn').forEach(btn => {
             const moduleId = btn.getAttribute('data-module');
             if (moduleId) {
-                btn.textContent = '🔊 Listen';
+                btn.textContent = getButtonLabel('listen');
                 btn.className = 'voice-btn idle';
             }
         });
