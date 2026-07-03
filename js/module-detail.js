@@ -19,6 +19,23 @@
         return match ? match[1].toLowerCase() : 'planting';
     }
 
+    function applyDataTranslations(root, t) {
+        root.querySelectorAll('[data-translate]').forEach(el => {
+            const key = el.getAttribute('data-translate');
+            if (!key) return;
+
+            const value = t[key];
+            if (value === undefined || value === null || value === '') return;
+
+            const useHtml = el.hasAttribute('data-translate-html') || /HeroTitle$/i.test(key);
+            if (useHtml) {
+                el.innerHTML = value;
+            } else {
+                el.textContent = value;
+            }
+        });
+    }
+
     function translateModulePage() {
         if (typeof translations === 'undefined') return;
 
@@ -86,6 +103,8 @@
         if (selector) {
             selector.value = lang;
         }
+
+        applyDataTranslations(document, t);
     }
 
     // ─── PROGRESS BAR ────────────────────────────────
