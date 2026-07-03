@@ -23,6 +23,15 @@ const common = {
 
         // Hero / General
         welcome: "Welcome to Smart Farmer",
+        heroTitle: "Smart Farming <br><span class=\"headline-accent\">Starts Here</span>",
+        exploreCrops: "Explore Crops",
+        startLearning: "Start Learning",
+        trustCrops: "Crops",
+        trustModules: "Modules",
+        trustLanguages: "Languages",
+        trustAvailable: "Available",
+        trustFree: "Free",
+        trustAlways: "Always",
         tagline: "Empowering smallholder farmers through education, crop monitoring tools, and climate insights.",
         getStarted: "Get Started",
 
@@ -51,6 +60,15 @@ const common = {
 
         // Hero / General
         welcome: "مرحباً بكم في المزارع الذكي",
+        heroTitle: "الزراعة الذكية <br><span class=\"headline-accent\">تبدأ هنا</span>",
+        exploreCrops: "استكشف المحاصيل",
+        startLearning: "ابدأ التعلم",
+        trustCrops: "محاصيل",
+        trustModules: "وحدات",
+        trustLanguages: "لغات",
+        trustAvailable: "متوفر",
+        trustFree: "مجاني",
+        trustAlways: "دائماً",
         tagline: "تمكين المزارعين أصحاب الحيازات الصغيرة من خلال التعليم، أدوات مراقبة المحاصيل، ورؤى المناخ.",
         getStarted: "ابدأ الآن",
 
@@ -79,6 +97,15 @@ const common = {
 
         // Hero / General
         welcome: "Jom i Smart Farmer",
+        heroTitle: "Kony lo Smart Farming <br><span class=\"headline-accent\">Tek i Koto</span>",
+        exploreCrops: "Kono Korop",
+        startLearning: "Tek Kujju",
+        trustCrops: "Korop",
+        trustModules: "Module",
+        trustLanguages: "Lugati",
+        trustAvailable: "Lo iye",
+        trustFree: "Free",
+        trustAlways: "Always",
         tagline: "Kony lo korop ki kujju, kit lo korop, ki kit lo korop ki awi.",
         getStarted: "Konye",
 
