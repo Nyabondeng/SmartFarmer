@@ -1140,6 +1140,23 @@ const education = {
         module10Li4: "استخدم الأداة المناسبة للمهمة المناسبة، لا تجبر الأدوات.",
         module10Li5: "شارك أو استعر الأدوات مع الجيران لتقليل التكاليف.",
 
+         
+
+        // ===== EDUCATION MODULE VOICES (JUBA ARABIC) =====
+        module1Voice: "الوحدة الأولى: تقنيات الزراعة. ازرع في بداية موسم الأمطار، مايو إلى يونيو. استخدم بذوراً نظيفة وخالية من الأمراض. اترك مسافات مناسبة بين النباتات لتجنب الازدحام. ازرع البذور على العمق المناسب، من ٢ إلى ٥ سنتيمتر حسب المحصول. قم بإزالة الأعشاب خلال الأسابيع الثلاثة الأولى بعد الزراعة.",
+        module2Voice: "الوحدة الثانية: مكافحة الآفات. افحص الحقول يومياً للدودة الحشد وأزل باليد. استخدم الرماد أو مسحوق النيم حول سيقان النباتات لحفار الساق. رش بالماء والصابون للمن. استخدم الفزاعات أو الشباك للطيور أثناء موسم الحصاد. افحص حقولك في الصباح الباكر أو المساء دائماً.",
+        module3Voice: "الوحدة الثالثة: معالجة ما بعد الحصاد. احصد في الوقت المناسب عندما تكون الحبوب صلبة وجافة. جفف المحاصيل تماماً قبل التخزين. خزن في حاويات نظيفة وجافة ومقاومة للقوارض. استخدم الرماد أو أوراق النيم المسحوقة لإبعاد الحشرات. بع الفائض عندما تكون أسعار السوق جيدة.",
+        module4Voice: "الوحدة الرابعة: إدارة التربة. أزل الأعشاب قبل الزراعة. أضف السماد العضوي أو روث الحيوانات لتحسين الخصوبة. تجنب الإفراط في حراثة الأرض. دَوّر المحاصيل كل موسم لتقليل استنزاف التربة. استخدم المهاد للحفاظ على الرطوبة وتقليل التآكل.",
+        module5Voice: "الوحدة الخامسة: الزراعة الذكية مناخياً. ازرع مبكراً عند بداية موسم الأمطار. اختر أصناف محاصيل مقاومة للجفاف. احصد وخزن مياه الأمطار عندما يكون ذلك ممكناً. استخدم التغطية لتقليل فقدان الماء. تابع توقعات الطقس المحلية قبل الزراعة.",
+        module6Voice: "الوحدة السادسة: المياه والري. اجمع وخزن مياه الأمطار خلال موسم الأمطار. اسق المحاصيل في الصباح الباكر لتقليل التبخر. استخدم الري بالتنقيط أو الدلو لتوفير المياه. تجنب تشبع التربة بالمياه، تأكد من تصريف الحقول بشكل جيد. غط التربة بالمهاد للحفاظ على الرطوبة لفترة أطول.",
+        module7Voice: "الوحدة السابعة: السوق والبيع. تتبع أسعار السوق المحلية قبل بيع محصولك. خزن المحاصيل لانتظار أسعار أفضل في السوق عندما يكون ذلك ممكناً. بع مع مجموعات من المزارعين الآخرين للحصول على صفقات أفضل. صنف وفرز منتجاتك، الجودة الأعلى تكسب أكثر. احتفظ بسجلات بسيطة للمبيعات والمصروفات كل موسم.",
+        module8Voice: "الوحدة الثامنة: استخدام الأسمدة. استخدم السماد العضوي أو روث الحيوانات كسماد طبيعي أولاً. ضع السماد في مرحلة النمو المناسبة، وليس في وقت مبكر جداً. لا تفرط في استخدام السماد، فقد يحرق الجذور ويهدر المال. اخلط السماد في التربة، وليس على سطح الأوراق. اسق التربة بعد وضع السماد لمساعدته على الامتصاص.",
+        module9Voice: "الوحدة التاسعة: مكافحة أمراض المحاصيل. افحص الأوراق والسيقان أسبوعياً بحثاً عن بقع أو ذبول أو تعفن. أزل واحرق النباتات المصابة فوراً لوقف الانتشار. تجنب العمل في الحقول الرطبة، فالأمراض تنتشر بشكل أسرع حينها. استخدم أصناف بذور مقاومة للأمراض عندما تكون متوفرة. دَوّر المحاصيل كل موسم لكسر دورات الأمراض في التربة.",
+        module10Voice: "الوحدة العاشرة: أدوات ومعدات المزرعة. نظف الأدوات بعد كل استخدام لمنع الصدأ وانتشار الأمراض. شحذ المعاول والمناجل بانتظام لتسهيل العمل. خزن الأدوات في مكان جاف ومظلم لإطالة عمرها. استخدم الأداة المناسبة للمهمة المناسبة، لا تجبر الأدوات. شارك أو استعر الأدوات مع الجيران لتقليل التكاليف.",
+
+        // USSD Banner
+        ussdBannerTitle: "لا يوجد إنترنت؟ لا مشكلة.",
+
         // USSD Banner
         ussdBannerTitle: "لا يوجد إنترنت؟ لا مشكلة.",
         ussdBannerDesc: "يمكنك الوصول إلى جميع الوحدات في أي وقت عبر USSD، يعمل على أي هاتف، حتى بدون بيانات.",
@@ -1280,6 +1297,36 @@ const education = {
         module10Li3: "Store tools in a dry, shaded place to extend their life.",
         module10Li4: "Use the right tool for the right job, don't force tools.",
         module10Li5: "Share or borrow tools with neighbors to reduce costs.",
+
+      
+
+        // ===== EDUCATION MODULE VOICES (BARI) =====
+        module1Voice: "Moduli 1: Lanyi ti korop. Lanyi pe bidayat lipi, May ka June. Use seed nadhifa, no kutu. Fasila ma lipi, no overcrowd. Lanyi seed i depth 2-5 senti depending on korop. Weed within first 3 weeks ba'di lanyi.",
+        module2Voice: "Moduli 2: Afat. Check fields daily for armyworms, remove by hand. Use ash or neem powder around plant stems for stem borers. Spray soapy water for aphids. Use scarecrows or nets for birds during woro time. Check fields early morning or evening.",
+        module3Voice: "Moduli 3: Ba'di woro. Woro at the right time when grains are hard and dry. Dry korop completely before teren. Teren i clean, dry, rodent-proof containers. Use ash or crushed neem leaves to keep insects away. Sell surplus when market prices are good.",
+        module4Voice: "Moduli 4: Soil Management. Clear weeds before lanyi. Add compost or animal manure to improve fertility. Avoid over-cultivating the land. Rotate korop every season to reduce soil exhaustion. Use mulch to conserve moisture and reduce erosion.",
+        module5Voice: "Moduli 5: Climate-Smart Farming. Lanyi early when the rainy season begins. Choose drought-resistant korop varieties. Woro and teren rainwater when possible. Use mulching to reduce water loss. Follow local weather forecasts before lanyi.",
+        module6Voice: "Moduli 6: Water and Irrigation. Collect and teren rainwater during the wet season. Water korop early in the morning to reduce evaporation. Use drip or bucket irrigation to save water. Avoid waterlogging, ensure fields drain properly. Cover soil with mulch to retain moisture longer.",
+        module7Voice: "Moduli 7: Market and Selling. Track local market prices before selling your woro. Teren korop to wait for better market prices when possible. Sell in groups with other farmers to get better deals. Grade and sort your produce, higher quality earns more. Keep simple records of sales and expenses every season.",
+        module8Voice: "Moduli 8: Fertilizer Use. Use compost or animal manure as a natural fertilizer first. Apply fertilizer at the right growth stage, not too early. Do not over-fertilize, it can burn roots and waste money. Mix fertilizer into the soil, not on top of leaves. Water the soil after applying fertilizer to help it absorb.",
+        module9Voice: "Moduli 9: Korop Disease Control. Inspect leaves and stems weekly for spots, wilting, or rot. Remove and burn diseased korop immediately to stop spread. Avoid working in wet fields, disease spreads faster then. Use disease-resistant seed varieties when available. Rotate korop each season to break disease cycles in the soil.",
+        module10Voice: "Moduli 10: Farm Tools and Equipment. Clean tools after every use to prevent rust and disease spread. Sharpen hoes and machetes regularly for easier work. Teren tools in a dry, shaded place to extend their life. Use the right tool for the right job, don't force tools. Share or borrow tools with neighbors to reduce costs.",
+       
+
+        // ===== EDUCATION MODULE VOICES (ENGLISH) =====
+        module1Voice: "Module 1: Planting Techniques. Plant at the beginning of the rainy season, May to June. Use clean, disease-free seeds. Space crops properly to avoid overcrowding. Plant seeds at the right depth, two to five centimeters depending on the crop. Weed within the first three weeks after planting.",
+        module2Voice: "Module 2: Pest Management. Check fields daily for armyworms and remove them by hand. Use ash or neem powder around plant stems for stem borers. Spray with soapy water for aphids. Use scarecrows or nets for birds during harvest time. Always check your fields early morning or evening.",
+        module3Voice: "Module 3: Post-Harvest Handling. Harvest at the right time when grains are hard and dry. Dry crops completely before storing. Store in clean, dry, rodent-proof containers. Use ash or crushed neem leaves to keep insects away. Sell surplus when market prices are good.",
+        module4Voice: "Module 4: Soil Management. Clear weeds before planting. Add compost or animal manure to improve fertility. Avoid over-cultivating the land. Rotate crops every season to reduce soil exhaustion. Use mulch to conserve moisture and reduce erosion.",
+        module5Voice: "Module 5: Climate-Smart Farming. Plant early when the rainy season begins. Choose drought-resistant crop varieties. Harvest and store rainwater when possible. Use mulching to reduce water loss. Follow local weather forecasts before planting.",
+        module6Voice: "Module 6: Water and Irrigation. Collect and store rainwater during the wet season. Water crops early in the morning to reduce evaporation. Use drip or bucket irrigation to save water. Avoid waterlogging, ensure fields drain properly. Cover soil with mulch to retain moisture longer.",
+        module7Voice: "Module 7: Market and Selling. Track local market prices before selling your harvest. Store crops to wait for better market prices when possible. Sell in groups with other farmers to get better deals. Grade and sort your produce, higher quality earns more. Keep simple records of sales and expenses every season.",
+        module8Voice: "Module 8: Fertilizer Use. Use compost or animal manure as a natural fertilizer first. Apply fertilizer at the right growth stage, not too early. Do not over-fertilize, it can burn roots and waste money. Mix fertilizer into the soil, not on top of leaves. Water the soil after applying fertilizer to help it absorb.",
+        module9Voice: "Module 9: Crop Disease Control. Inspect leaves and stems weekly for spots, wilting, or rot. Remove and burn diseased plants immediately to stop spread. Avoid working in wet fields, disease spreads faster then. Use disease-resistant seed varieties when available. Rotate crops each season to break disease cycles in the soil.",
+        module10Voice: "Module 10: Farm Tools and Equipment. Clean tools after every use to prevent rust and disease spread. Sharpen hoes and machetes regularly for easier work. Store tools in a dry, shaded place to extend their life. Use the right tool for the right job, don't force tools. Share or borrow tools with neighbors to reduce costs.",
+
+        // USSD Banner
+        ussdBannerTitle: "No internet? No problem.",
 
         // USSD Banner
         ussdBannerTitle: "No internet? No problem.",
