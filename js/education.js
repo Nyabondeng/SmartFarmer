@@ -436,6 +436,16 @@
                 translatedCount++;
             }
         });
+
+        document.querySelectorAll('.voice-btn').forEach(btn => {
+            const moduleId = btn.getAttribute('data-module');
+            if (!moduleId) return;
+
+            const buttonState = voiceState.currentModule === moduleId
+                ? (voiceState.isPaused ? 'resume' : (voiceState.isSpeaking ? 'pause' : 'listen'))
+                : 'listen';
+            updateButtonState(moduleId, buttonState);
+        });
         
         console.log('✅ Translated ' + translatedCount + ' elements to ' + lang);
     }

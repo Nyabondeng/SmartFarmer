@@ -1,6 +1,6 @@
 // Smart Farmer Service Worker - Enables offline access
 
-const CACHE_NAME = 'smart-farmer-v2';
+const CACHE_NAME = 'smart-farmer-v3';
 const OFFLINE_URL = '/offline.html';
 
 // Files to cache for offline use
