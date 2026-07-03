@@ -862,7 +862,7 @@ const crops = {
 // 4. EDUCATION PAGE TRANSLATIONS
 // ============================================
 
-const translation = {
+const education = {
     en: {
         educationTitle: "Grow smarter with practical knowledge",
         eduHeroSub: "Modules for smallholder farmers available in audio, text, and offline via USSD.",
@@ -1568,6 +1568,7 @@ const educationVoices = {
 // FINAL COMBINED TRANSLATIONS OBJECT
 // ============================================
 
+const contact = { en: {}, juba: {}, bari: {} };
 const translations = { en: {}, juba: {}, bari: {} };
 
 // Merge all sections
