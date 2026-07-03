@@ -6,10 +6,19 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 
-app.use(cors({origin: "https://smrtfarmer.netlify.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+app.use(cors({
+    origin: [
+        "https://smrtfarmer.netlify.app",
+        "https://www.smrtfarmer.netlify.app",
+        "http://localhost:3000",
+        "http://localhost:5500",
+        "https://smartfarmer-m7x3.onrender.com"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
-  }));
+}));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
