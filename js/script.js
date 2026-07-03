@@ -1,16 +1,159 @@
-// Smart Farmer - Main JavaScript
 
-// Voice output: try pre-recorded audio files for Juba/Bari, fall back to speechSynthesis for English
+const API_BASE_URL = 'https://smartfarmer-m7x3.onrender.com';
+
+function getAuthToken() {
+    return localStorage.getItem('token');
+}
+
+function getCurrentUser() {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
+}
+
+function isLoggedIn() {
+    return !!getAuthToken();
+}
+
+async function apiRegisterUser(userData) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/register`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userData)
+        });
+        const data = await response.json();
+        if (response.ok) {
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            return { success: true, user: data.user };
+        }
+        return { success: false, error: data.message || 'Registration failed' };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+}
+
+async function apiLoginUser(email, password) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+        const data = await response.json();
+        if (response.ok) {
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            return { success: true, user: data.user };
+        }
+        return { success: false, error: data.message || 'Login failed' };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+}
+
+function apiLogoutUser() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.location.href = 'index.html';
+}
+
+async function apiGetCropLogs() {
+    const token = getAuthToken();
+    if (!token) {
+        return { success: false, error: 'Please login first' };
+    }
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/crop-logs`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        const data = await response.json();
+        if (response.ok) {
+            return { success: true, logs: data.logs || [] };
+        }
+        return { success: false, error: data.message || 'Failed to fetch logs' };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+}
+
+async function apiSaveCropLog(cropData) {
+    const token = getAuthToken();
+    if (!token) {
+        return { success: false, error: 'Please login first' };
+    }
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/crop-logs`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(cropData)
+        });
+        const data = await response.json();
+        if (response.ok) {
+            return { success: true, log: data.log };
+        }
+        return { success: false, error: data.message || 'Failed to save log' };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+}
+
+async function apiDeleteCropLog(logId) {
+    const token = getAuthToken();
+    if (!token) {
+        return { success: false, error: 'Please login first' };
+    }
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/crop-logs/${logId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        const data = await response.json();
+        if (response.ok) {
+            return { success: true };
+        }
+        return { success: false, error: data.message || 'Failed to delete log' };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+}
+
+async function apiSendContactMessage(formData) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/contact`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        });
+        const data = await response.json();
+        if (response.ok) {
+            return { success: true };
+        }
+        return { success: false, error: data.message || 'Failed to send message' };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+}
+
+
+
 function playAudio(topic) {
-    // Determine user's selected language (prefer sf_lang, then language)
     const stored = localStorage.getItem('sf_lang') || localStorage.getItem('language') || 'en';
     let lang = stored;
     if (lang === 'ba') lang = 'bari';
     if (lang === 'ar') lang = 'juba';
 
-    // Build voice key (e.g., 'sorghumVoice') and look up translation
     const voiceKey = topic + 'Voice';
-    // Prefer the chosen language, then fall back to English translations
     let message = '';
     if (translations[lang] && translations[lang][voiceKey]) {
         message = translations[lang][voiceKey];
@@ -18,7 +161,6 @@ function playAudio(topic) {
         message = translations['en'][voiceKey];
     }
 
-    // Fallback to English hardcoded messages if still empty
     const defaultMessages = {
         sorghum: 'Sorghum. Plant in May or June. Space 75 centimeters by 25 centimeters. Watch for armyworms after rain.',
         maize: 'Maize. Plant in May or June. Space 75 centimeters by 50 centimeters. Watch for stalk borer.',
@@ -38,13 +180,11 @@ function playAudio(topic) {
 
     console.log('playAudio()', { topic, voiceKey, lang, message });
 
-    // For Juba and Bari, try to load pre-recorded audio files first
     if ((lang === 'juba' || lang === 'bari') && topic) {
         const audioPath = `/audio/${lang}/${topic}.mp3`;
         const audio = new Audio(audioPath);
         
         audio.addEventListener('error', () => {
-            // If audio file not found, fall back to speechSynthesis with the translated message
             console.log(`Audio file not found: ${audioPath}. Falling back to speechSynthesis with ${lang} text.`);
             speakWithSynthesis(message, lang);
         });
@@ -58,7 +198,7 @@ function playAudio(topic) {
                 console.log(`Could not play audio: ${err}. Falling back to speechSynthesis with ${lang} text.`);
                 speakWithSynthesis(message, lang);
             });
-            return; // Exit early; audio is playing or will handle fallback
+            return;
         } catch (err) {
             console.log(`Error loading audio: ${err}. Falling back to speechSynthesis with ${lang} text.`);
             speakWithSynthesis(message, lang);
@@ -66,17 +206,14 @@ function playAudio(topic) {
         }
     }
 
-    // For English or as fallback, use speechSynthesis
     speakWithSynthesis(message, lang);
 }
 
-// Helper function: speak text using Web Speech API
 function speakWithSynthesis(message, lang) {
     if ('speechSynthesis' in window) {
         const speak = (msg, prefLang) => {
             let voices = speechSynthesis.getVoices();
 
-            // map our page language keys to voice language prefixes
             const mapPref = (p) => {
                 if (!p) return '';
                 if (p === 'juba') return 'ar';
@@ -93,21 +230,17 @@ function speakWithSynthesis(message, lang) {
                 if (!voicesList || voicesList.length === 0) return null;
 
                 const prefCode = mapPref(prefer);
-                // 1) exact lang match (startsWith)
                 if (prefCode) {
                     const v = voicesList.find(v => v.lang && v.lang.toLowerCase().startsWith(prefCode.toLowerCase()));
                     if (v) return v;
                 }
-                // 2) name contains language hint (e.g., 'Arabic', 'عربي')
                 const nameHint = (prefCode === 'ar') ? ['arabic', 'عرب'] : (prefCode === 'en' ? ['english', 'en'] : []);
                 for (const hint of nameHint) {
                     const v = voicesList.find(voice => voice.name && voice.name.toLowerCase().includes(hint));
                     if (v) return v;
                 }
-                // 3) fallback to first voice matching region-neutral same script (e.g., any 'ar' in lang)
                 const anyAr = voicesList.find(v => v.lang && v.lang.toLowerCase().includes('ar'));
                 if (prefCode === 'ar' && anyAr) return anyAr;
-                // 4) fallback to first available voice
                 return voicesList[0];
             };
 
@@ -118,7 +251,6 @@ function speakWithSynthesis(message, lang) {
                 utterance.voice = voice;
                 utterance.lang = voice.lang || utterance.lang;
             } else {
-                // fallback locales
                 utterance.lang = (prefLang === 'juba') ? 'ar-SA' : ((prefLang === 'bari') ? 'en-US' : prefLang);
             }
             utterance.rate = 0.9;
@@ -126,7 +258,6 @@ function speakWithSynthesis(message, lang) {
             speechSynthesis.speak(utterance);
         };
 
-        // voices may not be loaded immediately — handle that
         if (speechSynthesis.getVoices().length === 0) {
             speechSynthesis.onvoiceschanged = () => speak(message, lang);
         } else {
@@ -140,117 +271,61 @@ function speakWithSynthesis(message, lang) {
 
 
 function translatePage(language) {
-
     document.querySelectorAll("[data-translate]").forEach(element => {
-
         const key = element.getAttribute("data-translate");
-
-        // Prefer language-specific translation, fall back to shared/default key
         if (translations[language] && translations[language][key]) {
             element.textContent = translations[language][key];
         } else if (translations[key]) {
             element.textContent = translations[key];
         }
-
     });
-
 }
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    // Prefer the `sf_lang` key (used by main.js), fall back to legacy `language`
-    const savedLanguage =
-        localStorage.getItem("sf_lang") ||
-        localStorage.getItem("language") ||
-        "en";
 
-    // Normalize code to match keys in translations.js
-    let translateKey = savedLanguage;
-    if (translateKey === 'ba') translateKey = 'bari';
-    // Map stored shorthand 'ar' (used by main.js) to 'juba' used in translations
-    if (translateKey === 'ar') translateKey = 'juba';
+function updateUserNav() {
+    const user = getCurrentUser();
+    const navLinks = document.querySelector('.nav-links');
+    if (!navLinks) return;
 
-    translatePage(translateKey);
+    const existingLogin = document.querySelector('.nav-login-link');
+    const existingRegister = document.querySelector('.nav-register-link');
+    const existingUser = document.querySelector('.nav-user-link');
+    const existingLogout = document.querySelector('.nav-logout-link');
+    
+    if (existingLogin) existingLogin.remove();
+    if (existingRegister) existingRegister.remove();
+    if (existingUser) existingUser.remove();
+    if (existingLogout) existingLogout.remove();
 
-    const languageSwitcher = document.getElementById("languageSwitcher");
-
-    if (languageSwitcher) {
-        // Ensure the select shows a compatible value
-        languageSwitcher.value = (savedLanguage === 'ba') ? 'bari' : (savedLanguage === 'ar' ? 'juba' : savedLanguage);
-
-        languageSwitcher.addEventListener("change", () => {
-            const selectedLanguage = languageSwitcher.value; // e.g. 'bari', 'juba', 'en'
-
-            // Persist both keys so main.js and this script stay in sync.
-            localStorage.setItem("language", selectedLanguage);
-            // main.js expects 'ba' and 'ar' shorthands; map back when necessary
-            const sfLang = (selectedLanguage === 'bari') ? 'ba' : (selectedLanguage === 'juba' ? 'ar' : selectedLanguage);
-            localStorage.setItem('sf_lang', sfLang);
-
-            // Translate using the key matching translations.js
-            const pageKey = (selectedLanguage === 'bari') ? 'bari' : (selectedLanguage === 'juba' ? 'juba' : selectedLanguage);
-            translatePage(pageKey);
-            // if user selected Juba and no voice saved, try to auto-select first ar-* voice
-            if (selectedLanguage === 'juba' && !localStorage.getItem('sf_voice') && 'speechSynthesis' in window) {
-                const voices = speechSynthesis.getVoices();
-                const ar = voices.find(v => v.lang && v.lang.startsWith('ar'));
-                if (ar) {
-                    localStorage.setItem('sf_voice', ar.name);
-                    const vp = document.getElementById('voicePicker');
-                    if (vp) vp.value = ar.name;
-                    console.log('Auto-selected Arabic voice for Juba:', ar.name, ar.lang);
-                }
-            }
-        });
+    if (user) {
+        const userLi = document.createElement('li');
+        userLi.className = 'nav-user-link';
+        userLi.innerHTML = `<a href="#">👤 ${user.name || 'User'}</a>`;
+        
+        const logoutLi = document.createElement('li');
+        logoutLi.className = 'nav-logout-link';
+        logoutLi.innerHTML = `<a href="#" onclick="apiLogoutUser(); return false;">Logout</a>`;
+        
+        navLinks.appendChild(userLi);
+        navLinks.appendChild(logoutLi);
+    } else {
+        const loginLi = document.createElement('li');
+        loginLi.className = 'nav-login-link';
+        loginLi.innerHTML = `<a href="farmer-login.html">Login</a>`;
+        
+        const registerLi = document.createElement('li');
+        registerLi.className = 'nav-register-link';
+        registerLi.innerHTML = `<a href="farmer-register.html">Register</a>`;
+        
+        navLinks.appendChild(loginLi);
+        navLinks.appendChild(registerLi);
     }
+}
 
-    // Voice picker: populate with available speechSynthesis voices and persist selection
-    const voicePicker = document.getElementById('voicePicker');
-    if (voicePicker && 'speechSynthesis' in window) {
-        const populateVoices = () => {
-            const voices = speechSynthesis.getVoices();
-            voicePicker.innerHTML = '<option value="">Select voice...</option>';
-            voices.forEach(v => {
-                const opt = document.createElement('option');
-                opt.value = v.name;
-                opt.textContent = `${v.name} — ${v.lang}`;
-                voicePicker.appendChild(opt);
-            });
-            const saved = localStorage.getItem('sf_voice');
-            if (saved) {
-                voicePicker.value = saved;
-            } else {
-                // If current page language is Juba and no saved voice, auto-select first Arabic voice
-                const savedLang = localStorage.getItem('sf_lang') || localStorage.getItem('language') || 'en';
-                let pageKey = savedLang;
-                if (pageKey === 'ba') pageKey = 'bari';
-                if (pageKey === 'ar') pageKey = 'juba';
-                if (pageKey === 'juba') {
-                    const ar = voices.find(v => v.lang && v.lang.startsWith('ar'));
-                    if (ar) {
-                        localStorage.setItem('sf_voice', ar.name);
-                        voicePicker.value = ar.name;
-                        console.log('Auto-selected Arabic voice on load for Juba:', ar.name, ar.lang);
-                    }
-                }
-            }
-        };
 
-        // populate now or when voices load
-        populateVoices();
-        speechSynthesis.onvoiceschanged = populateVoices;
 
-        voicePicker.addEventListener('change', () => {
-            const sel = voicePicker.value;
-            if (sel) localStorage.setItem('sf_voice', sel);
-            else localStorage.removeItem('sf_voice');
-        });
-    }
-
-});
-
-// Crop Log Functions (Local Storage)
-function saveCropLog() {
+async function saveCropLog() {
     let crop = document.getElementById('cropSelect').value;
     let date = document.getElementById('plantDate').value;
     let notes = document.getElementById('notes').value;
@@ -258,6 +333,24 @@ function saveCropLog() {
     if (!date) {
         alert('Please select a planting date');
         return;
+    }
+    
+    if (isLoggedIn()) {
+        const result = await apiSaveCropLog({
+            crop: crop,
+            plantingDate: date,
+            notes: notes || ''
+        });
+        
+        if (result.success) {
+            alert('Planting record saved to cloud!');
+            await displayCropLogs();
+            document.getElementById('plantDate').value = '';
+            document.getElementById('notes').value = '';
+            return;
+        } else {
+            alert('Error saving to cloud: ' + result.error + '. Saving locally instead.');
+        }
     }
     
     let logs = localStorage.getItem('cropLogs');
@@ -280,28 +373,68 @@ function saveCropLog() {
     document.getElementById('plantDate').value = '';
     document.getElementById('notes').value = '';
     
-    alert('Planting record saved!');
+    alert('Planting record saved locally!');
 }
 
-function displayCropLogs() {
-    let logs = localStorage.getItem('cropLogs');
+async function displayCropLogs() {
     let logList = document.getElementById('logList');
-    
     if (!logList) return;
     
-    if (logs && JSON.parse(logs).length > 0) {
-        logs = JSON.parse(logs);
+    let logs = [];
+    let source = 'local';
+    
+    if (isLoggedIn()) {
+        const result = await apiGetCropLogs();
+        if (result.success && result.logs.length > 0) {
+            logs = result.logs.map(log => ({
+                crop: log.crop,
+                date: log.plantingDate,
+                notes: log.notes || '',
+                timestamp: log.createdAt || new Date().toISOString(),
+                id: log.id
+            }));
+            source = 'cloud';
+        }
+    }
+    
+    if (logs.length === 0) {
+        const localLogs = localStorage.getItem('cropLogs');
+        if (localLogs) {
+            logs = JSON.parse(localLogs);
+            source = 'local';
+        }
+    }
+    
+    if (logs.length > 0) {
         let html = '';
         for (let i = logs.length - 1; i >= 0; i--) {
-            html += '<p><strong>' + logs[i].crop + '</strong> - Planted: ' + logs[i].date;
-            if (logs[i].notes) {
-                html += '<br><small>Note: ' + logs[i].notes + '</small>';
+            const log = logs[i];
+            html += `<p><strong>${log.crop}</strong> - Planted: ${log.date}`;
+            if (log.notes) {
+                html += `<br><small>Note: ${log.notes}</small>`;
+            }
+            if (source === 'cloud' && log.id) {
+                html += ` <button onclick="deleteCloudLog('${log.id}')" style="color:red;border:none;background:none;cursor:pointer;">✕</button>`;
             }
             html += '</p>';
+        }
+        if (source === 'cloud') {
+            html += '<p style="font-size:12px;color:green;">✓ Synced to cloud</p>';
         }
         logList.innerHTML = html;
     } else {
         logList.innerHTML = '<p>No records yet. Save your first planting date above.</p>';
+    }
+}
+
+async function deleteCloudLog(logId) {
+    if (confirm('Are you sure you want to delete this log?')) {
+        const result = await apiDeleteCropLog(logId);
+        if (result.success) {
+            await displayCropLogs();
+        } else {
+            alert('Error deleting: ' + result.error);
+        }
     }
 }
 
@@ -313,22 +446,30 @@ function clearAllLogs() {
     }
 }
 
-// Contact Form Handler
+
 if (document.getElementById('contactForm')) {
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
         e.preventDefault();
-        let name = document.getElementById('name').value;
-        document.getElementById('formStatus').innerHTML = '<p style="color: green;">Thank you, ' + name + '! Your message has been sent. (Demo)</p>';
-        document.getElementById('contactForm').reset();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        const statusEl = document.getElementById('formStatus');
+        
+        statusEl.innerHTML = '<p style="color: blue;">Sending message...</p>';
+        
+        const result = await apiSendContactMessage({ name, email, message });
+        
+        if (result.success) {
+            statusEl.innerHTML = '<p style="color: green;">Thank you, ' + name + '! Your message has been sent.</p>';
+            document.getElementById('contactForm').reset();
+        } else {
+            statusEl.innerHTML = '<p style="color: red;">Error: ' + result.error + '. Please try again.</p>';
+        }
     });
 }
 
-// Load crop logs when crop-log page loads
-if (document.getElementById('logList')) {
-    displayCropLogs();
-}
 
-// Improved mobile menu toggle (centralized)
+
 function toggleMenu() {
     const nav = document.querySelector('.nav-links');
     const btn = document.querySelector('.menu-icon');
@@ -337,7 +478,8 @@ function toggleMenu() {
     if (btn) btn.setAttribute('aria-expanded', nav.classList.contains('active'));
 }
 
-// Service Worker for Offline Capability
+
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
@@ -351,13 +493,9 @@ if ('serviceWorker' in navigator) {
 }
 
 
-// ============================================
-// SMART FARMER - INSTALL BANNER (PWA)
-// ============================================
 
 let deferredPrompt;
 
-// ─── DISMISS BANNER ────────────────────────────────
 function dismissInstallBanner() {
     const banner = document.getElementById('installBanner');
     if (banner) {
@@ -366,7 +504,6 @@ function dismissInstallBanner() {
     }
 }
 
-// ─── SHOW BANNER ────────────────────────────────────
 function showInstallBanner() {
     const banner = document.getElementById('installBanner');
     if (!banner) return;
@@ -382,7 +519,6 @@ function showInstallBanner() {
     }
 }
 
-// ─── INSTALL PROMPT ─────────────────────────────────
 window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
     deferredPrompt = event;
@@ -392,53 +528,159 @@ window.addEventListener('beforeinstallprompt', (event) => {
     }
 });
 
-// ─── INSTALL BUTTON CLICK ──────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+
+    updateUserNav();
+
+
     const installBtn = document.getElementById('installBtn');
     if (installBtn) {
         installBtn.addEventListener('click', async () => {
             if (deferredPrompt) {
-                // Native install prompt
                 deferredPrompt.prompt();
                 const choiceResult = await deferredPrompt.userChoice;
                 if (choiceResult.outcome === 'accepted') {
-                    console.log('✅ Smart Farmer installed');
+                    console.log('Smart Farmer installed');
                     const banner = document.getElementById('installBanner');
                     if (banner) banner.style.display = 'none';
                 } else {
-                    console.log('❌ Install dismissed');
+                    console.log('Install dismissed');
                 }
                 deferredPrompt = null;
             } else {
-                // FALLBACK: If native prompt is not available, show instructions
                 alert('To install Smart Farmer:\n\n1. Tap the Share icon\n2. Scroll down and tap "Add to Home Screen"\n3. Tap "Add" to install');
             }
         });
     }
 
-    // Close button
+
     const closeBtn = document.querySelector('.close-install');
     if (closeBtn) {
         closeBtn.addEventListener('click', dismissInstallBanner);
     }
 
-    // Show the banner on page load
+
     showInstallBanner();
+
+    if (document.getElementById('logList')) {
+        displayCropLogs();
+    }
 });
 
-// ─── APP INSTALLED ──────────────────────────────────
+
+
 window.addEventListener('appinstalled', () => {
-    console.log('✅ Smart Farmer installed successfully');
+    console.log('Smart Farmer installed successfully');
     const banner = document.getElementById('installBanner');
     if (banner) banner.style.display = 'none';
 });
 
-// ─── HIDE BANNER IF ALREADY INSTALLED ──────────────
 if (window.matchMedia('(display-mode: standalone)').matches) {
     const banner = document.getElementById('installBanner');
     if (banner) banner.style.display = 'none';
 }
 
-// ─── EXPOSE FUNCTIONS GLOBALLY ─────────────────────
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const savedLanguage =
+        localStorage.getItem("sf_lang") ||
+        localStorage.getItem("language") ||
+        "en";
+
+    let translateKey = savedLanguage;
+    if (translateKey === 'ba') translateKey = 'bari';
+    if (translateKey === 'ar') translateKey = 'juba';
+
+    translatePage(translateKey);
+
+    const languageSwitcher = document.getElementById("languageSwitcher");
+
+    if (languageSwitcher) {
+        languageSwitcher.value = (savedLanguage === 'ba') ? 'bari' : (savedLanguage === 'ar' ? 'juba' : savedLanguage);
+
+        languageSwitcher.addEventListener("change", () => {
+            const selectedLanguage = languageSwitcher.value;
+
+            localStorage.setItem("language", selectedLanguage);
+            const sfLang = (selectedLanguage === 'bari') ? 'ba' : (selectedLanguage === 'juba' ? 'ar' : selectedLanguage);
+            localStorage.setItem('sf_lang', sfLang);
+
+            const pageKey = (selectedLanguage === 'bari') ? 'bari' : (selectedLanguage === 'juba' ? 'juba' : selectedLanguage);
+            translatePage(pageKey);
+            
+            if (selectedLanguage === 'juba' && !localStorage.getItem('sf_voice') && 'speechSynthesis' in window) {
+                const voices = speechSynthesis.getVoices();
+                const ar = voices.find(v => v.lang && v.lang.startsWith('ar'));
+                if (ar) {
+                    localStorage.setItem('sf_voice', ar.name);
+                    const vp = document.getElementById('voicePicker');
+                    if (vp) vp.value = ar.name;
+                    console.log('Auto-selected Arabic voice for Juba:', ar.name, ar.lang);
+                }
+            }
+        });
+    }
+
+    const voicePicker = document.getElementById('voicePicker');
+    if (voicePicker && 'speechSynthesis' in window) {
+        const populateVoices = () => {
+            const voices = speechSynthesis.getVoices();
+            voicePicker.innerHTML = '<option value="">Select voice...</option>';
+            voices.forEach(v => {
+                const opt = document.createElement('option');
+                opt.value = v.name;
+                opt.textContent = `${v.name} — ${v.lang}`;
+                voicePicker.appendChild(opt);
+            });
+            const saved = localStorage.getItem('sf_voice');
+            if (saved) {
+                voicePicker.value = saved;
+            } else {
+                const savedLang = localStorage.getItem('sf_lang') || localStorage.getItem('language') || 'en';
+                let pageKey = savedLang;
+                if (pageKey === 'ba') pageKey = 'bari';
+                if (pageKey === 'ar') pageKey = 'juba';
+                if (pageKey === 'juba') {
+                    const ar = voices.find(v => v.lang && v.lang.startsWith('ar'));
+                    if (ar) {
+                        localStorage.setItem('sf_voice', ar.name);
+                        voicePicker.value = ar.name;
+                        console.log('Auto-selected Arabic voice on load for Juba:', ar.name, ar.lang);
+                    }
+                }
+            }
+        };
+
+        populateVoices();
+        speechSynthesis.onvoiceschanged = populateVoices;
+
+        voicePicker.addEventListener('change', () => {
+            const sel = voicePicker.value;
+            if (sel) localStorage.setItem('sf_voice', sel);
+            else localStorage.removeItem('sf_voice');
+        });
+    }
+});
+
+
+
 window.dismissInstallBanner = dismissInstallBanner;
 window.showInstallBanner = showInstallBanner;
+window.toggleMenu = toggleMenu;
+window.saveCropLog = saveCropLog;
+window.displayCropLogs = displayCropLogs;
+window.clearAllLogs = clearAllLogs;
+window.deleteCloudLog = deleteCloudLog;
+window.playAudio = playAudio;
+window.apiLogoutUser = apiLogoutUser;
+window.translatePage = translatePage;
+window.updateUserNav = updateUserNav;
+window.isLoggedIn = isLoggedIn;
+window.getCurrentUser = getCurrentUser;
+window.apiRegisterUser = apiRegisterUser;
+window.apiLoginUser = apiLoginUser;
+window.apiGetCropLogs = apiGetCropLogs;
+window.apiSaveCropLog = apiSaveCropLog;
+window.apiDeleteCropLog = apiDeleteCropLog;
+window.apiSendContactMessage = apiSendContactMessage;
