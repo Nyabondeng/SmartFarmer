@@ -482,6 +482,20 @@ function toggleMenu() {
     if (btn) btn.setAttribute('aria-expanded', nav.classList.contains('active'));
 }
 
+function pauseModuleAudio() {
+    console.log("Pausing audio...");
+
+    if ('speechSynthesis' in window) {
+        speechSynthesis.cancel(); // stops speech synthesis
+    }
+
+    // If you use HTML audio files too
+    const audios = document.querySelectorAll('audio');
+    audios.forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+    });
+}
 
 
 if ('serviceWorker' in navigator) {
@@ -689,3 +703,4 @@ window.apiSaveCropLog = apiSaveCropLog;
 window.apiDeleteCropLog = apiDeleteCropLog;
 window.apiSendContactMessage = apiSendContactMessage;
 window.toggleModuleAudio = toggleModuleAudio;
+window.pauseModuleAudio = pauseModuleAudio;
