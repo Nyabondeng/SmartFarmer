@@ -1,10 +1,15 @@
 const express = require('express');
 const { Pool } = require('pg');
 const path = require('path');
+const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 
+app.use(cors({origin: "https://smrtfarmer.netlify.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+  }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
