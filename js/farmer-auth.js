@@ -12,7 +12,7 @@ async function registerFarmer() {
         return;
     }
 
-    // Show loading state
+
     const btn = document.querySelector('#registerForm button');
     const originalText = btn.textContent;
     btn.textContent = 'Registering...';
@@ -28,7 +28,7 @@ async function registerFarmer() {
         const result = await response.json();
 
         if (result.success) {
-            // Save farmer data to localStorage
+
             localStorage.setItem('farmer_id', result.data.id);
             localStorage.setItem('farmer_name', result.data.name);
             localStorage.setItem('farmer_phone', result.data.phone);
