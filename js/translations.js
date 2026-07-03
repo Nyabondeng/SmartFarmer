@@ -1565,6 +1565,91 @@ const educationVoices = {
 };
 
 // ============================================
+// 6. MODULE DETAIL PAGE TRANSLATIONS
+// ============================================
+
+const moduleDetails = {
+    en: {
+        backToEducation: "← Back to Education",
+        listenToThisModule: "🔊 Listen to this module",
+        prevModule: "← Previous Module",
+        nextModule: "Next Module →",
+        plantingHeroTitle: "Planting <span class=\"highlight\">Techniques</span>",
+        plantingHeroText: "Learn the best practices for planting crops in South Sudan, from seed selection to spacing and weed control.",
+        pestHeroTitle: "Pest <span class=\"highlight\">Management</span>",
+        pestHeroText: "Learn how to identify and control common pests that threaten your crops in South Sudan.",
+        postharvestHeroTitle: "Post-Harvest <span class=\"highlight\">Handling</span>",
+        postharvestHeroText: "Learn how to harvest, dry, store, and protect your crops after picking them.",
+        soilHeroTitle: "Soil <span class=\"highlight\">Management</span>",
+        soilHeroText: "Learn how to keep your soil healthy, fertile, and productive for the next planting season.",
+        climateHeroTitle: "Climate-Smart <span class=\"highlight\">Farming</span>",
+        climateHeroText: "Learn practical ways to adapt your farming to changing weather and climate conditions.",
+        waterHeroTitle: "Water & <span class=\"highlight\">Irrigation</span>",
+        waterHeroText: "Learn how to save water, manage irrigation, and protect your crops from drought.",
+        marketHeroTitle: "Market & <span class=\"highlight\">Selling</span>",
+        marketHeroText: "Learn how to get better prices, plan sales, and reduce losses when selling your harvest.",
+        fertilizerHeroTitle: "Fertilizer <span class=\"highlight\">Use</span>",
+        fertilizerHeroText: "Learn how to feed your crops properly and avoid wasting money on fertilizer.",
+        diseaseHeroTitle: "Crop Disease <span class=\"highlight\">Control</span>",
+        diseaseHeroText: "Learn how to spot crop diseases early and stop them from spreading.",
+        toolsHeroTitle: "Farm Tools & <span class=\"highlight\">Equipment</span>",
+        toolsHeroText: "Learn how to choose, clean, store, and maintain your farming tools.",
+    },
+    juba: {
+        backToEducation: "← العودة إلى التعليم",
+        listenToThisModule: "🔊 استمع إلى هذه الوحدة",
+        prevModule: "← الوحدة السابقة",
+        nextModule: "الوحدة التالية →",
+        plantingHeroTitle: "تقنيات <span class=\"highlight\">الزراعة</span>",
+        plantingHeroText: "تعرف على أفضل الممارسات لزراعة المحاصيل في جنوب السودان، من اختيار البذور إلى المسافات ومكافحة الأعشاب.",
+        pestHeroTitle: "<span class=\"highlight\">مكافحة</span> الآفات",
+        pestHeroText: "تعرف على كيفية التعرف على الآفات الشائعة التي تهدد محاصيلك في جنوب السودان ومكافحتها.",
+        postharvestHeroTitle: "معالجة <span class=\"highlight\">ما بعد الحصاد</span>",
+        postharvestHeroText: "تعرف على كيفية الحصاد والتجفيف والتخزين وحماية محاصيلك بعد الجمع.",
+        soilHeroTitle: "إدارة <span class=\"highlight\">التربة</span>",
+        soilHeroText: "تعرف على كيفية الحفاظ على تربة صحية ومخصبة وإنتاجية لموسم الزراعة القادم.",
+        climateHeroTitle: "الزراعة الذكية <span class=\"highlight\">مناخياً</span>",
+        climateHeroText: "تعرف على الطرق العملية لتكييف الزراعة مع ظروف الطقس والمناخ المتغيرة.",
+        waterHeroTitle: "المياه والري <span class=\"highlight\">والري</span>",
+        waterHeroText: "تعرف على كيفية توفير المياه وإدارة الري وحماية محاصيلك من الجفاف.",
+        marketHeroTitle: "السوق <span class=\"highlight\">والبيع</span>",
+        marketHeroText: "تعرف على كيفية الحصول على أسعار أفضل والتخطيط للمبيعات وتقليل الخسائر عند بيع محاصيلك.",
+        fertilizerHeroTitle: "استخدام <span class=\"highlight\">السماد</span>",
+        fertilizerHeroText: "تعرف على كيفية تغذية محاصيلك بطريقة صحيحة وتجنب إهدار المال على السماد.",
+        diseaseHeroTitle: "مكافحة <span class=\"highlight\">أمراض المحاصيل</span>",
+        diseaseHeroText: "تعرف على كيفية اكتشاف أمراض المحاصيل مبكراً وإيقاف انتشارها.",
+        toolsHeroTitle: "أدوات <span class=\"highlight\">ومعدات</span> المزرعة",
+        toolsHeroText: "تعرف على كيفية اختيار الأدوات وتنظيفها وتخزينها وصيانتها.",
+    },
+    bari: {
+        backToEducation: "← Doki i Kujju",
+        listenToThisModule: "🔊 Yia i module ni",
+        prevModule: "← Module ma kolo",
+        nextModule: "Module ma lubo →",
+        plantingHeroTitle: "Kony lo <span class=\"highlight\">Korop</span>",
+        plantingHeroText: "Yia kony lo korop ma aji nyuth i South Sudan, ki yai, kony, ki cing lo korop.",
+        pestHeroTitle: "Kony lo <span class=\"highlight\">Afat</span>",
+        pestHeroText: "Yia kony lo afat ma aji tonyi lo korop ki kony lo cing i South Sudan.",
+        postharvestHeroTitle: "Kony lo <span class=\"highlight\">Hasad</span>",
+        postharvestHeroText: "Yia kony lo hasad, cing, ki buku lo korop ma ki coko.",
+        soilHeroTitle: "Kony lo <span class=\"highlight\">Piny</span>",
+        soilHeroText: "Yia kony lo pinynyi ma aji nyuth, ma aji tonyi, ki tonyi lo korop.",
+        climateHeroTitle: "Kujju lo <span class=\"highlight\">Awi</span>",
+        climateHeroText: "Yia kony lo kony lo korop ki awi ma aji loko.",
+        waterHeroTitle: "Pii ki <span class=\"highlight\">Lulu</span>",
+        waterHeroText: "Yia kony lo pii, lulu, ki kony lo korop ma aji ciko.",
+        marketHeroTitle: "Bara ki <span class=\"highlight\">Kony</span>",
+        marketHeroText: "Yia kony lo banya ma aji nyuth, kony lo lonyo, ki cing lo korop ma ki coko.",
+        fertilizerHeroTitle: "Kony lo <span class=\"highlight\">Mek</span>",
+        fertilizerHeroText: "Yia kony lo kony lo korop ki mek ma aji cing.",
+        diseaseHeroTitle: "Kony lo <span class=\"highlight\">Kuru</span>",
+        diseaseHeroText: "Yia kony lo kuru lo korop ki cing lo yai.",
+        toolsHeroTitle: "Kony lo <span class=\"highlight\">Juk</span>",
+        toolsHeroText: "Yia kony lo juk, cing, ki buku lo juk.",
+    }
+};
+
+// ============================================
 // FINAL COMBINED TRANSLATIONS OBJECT
 // ============================================
 
@@ -1587,7 +1672,9 @@ const translations = { en: {}, juba: {}, bari: {} };
         // Crop Log page
         ...cropLog[lang],
         // Education Voices
-        ...educationVoices[lang]
+        ...educationVoices[lang],
+        // Module detail page translations
+        ...moduleDetails[lang]
     };
 });
 
