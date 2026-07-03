@@ -195,6 +195,34 @@
         }
     }
 
+    function normalizeLanguage(lang) {
+        let normalized = lang || 'en';
+        if (normalized === 'ba') normalized = 'bari';
+        if (normalized === 'ar') normalized = 'juba';
+        if (!['en', 'juba', 'bari'].includes(normalized)) normalized = 'en';
+        return normalized;
+    }
+
+    function applyLanguage(lang) {
+        const normalizedLang = normalizeLanguage(lang);
+        localStorage.setItem('smartfarmer_lang', normalizedLang);
+        localStorage.setItem('sf_lang', normalizedLang);
+        localStorage.setItem('language', normalizedLang);
+
+        const selector = document.getElementById('languageSwitcher');
+        if (selector) {
+            selector.value = normalizedLang;
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            const isActive = btn.getAttribute('data-lang') === normalizedLang;
+            btn.classList.toggle('active', isActive);
+        });
+
+        translatePage();
+        initVoiceButtons();
+    }
+
     // ===== TOGGLE MODULE AUDIO =====
     function toggleModuleAudio(moduleId) {
         console.log('🔊 toggleModuleAudio called for:', moduleId);
@@ -248,27 +276,45 @@
         utterance.pitch = 1.0;
         utterance.volume = 1.0;
 
-        // Try to find East African English voice
+        const currentLang = normalizeLanguage(localStorage.getItem('smartfarmer_lang')
+            || localStorage.getItem('sf_lang')
+            || localStorage.getItem('language')
+            || 'en');
+
         let voices = window.speechSynthesis.getVoices();
         let selectedVoice = null;
 
-        const preferredVoices = ['en-KE', 'en-UG', 'en-TZ', 'en-ZA', 'en-NG'];
-        for (let langCode of preferredVoices) {
-            selectedVoice = voices.find(v => v.lang === langCode);
-            if (selectedVoice) break;
-        }
+        if (currentLang === 'juba') {
+            selectedVoice = voices.find(v => v.lang === 'ar-SA')
+                || voices.find(v => v.lang === 'ar-EG')
+                || voices.find(v => v.lang.startsWith('ar'))
+                || null;
 
-        if (!selectedVoice) {
-            selectedVoice = voices.find(v => v.lang === 'en-GB') 
-                || voices.find(v => v.lang === 'en-US')
-                || voices[0];
-        }
-
-        if (selectedVoice) {
-            utterance.voice = selectedVoice;
-            utterance.lang = selectedVoice.lang;
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
+                utterance.lang = selectedVoice.lang;
+            } else {
+                utterance.lang = 'ar-SA';
+            }
         } else {
-            utterance.lang = 'en-US';
+            const preferredVoices = ['en-KE', 'en-UG', 'en-TZ', 'en-ZA', 'en-NG'];
+            for (let langCode of preferredVoices) {
+                selectedVoice = voices.find(v => v.lang === langCode);
+                if (selectedVoice) break;
+            }
+
+            if (!selectedVoice) {
+                selectedVoice = voices.find(v => v.lang === 'en-GB')
+                    || voices.find(v => v.lang === 'en-US')
+                    || voices[0];
+            }
+
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
+                utterance.lang = selectedVoice.lang;
+            } else {
+                utterance.lang = 'en-US';
+            }
         }
 
         utterance.onstart = function() {
@@ -316,8 +362,7 @@
     function initLanguageSwitcher() {
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', function() {
-                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
+                applyLanguage(this.getAttribute('data-lang'));
             });
         });
     }
@@ -327,18 +372,11 @@
         const selector = document.getElementById('languageSwitcher');
         if (!selector) return;
 
-        let savedLang = localStorage.getItem('smartfarmer_lang') 
-                     || localStorage.getItem('sf_lang') 
-                     || localStorage.getItem('language') 
-                     || 'en';
-        
-        if (savedLang === 'ba') savedLang = 'bari';
-        if (savedLang === 'ar') savedLang = 'juba';
-        
-        if (!['en', 'juba', 'bari'].includes(savedLang)) {
-            savedLang = 'en';
-        }
-        
+        const savedLang = normalizeLanguage(localStorage.getItem('smartfarmer_lang')
+            || localStorage.getItem('sf_lang')
+            || localStorage.getItem('language')
+            || 'en');
+
         localStorage.setItem('smartfarmer_lang', savedLang);
         localStorage.setItem('sf_lang', savedLang);
         localStorage.setItem('language', savedLang);
@@ -346,28 +384,16 @@
         selector.value = savedLang;
 
         selector.addEventListener('change', function() {
-            const lang = this.value;
-            localStorage.setItem('smartfarmer_lang', lang);
-            localStorage.setItem('sf_lang', lang);
-            localStorage.setItem('language', lang);
-            translatePage();
-            initVoiceButtons();
+            applyLanguage(this.value);
         });
     }
 
     // ===== TRANSLATION =====
     function translatePage() {
-        let lang = localStorage.getItem('smartfarmer_lang') 
-                || localStorage.getItem('sf_lang') 
-                || localStorage.getItem('language') 
-                || 'en';
-        
-        if (lang === 'ba') lang = 'bari';
-        if (lang === 'ar') lang = 'juba';
-        
-        if (!['en', 'juba', 'bari'].includes(lang)) {
-            lang = 'en';
-        }
+        const lang = normalizeLanguage(localStorage.getItem('smartfarmer_lang')
+            || localStorage.getItem('sf_lang')
+            || localStorage.getItem('language')
+            || 'en');
 
         console.log('🌐 Translating to:', lang);
         
