@@ -1590,6 +1590,34 @@ const translations = { en: {}, juba: {}, bari: {} };
     };
 });
 
+
+// ===== MERGE EDUCATION TRANSLATIONS INTO MAIN TRANSLATIONS =====
+// This makes education keys available in the main translations object
+['en', 'juba', 'bari'].forEach(lang => {
+    if (typeof education !== 'undefined' && education[lang]) {
+        translations[lang] = {
+            ...translations[lang],
+            ...education[lang]
+        };
+    }
+});
+
+// Also merge educationVoices if they exist separately
+if (typeof educationVoices !== 'undefined') {
+    ['en', 'juba', 'bari'].forEach(lang => {
+        if (educationVoices[lang]) {
+            translations[lang] = {
+                ...translations[lang],
+                ...educationVoices[lang]
+            };
+        }
+    });
+}
+
+console.log('Translations merged successfully!');
+console.log('Available languages:', Object.keys(translations));
+console.log('Education keys in juba:', Object.keys(translations.juba).filter(k => k.includes('module')));
+
 // ============================================
 // EXPORT (for use in other files)
 // ============================================
