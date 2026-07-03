@@ -209,6 +209,10 @@ function playAudio(topic) {
     speakWithSynthesis(message, lang);
 }
 
+function toggleModuleAudio(topic) {
+    playAudio(topic);
+}
+
 function speakWithSynthesis(message, lang) {
     if ('speechSynthesis' in window) {
         const speak = (msg, prefLang) => {
@@ -684,3 +688,4 @@ window.apiGetCropLogs = apiGetCropLogs;
 window.apiSaveCropLog = apiSaveCropLog;
 window.apiDeleteCropLog = apiDeleteCropLog;
 window.apiSendContactMessage = apiSendContactMessage;
+window.toggleModuleAudio = toggleModuleAudio;
