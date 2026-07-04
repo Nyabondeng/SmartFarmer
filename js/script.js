@@ -609,7 +609,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (translateKey === 'ba') translateKey = 'bari';
     if (translateKey === 'ar') translateKey = 'juba';
 
-    document.documentElement.dir = (translateKey === 'juba') ? 'rtl' : 'ltr';
+    document.documentElement.dir = (translateKey === 'juba') ? 'ltr':
     document.documentElement.lang = (translateKey === 'juba') ? 'ar' : translateKey;
     translatePage(translateKey);
 
@@ -626,7 +626,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem('sf_lang', sfLang);
 
             const pageKey = (selectedLanguage === 'bari') ? 'bari' : (selectedLanguage === 'juba' ? 'juba' : selectedLanguage);
-            document.documentElement.dir = (pageKey === 'juba') ? 'rtl' : 'ltr';
+            document.documentElement.dir = (pageKey === 'juba') ? 'ltr':
             document.documentElement.lang = (pageKey === 'juba') ? 'ar' : pageKey;
             translatePage(pageKey);
             document.dispatchEvent(new CustomEvent('languagechange', { detail: { language: pageKey } }));
