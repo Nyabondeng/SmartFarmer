@@ -1025,7 +1025,7 @@ const crops = {
         pearlmilletVoice: "Pearl Millet. Lanyi ti lipi May ka June. Fasila 60 senti x 20 senti. Aki wiri birds ka stem borers. Woro September ka October. Teren i sealed containers.",
         eggplantVoice: "Eggplant. Lanyi ti lipi May ka June. Fasila 60 senti x 45 senti. Aki wiri flea beetles ka fruit borers. Woro August ka October. Teren i cool, dry place"
     }
-}},
+}};
 
 
 const education = {
