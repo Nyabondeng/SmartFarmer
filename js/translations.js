@@ -159,7 +159,7 @@ const about = {
 
         visionTitle: "الرؤية",
         visionText: "مستقبل يتمتع فيه كل مزارع في جنوب السودان بالمعرفة والأدوات اللازمة لزراعة المزيد من الغذاء، وتقليل خسائر المحاصيل، وتحسين الأمن الغذائي لأسرهم.",
-        
+
         offersTitle: "ماذا يقدم المزارع الذكي",
 
         offer1: "معلومات عن 5 محاصيل أساسية بـ 3 لغات",
@@ -472,6 +472,12 @@ const crops = {
     juba: {
         cropsTitle: "معلومات المحاصيل",
         cropsDescription: "تعرف على أفضل المحاصيل لمزرعتك. انقر على أي محصول لرؤية التفاصيل حول الزراعة والرعاية والآفات والحصاد.",
+        cropsHeroStatsCropsValue:"٣٠",
+        cropsHeroStatsLanguagesValue:"٣",
+        cropsHeroStatsAudioValue:"🔊",
+        cropsHeroStatsAvailableValue:"متاح",
+        cropsHeroStatsFreeValue:"مجاني",
+        cropsHeroStatsAlwaysValue:"دائماً",
 
         // Crop Titles
         sorghumTitle: "الذرة الرفيعة",
