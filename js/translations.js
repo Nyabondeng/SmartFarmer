@@ -51,7 +51,7 @@ const common = {
         education: "التعليم",
         cropLog: "سجل المحاصيل",
         login: "الحساب",
-        ussd: "خدمة بدون إنترنت"
+        ussd: "خدمة بدون إنترنت",
 
         installBannerTitle: "ثبت سمارت فارمر",
         installBannerText: "احفظ التطبيق في تلفونك عشان تشتغل بدون إنترنت",
