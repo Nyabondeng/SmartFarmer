@@ -70,10 +70,16 @@ const common = {
         trustFree: "مجاني",
         trustAlways: "دائماً",
 
+        trustCropsNum: "٣٠",
+        trustModulesNum: "١٠",
+        trustLanguagesNum: "٣",
+
         footerCopy: "© 2026 سمارت فارمر. جميع الحقوق محفوظة.",
 
         footerLocation: "📍 مقاطعة ياي، جنوب السودان"
 
+        footerEmail: "📧 البريد الإلكتروني: nyabondeng0@gmail.com",
+        footerPhone: "📱 الهاتف: +٢١١٩٢٨٤٧٠٤٤٤",
         
     },
 
