@@ -77,10 +77,9 @@ const common = {
         footerCopy: "© 2026 سمارت فارمر. جميع الحقوق محفوظة.",
 
         footerLocation: "📍 مقاطعة ياي، جنوب السودان"
-
+,
         footerEmail: "📧 البريد الإلكتروني: nyabondeng0@gmail.com",
-        footerPhone: "📱 الهاتف: +٢١١٩٢٨٤٧٠٤٤٤",
-        
+        footerPhone: "📱 الهاتف: +٢١١٩٢٨٤٧٠٤٤٤"
     },
 
     bari: {
