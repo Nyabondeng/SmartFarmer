@@ -1506,7 +1506,7 @@ const education = {
         ussdBannerBtn: "Access via USSD →"
     }
 
-},
+};
 
 const cropLog = {
   en: {
@@ -1730,7 +1730,7 @@ const educationVoices = {
         diseaseVoice: "Crop disease control. Inspect leaves and stems weekly for spots, wilting, or rot. Remove and burn diseased plants immediately to stop spread. Avoid working in wet fields, disease spreads faster then. Use disease-resistant seed varieties when available. Rotate crops each season to break disease cycles in the soil.",
         toolsVoice: "Farm tools and equipment. Clean tools after every use to prevent rust and disease spread. Sharpen hoes and machetes regularly for easier work. Store tools in a dry, shaded place to extend their life. Use the right tool for the right job, don't force tools. Share or borrow tools with neighbors to reduce costs."
     }
-},
+};
 
 // ============================================
 // 6. MODULE DETAIL PAGE TRANSLATIONS
