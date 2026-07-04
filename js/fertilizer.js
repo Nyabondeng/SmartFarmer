@@ -501,4 +501,4 @@ if (cropNames.length > 0) {
 }
 
 // Expose selectCrop globally
-window.selectCrop = selectCrop;
+window.selectCrop = selectCrop}

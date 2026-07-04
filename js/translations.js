@@ -1023,17 +1023,8 @@ const crops = {
         soybeanVoice: "Soybean. Lanyi ti lipi May ka June. Fasila 50 senti x 10 senti. Aki wiri pod borers. Woro September ka October. Teren dry completely before storing.",
         fingermilletVoice: "Finger Millet. Lanyi ti lipi May ka June. Fasila 45 senti x 15 senti. Aki wiri birds ka stem borers. Woro September ka October. Teren i sealed containers.",
         pearlmilletVoice: "Pearl Millet. Lanyi ti lipi May ka June. Fasila 60 senti x 20 senti. Aki wiri birds ka stem borers. Woro September ka October. Teren i sealed containers.",
-        eggplantVoice: "Eggplant. Lanyi ti lipi May ka June. Fasila 60 senti x 45 senti. Aki wiri flea beetles ka fruit borers. Woro August ka October. Teren i cool, dry place."
-    }
-};
-
-
-
-// ============================================
-// 4. EDUCATION PAGE TRANSLATIONS
-// ============================================
-
-const education = {
+        eggplantVoice: "Eggplant. Lanyi ti lipi May ka June. Fasila 60 senti x 45 senti. Aki wiri flea beetles ka fruit borers. Woro August ka October. Teren i cool, dry place"
+    },
     en: {
         educationTitle: "Grow smarter with practical knowledge",
         eduHeroSub: "Modules for smallholder farmers available in audio, text, and offline via USSD.",
@@ -1510,15 +1501,8 @@ const education = {
         ussdBannerDesc: "Access all modules anytime via USSD works on any phone, even without data.",
         ussdBannerBtn: "Access via USSD →"
     }
-};
-
-
-// ============================================
-// 5. CROP LOG PAGE TRANSLATIONS
-// ============================================
-
-const cropLog = {
-    en: {
+},
+en: {
         cropLogTitle: "My Crop Monitoring Log",
         cropLogSubtitle: "Save your planting dates. All data stays on your phone. Works offline.",
         selectCrop: "Select Crop:",
