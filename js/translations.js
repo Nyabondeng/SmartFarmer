@@ -2074,8 +2074,6 @@ const translations = { en: {}, juba: {}, bari: {} };
         ...crops[lang],
         // Education page
         ...education[lang],
-        // fertilizer page
-        ...fertilizer[lang],
         // Education Voices
         ...educationVoices[lang],
         // Module detail page translations
