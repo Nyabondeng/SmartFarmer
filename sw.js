@@ -1,151 +1,102 @@
-// Smart Farmer Service Worker - Enables offline access
-
-const CACHE_NAME = 'smart-farmer-v2';
-const OFFLINE_URL = '/offline.html';
+const CACHE_NAME = 'smartfarmer-v' + Date.now();
+const OFFLINE_CACHE = 'smartfarmer-offline-v1';
 
 // Files to cache for offline use
-const urlsToCache = [
-    // Core pages
+const OFFLINE_FILES = [
     '/',
     '/index.html',
     '/about.html',
     '/crops.html',
     '/education.html',
     '/crop-log.html',
-    '/contact.html',
     '/ussd.html',
-    '/offline.html',
-
-    // Module pages (NEW)
-    '/modules/module-planting.html',
-    '/modules/module-pest.html',
-    '/modules/module-postharvest.html',
-    '/modules/module-soil.html',
-    '/modules/module-climate.html',
-    '/modules/module-water.html',
-    '/modules/module-market.html',
-    '/modules/module-fertilizer.html',
-    '/modules/module-disease.html',
-    '/modules/module-tools.html',
-
-    // CSS files
-    '/styles/style.css',
-    '/styles/home.css',
-    '/styles/about.css',
+    '/farmer-login.html',
+    '/farmer-register.html',
+    '/styles/styles.css',
     '/styles/crops.css',
     '/styles/education.css',
+    '/styles/about.css',
     '/styles/crop-log.css',
-    '/styles/contact.css',
     '/styles/ussd.css',
-    '/styles/module-detail.css',  // NEW
-
-    // JavaScript files
-    '/js/script.js',
+    '/styles/farmer-auth.css',
     '/js/translations.js',
-    '/js/education.js',      // NEW
-    '/js/module-detail.js',  // NEW
-    '/js/contact.js',
-    '/js/ussd.js',
-    '/js/crop-log.js',
+    '/js/script.js',
     '/js/crops.js',
-
-    // Images (add all your images)
-    '/images/smartfarmer.png',
-    '/images/hero-farming.jpg',
-    '/images/farmer.jpg',
-    '/images/planting.jpg',
-    '/images/pest.jpg',
-    '/images/postharvest.jpg',
-    '/images/soil.jpg',
-    '/images/climate.jpg',
-    '/images/water.jpg',
-    '/images/market.jpg',
-    '/images/fertilizer.jpg',
-    '/images/disease.jpg',
-    '/images/tools.jpg',
-    '/images/sorghum.jpg',
-    '/images/maize.jpg',
-    '/images/millet.jpg',
-    '/images/groundnuts.jpg',
-    '/images/cassava.jpg'
+    '/js/education.js',
+    '/js/farmer-auth.js',
+    '/js/ussd.js',
+    '/images/smartfarmer.png'
 ];
 
-// Install event - cache all files
+// ── INSTALL: cache offline files ─────────────────────────────
 self.addEventListener('install', event => {
+    console.log('[SW] Installing...');
     event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => {
-                console.log('Cache opened');
-                return cache.addAll(urlsToCache);
-            })
-            .then(() => {
-                // Force the waiting service worker to become active
-                return self.skipWaiting();
-            })
-            .catch(error => {
-                console.log('Cache failed:', error);
-            })
+        caches.open(OFFLINE_CACHE).then(cache => {
+            console.log('[SW] Caching offline files');
+            return cache.addAll(
+                OFFLINE_FILES.filter(url => !url.startsWith('chrome-extension'))
+            );
+        }).then(() => self.skipWaiting())
     );
 });
 
-// Activate event - clean old caches
+// ── ACTIVATE: delete old caches ──────────────────────────────
 self.addEventListener('activate', event => {
+    console.log('[SW] Activating...');
     event.waitUntil(
         caches.keys().then(cacheNames => {
             return Promise.all(
-                cacheNames.map(cacheName => {
-                    if (cacheName !== CACHE_NAME) {
-                        console.log('Deleting old cache:', cacheName);
-                        return caches.delete(cacheName);
-                    }
-                })
+                cacheNames
+                    .filter(name => name !== OFFLINE_CACHE)
+                    .map(name => {
+                        console.log('[SW] Deleting old cache:', name);
+                        return caches.delete(name);
+                    })
             );
-        })
-        .then(() => {
-            // Take control of all open clients
-            return self.clients.claim();
-        })
+        }).then(() => self.clients.claim())
     );
 });
 
-// Fetch event - serve from cache, fallback to network, then offline page
+// ── FETCH: network-first, fallback to cache ───────────────────
 self.addEventListener('fetch', event => {
+    // Skip non-http requests (chrome extensions etc)
+    if (!event.request.url.startsWith('http')) return;
+
+    // Skip POST requests
+    if (event.request.method !== 'GET') return;
+
     event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                if (response) {
-                    // Return cached version
-                    return response;
-                }
-
-                // Try to fetch from network
-                return fetch(event.request)
-                    .then(networkResponse => {
-                        // Check if we got a valid response
-                        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-                            return networkResponse;
-                        }
-
-                        // Clone the response and cache it for next time
-                        const responseToCache = networkResponse.clone();
-                        caches.open(CACHE_NAME)
-                            .then(cache => {
-                                cache.put(event.request, responseToCache);
-                            });
-
-                        return networkResponse;
-                    })
-                    .catch(() => {
-                        // If both cache and network fail, show offline page
-                        if (event.request.mode === 'navigate') {
-                            return caches.match(OFFLINE_URL);
-                        }
-                        // For images/assets, return a fallback
-                        if (event.request.destination === 'image') {
-                            return caches.match('/images/smartfarmer.png');
-                        }
-                        return new Response('Offline', { status: 503 });
+        // Always try network first
+        fetch(event.request)
+            .then(networkResponse => {
+                // Got a good response from network
+                if (networkResponse && networkResponse.status === 200) {
+                    // Update the offline cache with the new response
+                    const responseClone = networkResponse.clone();
+                    caches.open(OFFLINE_CACHE).then(cache => {
+                        cache.put(event.request, responseClone);
                     });
+                }
+                return networkResponse;
+            })
+            .catch(() => {
+                // Network failed — serve from cache (offline mode)
+                return caches.match(event.request).then(cachedResponse => {
+                    if (cachedResponse) {
+                        console.log('[SW] Serving from cache (offline):', event.request.url);
+                        return cachedResponse;
+                    }
+                    // Nothing in cache either — return offline page
+                    return caches.match('/index.html');
+                });
             })
     );
+});
+
+// ── MESSAGE: force update from app ───────────────────────────
+self.addEventListener('message', event => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
+    }
 });
