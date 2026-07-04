@@ -755,14 +755,7 @@ const crops = {
         soybeanVoice: "فول الصويا. موسم الزراعة: مايو-يونيو. التباعد: 50 سم × 10 سم. مكافحة الآفات: احترس من حفار القرون. الحصاد: سبتمبر-أكتوبر. التخزين: جفف تماماً قبل التخزين.",
         fingermilletVoice: "دخن الإصبع. موسم الزراعة: مايو-يونيو. التباعد: 45 سم × 15 سم. مكافحة الآفات: احترس من الطيور وحفار الساق. الحصاد: سبتمبر-أكتوبر. التخزين: خزن في حاويات محكمة الإغلاق.",
         pearlmilletVoice: "دخن اللؤلؤ. موسم الزراعة: مايو-يونيو. التباعد: 60 سم × 20 سم. مكافحة الآفات: احترس من الطيور وحفار الساق. الحصاد: سبتمبر-أكتوبر. التخزين: خزن في حاويات محكمة الإغلاق.",
-        eggplantVoice: "الباذنجان. موسم الزراعة: مايو-يونيو. التباعد: 60 سم × 45 سم. مكافحة الآفات: احترس من خنافس البراغيث وحفار الثمار. الحصاد: أغسطس-أكتوبر. التخزين: خزن في مكان بارد وجاف",
-
-        footerCopyright: "© 2026 المزارع الذكي. جميع الحقوق محفوظة",
-
-        footerLocation: "📍 مقاطعة ياي، جنوب السودان",
-        footerEmail: "📧 البريد الإلكتروني: nyabondeng0@gmail.com",
-        footerPhone: "📱 الهاتف: +٢١١٩٢٨٤٧٠٤٤٤"
-    
+        eggplantVoice: "الباذنجان. موسم الزراعة: مايو-يونيو. التباعد: 60 سم × 45 سم. مكافحة الآفات: احترس من خنافس البراغيث وحفار الثمار. الحصاد: أغسطس-أكتوبر. التخزين: خزن في مكان بارد وجاف"
 
 
     },
@@ -792,13 +785,74 @@ const crops = {
         noFertilizerData: "لا توجد بيانات سماد لهذا المحصول",
 
         footerCopyright: "© 2026 المزارع الذكي. جميع الحقوق محفوظة",
-
-        footerLocation: "📍 مقاطعة ياي، جنوب السودان",
-        footerEmail: "📧 البريد الإلكتروني: nyabondeng0@gmail.com",
-        footerPhone: "📱 الهاتف: +٢١١٩٢٨٤٧٠٤٤٤"
+        footerLocation: "مقاطعة ياي، جنوب السودان"
+   }, 
+     en: {
+        sorghum: "Sorghum",
+        maize: "Maize",
+        millet: "Millet",
+        groundnuts: "Groundnuts",
+        cassava: "Cassava",
+        cowpeas: "Cowpeas",
+        sesame: "Sesame",
+        sweetpotato: "Sweet Potato",
+        beans: "Beans",
+        okra: "Okra",
+        tomato: "Tomato",
+        onion: "Onion",
+        pumpkin: "Pumpkin",
+        yam: "Yam",
+        sugarcane: "Sugarcane",
+        rice: "Rice",
+        sunflower: "Sunflower",
+        banana: "Banana",
+        watermelon: "Watermelon",
+        cabbage: "Cabbage",
+        pigeonpeas: "Pigeon Peas",
+        mangoes: "Mangoes",
+        coffee: "Coffee",
+        tea: "Tea",
+        tobacco: "Tobacco",
+        cotton: "Cotton",
+        soybean: "Soybean",
+        fingermillet: "Finger Millet",
+        pearlmillet: "Pearl Millet",
+        eggplant: "Eggplant"
+    },          
+    Juba: {
+    crops: {
+        sorghum: "الذرة الرفيعة",
+        maize: "الذرة",
+        millet: "الدخن",
+        groundnuts: "الفول السوداني",
+        cassava: "الكسافا",
+        cowpeas: "اللوبيا",
+        sesame: "السمسم",
+        sweetpotato: "البطاطس الحلوة",
+        beans: "الفاصوليا",
+        okra: "البامية",
+        tomato: "الطماطم",
+        onion: "البصل",
+        pumpkin: "اليقطين",
+        yam: "اليام",
+        sugarcane: "قصب السكر",
+        rice: "الأرز",
+        sunflower: "دوار الشمس",
+        banana: "الموز",
+        watermelon: "البطيخ",
+        cabbage: "الكرنب",
+        pigeonpeas: "البسلة",
+        mangoes: "المانجو",
+        coffee: "القهوة",
+        tea: "الشاي",
+        tobacco: "التبغ",
+        cotton: "القطن",
+        soybean: "فول الصويا",
+        fingermillet: "الدخن الصغير",
+        pearlmillet: "الدخن اللؤلؤي",
+        eggplant: "الباذنجان"
     
-   },           
-    
+   },
     bari: {
         // Bari translations for all crops
         // (Keeping your existing Bari translations)
@@ -972,6 +1026,8 @@ const crops = {
         eggplantVoice: "Eggplant. Lanyi ti lipi May ka June. Fasila 60 senti x 45 senti. Aki wiri flea beetles ka fruit borers. Woro August ka October. Teren i cool, dry place."
     }
 };
+
+
 
 // ============================================
 // 4. EDUCATION PAGE TRANSLATIONS

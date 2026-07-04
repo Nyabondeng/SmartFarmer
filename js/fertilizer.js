@@ -416,15 +416,20 @@ function renderCropList(filter = '') {
         return;
     }
 
+    const lang = localStorage.getItem("language") || "en";
+
     cropList.innerHTML = filtered.map(key => {
-        const crop = fertilizerData[key];
-        return `
-            <div class="crop-option" data-crop="${key}" onclick="selectCrop('${key}')">
-                <span class="name">${crop.name}</span>
-            </div>
-        `;
-    }).join('');
-}
+    const crop = fertilizerData[key];
+
+    const translatedName =
+        translations[lang]?.cropNames?.[key] || crop.name;
+
+    return `
+        <div class="crop-option" data-crop="${key}" onclick="selectCrop('${key}')">
+            <span class="name">${translatedName}</span>
+        </div>
+    `;
+}).join('');
 
 // Select a crop
 function selectCrop(key) {
