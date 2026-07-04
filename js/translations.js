@@ -172,7 +172,7 @@ const about = {
         footerLocation: "📍 مقاطعة ياي، جنوب السودان",
         footerEmail: "📧 البريد الإلكتروني: nyabondeng0@gmail.com",
         footerPhone: "📱 الهاتف: +٢١١٩٢٨٤٧٠٤٤٤"
-    }
+    
 
     },
     bari: {
@@ -557,7 +557,7 @@ const crops = {
         allCropsLabel: "جميع المحاصيل",
         forecastButton: "التوقعات",
         fertilizerButton: "الأسمدة",
-        listenButton: ""
+        listenButton: "استمع",
         cropsHeroStatsCrops: "المحاصيل",
         cropsHeroStatsLanguages: "اللغات",
         cropsHeroStatsAudioValue: "الصوت",
@@ -757,10 +757,16 @@ const crops = {
         pearlmilletVoice: "دخن اللؤلؤ. موسم الزراعة: مايو-يونيو. التباعد: 60 سم × 20 سم. مكافحة الآفات: احترس من الطيور وحفار الساق. الحصاد: سبتمبر-أكتوبر. التخزين: خزن في حاويات محكمة الإغلاق.",
         eggplantVoice: "الباذنجان. موسم الزراعة: مايو-يونيو. التباعد: 60 سم × 45 سم. مكافحة الآفات: احترس من خنافس البراغيث وحفار الثمار. الحصاد: أغسطس-أكتوبر. التخزين: خزن في مكان بارد وجاف",
 
+        footerCopyright: "© 2026 المزارع الذكي. جميع الحقوق محفوظة",
+
+        footerLocation: "📍 مقاطعة ياي، جنوب السودان",
+        footerEmail: "📧 البريد الإلكتروني: nyabondeng0@gmail.com",
+        footerPhone: "📱 الهاتف: +٢١١٩٢٨٤٧٠٤٤٤"
+    
 
 
-
-
+    },
+    juba: {
 
         home: "الرئيسية",
         about: "حول",
@@ -786,8 +792,12 @@ const crops = {
         noFertilizerData: "لا توجد بيانات سماد لهذا المحصول",
 
         footerCopyright: "© 2026 المزارع الذكي. جميع الحقوق محفوظة",
-        footerLocation: "مقاطعة ياي، جنوب السودان"
-},
+
+        footerLocation: "📍 مقاطعة ياي، جنوب السودان",
+        footerEmail: "📧 البريد الإلكتروني: nyabondeng0@gmail.com",
+        footerPhone: "📱 الهاتف: +٢١١٩٢٨٤٧٠٤٤٤"
+    
+   },           
     
     bari: {
         // Bari translations for all crops
