@@ -1228,7 +1228,13 @@ const education = {
         // USSD Banner
         ussdBannerTitle: "لا يوجد إنترنت؟ لا مشكلة.",
         ussdBannerDesc: "يمكنك الوصول إلى جميع الوحدات في أي وقت عبر USSD، يعمل على أي هاتف، حتى بدون بيانات.",
-        ussdBannerBtn: "الدخول عبر USSD →"
+        ussdBannerBtn: "الدخول عبر USSD →",
+
+        footerLocation: "📍 مقاطعة ياي، جنوب السودان"
+,
+        footerEmail: "📧 البريد الإلكتروني: nyabondeng0@gmail.com",
+        footerPhone: "📱 الهاتف: +٢١١٩٢٨٤٧٠٤٤٤"
+    
     },
     bari: {
         educationTitle: "Kujju",
