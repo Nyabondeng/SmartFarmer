@@ -1025,10 +1025,10 @@ const crops = {
         pearlmilletVoice: "Pearl Millet. Lanyi ti lipi May ka June. Fasila 60 senti x 20 senti. Aki wiri birds ka stem borers. Woro September ka October. Teren i sealed containers.",
         eggplantVoice: "Eggplant. Lanyi ti lipi May ka June. Fasila 60 senti x 45 senti. Aki wiri flea beetles ka fruit borers. Woro August ka October. Teren i cool, dry place"
     }
-},
+}},
 
 
-const : education = {      
+const education = {
     en: {
         educationTitle: "Grow smarter with practical knowledge",
         eduHeroSub: "Modules for smallholder farmers available in audio, text, and offline via USSD.",
@@ -1505,8 +1505,11 @@ const : education = {
         ussdBannerDesc: "Access all modules anytime via USSD works on any phone, even without data.",
         ussdBannerBtn: "Access via USSD →"
     }
+
 },
-en: {
+
+const cropLog = {
+  en: {
         cropLogTitle: "My Crop Monitoring Log",
         cropLogSubtitle: "Save your planting dates. All data stays on your phone. Works offline.",
         selectCrop: "Select Crop:",
@@ -1727,7 +1730,7 @@ const educationVoices = {
         diseaseVoice: "Crop disease control. Inspect leaves and stems weekly for spots, wilting, or rot. Remove and burn diseased plants immediately to stop spread. Avoid working in wet fields, disease spreads faster then. Use disease-resistant seed varieties when available. Rotate crops each season to break disease cycles in the soil.",
         toolsVoice: "Farm tools and equipment. Clean tools after every use to prevent rust and disease spread. Sharpen hoes and machetes regularly for easier work. Store tools in a dry, shaded place to extend their life. Use the right tool for the right job, don't force tools. Share or borrow tools with neighbors to reduce costs."
     }
-};
+},
 
 // ============================================
 // 6. MODULE DETAIL PAGE TRANSLATIONS
@@ -2060,7 +2063,7 @@ const moduleDetails = {
 // FINAL COMBINED TRANSLATIONS OBJECT
 // ============================================
 
-const contact = { en: {}, juba: {}, bari: {} };
+
 const translations = { en: {}, juba: {}, bari: {} };
 
 // Merge all sections
@@ -2074,6 +2077,8 @@ const translations = { en: {}, juba: {}, bari: {} };
         ...crops[lang],
         // Education page
         ...education[lang],
+        //cropLog page
+        ...cropLog[lang],
         // Education Voices
         ...educationVoices[lang],
         // Module detail page translations
