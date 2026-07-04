@@ -1024,7 +1024,11 @@ const crops = {
         fingermilletVoice: "Finger Millet. Lanyi ti lipi May ka June. Fasila 45 senti x 15 senti. Aki wiri birds ka stem borers. Woro September ka October. Teren i sealed containers.",
         pearlmilletVoice: "Pearl Millet. Lanyi ti lipi May ka June. Fasila 60 senti x 20 senti. Aki wiri birds ka stem borers. Woro September ka October. Teren i sealed containers.",
         eggplantVoice: "Eggplant. Lanyi ti lipi May ka June. Fasila 60 senti x 45 senti. Aki wiri flea beetles ka fruit borers. Woro August ka October. Teren i cool, dry place"
-    },
+    }
+},
+
+
+const : education = {      
     en: {
         educationTitle: "Grow smarter with practical knowledge",
         eduHeroSub: "Modules for smallholder farmers available in audio, text, and offline via USSD.",
