@@ -32,17 +32,10 @@ const common = {
         trustAvailable: "Available",
         trustFree: "Free",
         trustAlways: "Always",
-        tagline: "Empowering smallholder farmers through education, crop monitoring tools, and climate insights.",
-        getStarted: "Get Started",
+        tagline: "Information. Education. Better Harvests.All in your language, all offline.",
 
-        // Voice Controls
-        voiceListenLabel: "🔊 Listen",
-        voicePauseLabel: "⏸ Pause",
-        voiceStopLabel: "⏹ Stop",
-        learnMore: "Learn More →",
 
-        // Footer
-        footerText: "© 2026 Smart Farmer. For smallholder farmers in South Sudan.",
+        
         footerCopy: "© 2026 Smart Farmer. All rights reserved.",
         installBannerTitle: "Install Smart Farmer",
         installBannerText: "Save this app to your phone for offline access",
@@ -51,45 +44,39 @@ const common = {
     },
     juba: {
         // Navigation
-        home: "البيت",
-        about: "من نحن",
-        crops: "المحاصيل",
+
+        home: "الصفحة الرئيسية",
+        about: "عن التطبيق",
+        crops: "معلومات المحاصيل",
         education: "التعليم",
         cropLog: "سجل المحاصيل",
-        contact: "اتصل بنا",
-        ussd: "USSD",
         login: "الحساب",
-        register: "إنشاء حساب",
-        logout: "تسجيل الخروج",
+        ussd: "USSD",
 
-        // Hero / General
-        welcome: "مرحباً بكم في المزارع الذكي",
-        heroTitle: "الزراعة الذكية <br><span class=\"headline-accent\">تبدأ هنا</span>",
+        installBannerTitle: "ثبت سمارت فارمر",
+        installBannerText: "احفظ التطبيق في تلفونك عشان تشتغل بدون إنترنت",
+        installButton: "ثبت",
+
+        heroTitle: "الزراعة الذكية <br><span class='headline-accent'>تبدأ من هنا</span>",
+
+        tagline: "معلومات. تعليم. حصاد أفضل.\nكلها بلغتك، وحتى بدون إنترنت.",
+
         exploreCrops: "استكشف المحاصيل",
         startLearning: "ابدأ التعلم",
-        trustCrops: "محاصيل",
-        trustModules: "وحدات",
+
+        trustCrops: "محصول",
+        trustModules: "دروس",
         trustLanguages: "لغات",
-        trustAvailable: "متوفر",
         trustFree: "مجاني",
         trustAlways: "دائماً",
-        tagline: "تمكين المزارعين أصحاب الحيازات الصغيرة من خلال التعليم، أدوات مراقبة المحاصيل، ورؤى المناخ.",
-        getStarted: "ابدأ الآن",
 
-        // Voice Controls
-        voiceListenLabel: "🔊 استمع",
-        voicePauseLabel: "⏸ إيقاف مؤقت",
-        voiceStopLabel: "⏹ إيقاف",
-        learnMore: "اعرف المزيد →",
+        footerCopy: "© 2026 سمارت فارمر. جميع الحقوق محفوظة.",
 
-        // Footer
-        footerText: "© 2026 المزارع الذكي. للمزارعين أصحاب الحيازات الصغيرة في جنوب السودان.",
-        footerCopy: "© ٢٠٢٦ المزارع الذكي. جميع الحقوق محفوظة.",
-        installBannerTitle: "تثبيت المزارع الذكي",
-        installBannerText: "احفظ هذا التطبيق على هاتفك للوصول دون اتصال",
-        installButton: "تثبيت",
-        footerLocation: "📍 مقاطعة يي، جنوب السودان"
+        footerLocation: "📍 مقاطعة ياي، جنوب السودان"
+
+        
     },
+
     bari: {
         // Navigation
         home: "Piny",
