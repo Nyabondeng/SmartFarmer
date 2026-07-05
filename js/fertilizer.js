@@ -483,6 +483,12 @@ function showCropDetails(key) {
     const lang = getFertilizerLanguage();
     const t = translations[lang] || translations.en || {};
 
+    console.log('Current language:', lang);
+    console.log('All translations for this language:', t);
+    console.log('sorghumTitle:', t.sorghumTitle);
+    console.log('sorghumFertilizer:', t.sorghumFertilizer);
+    console.log('fertilizerTypesLabel:', t.fertilizerTypesLabel);
+
     // Get translated crop name (with fallback)
     const titleKey = key + 'Title';
     const cropTitle = t[titleKey] || crop.name;
