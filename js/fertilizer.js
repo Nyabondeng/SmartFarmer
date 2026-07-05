@@ -568,3 +568,27 @@ if (cropNames.length > 0) {
 
 window.selectCrop = selectCrop;
 window.renderCropList = renderCropList;
+
+
+// Listen for language changes
+document.addEventListener('DOMContentLoaded', function() {
+    const switcher = document.getElementById('languageSwitcher');
+    if (switcher) {
+        switcher.addEventListener('change', function() {
+            // Get the currently selected crop
+            const activeCrop = document.querySelector('.crop-option.active');
+            if (activeCrop) {
+                const cropKey = activeCrop.getAttribute('data-crop');
+                // Re-render the crop list and details in the new language
+                renderCropList();
+                selectCrop(cropKey);
+            } else {
+                // If no crop is selected, just re-render the list
+                renderCropList();
+                if (cropNames.length > 0) {
+                    selectCrop(cropNames[0]);
+                }
+            }
+        });
+    }
+});
