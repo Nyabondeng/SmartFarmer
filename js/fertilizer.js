@@ -1,3 +1,7 @@
+// ========================================
+// FERTILIZER DATA
+// ========================================
+
 const fertilizerData = {
     sorghum: {
         name: 'Sorghum',
@@ -51,7 +55,6 @@ const fertilizerData = {
     },
     cassava: {
         name: 'Cassava',
-        icon: '🌱',
         fertilizerTypes: [
             { name: 'NPK 12-12-17', amount: '80 kg/acre', timing: 'At planting', description: 'Apply at planting for sustained growth' },
             { name: 'Urea (46% N)', amount: '40 kg/acre', timing: '3-4 months after planting', description: 'Apply during active growth phase' }
@@ -392,16 +395,41 @@ const fertilizerData = {
     }
 };
 
-// Get crop names from fertilizerData
+// ========================================
+// GET CROP NAMES FROM FERTILIZER DATA
+// ========================================
+
 const cropNames = Object.keys(fertilizerData);
 
-// DOM elements
+// ========================================
+// DOM ELEMENTS
+// ========================================
+
 const cropList = document.getElementById('cropList');
 const cropSearch = document.getElementById('cropSearch');
 const detailsPanel = document.getElementById('fertilizerDetails');
 
-// Render crop list
+// ========================================
+// FUNCTION: GET CURRENT LANGUAGE
+// ========================================
+
+function getFertilizerLanguage() {
+    const switcher = document.getElementById('languageSwitcher');
+    if (switcher) {
+        const val = switcher.value;
+        return val === 'bari' ? 'bari' : val === 'juba' ? 'juba' : 'en';
+    }
+    return 'en';
+}
+
+// ========================================
+// FUNCTION: RENDER CROP LIST
+// ========================================
+
 function renderCropList(filter = '') {
+    const lang = getFertilizerLanguage();
+    const t = translations[lang] || translations.en || {};
+
     const filtered = cropNames.filter(name => 
         name.toLowerCase().includes(filter.toLowerCase())
     );
@@ -410,28 +438,29 @@ function renderCropList(filter = '') {
         cropList.innerHTML = `
             <div style="text-align:center; padding: 2rem 1rem; color: var(--text-muted);">
                 <div style="font-size: 32px; margin-bottom: 0.5rem;">🔍</div>
-                <p>No crops found. Try a different search.</p>
+                <p>${t.noFertilizerData || 'No crops found. Try a different search.'}</p>
             </div>
         `;
         return;
     }
 
-    const lang = localStorage.getItem("language") || "en";
-
     cropList.innerHTML = filtered.map(key => {
-    const crop = fertilizerData[key];
+        const crop = fertilizerData[key];
+        const titleKey = key + 'Title';
+        const translatedName = t[titleKey] || crop.name;
 
-    const translatedName =
-        translations[lang]?.cropNames?.[key] || crop.name;
+        return `
+            <div class="crop-option" data-crop="${key}" onclick="window.selectCrop('${key}')">
+                <span class="name">${translatedName}</span>
+            </div>
+        `;
+    }).join('');
+} // <-- THIS CLOSING BRACE WAS MISSING!
 
-    return `
-        <div class="crop-option" data-crop="${key}" onclick="selectCrop('${key}')">
-            <span class="name">${translatedName}</span>
-        </div>
-    `;
-}).join('');
+// ========================================
+// FUNCTION: SELECT A CROP
+// ========================================
 
-// Select a crop
 function selectCrop(key) {
     // Update active state
     document.querySelectorAll('.crop-option').forEach(el => el.classList.remove('active'));
@@ -442,7 +471,10 @@ function selectCrop(key) {
     showCropDetails(key);
 }
 
-// Show crop details
+// ========================================
+// FUNCTION: SHOW CROP DETAILS
+// ========================================
+
 function showCropDetails(key) {
     const crop = fertilizerData[key];
     if (!crop) return;
@@ -489,16 +521,28 @@ function showCropDetails(key) {
     detailsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Search functionality
-cropSearch.addEventListener('input', function() {
-    renderCropList(this.value);
-});
+// ========================================
+// SEARCH FUNCTIONALITY
+// ========================================
 
-// Initialize - select first crop by default
+if (cropSearch) {
+    cropSearch.addEventListener('input', function() {
+        renderCropList(this.value);
+    });
+}
+
+// ========================================
+// INITIALIZE - SELECT FIRST CROP BY DEFAULT
+// ========================================
+
 renderCropList();
 if (cropNames.length > 0) {
     selectCrop(cropNames[0]);
 }
 
-// Expose selectCrop globally
-window.selectCrop = selectCrop}
+// ========================================
+// EXPOSE FUNCTIONS GLOBALLY
+// ========================================
+
+window.selectCrop = selectCrop;
+window.renderCropList = renderCropList;

@@ -794,33 +794,7 @@ const crops = {
 
 
 
-    
 
-        home: "الرئيسية",
-        about: "حول",
-        crops: "معلومات المحاصيل",
-        education: "التعليم",
-        cropLog: "سجل المحاصيل",
-        costForecast: "توقع التكاليف",
-        fertilizer: "السماد",
-        login: "الحساب",
-        ussd: "خدمة بدون إنترنت",
-
-        fertilizerTitle: "غذِّ تربتك، تُغذَّ محاصيلك",
-        fertilizerDesc: "تعلم أي سماد تستخدم، وكمية الاستخدام، ومتى يتم التطبيق لتحقيق أعلى إنتاج.",
-
-        fertilizerGuide: "دليل استخدام الأسمدة",
-
-        selectCropFertilizer: "اختر محصولًا",
-        selectCropSubtitle: "اختر محصولًا لعرض توصيات السماد بالتفصيل.",
-
-        searchCrops: "ابحث عن المحاصيل...",
-
-        fertilizerLoading: "جارٍ تحميل بيانات السماد...",
-        noFertilizerData: "لا توجد بيانات سماد لهذا المحصول",
-
-        footerCopyright: "© 2026 المزارع الذكي. جميع الحقوق محفوظة",
-        footerLocation: "مقاطعة ياي، جنوب السودان",
    
     
         sorghum: "الذرة الرفيعة",
@@ -1029,6 +1003,165 @@ const crops = {
     }
 };
 
+
+
+// ========================================
+// FERTILIZER TRANSLATIONS
+// ========================================
+
+const fertilizer = {
+    en: {
+        // Page Titles & Descriptions
+        fertilizerTitle: "Feed your soil, feed your crops",
+        fertilizerDesc: "Learn which fertilizer to use, how much to apply, and when to apply it for maximum yields.",
+        fertilizerGuide: "Fertilizer Application Guide",
+        selectCropFertilizer: "Select a Crop",
+        selectCropSubtitle: "Choose a crop to see detailed fertilizer recommendations.",
+        searchCrops: "Search crops...",
+        fertilizerLoading: "Loading fertilizer data...",
+        noFertilizerData: "No fertilizer data available for this crop",
+        footerCopyright: "© 2026 Smart Farmer. All rights reserved.",
+        footerLocation: "Yei County, South Sudan",
+        footerEmail: "📧 nyabondeng0@gmail.com",
+        footerPhone: "📱 +211928470444",
+
+        // Crop-specific fertilizer recommendations
+        sorghumFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        maizeFertilizer: "NPK 15-15-15: 60 kg/acre at planting. Urea (46% N): 30 kg/acre 6-8 weeks after planting.",
+        milletFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
+        groundnutsFertilizer: "NPK 15-15-15: 30 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
+        cassavaFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
+        cowpeasFertilizer: "NPK 15-15-15: 25 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
+        sesameFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
+        sweetpotatoFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
+        beansFertilizer: "NPK 15-15-15: 25 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
+        okraFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
+        tomatoFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        onionFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
+        pumpkinFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
+        yamFertilizer: "NPK 15-15-15: 45 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        sugarcaneFertilizer: "NPK 15-15-15: 60 kg/acre at planting. Urea (46% N): 30 kg/acre 6-8 weeks after planting.",
+        riceFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        sunflowerFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
+        bananaFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        watermelonFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
+        cabbageFertilizer: "NPK 15-15-15: 45 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        pigeonpeasFertilizer: "NPK 15-15-15: 25 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
+        mangoesFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        coffeeFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        teaFertilizer: "NPK 15-15-15: 45 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        tobaccoFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        cottonFertilizer: "NPK 15-15-15: 45 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        soybeanFertilizer: "NPK 15-15-15: 30 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
+        fingermilletFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
+        pearlmilletFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
+        eggplantFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting."
+    },
+
+    // ========================================
+    // JUBA ARABIC
+    // ========================================
+
+    juba: {
+        // Page Titles & Descriptions
+        fertilizerTitle: "غذِّ تربتك، تُغذَّ محاصيلك",
+        fertilizerDesc: "تعلم أي سماد تستخدم، وكمية الاستخدام، ومتى يتم التطبيق لتحقيق أعلى إنتاج.",
+        fertilizerGuide: "دليل استخدام الأسمدة",
+        selectCropFertilizer: "اختر محصولاً",
+        selectCropSubtitle: "اختر محصولاً لعرض توصيات السماد بالتفصيل.",
+        searchCrops: "ابحث عن المحاصيل...",
+        fertilizerLoading: "جارٍ تحميل بيانات السماد...",
+        noFertilizerData: "لا توجد بيانات سماد لهذا المحصول",
+        footerCopyright: "© 2026 المزارع الذكي. جميع الحقوق محفوظة",
+        footerLocation: "📍 مقاطعة ياي، جنوب السودان",
+        footerEmail: "📧 nyabondeng0@gmail.com",
+        footerPhone: "📱 +211928470444",
+
+        // Crop-specific fertilizer recommendations (Juba Arabic)
+        sorghumFertilizer: "NPK 15-15-15: 50 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 25 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        maizeFertilizer: "NPK 15-15-15: 60 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 30 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        milletFertilizer: "NPK 15-15-15: 40 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 20 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        groundnutsFertilizer: "NPK 15-15-15: 30 كجم/فدان عند الزراعة. لا حاجة لليوريا (البقوليات تثبت النيتروجين بنفسها).",
+        cassavaFertilizer: "NPK 15-15-15: 40 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 20 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        cowpeasFertilizer: "NPK 15-15-15: 25 كجم/فدان عند الزراعة. لا حاجة لليوريا (البقوليات تثبت النيتروجين بنفسها).",
+        sesameFertilizer: "NPK 15-15-15: 35 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 15 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        sweetpotatoFertilizer: "NPK 15-15-15: 40 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 20 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        beansFertilizer: "NPK 15-15-15: 25 كجم/فدان عند الزراعة. لا حاجة لليوريا (البقوليات تثبت النيتروجين بنفسها).",
+        okraFertilizer: "NPK 15-15-15: 35 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 15 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        tomatoFertilizer: "NPK 15-15-15: 50 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 25 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        onionFertilizer: "NPK 15-15-15: 40 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 20 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        pumpkinFertilizer: "NPK 15-15-15: 40 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 20 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        yamFertilizer: "NPK 15-15-15: 45 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 25 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        sugarcaneFertilizer: "NPK 15-15-15: 60 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 30 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        riceFertilizer: "NPK 15-15-15: 50 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 25 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        sunflowerFertilizer: "NPK 15-15-15: 35 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 15 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        bananaFertilizer: "NPK 15-15-15: 50 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 25 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        watermelonFertilizer: "NPK 15-15-15: 40 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 20 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        cabbageFertilizer: "NPK 15-15-15: 45 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 25 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        pigeonpeasFertilizer: "NPK 15-15-15: 25 كجم/فدان عند الزراعة. لا حاجة لليوريا (البقوليات تثبت النيتروجين بنفسها).",
+        mangoesFertilizer: "NPK 15-15-15: 50 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 25 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        coffeeFertilizer: "NPK 15-15-15: 50 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 25 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        teaFertilizer: "NPK 15-15-15: 45 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 25 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        tobaccoFertilizer: "NPK 15-15-15: 50 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 25 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        cottonFertilizer: "NPK 15-15-15: 45 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 25 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        soybeanFertilizer: "NPK 15-15-15: 30 كجم/فدان عند الزراعة. لا حاجة لليوريا (البقوليات تثبت النيتروجين بنفسها).",
+        fingermilletFertilizer: "NPK 15-15-15: 35 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 15 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        pearlmilletFertilizer: "NPK 15-15-15: 35 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 15 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
+        eggplantFertilizer: "NPK 15-15-15: 40 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 20 كجم/فدان بعد 6-8 أسابيع من الزراعة."
+    },
+
+    // ========================================
+    // BARI
+    // ========================================
+
+    bari: {
+        // Page Titles & Descriptions
+        fertilizerTitle: "Gworo soil mo, gworo korop mo",
+        fertilizerDesc: "Wali fertilizer ma kony, kiasi ma kony, ka time ma kony le gworo yields ma kwoi.",
+        fertilizerGuide: "Fertilizer Application Guide",
+        selectCropFertilizer: "Didi Korop",
+        selectCropSubtitle: "Didi korop le wali fertilizer recommendations ma maje.",
+        searchCrops: "Kony korop...",
+        fertilizerLoading: "Loading fertilizer data...",
+        noFertilizerData: "No fertilizer data available for this korop",
+        footerCopyright: "© 2026 Smart Farmer. All rights reserved.",
+        footerLocation: "📍 Yei County, South Sudan",
+        footerEmail: "📧 nyabondeng0@gmail.com",
+        footerPhone: "📱 +211928470444",
+
+        // Crop-specific fertilizer recommendations (Bari)
+        sorghumFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        maizeFertilizer: "NPK 15-15-15: 60 kg/acre at planting. Urea (46% N): 30 kg/acre 6-8 weeks after planting.",
+        milletFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
+        groundnutsFertilizer: "NPK 15-15-15: 30 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
+        cassavaFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
+        cowpeasFertilizer: "NPK 15-15-15: 25 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
+        sesameFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
+        sweetpotatoFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
+        beansFertilizer: "NPK 15-15-15: 25 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
+        okraFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
+        tomatoFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        onionFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
+        pumpkinFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
+        yamFertilizer: "NPK 15-15-15: 45 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        sugarcaneFertilizer: "NPK 15-15-15: 60 kg/acre at planting. Urea (46% N): 30 kg/acre 6-8 weeks after planting.",
+        riceFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        sunflowerFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
+        bananaFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        watermelonFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
+        cabbageFertilizer: "NPK 15-15-15: 45 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        pigeonpeasFertilizer: "NPK 15-15-15: 25 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
+        mangoesFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        coffeeFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        teaFertilizer: "NPK 15-15-15: 45 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        tobaccoFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        cottonFertilizer: "NPK 15-15-15: 45 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
+        soybeanFertilizer: "NPK 15-15-15: 30 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
+        fingermilletFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
+        pearlmilletFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
+        eggplantFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting."
+    }
+};
 
 const education = {
     en: {
@@ -2081,6 +2214,8 @@ const translations = { en: {}, juba: {}, bari: {} };
         ...education[lang],
         //cropLog page
         ...cropLog[lang],
+        //fertilizer page
+        ...fertilizer[lang],
         // Education Voices
         ...educationVoices[lang],
         // Module detail page translations
