@@ -479,15 +479,11 @@ function showCropDetails(key) {
     const crop = fertilizerData[key];
     if (!crop) return;
 
-    // Get current language and translations
-    const lang = getFertilizerLanguage();
-    const t = translations[lang] || translations.en || {};
-
     const typesHtml = crop.fertilizerTypes.map(t => `
         <div class="fertilizer-card">
             <div class="title">${t.name}</div>
-            <div class="detail"><strong>${t.amountLabel || 'Amount:'}</strong> ${t.amount}</div>
-            <div class="detail"><strong>${t.timingLabel || 'Timing:'}</strong> ${t.timing}</div>
+            <div class="detail"><strong>Amount:</strong> ${t.amount}</div>
+            <div class="detail"><strong>Timing:</strong> ${t.timing}</div>
             <div class="detail">${t.description}</div>
         </div>
     `).join('');
@@ -498,41 +494,6 @@ function showCropDetails(key) {
             <span class="desc">${t.desc}</span>
         </div>
     `).join('');
-
-
-    // Get translated crop name
-    const titleKey = key + 'Title';
-    const cropTitle = t[titleKey] || crop.name;
-
-    // Get translated fertilizer recommendation (if available)
-    const fertilizerKey = key + 'Fertilizer';
-    const fertilizerText = t[fertilizerKey];
-
-    detailsPanel.innerHTML = `
-        <div class="crop-header">
-            <h3>${cropTitle}</h3>
-        </div>
-
-        <div class="fertilizer-section">
-            <h4>${t.fertilizerTypesLabel || 'Fertilizer Types'} <span class="badge">${crop.fertilizerTypes.length} ${t.typesLabel || 'types'}</span></h4>
-            ${typesHtml}
-        </div>
-
-        <div class="fertilizer-section">
-            <h4>${t.applicationScheduleLabel || 'Application Schedule'}</h4>
-            <div class="application-timeline">
-                ${timelineHtml}
-            </div>
-        </div>
-
-        <div class="fertilizer-tip">
-            <span><strong>${t.tipLabel || 'Tip:'}</strong> ${crop.tips}</span>
-        </div>
-    `;
-
-    detailsPanel.classList.add('active');
-    detailsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
 
     detailsPanel.innerHTML = `
         <div class="crop-header">
@@ -558,7 +519,7 @@ function showCropDetails(key) {
 
     detailsPanel.classList.add('active');
     detailsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
+}
 
 // ========================================
 // SEARCH FUNCTIONALITY
