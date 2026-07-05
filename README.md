@@ -15,7 +15,7 @@ Supervisor: Tunde Isiaq Gbadamosi
 Live Demo
 https://smrtfarmer.netlify.app/
 Smart Farmer is deployed on Netlify:
-Demo: https://youtu.be/MPbeYiFFmAA
+Demo: 
 # Features
 Educational Modules
 
@@ -25,22 +25,47 @@ Planting techniques
 Pest management
 Post-harvest handling
 Crop Information
+Water and and irrigation, etc
 
 Farmers can access information on major crops grown in South Sudan, including:
 
-Sorghum
-Maize
-Millet
-Groundnuts
-Cassava
+maize 
+millet 
+groundnuts
+cassava 
+cowpeas 
+sesame 
+sweetpotato 
+beans
+okra
+tomato
+onion 
+pumpkin
+yam 
+sugarcane 
+rice 
+sunflower 
+banana 
+watermelon 
+cabbage 
+pigeonpeas 
+mangoes 
+coffee 
+tea 
+tobacco 
+cotton:  
+soybean 
+fingermillet 
+pearlmillet 
+eggplant:
 
-Planting Log
+# Planting Log
 
 Farmers can record and manage planting activities through a simple crop monitoring log.
 
 Multi-Language Support
 
-The application is designed to support Arabic, English and Bari. English voice output is currently implemented; Arabic and Bari are planned for the next phase.
+The application is designed to support Arabic, English and Bari. English voice and Arabic output are currently implemented; Bari is translated but not voice output.
 
 USSD Simulator
 
@@ -54,10 +79,12 @@ Responsive Design
 
 The application follows a mobile-first design approach and adapts to different screen sizes.
 
+
+
 # Technologies Used
 Frontend
 HTML5
-CSS3
+CSS
 JavaScript
 
 # Design Tools
@@ -79,7 +106,7 @@ Figma Prototype
 
 https://www.figma.com/design/mxazJuKrc45lla3wxTjcgf/Smart-Farmer-App?node-id=0-1&p=f&t=Vns30Do8GynahRZA-0
 
-The Figma prototype includes wireframes and mockups for all 9 screens: Welcome screen, About, Crop Info, Education, Crop Log, Contact, Language Switcher overlay, and a 3-screen USSD Simulator (*131# main menu, crop submenu, and information screen)
+The Figma prototype includes wireframes and mockups for all 9 screens: Welcome screen, About, Crop Info, Education, Crop Log, contact, Language Switcher overlay, and a 3-screen USSD Simulator (*384*12990# main menu, crop submenu, and information screen)
 
 # Wireframes
 Wireframes and design documentation are included 
@@ -99,10 +126,10 @@ PostgreSQL
 Africa's Talking API (USSD Integration)
 
 # Technical Scope: The platform will include:
-USSD dashboard accessible via short code (e.g., *131#) on any phone
+USSD dashboard accessible via short code (e.g., *384*12990#) on any phone
 An offline web application for farmers with a smartphone or a basic browser
-Crop information for 5 staple crops
-Educational modules (planting, pest management, post-harvest handling)
+Crop information for crops
+Educational modules (planting, pest management, post-harvest handling, etc)
 Voice output in Bari and Arabic (on web)
 Basic crop monitoring log using local storage (on web)
 
@@ -116,11 +143,10 @@ Automated sensor-based monitoring
 ## Current Status
 
 This is an initial software demo. The following pages are 
-fully implemented and live: Home, About, and Crop Info 
-(with English voice output).
+fully implemented and live: Home, About, and Crop Info
+(with English voice output), educational Modules, Crop Info
 
-Education, Crop Log, and Contact pages are built and in 
-progress. Arabic and Bari voice output, the USSD backend, 
+All the pages are built, Arabic and Bari voice output, the USSD backend, 
 and database connection are planned for the next phase.
 
 # Proposed Deployment
