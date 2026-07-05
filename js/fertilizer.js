@@ -479,6 +479,14 @@ function showCropDetails(key) {
     const crop = fertilizerData[key];
     if (!crop) return;
 
+        // Get current language and translations
+    const lang = getFertilizerLanguage();
+    const t = translations[lang] || translations.en || {};
+
+        // Get translated crop name
+    const titleKey = key + 'Title';
+    const cropTitle = t[titleKey] || crop.name;
+
     const typesHtml = crop.fertilizerTypes.map(t => `
         <div class="fertilizer-card">
             <div class="title">${t.name}</div>
@@ -495,25 +503,25 @@ function showCropDetails(key) {
         </div>
     `).join('');
 
-    detailsPanel.innerHTML = `
+        detailsPanel.innerHTML = `
         <div class="crop-header">
-            <h3>${crop.name}</h3>
+            <h3>${cropTitle}</h3>
         </div>
 
         <div class="fertilizer-section">
-            <h4>Fertilizer Types <span class="badge">${crop.fertilizerTypes.length} types</span></h4>
+            <h4>${fertilizerTypesLabel} <span class="badge">${crop.fertilizerTypes.length} ${typesLabel}</span></h4>
             ${typesHtml}
         </div>
 
         <div class="fertilizer-section">
-            <h4>Application Schedule</h4>
+            <h4>${applicationScheduleLabel}</h4>
             <div class="application-timeline">
                 ${timelineHtml}
             </div>
         </div>
 
         <div class="fertilizer-tip">
-            <span><strong>Tip:</strong> ${crop.tips}</span>
+            <span><strong>${tipLabel}</strong> ${crop.tips}</span>
         </div>
     `;
 
