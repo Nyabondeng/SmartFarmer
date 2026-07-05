@@ -479,31 +479,39 @@ function showCropDetails(key) {
     const crop = fertilizerData[key];
     if (!crop) return;
 
-        // Get current language and translations
+    // Get current language and translations
     const lang = getFertilizerLanguage();
     const t = translations[lang] || translations.en || {};
 
-        // Get translated crop name
+    // Get translated crop name (with fallback)
     const titleKey = key + 'Title';
     const cropTitle = t[titleKey] || crop.name;
 
-    const typesHtml = crop.fertilizerTypes.map(t => `
+    // Label fallbacks (prevents page from breaking if translations are missing)
+    const amountLabel = t.amountLabel || 'Amount:';
+    const timingLabel = t.timingLabel || 'Timing:';
+    const fertilizerTypesLabel = t.fertilizerTypesLabel || 'Fertilizer Types';
+    const applicationScheduleLabel = t.applicationScheduleLabel || 'Application Schedule';
+    const tipLabel = t.tipLabel || 'Tip:';
+    const typesLabel = t.typesLabel || 'types';
+
+    const typesHtml = crop.fertilizerTypes.map(item => `
         <div class="fertilizer-card">
-            <div class="title">${t.name}</div>
-            <div class="detail"><strong>Amount:</strong> ${t.amount}</div>
-            <div class="detail"><strong>Timing:</strong> ${t.timing}</div>
-            <div class="detail">${t.description}</div>
+            <div class="title">${item.name}</div>
+            <div class="detail"><strong>${amountLabel}</strong> ${item.amount}</div>
+            <div class="detail"><strong>${timingLabel}</strong> ${item.timing}</div>
+            <div class="detail">${item.description}</div>
         </div>
     `).join('');
 
-    const timelineHtml = crop.applicationSchedule.map(t => `
+    const timelineHtml = crop.applicationSchedule.map(item => `
         <div class="timeline-item">
-            <span class="stage">${t.stage}</span>
-            <span class="desc">${t.desc}</span>
+            <span class="stage">${item.stage}</span>
+            <span class="desc">${item.desc}</span>
         </div>
     `).join('');
 
-        detailsPanel.innerHTML = `
+    detailsPanel.innerHTML = `
         <div class="crop-header">
             <h3>${cropTitle}</h3>
         </div>
