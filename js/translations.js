@@ -471,7 +471,42 @@ const crops = {
         soybeanVoice: "Soybean. Planting season: May-June. Spacing: 50 centimeters by 10 centimeters. Pest control: Watch for pod borers. Harvest: September to October. Storage: Dry completely before storing.",
         fingermilletVoice: "Finger Millet. Planting season: May-June. Spacing: 45 centimeters by 15 centimeters. Pest control: Watch for birds and stem borers. Harvest: September to October. Storage: Store in sealed containers.",
         pearlmilletVoice: "Pearl Millet. Planting season: May-June. Spacing: 60 centimeters by 20 centimeters. Pest control: Watch for birds and stem borers. Harvest: September to October. Storage: Store in sealed containers.",
-        eggplantVoice: "Eggplant. Planting season: May-June. Spacing: 60 centimeters by 45 centimeters. Pest control: Watch for flea beetles and fruit borers. Harvest: August to October. Storage: Store in a cool, dry place."
+        eggplantVoice: "Eggplant. Planting season: May-June. Spacing: 60 centimeters by 45 centimeters. Pest control: Watch for flea beetles and fruit borers. Harvest: August to October. Storage: Store in a cool, dry place",
+
+
+
+        sorghum: "Sorghum",
+        maize: "Maize",
+        millet: "Millet",
+        groundnuts: "Groundnuts",
+        cassava: "Cassava",
+        cowpeas: "Cowpeas",
+        sesame: "Sesame",
+        sweetpotato: "Sweet Potato",
+        beans: "Beans",
+        okra: "Okra",
+        tomato: "Tomato",
+        onion: "Onion",
+        pumpkin: "Pumpkin",
+        yam: "Yam",
+        sugarcane: "Sugarcane",
+        rice: "Rice",
+        sunflower: "Sunflower",
+        banana: "Banana",
+        watermelon: "Watermelon",
+        cabbage: "Cabbage",
+        pigeonpeas: "Pigeon Peas",
+        mangoes: "Mangoes",
+        coffee: "Coffee",
+        tea: "Tea",
+        tobacco: "Tobacco",
+        cotton: "Cotton",
+        soybean: "Soybean",
+        fingermillet: "Finger Millet",
+        pearlmillet: "Pearl Millet",
+        eggplant: "Eggplant"
+
+
     },
     juba: {
         cropsTitle: "معلومات المحاصيل",
@@ -755,11 +790,11 @@ const crops = {
         soybeanVoice: "فول الصويا. موسم الزراعة: مايو-يونيو. التباعد: 50 سم × 10 سم. مكافحة الآفات: احترس من حفار القرون. الحصاد: سبتمبر-أكتوبر. التخزين: جفف تماماً قبل التخزين.",
         fingermilletVoice: "دخن الإصبع. موسم الزراعة: مايو-يونيو. التباعد: 45 سم × 15 سم. مكافحة الآفات: احترس من الطيور وحفار الساق. الحصاد: سبتمبر-أكتوبر. التخزين: خزن في حاويات محكمة الإغلاق.",
         pearlmilletVoice: "دخن اللؤلؤ. موسم الزراعة: مايو-يونيو. التباعد: 60 سم × 20 سم. مكافحة الآفات: احترس من الطيور وحفار الساق. الحصاد: سبتمبر-أكتوبر. التخزين: خزن في حاويات محكمة الإغلاق.",
-        eggplantVoice: "الباذنجان. موسم الزراعة: مايو-يونيو. التباعد: 60 سم × 45 سم. مكافحة الآفات: احترس من خنافس البراغيث وحفار الثمار. الحصاد: أغسطس-أكتوبر. التخزين: خزن في مكان بارد وجاف"
+        eggplantVoice: "الباذنجان. موسم الزراعة: مايو-يونيو. التباعد: 60 سم × 45 سم. مكافحة الآفات: احترس من خنافس البراغيث وحفار الثمار. الحصاد: أغسطس-أكتوبر. التخزين: خزن في مكان بارد وجاف",
 
 
-    },
-    juba: {
+
+    
 
         home: "الرئيسية",
         about: "حول",
@@ -785,42 +820,9 @@ const crops = {
         noFertilizerData: "لا توجد بيانات سماد لهذا المحصول",
 
         footerCopyright: "© 2026 المزارع الذكي. جميع الحقوق محفوظة",
-        footerLocation: "مقاطعة ياي، جنوب السودان"
-   }, 
-     en: {
-        sorghum: "Sorghum",
-        maize: "Maize",
-        millet: "Millet",
-        groundnuts: "Groundnuts",
-        cassava: "Cassava",
-        cowpeas: "Cowpeas",
-        sesame: "Sesame",
-        sweetpotato: "Sweet Potato",
-        beans: "Beans",
-        okra: "Okra",
-        tomato: "Tomato",
-        onion: "Onion",
-        pumpkin: "Pumpkin",
-        yam: "Yam",
-        sugarcane: "Sugarcane",
-        rice: "Rice",
-        sunflower: "Sunflower",
-        banana: "Banana",
-        watermelon: "Watermelon",
-        cabbage: "Cabbage",
-        pigeonpeas: "Pigeon Peas",
-        mangoes: "Mangoes",
-        coffee: "Coffee",
-        tea: "Tea",
-        tobacco: "Tobacco",
-        cotton: "Cotton",
-        soybean: "Soybean",
-        fingermillet: "Finger Millet",
-        pearlmillet: "Pearl Millet",
-        eggplant: "Eggplant"
-    },          
-    Juba: {
-    crops: {
+        footerLocation: "مقاطعة ياي، جنوب السودان",
+   
+    
         sorghum: "الذرة الرفيعة",
         maize: "الذرة",
         millet: "الدخن",
@@ -1025,7 +1027,7 @@ const crops = {
         pearlmilletVoice: "Pearl Millet. Lanyi ti lipi May ka June. Fasila 60 senti x 20 senti. Aki wiri birds ka stem borers. Woro September ka October. Teren i sealed containers.",
         eggplantVoice: "Eggplant. Lanyi ti lipi May ka June. Fasila 60 senti x 45 senti. Aki wiri flea beetles ka fruit borers. Woro August ka October. Teren i cool, dry place"
     }
-}};
+};
 
 
 const education = {
