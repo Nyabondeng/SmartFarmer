@@ -1055,7 +1055,15 @@ const fertilizer = {
         soybeanFertilizer: "NPK 15-15-15: 30 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
         fingermilletFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
         pearlmilletFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
-        eggplantFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting."
+        eggplantFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting",
+
+
+        amountLabel: "Amount:",
+        timingLabel: "Timing:",
+        fertilizerTypesLabel: "Fertilizer Types",
+        applicationScheduleLabel: "Application Schedule",
+        tipLabel: "Tip:",
+        typesLabel: "types"
     },
 
     // ========================================
@@ -1107,7 +1115,14 @@ const fertilizer = {
         soybeanFertilizer: "NPK 15-15-15: 30 كجم/فدان عند الزراعة. لا حاجة لليوريا (البقوليات تثبت النيتروجين بنفسها).",
         fingermilletFertilizer: "NPK 15-15-15: 35 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 15 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
         pearlmilletFertilizer: "NPK 15-15-15: 35 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 15 كجم/فدان بعد 6-8 أسابيع من الزراعة.",
-        eggplantFertilizer: "NPK 15-15-15: 40 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 20 كجم/فدان بعد 6-8 أسابيع من الزراعة."
+        eggplantFertilizer: "NPK 15-15-15: 40 كجم/فدان عند الزراعة. يوريا (46% نيتروجين): 20 كجم/فدان بعد 6-8 أسابيع من الزراعة",
+
+        amountLabel: "الكمية:",
+        timingLabel: "التوقيت:",
+        fertilizerTypesLabel: "أنواع الأسمدة",
+        applicationScheduleLabel: "جدول التطبيق",
+        tipLabel: "نصيحة:",
+        typesLabel: "أنواع"
     },
 
     // ========================================
@@ -1159,7 +1174,14 @@ const fertilizer = {
         soybeanFertilizer: "NPK 15-15-15: 30 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
         fingermilletFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
         pearlmilletFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
-        eggplantFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting."
+        eggplantFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting",
+
+        amountLabel: "Kiasi:",
+        timingLabel: "Muda:",
+        fertilizerTypesLabel: "Fertilizer Types",
+        applicationScheduleLabel: "Application Schedule",
+        tipLabel: "Tip:",
+        typesLabel: "types"
     }
 };
 
