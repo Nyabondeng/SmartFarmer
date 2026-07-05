@@ -589,6 +589,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     selectCrop(cropNames[0]);
                 }
             }
+
+             const lang = getFertilizerLanguage();
+            const t = translations[lang] || translations.en || {};
+            const searchInput = document.getElementById('cropSearch');
+            if (searchInput) {
+                searchInput.placeholder = t.searchCrops || 'Search crops...';
+            }
         });
     }
 });
