@@ -79,7 +79,31 @@ Responsive Design
 
 The application follows a mobile-first design approach and adapts to different screen sizes.
 
+## Testing
 
+Testing was conducted across multiple pages, input types, 
+and device configurations to verify functionality.
+
+### Testing Screenshots
+
+Screenshots of all tests are available in the 
+`/screenshots` folder of this repository.
+
+#### Core Functionality Tests
+- Home page loading and navigation
+- Crop Info page with voice output
+- USSD Simulator main menu
+
+#### Input Validation Tests
+- USSD valid input (crop selection)
+- USSD invalid input (error handling)
+- Crop Log form submission
+- Crop Log saved records display
+
+#### Cross-Device and Cross-Browser Tests
+- Mobile view (iPhone 12 Pro) via Chrome DevTools
+- Microsoft Edge browser
+- USSD page on mobile view
 
 # Technologies Used
 Frontend
