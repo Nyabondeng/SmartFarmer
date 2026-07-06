@@ -7,14 +7,106 @@
  * @param {HTMLElement} button - The button element that was clicked
  */
 function toggleCropDetails(button) {
+    const cropCard = button.closest('.crop-card');
+    const cropName = cropCard ? cropCard.dataset.crop : null;
     const detailsDiv = button.nextElementSibling;
     
     // Check if it's hidden (style display none or not set)
     const isHidden = detailsDiv.style.display === 'none' || detailsDiv.style.display === '';
     
+    // Get current language
+    const lang = getCurrentTranslateLanguage();
+    const t = translations[lang] || translations.en || {};
+    
     if (isHidden) {
+        // Load translated content if available
+        if (cropName && translations[lang]) {
+            const cropData = translations[lang];
+            const overviewKey = cropName + 'Overview';
+            const plantingKey = cropName + 'PlantingSeason';
+            const soilKey = cropName + 'SoilType';
+            const landKey = cropName + 'LandPreparation';
+            const seedKey = cropName + 'SeedRate';
+            const waterKey = cropName + 'WaterRequirement';
+            const pestsKey = cropName + 'Pests';
+            const diseasesKey = cropName + 'Diseases';
+            const marketKey = cropName + 'MarketTips';
+            
+            // Update the content with translations
+            const overviewSection = detailsDiv.querySelector('.info-section h4:contains("🌾 Overview")')?.parentElement;
+            // Or use a more reliable method - update by finding sections
+            const sections = detailsDiv.querySelectorAll('.info-section');
+            if (sections.length >= 9) {
+                // Overview
+                const overviewP = sections[0].querySelector('p');
+                if (overviewP && cropData[overviewKey]) overviewP.textContent = cropData[overviewKey];
+                
+                // Planting Season
+                const plantingP = sections[1].querySelector('p');
+                if (plantingP && cropData[plantingKey]) plantingP.textContent = cropData[plantingKey];
+                
+                // Soil Type
+                const soilP = sections[2].querySelector('p');
+                if (soilP && cropData[soilKey]) soilP.textContent = cropData[soilKey];
+                
+                // Land Preparation
+                const landP = sections[3].querySelector('p');
+                if (landP && cropData[landKey]) landP.textContent = cropData[landKey];
+                
+                // Seed Rate
+                const seedP = sections[4].querySelector('p');
+                if (seedP && cropData[seedKey]) seedP.textContent = cropData[seedKey];
+                
+                // Water Requirement
+                const waterP = sections[5].querySelector('p');
+                if (waterP && cropData[waterKey]) waterP.textContent = cropData[waterKey];
+                
+                // Pests - update list items
+                const pestList = sections[6].querySelector('.pest-list');
+                if (pestList && cropData[pestsKey]) {
+                    const pestItems = cropData[pestsKey].split('. ');
+                    pestList.innerHTML = '';
+                    pestItems.forEach(item => {
+                        if (item.trim()) {
+                            const li = document.createElement('li');
+                            const parts = item.split(' - ');
+                            if (parts.length === 2) {
+                                li.innerHTML = `<strong>${parts[0].trim()}</strong> - ${parts[1].trim()}`;
+                            } else {
+                                li.textContent = item.trim();
+                            }
+                            pestList.appendChild(li);
+                        }
+                    });
+                }
+                
+                // Diseases - update list items
+                const diseaseList = sections[7].querySelector('.disease-list');
+                if (diseaseList && cropData[diseasesKey]) {
+                    const diseaseItems = cropData[diseasesKey].split('. ');
+                    diseaseList.innerHTML = '';
+                    diseaseItems.forEach(item => {
+                        if (item.trim()) {
+                            const li = document.createElement('li');
+                            const parts = item.split(' - ');
+                            if (parts.length === 2) {
+                                li.innerHTML = `<strong>${parts[0].trim()}</strong> - ${parts[1].trim()}`;
+                            } else {
+                                li.textContent = item.trim();
+                            }
+                            diseaseList.appendChild(li);
+                        }
+                    });
+                }
+                
+                // Market Tips
+                const marketP = sections[8].querySelector('p');
+                if (marketP && cropData[marketKey]) marketP.textContent = cropData[marketKey];
+            }
+        }
+        
         detailsDiv.style.display = 'block';
-        button.textContent = 'Hide Details';
+        button.textContent = '📕 ' + (t.hideDetailsLabel || 'Hide Details');
         button.classList.add('active');
         
         // Smooth scroll to show the details
@@ -23,13 +115,14 @@ function toggleCropDetails(button) {
         }, 100);
     } else {
         detailsDiv.style.display = 'none';
-        button.textContent = 'View Full Details';
+        button.textContent = '📋 ' + (t.viewDetails || 'View Full Details');
         button.classList.remove('active');
     }
 }
 
 /**
  * Initialize all crop detail sections - ensure they start hidden
+ * and load translated content
  */
 function initCropDetails() {
     const detailsDivs = document.querySelectorAll('.crop-expanded-details');
@@ -39,7 +132,9 @@ function initCropDetails() {
     
     const buttons = document.querySelectorAll('.crop-expand-btn');
     buttons.forEach(btn => {
-        btn.textContent = 'View Full Details';
+        const lang = getCurrentTranslateLanguage();
+        const t = translations[lang] || translations.en || {};
+        btn.textContent = '📋 ' + (t.viewDetails || 'View Full Details');
         btn.classList.remove('active');
     });
 }
@@ -136,6 +231,16 @@ function applyCropsPageTranslations() {
     document.querySelectorAll('.btn-fertilizer').forEach(btn => {
         if (t.fertilizerButton) btn.textContent = t.fertilizerButton;
     });
+    
+    // Update expand button texts
+    const expandButtons = document.querySelectorAll('.crop-expand-btn');
+    expandButtons.forEach(btn => {
+        if (!btn.classList.contains('active')) {
+            btn.textContent = '📋 ' + (t.viewDetails || 'View Full Details');
+        } else {
+            btn.textContent = '📕 ' + (t.hideDetailsLabel || 'Hide Details');
+        }
+    });
 }
 
 // ============================================================
@@ -163,24 +268,36 @@ document.addEventListener('languagechange', () => {
     applyCropsPageTranslations();
 });
 
-function toggleCropDetails(button) {
-    const detailsDiv = button.nextElementSibling;
-    const isHidden = detailsDiv.style.display === 'none' || detailsDiv.style.display === '';
+// ============================================================
+// AUDIO TOGGLE FUNCTION
+// ============================================================
+
+function toggleCropAudio(crop) {
+    console.log('🔊 toggleCropAudio called for:', crop);
     
-    const lang = getCurrentTranslateLanguage();
-    const t = translations[lang] || translations.en || {};
-    
-    if (isHidden) {
-        detailsDiv.style.display = 'block';
-        button.textContent = '📕 ' + (t.hideDetailsLabel || 'Hide Details');
-        button.classList.add('active');
-        setTimeout(() => {
-            detailsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 100);
-    } else {
-        detailsDiv.style.display = 'none';
-        button.textContent = '📋 ' + (t.viewDetails || 'View Full Details');
-        button.classList.remove('active');
+    if (currentCrop !== crop || !isSpeaking) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+        isPaused = false;
+        isSpeaking = false;
+        currentUtterance = null;
+        startSpeaking(crop);
+        return;
+    }
+
+    if (isSpeaking && !isPaused) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.pause();
+            isPaused = true;
+            updateButtonState(crop, 'resume');
+        }
+    } else if (isPaused) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.resume();
+            isPaused = false;
+            updateButtonState(crop, 'pause');
+        }
     }
 }
 
