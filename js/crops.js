@@ -32,76 +32,93 @@ function toggleCropDetails(button) {
             const diseasesKey = cropName + 'Diseases';
             const marketKey = cropName + 'MarketTips';
             
-            // Update the content with translations
-            const overviewSection = detailsDiv.querySelector('.info-section h4:contains("🌾 Overview")')?.parentElement;
-            // Or use a more reliable method - update by finding sections
+            // Get all info sections
             const sections = detailsDiv.querySelectorAll('.info-section');
+            
             if (sections.length >= 9) {
-                // Overview
+                // Index 0: Overview
                 const overviewP = sections[0].querySelector('p');
-                if (overviewP && cropData[overviewKey]) overviewP.textContent = cropData[overviewKey];
+                if (overviewP && cropData[overviewKey]) {
+                    overviewP.textContent = cropData[overviewKey];
+                }
                 
-                // Planting Season
+                // Index 1: Planting Season
                 const plantingP = sections[1].querySelector('p');
-                if (plantingP && cropData[plantingKey]) plantingP.textContent = cropData[plantingKey];
+                if (plantingP && cropData[plantingKey]) {
+                    plantingP.textContent = cropData[plantingKey];
+                }
                 
-                // Soil Type
+                // Index 2: Soil Type
                 const soilP = sections[2].querySelector('p');
-                if (soilP && cropData[soilKey]) soilP.textContent = cropData[soilKey];
+                if (soilP && cropData[soilKey]) {
+                    soilP.textContent = cropData[soilKey];
+                }
                 
-                // Land Preparation
+                // Index 3: Land Preparation
                 const landP = sections[3].querySelector('p');
-                if (landP && cropData[landKey]) landP.textContent = cropData[landKey];
+                if (landP && cropData[landKey]) {
+                    landP.textContent = cropData[landKey];
+                }
                 
-                // Seed Rate
+                // Index 4: Seed Rate
                 const seedP = sections[4].querySelector('p');
-                if (seedP && cropData[seedKey]) seedP.textContent = cropData[seedKey];
+                if (seedP && cropData[seedKey]) {
+                    seedP.textContent = cropData[seedKey];
+                }
                 
-                // Water Requirement
+                // Index 5: Water Requirement
                 const waterP = sections[5].querySelector('p');
-                if (waterP && cropData[waterKey]) waterP.textContent = cropData[waterKey];
+                if (waterP && cropData[waterKey]) {
+                    waterP.textContent = cropData[waterKey];
+                }
                 
-                // Pests - update list items
+                // Index 6: Pests
                 const pestList = sections[6].querySelector('.pest-list');
                 if (pestList && cropData[pestsKey]) {
-                    const pestItems = cropData[pestsKey].split('. ');
+                    // Split by periods and clean up
+                    const pestItems = cropData[pestsKey].split('.').filter(item => item.trim().length > 0);
                     pestList.innerHTML = '';
                     pestItems.forEach(item => {
-                        if (item.trim()) {
+                        const cleanItem = item.trim();
+                        // Check if it contains a dash for name - description format
+                        if (cleanItem.includes(' - ')) {
+                            const parts = cleanItem.split(' - ');
                             const li = document.createElement('li');
-                            const parts = item.split(' - ');
-                            if (parts.length === 2) {
-                                li.innerHTML = `<strong>${parts[0].trim()}</strong> - ${parts[1].trim()}`;
-                            } else {
-                                li.textContent = item.trim();
-                            }
+                            li.innerHTML = `<strong>${parts[0].trim()}</strong> - ${parts.slice(1).join(' - ').trim()}`;
+                            pestList.appendChild(li);
+                        } else {
+                            const li = document.createElement('li');
+                            li.textContent = cleanItem;
                             pestList.appendChild(li);
                         }
                     });
                 }
                 
-                // Diseases - update list items
+                // Index 7: Diseases
                 const diseaseList = sections[7].querySelector('.disease-list');
                 if (diseaseList && cropData[diseasesKey]) {
-                    const diseaseItems = cropData[diseasesKey].split('. ');
+                    const diseaseItems = cropData[diseasesKey].split('.').filter(item => item.trim().length > 0);
                     diseaseList.innerHTML = '';
                     diseaseItems.forEach(item => {
-                        if (item.trim()) {
+                        const cleanItem = item.trim();
+                        if (cleanItem.includes(' - ')) {
+                            const parts = cleanItem.split(' - ');
                             const li = document.createElement('li');
-                            const parts = item.split(' - ');
-                            if (parts.length === 2) {
-                                li.innerHTML = `<strong>${parts[0].trim()}</strong> - ${parts[1].trim()}`;
-                            } else {
-                                li.textContent = item.trim();
-                            }
+                            li.innerHTML = `<strong>${parts[0].trim()}</strong> - ${parts.slice(1).join(' - ').trim()}`;
+                            diseaseList.appendChild(li);
+                        } else {
+                            const li = document.createElement('li');
+                            li.textContent = cleanItem;
                             diseaseList.appendChild(li);
                         }
                     });
                 }
                 
-                // Market Tips
+                // Index 8: Market Tips
                 const marketP = sections[8].querySelector('p');
-                if (marketP && cropData[marketKey]) marketP.textContent = cropData[marketKey];
+                if (marketP && cropData[marketKey]) {
+                    marketP.textContent = cropData[marketKey];
+                }
             }
         }
         
