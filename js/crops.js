@@ -1,3 +1,53 @@
+// ============================================================
+// CROP DETAILS TOGGLE FUNCTIONALITY
+// ============================================================
+
+/**
+ * Toggle expanded crop details visibility
+ * @param {HTMLElement} button - The button element that was clicked
+ */
+function toggleCropDetails(button) {
+    const detailsDiv = button.nextElementSibling;
+    
+    // Check if it's hidden (style display none or not set)
+    const isHidden = detailsDiv.style.display === 'none' || detailsDiv.style.display === '';
+    
+    if (isHidden) {
+        detailsDiv.style.display = 'block';
+        button.textContent = 'Hide Details';
+        button.classList.add('active');
+        
+        // Smooth scroll to show the details
+        setTimeout(() => {
+            detailsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+    } else {
+        detailsDiv.style.display = 'none';
+        button.textContent = 'View Full Details';
+        button.classList.remove('active');
+    }
+}
+
+/**
+ * Initialize all crop detail sections - ensure they start hidden
+ */
+function initCropDetails() {
+    const detailsDivs = document.querySelectorAll('.crop-expanded-details');
+    detailsDivs.forEach(div => {
+        div.style.display = 'none';
+    });
+    
+    const buttons = document.querySelectorAll('.crop-expand-btn');
+    buttons.forEach(btn => {
+        btn.textContent = 'View Full Details';
+        btn.classList.remove('active');
+    });
+}
+
+// ============================================================
+// EXISTING CODE - VOICE/AUDIO FUNCTIONALITY
+// ============================================================
+
 let currentUtterance = null;
 let isPaused = false;
 let currentCrop = '';
@@ -41,26 +91,30 @@ function getCropText(crop, lang) {
     return cropVoices[crop] || 'Crop information not available.';
 }
 
-
 function updateButtonState(crop, state) {
     const button = document.querySelector(`.voice-btn[data-crop="${crop}"]`);
     if (!button) return;
     
+    const lang = getCurrentTranslateLanguage();
+    const t = translations[lang] || translations.en || {};
+    
     switch(state) {
         case 'listen':
-            button.textContent = '🔊 Listen';
+            button.textContent = t.voiceListenLabel || '🔊 Listen';
             button.className = 'voice-btn idle';
             break;
         case 'pause':
-            button.textContent = '⏸️ Pause';
+            button.textContent = t.voicePauseLabel || '⏸ Pause';
             button.className = 'voice-btn playing';
             break;
         case 'resume':
-            button.textContent = '▶️ Resume';
+            button.textContent = t.voiceResumeLabel || '▶ Resume';
             button.className = 'voice-btn paused';
             break;
     }
-}function getCurrentTranslateLanguage() {
+}
+
+function getCurrentTranslateLanguage() {
     const selector = document.getElementById('languageSwitcher');
     const selected = selector ? selector.value : 'en';
     return selected === 'ba' ? 'bari' : (selected === 'ar' ? 'juba' : selected);
@@ -84,36 +138,34 @@ function applyCropsPageTranslations() {
     });
 }
 
-function updateButtonState(crop, state) {
-    const button = document.querySelector(`.voice-btn[data-crop="${crop}"]`);
-    if (!button) return;
-
-    const lang = getCurrentTranslateLanguage();
-    const t = translations[lang] || translations.en || {};
-    
-    switch(state) {
-        case 'listen':
-            button.textContent = t.voiceListenLabel || '🔊 Listen';
-            button.className = 'voice-btn idle';
-            break;
-        case 'pause':
-            button.textContent = t.voicePauseLabel || '⏸ Pause';
-            button.className = 'voice-btn playing';
-            break;
-        case 'resume':
-            button.textContent = t.voiceResumeLabel || '▶ Resume';
-            button.className = 'voice-btn paused';
-            break;
-    }
-}
+// ============================================================
+// MAIN INITIALIZATION
+// ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize crop details (hide all expanded sections)
+    initCropDetails();
+    
+    // Apply translations
     applyCropsPageTranslations();
+    
+    // Load voices for speech synthesis
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.getVoices();
+        window.speechSynthesis.onvoiceschanged = () => {
+            window.speechSynthesis.getVoices();
+        };
+    }
 });
 
+// Listen for language changes
 document.addEventListener('languagechange', () => {
     applyCropsPageTranslations();
 });
+
+// ============================================================
+// AUDIO TOGGLE FUNCTION
+// ============================================================
 
 function toggleCropAudio(crop) {
     console.log('🔊 toggleCropAudio called for:', crop);
@@ -165,18 +217,13 @@ function startSpeaking(crop) {
         // ===== CHECK LANGUAGE FIRST =====
         if (lang === 'juba') {
             // Juba Arabic - use Arabic voice
-            // Try Microsoft Naayf specifically
             selectedVoice = voices.find(v => v.lang === 'ar-SA');
-            // If not found, try any Arabic voice
             if (!selectedVoice) {
                 selectedVoice = voices.find(v => v.lang.startsWith('ar'));
             }
-            // If still no Arabic voice, fallback to English
             if (!selectedVoice) {
                 selectedVoice = voices.find(v => v.lang === 'en-US') || voices[0];
             }
-            
-            // Set language to Arabic
             utterance.lang = 'ar-SA';
             
         } else if (lang === 'bari') {
@@ -245,3 +292,12 @@ function startSpeaking(crop) {
         alert('Your browser does not support voice output. Here is the information: ' + text);
     }
 }
+
+// ============================================================
+// EXPOSE FUNCTIONS TO GLOBAL SCOPE
+// ============================================================
+
+// These need to be accessible from HTML onclick attributes
+window.toggleCropDetails = toggleCropDetails;
+window.toggleCropAudio = toggleCropAudio;
+window.initCropDetails = initCropDetails;
