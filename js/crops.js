@@ -33,6 +33,11 @@ function toggleCropDetails(button) {
             
             if (sections.length >= 9) {
                 // Index 0: Overview
+
+                const overviewH4 = sections[0].querySelector('h4');
+                if (overviewH4 && t.overviewHeading) {
+                    overviewH4.textContent = t.overviewHeading;
+                }
                 const overviewP = sections[0].querySelector('p');
                 if (overviewP && cropData[overviewKey]) {
                     overviewP.textContent = cropData[overviewKey];
@@ -248,7 +253,29 @@ function applyCropsPageTranslations() {
             btn.textContent = (t.hideDetailsLabel || 'Hide Details');
         }
     });
+// ============================================================
+    // NEW: Update headings in already expanded sections
+    // ============================================================
+    const expandedDetails = document.querySelectorAll('.crop-expanded-details[style*="display: block"]');
+    expandedDetails.forEach(detailsDiv => {
+        const sections = detailsDiv.querySelectorAll('.info-section');
+        if (sections.length >= 9) {
+            // Update each heading with translated text
+            const headingKeys = ['overviewHeading', 'plantingHeading', 'soilHeading', 'landHeading', 
+                                 'seedHeading', 'waterHeading', 'pestsHeading', 'diseasesHeading', 'marketHeading'];
+            sections.forEach((section, index) => {
+                if (index < headingKeys.length) {
+                    const h4 = section.querySelector('h4');
+                    if (h4 && t[headingKeys[index]]) {
+                        h4.textContent = t[headingKeys[index]];
+                    }
+                }
+            });
+        }
+    });
 }
+
+
 
 
 
