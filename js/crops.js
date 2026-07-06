@@ -1,7 +1,3 @@
-// ============================================================
-// CROP DETAILS TOGGLE FUNCTIONALITY
-// ============================================================
-
 /**
  * Toggle expanded crop details visibility
  * @param {HTMLElement} button - The button element that was clicked
@@ -123,7 +119,7 @@ function toggleCropDetails(button) {
         }
         
         detailsDiv.style.display = 'block';
-        button.textContent = '📕 ' + (t.hideDetailsLabel || 'Hide Details');
+        button.textContent = (t.hideDetailsLabel || 'Hide Details');
         button.classList.add('active');
         
         // Smooth scroll to show the details
@@ -132,15 +128,12 @@ function toggleCropDetails(button) {
         }, 100);
     } else {
         detailsDiv.style.display = 'none';
-        button.textContent = '📋 ' + (t.viewDetails || 'View Full Details');
+        button.textContent = (t.viewDetails || 'View Full Details');
         button.classList.remove('active');
     }
 }
 
-/**
- * Initialize all crop detail sections - ensure they start hidden
- * and load translated content
- */
+
 function initCropDetails() {
     const detailsDivs = document.querySelectorAll('.crop-expanded-details');
     detailsDivs.forEach(div => {
@@ -151,14 +144,11 @@ function initCropDetails() {
     buttons.forEach(btn => {
         const lang = getCurrentTranslateLanguage();
         const t = translations[lang] || translations.en || {};
-        btn.textContent = '📋 ' + (t.viewDetails || 'View Full Details');
+        btn.textContent = (t.viewDetails || 'View Full Details');
         btn.classList.remove('active');
     });
 }
 
-// ============================================================
-// EXISTING CODE - VOICE/AUDIO FUNCTIONALITY
-// ============================================================
 
 let currentUtterance = null;
 let isPaused = false;
@@ -253,16 +243,14 @@ function applyCropsPageTranslations() {
     const expandButtons = document.querySelectorAll('.crop-expand-btn');
     expandButtons.forEach(btn => {
         if (!btn.classList.contains('active')) {
-            btn.textContent = '📋 ' + (t.viewDetails || 'View Full Details');
+            btn.textContent = (t.viewDetails || 'View Full Details');
         } else {
-            btn.textContent = '📕 ' + (t.hideDetailsLabel || 'Hide Details');
+            btn.textContent = (t.hideDetailsLabel || 'Hide Details');
         }
     });
 }
 
-// ============================================================
-// MAIN INITIALIZATION
-// ============================================================
+
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize crop details (hide all expanded sections)
@@ -285,9 +273,7 @@ document.addEventListener('languagechange', () => {
     applyCropsPageTranslations();
 });
 
-// ============================================================
-// AUDIO TOGGLE FUNCTION
-// ============================================================
+
 
 function toggleCropAudio(crop) {
     console.log('🔊 toggleCropAudio called for:', crop);

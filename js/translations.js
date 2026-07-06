@@ -843,7 +843,17 @@ const crops = {
         soybean: "Soybean",
         fingermillet: "Finger Millet",
         pearlmillet: "Pearl Millet",
-        eggplant: "Eggplant"
+        eggplant: "Eggplant",
+
+        overviewHeading: "Overview",
+        plantingHeading: "Best Planting Season",
+        soilHeading: "Soil Type",
+        landHeading: "Land Preparation",
+        seedHeading: "Seed Rate",
+        waterHeading: "Water Requirement",
+        pestsHeading: "Common Pests",
+        diseasesHeading: "Common Diseases",
+        marketHeading: "Market Tips"
 
 
     },
@@ -1498,12 +1508,21 @@ eggplantMarketTips: "الباذنجان له سوق جاهز في المجتمع
         soybean: "فول الصويا",
         fingermillet: "الدخن الصغير",
         pearlmillet: "الدخن اللؤلؤي",
-        eggplant: "الباذنجان"
+        eggplant: "الباذنجان",
+
+        overviewHeading: "نظرة عامة",
+        plantingHeading: "أفضل موسم للزراعة",
+        soilHeading: "نوع التربة",
+        landHeading: "تجهيز الأرض",
+        seedHeading: "معدل البذور",
+        waterHeading: "الاحتياج المائي",
+        pestsHeading: "الآفات الشائعة",
+        diseasesHeading: "الأمراض الشائعة",
+        marketHeading: "نصائح السوق"
     
    },
     bari: {
         // Bari translations for all crops
-        // (Keeping your existing Bari translations)
         cropsTitle: "Kony lo Korop",
         cropsDescription: "Wali korop ma maje kanyo i piny. Didi korop kuny le wali kinyi gua korop, le miri, le gworo, le korop, le woro.",
         sorghumTitle: "Sorghum",
@@ -1671,7 +1690,18 @@ eggplantMarketTips: "الباذنجان له سوق جاهز في المجتمع
         soybeanVoice: "Soybean. Lanyi ti lipi May ka June. Fasila 50 senti x 10 senti. Aki wiri pod borers. Woro September ka October. Teren dry completely before storing.",
         fingermilletVoice: "Finger Millet. Lanyi ti lipi May ka June. Fasila 45 senti x 15 senti. Aki wiri birds ka stem borers. Woro September ka October. Teren i sealed containers.",
         pearlmilletVoice: "Pearl Millet. Lanyi ti lipi May ka June. Fasila 60 senti x 20 senti. Aki wiri birds ka stem borers. Woro September ka October. Teren i sealed containers.",
-        eggplantVoice: "Eggplant. Lanyi ti lipi May ka June. Fasila 60 senti x 45 senti. Aki wiri flea beetles ka fruit borers. Woro August ka October. Teren i cool, dry place"
+        eggplantVoice: "Eggplant. Lanyi ti lipi May ka June. Fasila 60 senti x 45 senti. Aki wiri flea beetles ka fruit borers. Woro August ka October. Teren i cool, dry place",
+
+        // In the 'bari' section:
+        overviewHeading: "Wali kinyi korop",
+        plantingHeading: "Muda ma maje le gworo",
+        soilHeading: "Kit mo",
+        landHeading: "Gworo piny",
+        seedHeading: "Kiasi nyen",
+        waterHeading: "Piyo ma kony",
+        pestsHeading: "Afat ma kony",
+        diseasesHeading: "Rere ma kony",
+        marketHeading: "Kinyi suq"
     }
 };
 
