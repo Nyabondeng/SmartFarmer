@@ -609,6 +609,7 @@ const crops = {
         harvestLabel: "Harvest:",
         storageLabel: "Storage:",
         viewDetails: "View Details",
+        hideDetailsLabel: "Hide Details",
         allCropsLabel: "All Crops",
         forecastButton: "Forecast",
         fertilizerButton: "Fertilizer",
@@ -927,6 +928,7 @@ const crops = {
         harvestLabel: "الحصاد:",
         storageLabel: "التخزين:",
         viewDetails: "عرض التفاصيل",
+        hideDetailsLabel: "إخفاء التفاصيل",
         allCropsLabel: "جميع المحاصيل",
         forecastButton: "التوقعات",
         fertilizerButton: "الأسمدة",
@@ -939,9 +941,6 @@ const crops = {
         cropsHeroStatsAlways: "دائماً",
 
 
-        // ============================================================
-// JUBA ARABIC CROP DETAILS - ALL 30 CROPS
-// ============================================================
 
 // ---------- SORGHUM ----------
 sorghumOverview: "الذرة الرفيعة محصول حبوب يتحمل الجفاف، وهو غذاء أساسي في أجزاء كثيرة من جنوب السودان. يتحمل الظروف المناخية القاسية ويمكن زراعته في مناطق قليلة الأمطار. تستخدم الذرة الرفيعة في صنع العصيدة والخبز والمشروبات المحلية.",

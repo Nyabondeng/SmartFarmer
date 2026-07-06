@@ -163,36 +163,24 @@ document.addEventListener('languagechange', () => {
     applyCropsPageTranslations();
 });
 
-// ============================================================
-// AUDIO TOGGLE FUNCTION
-// ============================================================
-
-function toggleCropAudio(crop) {
-    console.log('🔊 toggleCropAudio called for:', crop);
+function toggleCropDetails(button) {
+    const detailsDiv = button.nextElementSibling;
+    const isHidden = detailsDiv.style.display === 'none' || detailsDiv.style.display === '';
     
-    if (currentCrop !== crop || !isSpeaking) {
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel();
-        }
-        isPaused = false;
-        isSpeaking = false;
-        currentUtterance = null;
-        startSpeaking(crop);
-        return;
-    }
-
-    if (isSpeaking && !isPaused) {
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.pause();
-            isPaused = true;
-            updateButtonState(crop, 'resume');
-        }
-    } else if (isPaused) {
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.resume();
-            isPaused = false;
-            updateButtonState(crop, 'pause');
-        }
+    const lang = getCurrentTranslateLanguage();
+    const t = translations[lang] || translations.en || {};
+    
+    if (isHidden) {
+        detailsDiv.style.display = 'block';
+        button.textContent = '📕 ' + (t.hideDetailsLabel || 'Hide Details');
+        button.classList.add('active');
+        setTimeout(() => {
+            detailsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+    } else {
+        detailsDiv.style.display = 'none';
+        button.textContent = '📋 ' + (t.viewDetails || 'View Full Details');
+        button.classList.remove('active');
     }
 }
 
