@@ -316,6 +316,177 @@ async function deleteCloudLog(logId) {
     }
 }
 
+function playAudio(topic) {
+    const stored = localStorage.getItem('sf_lang') || localStorage.getItem('language') || 'en';
+    let lang = stored;
+    if (lang === 'ba') lang = 'bari';
+    if (lang === 'ar') lang = 'juba';
+
+    const voiceKey = topic + 'Voice';
+    let message = '';
+    if (translations[lang] && translations[lang][voiceKey]) {
+        message = translations[lang][voiceKey];
+    } else if (translations['en'] && translations['en'][voiceKey]) {
+        message = translations['en'][voiceKey];
+    }
+
+    const defaultMessages = {
+        sorghum: 'Sorghum. Plant in May or June. Space 75 centimeters by 25 centimeters. Watch for armyworms after rain.',
+        maize: 'Maize. Plant in May or June. Space 75 centimeters by 50 centimeters. Watch for stalk borer.',
+        millet: 'Millet. Plant in May or June. Space 60 centimeters by 20 centimeters. Watch for birds and stem borers.',
+        groundnuts: 'Groundnuts. Plant in May or June. Space 50 centimeters by 15 centimeters. Watch for leaf spot and aphids.',
+        cassava: 'Cassava. Plant in March or April. Space 100 centimeters by 100 centimeters. Watch for cassava mosaic disease. Harvest after 8 to 12 months.',
+        planting: 'Planting tips. Plant at the beginning of the rainy season. Use clean seeds. Space crops properly. Weed within the first 3 weeks.',
+        pest: 'Pest control. Check fields daily. Remove armyworms by hand. Use ash around stems for stem borers. Spray soapy water for aphids. Use scarecrows for birds.',
+        postharvest: 'Post-harvest handling. Harvest when grains are hard and dry. Dry crops completely before storing. Store in clean, dry containers. Use ash to keep insects away.',
+        soil: 'Soil management. Clear weeds before planting. Add compost or animal manure to improve soil fertility. Rotate crops regularly and use mulch to conserve moisture and reduce erosion.',
+        climate: 'Climate-smart farming. Plant early when the rainy season begins. Choose drought-resistant crops. Harvest rainwater when possible. Use mulching to reduce water loss and follow weather forecasts before planting.'
+    };
+
+    if (!message) {
+        message = defaultMessages[topic] || 'Information available in English. Voice in Bari and Juba Arabic coming soon.';
+    }
+
+    console.log('playAudio()', { topic, voiceKey, lang, message });
+
+    if ((lang === 'juba' || lang === 'bari') && topic) {
+        const audioPath = `/audio/${lang}/${topic}.mp3`;
+        const audio = new Audio(audioPath);
+        
+        audio.addEventListener('error', () => {
+            console.log(`Audio file not found: ${audioPath}. Falling back to speechSynthesis with ${lang} text.`);
+            speakWithSynthesis(message, lang);
+        });
+
+        audio.addEventListener('ended', () => {
+            console.log(`Finished playing: ${audioPath}`);
+        });
+
+        try {
+            audio.play().catch(err => {
+                console.log(`Could not play audio: ${err}. Falling back to speechSynthesis with ${lang} text.`);
+                speakWithSynthesis(message, lang);
+            });
+            return;
+        } catch (err) {
+            console.log(`Error loading audio: ${err}. Falling back to speechSynthesis with ${lang} text.`);
+            speakWithSynthesis(message, lang);
+            return;
+        }
+    }
+
+    speakWithSynthesis(message, lang);
+}
+
+function speakWithSynthesis(message, lang) {
+    if ('speechSynthesis' in window) {
+        const speak = (msg, prefLang) => {
+            let voices = speechSynthesis.getVoices();
+
+            const mapPref = (p) => {
+                if (!p) return '';
+                if (p === 'juba') return 'ar';
+                if (p === 'bari') return 'en';
+                return p;
+            };
+
+            const pickVoice = (voicesList, prefer) => {
+                const savedVoiceName = localStorage.getItem('sf_voice');
+                if (savedVoiceName) {
+                    const sv = voicesList.find(v => v.name === savedVoiceName);
+                    if (sv) return sv;
+                }
+                if (!voicesList || voicesList.length === 0) return null;
+
+                const prefCode = mapPref(prefer);
+                if (prefCode) {
+                    const v = voicesList.find(v => v.lang && v.lang.toLowerCase().startsWith(prefCode.toLowerCase()));
+                    if (v) return v;
+                }
+                const nameHint = (prefCode === 'ar') ? ['arabic', 'عرب'] : (prefCode === 'en' ? ['english', 'en'] : []);
+                for (const hint of nameHint) {
+                    const v = voicesList.find(voice => voice.name && voice.name.toLowerCase().includes(hint));
+                    if (v) return v;
+                }
+                const anyAr = voicesList.find(v => v.lang && v.lang.toLowerCase().includes('ar'));
+                if (prefCode === 'ar' && anyAr) return anyAr;
+                return voicesList[0];
+            };
+
+            const voice = pickVoice(voices, prefLang);
+            console.log('speechSynthesis voices:', voices.length, 'picked:', voice ? voice.name + ' (' + voice.lang + ')' : null);
+            const utterance = new SpeechSynthesisUtterance(msg);
+            if (voice) {
+                utterance.voice = voice;
+                utterance.lang = voice.lang || utterance.lang;
+            } else {
+                utterance.lang = (prefLang === 'juba') ? 'ar-SA' : ((prefLang === 'bari') ? 'en-US' : prefLang);
+            }
+            utterance.rate = 0.9;
+            speechSynthesis.cancel();
+            speechSynthesis.speak(utterance);
+        };
+
+        if (speechSynthesis.getVoices().length === 0) {
+            speechSynthesis.onvoiceschanged = () => speak(message, lang);
+        } else {
+            speak(message, lang);
+        }
+    } else {
+        alert('Your browser does not support voice output. ' + message);
+    }
+}
+
+function toggleModuleAudio(topic) {
+    playAudio(topic);
+}
+
+function pauseModuleAudio() {
+    console.log("Pausing audio...");
+    if ('speechSynthesis' in window) {
+        speechSynthesis.cancel();
+    }
+    const audios = document.querySelectorAll('audio');
+    audios.forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+    });
+}
+
+let deferredPrompt;
+
+function dismissInstallBanner() {
+    const banner = document.getElementById('installBanner');
+    if (banner) {
+        banner.style.display = 'none';
+        localStorage.setItem('installBannerDismissed', 'true');
+    }
+}
+
+function showInstallBanner() {
+    const banner = document.getElementById('installBanner');
+    if (!banner) return;
+
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+    const isDismissed = localStorage.getItem('installBannerDismissed');
+
+    if (isMobile && !isStandalone && !isDismissed) {
+        setTimeout(() => {
+            banner.style.display = 'block';
+        }, 3000);
+    }
+}
+
+window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredPrompt = event;
+    const banner = document.getElementById('installBanner');
+    if (banner) {
+        banner.style.display = 'block';
+    }
+});
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
