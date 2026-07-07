@@ -439,6 +439,15 @@ const cropData = {
 };
 
 // ============================================================
+// DOM ELEMENTS - WITH NULL CHECKS
+// ============================================================
+
+const cropSelect = document.getElementById('cropSelect');
+const landSize = document.getElementById('landSize');
+const calculateBtn = document.getElementById('calculateBtn');
+const resultsPanel = document.getElementById('resultsPanel');
+
+// ============================================================
 // TRANSLATION FUNCTIONS
 // ============================================================
 
@@ -449,15 +458,21 @@ function getCurrentLanguage() {
 
 function getTranslation(key) {
     const lang = getCurrentLanguage();
-    const t = costForecast && costForecast[lang] ? costForecast[lang] : 
-              (costForecast && costForecast.en ? costForecast.en : {});
-    return t[key] || key;
+    // Check if costForecast exists and has the language
+    if (typeof costForecast !== 'undefined' && costForecast[lang]) {
+        return costForecast[lang][key] || key;
+    }
+    // Fallback to translations object
+    if (typeof translations !== 'undefined' && translations[lang]) {
+        return translations[lang][key] || key;
+    }
+    return key;
 }
 
 function applyCostForecastTranslations() {
     const lang = getCurrentLanguage();
-    const t = costForecast && costForecast[lang] ? costForecast[lang] : 
-              (costForecast && costForecast.en ? costForecast.en : {});
+    const t = (typeof costForecast !== 'undefined' && costForecast[lang]) ? costForecast[lang] : 
+              (typeof translations !== 'undefined' && translations[lang]) ? translations[lang] : {};
 
     if (!t || Object.keys(t).length === 0) {
         console.warn('Cost forecast translations not loaded');
@@ -599,15 +614,6 @@ function applyCostForecastTranslations() {
 }
 
 // ============================================================
-// DOM ELEMENTS
-// ============================================================
-
-const cropSelect = document.getElementById('cropSelect');
-const landSize = document.getElementById('landSize');
-const calculateBtn = document.getElementById('calculateBtn');
-const resultsPanel = document.getElementById('resultsPanel');
-
-// ============================================================
 // HELPER FUNCTIONS
 // ============================================================
 
@@ -628,17 +634,24 @@ function formatNumber(num) {
 }
 
 // ============================================================
-// MAIN CALCULATE FUNCTION
+// MAIN CALCULATE FUNCTION - WITH NULL CHECKS
 // ============================================================
 
 function calculateCosts() {
+    // Check if elements exist
+    if (!cropSelect || !landSize) {
+        console.error('Required elements not found');
+        return;
+    }
+
     const cropKey = cropSelect.value;
     const acres = parseFloat(landSize.value);
 
     if (!cropKey || !acres || acres <= 0) {
-        const t = costForecast && costForecast[getCurrentLanguage()] ? 
+        const t = (typeof costForecast !== 'undefined' && costForecast[getCurrentLanguage()]) ? 
                   costForecast[getCurrentLanguage()] : 
-                  (costForecast && costForecast.en ? costForecast.en : {});
+                  (typeof translations !== 'undefined' && translations[getCurrentLanguage()]) ? 
+                  translations[getCurrentLanguage()] : {};
         alert(t.selectCrop || 'Please select a crop and enter a valid land size.');
         return;
     }
@@ -655,27 +668,40 @@ function calculateCosts() {
     const revenue = yieldKg * crop.pricePerKg;
     const profit = revenue - totalCost;
 
-    // Update season info
+    // Get translations
     const lang = getCurrentLanguage();
-    const t = costForecast && costForecast[lang] ? costForecast[lang] : 
-              (costForecast && costForecast.en ? costForecast.en : {});
+    const t = (typeof costForecast !== 'undefined' && costForecast[lang]) ? costForecast[lang] : 
+              (typeof translations !== 'undefined' && translations[lang]) ? translations[lang] : {};
 
-    document.getElementById('seasonValue').textContent = crop.bestSeason;
-    document.getElementById('growingPeriod').textContent = crop.growingMonths + ' ' + (t.months || 'months');
-    document.getElementById('harvestTime').textContent = crop.harvestTime;
+    // ============================================================
+    // UPDATE SEASON INFO - WITH NULL CHECKS
+    // ============================================================
+    
+    const seasonValue = document.getElementById('seasonValue');
+    if (seasonValue) seasonValue.textContent = crop.bestSeason;
+    
+    const growingPeriod = document.getElementById('growingPeriod');
+    if (growingPeriod) growingPeriod.textContent = crop.growingMonths + ' ' + (t.months || 'months');
+    
+    const harvestTime = document.getElementById('harvestTime');
+    if (harvestTime) harvestTime.textContent = crop.harvestTime;
 
-    // Check for alternative season warnings
+    // ============================================================
+    // UPDATE WARNING - WITH NULL CHECKS
+    // ============================================================
+    
     const warningEl = document.getElementById('seasonWarning');
     const yieldReductionEl = document.getElementById('yieldReduction');
     
     if (crop.alternativeSeasons && crop.alternativeSeasons.length > 0) {
         const altSeason = crop.alternativeSeasons[0];
-        warningEl.classList.add('show');
-        
-        if (altSeason.yieldReduction >= 30) {
-            warningEl.classList.add('danger');
-        } else {
-            warningEl.classList.remove('danger');
+        if (warningEl) {
+            warningEl.classList.add('show');
+            if (altSeason.yieldReduction >= 30) {
+                warningEl.classList.add('danger');
+            } else {
+                warningEl.classList.remove('danger');
+            }
         }
         
         const warningTitle = document.getElementById('warningTitle');
@@ -693,26 +719,53 @@ function calculateCosts() {
             yieldReductionEl.innerHTML = reductionText + ' <span class="highlight">' + altSeason.yieldReduction + '%</span>';
         }
     } else {
-        warningEl.classList.remove('show', 'danger');
+        if (warningEl) {
+            warningEl.classList.remove('show', 'danger');
+        }
     }
 
-    // Update results
-    document.getElementById('resultCropName').textContent = crop.name;
-    document.getElementById('seedCost').textContent = formatCurrency(seedCost);
-    document.getElementById('fertilizerCost').textContent = formatCurrency(fertilizerCost);
-    document.getElementById('laborCost').textContent = formatCurrency(laborCost);
-    document.getElementById('totalCostBreakdown').textContent = formatCurrency(totalCost);
+    // ============================================================
+    // UPDATE RESULTS - WITH NULL CHECKS
+    // ============================================================
+    
+    const resultCropName = document.getElementById('resultCropName');
+    if (resultCropName) resultCropName.textContent = crop.name;
+    
+    const seedCostEl = document.getElementById('seedCost');
+    if (seedCostEl) seedCostEl.textContent = formatCurrency(seedCost);
+    
+    const fertilizerCostEl = document.getElementById('fertilizerCost');
+    if (fertilizerCostEl) fertilizerCostEl.textContent = formatCurrency(fertilizerCost);
+    
+    const laborCostEl = document.getElementById('laborCost');
+    if (laborCostEl) laborCostEl.textContent = formatCurrency(laborCost);
+    
+    const totalCostBreakdown = document.getElementById('totalCostBreakdown');
+    if (totalCostBreakdown) totalCostBreakdown.textContent = formatCurrency(totalCost);
 
-    document.getElementById('totalCostValue').textContent = formatCurrency(totalCost);
-    document.getElementById('yieldValue').textContent = formatNumber(yieldKg) + ' kg';
-    document.getElementById('revenueValue').textContent = formatCurrency(revenue);
+    const totalCostValue = document.getElementById('totalCostValue');
+    if (totalCostValue) totalCostValue.textContent = formatCurrency(totalCost);
+    
+    const yieldValue = document.getElementById('yieldValue');
+    if (yieldValue) yieldValue.textContent = formatNumber(yieldKg) + ' kg';
+    
+    const revenueValue = document.getElementById('revenueValue');
+    if (revenueValue) revenueValue.textContent = formatCurrency(revenue);
     
     const profitEl = document.getElementById('profitValue');
-    profitEl.textContent = formatCurrency(profit);
-    profitEl.className = 'value ' + (profit >= 0 ? 'positive' : 'negative');
+    if (profitEl) {
+        profitEl.textContent = formatCurrency(profit);
+        profitEl.className = 'value ' + (profit >= 0 ? 'positive' : 'negative');
+    }
 
-    resultsPanel.classList.add('active');
-    resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // ============================================================
+    // SHOW RESULTS PANEL - WITH NULL CHECK
+    // ============================================================
+    
+    if (resultsPanel) {
+        resultsPanel.classList.add('active');
+        resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
 // ============================================================
@@ -720,26 +773,34 @@ function calculateCosts() {
 // ============================================================
 
 // Auto-calculate when crop or land size changes
-cropSelect.addEventListener('change', function() {
-    if (cropSelect.value && landSize.value > 0) {
-        calculateCosts();
-    }
-});
+if (cropSelect) {
+    cropSelect.addEventListener('change', function() {
+        if (cropSelect.value && landSize && landSize.value > 0) {
+            calculateCosts();
+        }
+    });
+}
 
-landSize.addEventListener('input', function() {
-    if (cropSelect.value && landSize.value > 0) {
-        calculateCosts();
-    }
-});
+if (landSize) {
+    landSize.addEventListener('input', function() {
+        if (cropSelect && cropSelect.value && landSize.value > 0) {
+            calculateCosts();
+        }
+    });
+}
 
-calculateBtn.addEventListener('click', calculateCosts);
+if (calculateBtn) {
+    calculateBtn.addEventListener('click', calculateCosts);
+}
 
 // Allow Enter key on land size input
-landSize.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        calculateCosts();
-    }
-});
+if (landSize) {
+    landSize.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            calculateCosts();
+        }
+    });
+}
 
 // ============================================================
 // DOM CONTENT LOADED
@@ -755,7 +816,7 @@ document.addEventListener('DOMContentLoaded', function() {
         languageSwitcher.addEventListener('change', function() {
             applyCostForecastTranslations();
             // Re-calculate if there's a result showing
-            if (cropSelect.value && landSize.value > 0) {
+            if (cropSelect && cropSelect.value && landSize && landSize.value > 0) {
                 calculateCosts();
             }
         });
@@ -765,7 +826,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Also listen for the global languagechange event
 document.addEventListener('languagechange', function() {
     applyCostForecastTranslations();
-    if (cropSelect.value && landSize.value > 0) {
+    if (cropSelect && cropSelect.value && landSize && landSize.value > 0) {
         calculateCosts();
     }
 });
