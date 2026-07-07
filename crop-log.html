@@ -26,22 +26,23 @@
                     <li><a href="about.html" data-translate="about">About</a></li>
                     <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
                     <li><a href="education.html" data-translate="education">Education</a></li>
-                    <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
+                    <li><a href="crop-log.html" data-translate="cropLog" style="color: var(--green-accent);">Crop Log</a></li>
+                    <li><a href="cost-forecast.html" data-translate="costForecast">Cost Forecast</a></li>
+                    <li><a href="fertilizer.html" data-translate="fertilizer">Fertilizer</a></li>
                     <li><a href="farmer-login.html" data-translate="login">Account</a></li>
                     <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
                 </ul>
-                <div class="language-selector">
-                    <select id="languageSwitcher">
-                        <option value="en">English</option>
-                        <option value="juba">Juba Arabic</option>
-                        <option value="bari">Bari</option>
-                    </select>
-                </div>
             </nav>
+            <div class="language-selector">
+                <select id="languageSwitcher">
+                    <option value="en">English</option>
+                    <option value="juba">Juba Arabic</option>
+                    <option value="bari">Bari</option>
+                </select>
+            </div>
             <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
         </div>
     </header>
-
 
     <div class="croplog-hero">
         <div class="hero-eyebrow">Smart Farmer</div>
@@ -49,28 +50,27 @@
         <p data-translate="cropLogSubtitle">Save your planting dates. All data stays on your phone. Works offline.</p>
         <div class="hero-stats">
             <div>
-                <div class="hero-stat-num">5</div>
-                <div class="hero-stat-label">Crops</div>
+                <div class="hero-stat-num" id="totalCropsCount">0</div>
+                <div class="hero-stat-label" data-translate="cropLogHeroStatsCrops">Crops</div>
             </div>
             <div class="stat-divider"></div>
             <div>
-                <div class="hero-stat-num">Offline</div>
-                <div class="hero-stat-label">Works always</div>
+                <div class="hero-stat-num" data-translate="cropLogHeroStatsOffline">Offline</div>
+                <div class="hero-stat-label" data-translate="cropLogHeroStatsWorksAlways">Works always</div>
             </div>
             <div class="stat-divider"></div>
             <div>
-                <div class="hero-stat-num">Private</div>
-                <div class="hero-stat-label">Stays on device</div>
+                <div class="hero-stat-num" data-translate="cropLogHeroStatsPrivate">Private</div>
+                <div class="hero-stat-label" data-translate="cropLogHeroStatsStaysDevice">Stays on device</div>
             </div>
         </div>
     </div>
 
     <main>
         <div class="log-layout">
-
-
+            <!-- Form Panel -->
             <div class="log-panel">
-                <div class="section-label">New Record</div>
+                <div class="section-label" data-translate="newRecord">New Record</div>
                 <div class="log-form">
                     <div class="form-group">
                         <label for="cropSelect" data-translate="selectCrop">Select Crop</label>
@@ -80,11 +80,53 @@
                             <option value="Millet">Millet</option>
                             <option value="Groundnuts">Groundnuts</option>
                             <option value="Cassava">Cassava</option>
+                            <option value="Cowpeas">Cowpeas</option>
+                            <option value="Sesame">Sesame</option>
+                            <option value="Sweet Potato">Sweet Potato</option>
+                            <option value="Beans">Beans</option>
+                            <option value="Okra">Okra</option>
+                            <option value="Tomato">Tomato</option>
+                            <option value="Onion">Onion</option>
+                            <option value="Pumpkin">Pumpkin</option>
+                            <option value="Yam">Yam</option>
+                            <option value="Sugarcane">Sugarcane</option>
+                            <option value="Rice">Rice</option>
+                            <option value="Sunflower">Sunflower</option>
+                            <option value="Banana">Banana</option>
+                            <option value="Watermelon">Watermelon</option>
+                            <option value="Cabbage">Cabbage</option>
+                            <option value="Pigeon Peas">Pigeon Peas</option>
+                            <option value="Mangoes">Mangoes</option>
+                            <option value="Coffee">Coffee</option>
+                            <option value="Tea">Tea</option>
+                            <option value="Tobacco">Tobacco</option>
+                            <option value="Cotton">Cotton</option>
+                            <option value="Soybean">Soybean</option>
+                            <option value="Finger Millet">Finger Millet</option>
+                            <option value="Pearl Millet">Pearl Millet</option>
+                            <option value="Eggplant">Eggplant</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="plantDate" data-translate="plantingDate">Planting Date</label>
                         <input type="date" id="plantDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="expectedHarvest" data-translate="expectedHarvest">Expected Harvest</label>
+                        <input type="date" id="expectedHarvest">
+                    </div>
+                    <div class="form-group">
+                        <label for="farmLocation" data-translate="farmLocation">Farm Location</label>
+                        <input type="text" id="farmLocation" placeholder="e.g., Yei County">
+                    </div>
+                    <div class="form-group">
+                        <label for="cropStatus" data-translate="status">Status</label>
+                        <select id="cropStatus">
+                            <option value="Planted" data-translate="statusPlanted">Planted</option>
+                            <option value="Growing" data-translate="statusGrowing">Growing</option>
+                            <option value="Harvested" data-translate="statusHarvested">Harvested</option>
+                            <option value="Pending" data-translate="statusPending">Pending</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="notes" data-translate="notesLabel">Notes (optional)</label>
@@ -96,33 +138,34 @@
                 </div>
             </div>
 
+            <!-- Records Panel -->
             <div class="log-panel">
-                <div class="section-label">Saved Records</div>
+                <div class="section-label" data-translate="savedRecords">Saved Records</div>
                 <div class="saved-logs">
                     <div id="logList">
                         <div class="empty-message">
-                            <p>No records yet. Save your first planting date.</p>
+                            <p data-translate="noRecords">No records yet. Save your first planting date.</p>
                         </div>
                     </div>
-                    <button onclick="clearAllLogs()" class="clear-btn">Clear All Records</button>
+                    <button onclick="clearAllLogs()" class="clear-btn" data-translate="clearAll">Clear All Records</button>
                 </div>
             </div>
-
         </div>
     </main>
 
     <footer>
-    <div class="footer-content">
-        <p class="footer-copy">&copy; 2026 Smart Farmer. All rights reserved.</p>
-        <div class="footer-contacts">
-            <a href="mailto:nyabondeng0@gmail.com">📧 nyabondeng0@gmail.com</a>
-            <a href="https://wa.me/211928470444">📱 +211928470444</a>
-            <span>📍 Yei County, South Sudan</span>
+        <div class="footer-content">
+            <p class="footer-copy">&copy; 2026 Smart Farmer. All rights reserved.</p>
+            <div class="footer-contacts">
+                <a href="mailto:nyabondeng0@gmail.com">📧 nyabondeng0@gmail.com</a>
+                <a href="https://wa.me/211928470444">📱 +211928470444</a>
+                <span>📍 Yei County, South Sudan</span>
+            </div>
         </div>
-    </div>
     </footer>
 
     <script src="js/translations.js?v=2"></script>
     <script src="js/script.js?v=2"></script>
+    <script src="js/crop-log.js?v=2"></script>
 </body>
 </html>
