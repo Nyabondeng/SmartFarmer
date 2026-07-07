@@ -342,9 +342,7 @@ document.addEventListener('languagechange', () => {
     applyCropsPageTranslations();
 });
 
-// ============================================================
-// AUDIO TOGGLE FUNCTION
-// ============================================================
+
 
 function toggleCropAudio(crop) {
     console.log('🔊 toggleCropAudio called for:', crop);
@@ -472,3 +470,4 @@ function startSpeaking(crop) {
 window.toggleCropDetails = toggleCropDetails;
 window.toggleCropAudio = toggleCropAudio;
 window.initCropDetails = initCropDetails;
+window.getCurrentTranslateLanguage = getCurrentTranslateLanguage;
