@@ -43,6 +43,131 @@ function toggleCropDetails(button) {
                     overviewP.textContent = cropData[overviewKey];
                 }
                 
+                       // INDEX 1: Planting Season - UPDATE HEADING AND CONTENT
+                // ============================================================
+                const plantingH4 = sections[1].querySelector('h4');
+                if (plantingH4 && t.plantingHeading) {
+                    plantingH4.textContent = t.plantingHeading;
+                }
+                const plantingP = sections[1].querySelector('p');
+                if (plantingP && cropData[plantingKey]) {
+                    plantingP.textContent = cropData[plantingKey];
+                }
+                
+                // ============================================================
+                // INDEX 2: Soil Type - UPDATE HEADING AND CONTENT
+                // ============================================================
+                const soilH4 = sections[2].querySelector('h4');
+                if (soilH4 && t.soilHeading) {
+                    soilH4.textContent = t.soilHeading;
+                }
+                const soilP = sections[2].querySelector('p');
+                if (soilP && cropData[soilKey]) {
+                    soilP.textContent = cropData[soilKey];
+                }
+                
+                // ============================================================
+                // INDEX 3: Land Preparation - UPDATE HEADING AND CONTENT
+                // ============================================================
+                const landH4 = sections[3].querySelector('h4');
+                if (landH4 && t.landHeading) {
+                    landH4.textContent = t.landHeading;
+                }
+                const landP = sections[3].querySelector('p');
+                if (landP && cropData[landKey]) {
+                    landP.textContent = cropData[landKey];
+                }
+                
+                // ============================================================
+                // INDEX 4: Seed Rate - UPDATE HEADING AND CONTENT
+                // ============================================================
+                const seedH4 = sections[4].querySelector('h4');
+                if (seedH4 && t.seedHeading) {
+                    seedH4.textContent = t.seedHeading;
+                }
+                const seedP = sections[4].querySelector('p');
+                if (seedP && cropData[seedKey]) {
+                    seedP.textContent = cropData[seedKey];
+                }
+                
+                // ============================================================
+                // INDEX 5: Water Requirement - UPDATE HEADING AND CONTENT
+                // ============================================================
+                const waterH4 = sections[5].querySelector('h4');
+                if (waterH4 && t.waterHeading) {
+                    waterH4.textContent = t.waterHeading;
+                }
+                const waterP = sections[5].querySelector('p');
+                if (waterP && cropData[waterKey]) {
+                    waterP.textContent = cropData[waterKey];
+                }
+                
+                // ============================================================
+                // INDEX 6: Pests - UPDATE HEADING AND CONTENT
+                // ============================================================
+                const pestsH4 = sections[6].querySelector('h4');
+                if (pestsH4 && t.pestsHeading) {
+                    pestsH4.textContent = t.pestsHeading;
+                }
+                const pestList = sections[6].querySelector('.pest-list');
+                if (pestList && cropData[pestsKey]) {
+                    const pestItems = cropData[pestsKey].split('.').filter(item => item.trim().length > 0);
+                    pestList.innerHTML = '';
+                    pestItems.forEach(item => {
+                        const cleanItem = item.trim();
+                        if (cleanItem.includes(' - ')) {
+                            const parts = cleanItem.split(' - ');
+                            const li = document.createElement('li');
+                            li.innerHTML = `<strong>${parts[0].trim()}</strong> - ${parts.slice(1).join(' - ').trim()}`;
+                            pestList.appendChild(li);
+                        } else {
+                            const li = document.createElement('li');
+                            li.textContent = cleanItem;
+                            pestList.appendChild(li);
+                        }
+                    });
+                }
+                
+                // ============================================================
+                // INDEX 7: Diseases - UPDATE HEADING AND CONTENT
+                // ============================================================
+                const diseasesH4 = sections[7].querySelector('h4');
+                if (diseasesH4 && t.diseasesHeading) {
+                    diseasesH4.textContent = t.diseasesHeading;
+                }
+                const diseaseList = sections[7].querySelector('.disease-list');
+                if (diseaseList && cropData[diseasesKey]) {
+                    const diseaseItems = cropData[diseasesKey].split('.').filter(item => item.trim().length > 0);
+                    diseaseList.innerHTML = '';
+                    diseaseItems.forEach(item => {
+                        const cleanItem = item.trim();
+                        if (cleanItem.includes(' - ')) {
+                            const parts = cleanItem.split(' - ');
+                            const li = document.createElement('li');
+                            li.innerHTML = `<strong>${parts[0].trim()}</strong> - ${parts.slice(1).join(' - ').trim()}`;
+                            diseaseList.appendChild(li);
+                        } else {
+                            const li = document.createElement('li');
+                            li.textContent = cleanItem;
+                            diseaseList.appendChild(li);
+                        }
+                    });
+                }
+                
+                // ============================================================
+                // INDEX 8: Market Tips - UPDATE HEADING AND CONTENT
+                // ============================================================
+                const marketH4 = sections[8].querySelector('h4');
+                if (marketH4 && t.marketHeading) {
+                    marketH4.textContent = t.marketHeading;
+                }
+                const marketP = sections[8].querySelector('p');
+                if (marketP && cropData[marketKey]) {
+                    marketP.textContent = cropData[marketKey];
+                }
+            }
+        }
+                
                 // Index 1: Planting Season
                 const plantingP = sections[1].querySelector('p');
                 if (plantingP && cropData[plantingKey]) {
@@ -120,8 +245,7 @@ function toggleCropDetails(button) {
                 if (marketP && cropData[marketKey]) {
                     marketP.textContent = cropData[marketKey];
                 }
-            }
-        }
+            
         
         detailsDiv.style.display = 'block';
         button.textContent = (t.hideDetailsLabel || 'Hide Details');
