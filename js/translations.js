@@ -853,7 +853,11 @@ const crops = {
         waterHeading: "Water Requirement",
         pestsHeading: "Common Pests",
         diseasesHeading: "Common Diseases",
-        marketHeading: "Market Tips"
+        marketHeading: "Market Tips",
+
+        voiceListenLabel: "🔊 Listen",
+        voicePauseLabel: "⏸ Pause",
+        voiceResumeLabel: "▶ Resume", 
 
 
     },
@@ -1518,8 +1522,12 @@ eggplantMarketTips: "الباذنجان له سوق جاهز في المجتمع
         waterHeading: "الاحتياج المائي",
         pestsHeading: "الآفات الشائعة",
         diseasesHeading: "الأمراض الشائعة",
-        marketHeading: "نصائح السوق"
-    
+        marketHeading: "نصائح السوق",
+
+        voiceListenLabel: "🔊 استمع",
+        voicePauseLabel: "⏸ إيقاف",
+        voiceResumeLabel: "▶ استئناف",
+            
    },
     bari: {
         // Bari translations for all crops
@@ -1701,7 +1709,12 @@ eggplantMarketTips: "الباذنجان له سوق جاهز في المجتمع
         waterHeading: "Piyo ma kony",
         pestsHeading: "Afat ma kony",
         diseasesHeading: "Rere ma kony",
-        marketHeading: "Kinyi suq"
+        marketHeading: "Kinyi suq",
+        
+        voiceListenLabel: "🔊 Wali",
+        voicePauseLabel: "⏸ Kuha",
+        voiceResumeLabel: "▶ Rian",
+
     }
 };
 
