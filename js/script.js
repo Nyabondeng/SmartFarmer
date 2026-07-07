@@ -1,18 +1,12 @@
 const API_BASE_URL = 'https://smartfarmer-m7x3.onrender.com';
 
-// ============================================================
-// LANGUAGE HELPERS (KEEP ONLY ONE)
-// ============================================================
-
 function getCurrentTranslateLanguage() {
     const selector = document.getElementById('languageSwitcher');
     const selected = selector ? selector.value : 'en';
     return selected === 'ba' ? 'bari' : (selected === 'ar' ? 'juba' : selected);
 }
 
-// ============================================================
-// APPLY NAVIGATION TRANSLATIONS (KEEP ONLY ONE)
-// ============================================================
+
 
 function applyNavigationTranslations() {
     const lang = getCurrentTranslateLanguage();
@@ -45,9 +39,6 @@ function applyNavigationTranslations() {
     });
 }
 
-// ============================================================
-// TRANSLATE PAGE (KEEP ONLY ONE)
-// ============================================================
 
 function translatePage() {
     const lang = getCurrentTranslateLanguage();
@@ -76,9 +67,7 @@ function translatePage() {
     });
 }
 
-// ============================================================
-// TOGGLE MENU (KEEP ONLY ONE)
-// ============================================================
+
 
 function toggleMenu() {
     const nav = document.querySelector('.nav-links');
@@ -89,9 +78,6 @@ function toggleMenu() {
 }
 
 
-// ============================================================
-// CROP LOG FUNCTIONS
-// ============================================================
 
 function saveCropLog() {
     const crop = document.getElementById('cropSelect')?.value || '';
@@ -140,7 +126,6 @@ function displayCropLogs() {
     if (logs.length === 0) {
         logList.innerHTML = `
             <div class="empty-message">
-                <div class="empty-icon">🌱</div>
                 <p>${t.noRecords || 'No records yet. Save your first planting date.'}</p>
             </div>
         `;
@@ -282,9 +267,7 @@ function clearAllLogs() {
     alert(t.recordDeleted || 'All records cleared successfully!');
 }
 
-// ============================================================
-// USER NAV FUNCTIONS
-// ============================================================
+
 
 function updateUserNav() {
     const user = getCurrentUser();
@@ -317,9 +300,23 @@ function updateUserNav() {
     }
 }
 
-// ============================================================
-// DOM CONTENT LOADED (KEEP ONLY ONE)
-// ============================================================
+function getCurrentUser() {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
+}
+
+async function deleteCloudLog(logId) {
+    if (confirm('Are you sure you want to delete this log?')) {
+        const result = await apiDeleteCropLog(logId);
+        if (result.success) {
+            await displayCropLogs();
+        } else {
+            alert('Error deleting: ' + result.error);
+        }
+    }
+}
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
     // Apply navigation translations
@@ -370,27 +367,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ============================================================
-// LANGUAGE CHANGE LISTENER (KEEP ONLY ONE)
-// ============================================================
 
 document.addEventListener('languagechange', function() {
     applyNavigationTranslations();
     translatePage();
 });
 
-// ============================================================
-// ALL OTHER FUNCTIONS GO HERE...
-// ============================================================
-
-// ... (keep all other functions like getAuthToken, isLoggedIn, apiRegisterUser, etc.)
-// ... (keep saveCropLog, displayCropLogs, clearAllLogs, etc.)
-// ... (keep playAudio, speakWithSynthesis, etc.)
-// ... (keep updateUserNav, etc.)
-
-// ============================================================
-// EXPOSE FUNCTIONS TO GLOBAL SCOPE
-// ============================================================
 
 window.toggleMenu = toggleMenu;
 window.saveCropLog = saveCropLog;
@@ -422,3 +404,5 @@ window.getCropLogs = getCropLogs;
 window.saveCropLogs = saveCropLogs;
 window.formatDate = formatDate;
 window.getStatusColor = getStatusColor;
+window.getCurrentUser = getCurrentUser;
+window.deleteCloudLog = deleteCloudLog;
