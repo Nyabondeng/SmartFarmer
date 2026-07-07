@@ -13,13 +13,12 @@ const common = {
         home: "Home",
         about: "About",
         crops: "Crop Info",
+        fertilizer: "Fertilizer",
+        costForecast: "Cost Forecast",
         education: "Education",
         cropLog: "Crop Log",
-        contact: "Contact",
-        ussd: "USSD",
         login: "Account",
-        register: "Register",
-        logout: "Logout",
+        ussd: "USSD",
 
         // Hero / General
         welcome: "Welcome to Smart Farmer",
@@ -43,15 +42,17 @@ const common = {
         footerLocation: "📍 Yei County, South Sudan"
     },
     juba: {
-        // Navigation
 
+            // Navigation
         home: "الصفحة الرئيسية",
         about: "عن التطبيق",
         crops: "معلومات المحاصيل",
+        fertilizer: "الأسمدة",
+        costForecast: "توقعات التكاليف",
         education: "التعليم",
         cropLog: "سجل المحاصيل",
         login: "الحساب",
-        ussd: "خدمة بدون إنترنت",
+        ussd: "خدمة بدون إشراف",
 
         installBannerTitle: "ثبت سمارت فارمر",
         installBannerText: "احفظ التطبيق في تلفونك عشان تشتغل بدون إنترنت",
@@ -83,17 +84,16 @@ const common = {
     },
 
     bari: {
-        // Navigation
+       
         home: "Piny",
-        about: "Kony e",
-        crops: "Kony lo korop",
-        education: "Kujju",
-        cropLog: "Buku lo korop",
-        contact: "Konye",
-        ussd: "USSD",
-        login: "Account",
-        register: "Register",
-        logout: "Logout",
+        about: "Kony kinyi",
+        crops: "Korop",
+        fertilizer: "Mundu",
+        costForecast: "Gworo kwoi",
+        education: "Gworo kinyi",
+        cropLog: "Korop log",
+        account: "Akawut",
+        ussd: "USSD", 
 
         // Hero / General
         welcome: "Jom i Smart Farmer",

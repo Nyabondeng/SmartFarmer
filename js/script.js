@@ -598,6 +598,37 @@ if (window.matchMedia('(display-mode: standalone)').matches) {
 }
 
 
+// ============================================================
+// APPLY NAVIGATION TRANSLATIONS
+// ============================================================
+
+function applyNavigationTranslations() {
+    const lang = getCurrentTranslateLanguage();
+    const t = translations[lang] || translations.en || {};
+
+    // Navigation links
+    const navLinks = document.querySelectorAll('.nav-links a[data-translate]');
+    navLinks.forEach(link => {
+        const key = link.getAttribute('data-translate');
+        if (t[key]) {
+            link.textContent = t[key];
+        }
+    });
+
+    // Also handle any other navigation elements
+    // Language switcher placeholder if needed
+}
+
+// Make sure this runs on page load and language change
+document.addEventListener('DOMContentLoaded', function() {
+    applyNavigationTranslations();
+    // ... other initialization
+});
+
+document.addEventListener('languagechange', function() {
+    applyNavigationTranslations();
+    // ... other updates
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     const savedLanguage =
