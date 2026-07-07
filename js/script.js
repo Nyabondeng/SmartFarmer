@@ -305,6 +305,10 @@ function getCurrentUser() {
     return user ? JSON.parse(user) : null;
 }
 
+function isLoggedIn() {
+    return !!localStorage.getItem('token');
+}
+
 async function deleteCloudLog(logId) {
     if (confirm('Are you sure you want to delete this log?')) {
         const result = await apiDeleteCropLog(logId);
