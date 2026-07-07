@@ -3471,7 +3471,7 @@ const moduleDetails = {
 // FINAL COMBINED TRANSLATIONS OBJECT
 // ============================================
 
-
+// Create the master translations object - ONLY ONE DECLARATION
 const translations = { en: {}, juba: {}, bari: {} };
 
 // Merge all sections
@@ -3485,9 +3485,9 @@ const translations = { en: {}, juba: {}, bari: {} };
         ...crops[lang],
         // Education page
         ...education[lang],
-        //cropLog page
+        // cropLog page
         ...cropLog[lang],
-        //fertilizer page
+        // fertilizer page
         ...fertilizer[lang],
         // Education Voices
         ...educationVoices[lang],
@@ -3496,9 +3496,7 @@ const translations = { en: {}, juba: {}, bari: {} };
     };
 });
 
-
 // ===== MERGE EDUCATION TRANSLATIONS INTO MAIN TRANSLATIONS =====
-// This makes education keys available in the main translations object
 ['en', 'juba', 'bari'].forEach(lang => {
     if (typeof education !== 'undefined' && education[lang]) {
         translations[lang] = {
@@ -3520,23 +3518,9 @@ if (typeof educationVoices !== 'undefined') {
     });
 }
 
-console.log('Translations merged successfully!');
-console.log('Available languages:', Object.keys(translations));
-console.log('Education keys in juba:', Object.keys(translations.juba).filter(k => k.includes('module')));
-
 // ============================================
-// EXPORT (for use in other files)
+// MERGE CROPS, FERTILIZER, COST FORECAST
 // ============================================
-// The 'translations' object is now globally available
-
-// ========================================
-// MERGE ALL TRANSLATIONS
-// ========================================
-
-// If you're using a single translations object
-if (typeof translations === 'undefined') {
-    var translations = {};
-}
 
 // Merge crops into translations
 if (typeof crops !== 'undefined') {
@@ -3559,7 +3543,16 @@ if (typeof costForecast !== 'undefined') {
     translations.bari = { ...translations.bari, ...costForecast.bari };
 }
 
+// ============================================
+// EXPOSE TO GLOBAL SCOPE
+// ============================================
+
+window.translations = translations;
+
 // Also keep the original objects for direct access
 window.crops = crops;
 window.fertilizer = fertilizer;
 window.costForecast = costForecast;
+
+console.log('Translations loaded successfully!');
+console.log('Available languages:', Object.keys(translations));
