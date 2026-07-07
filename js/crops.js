@@ -1,7 +1,7 @@
-/**
- * Toggle expanded crop details visibility
- * @param {HTMLElement} button - The button element that was clicked
- */
+// ============================================================
+// CROP DETAILS TOGGLE FUNCTIONALITY
+// ============================================================
+
 function toggleCropDetails(button) {
     const cropCard = button.closest('.crop-card');
     const cropName = cropCard ? cropCard.dataset.crop : null;
@@ -32,8 +32,9 @@ function toggleCropDetails(button) {
             const sections = detailsDiv.querySelectorAll('.info-section');
             
             if (sections.length >= 9) {
-                // Index 0: Overview
-
+                // ============================================================
+                // INDEX 0: Overview - UPDATE HEADING AND CONTENT
+                // ============================================================
                 const overviewH4 = sections[0].querySelector('h4');
                 if (overviewH4 && t.overviewHeading) {
                     overviewH4.textContent = t.overviewHeading;
@@ -43,7 +44,8 @@ function toggleCropDetails(button) {
                     overviewP.textContent = cropData[overviewKey];
                 }
                 
-                       // INDEX 1: Planting Season - UPDATE HEADING AND CONTENT
+                // ============================================================
+                // INDEX 1: Planting Season - UPDATE HEADING AND CONTENT
                 // ============================================================
                 const plantingH4 = sections[1].querySelector('h4');
                 if (plantingH4 && t.plantingHeading) {
@@ -167,85 +169,6 @@ function toggleCropDetails(button) {
                 }
             }
         }
-                
-                // Index 1: Planting Season
-                const plantingP = sections[1].querySelector('p');
-                if (plantingP && cropData[plantingKey]) {
-                    plantingP.textContent = cropData[plantingKey];
-                }
-                
-                // Index 2: Soil Type
-                const soilP = sections[2].querySelector('p');
-                if (soilP && cropData[soilKey]) {
-                    soilP.textContent = cropData[soilKey];
-                }
-                
-                // Index 3: Land Preparation
-                const landP = sections[3].querySelector('p');
-                if (landP && cropData[landKey]) {
-                    landP.textContent = cropData[landKey];
-                }
-                
-                // Index 4: Seed Rate
-                const seedP = sections[4].querySelector('p');
-                if (seedP && cropData[seedKey]) {
-                    seedP.textContent = cropData[seedKey];
-                }
-                
-                // Index 5: Water Requirement
-                const waterP = sections[5].querySelector('p');
-                if (waterP && cropData[waterKey]) {
-                    waterP.textContent = cropData[waterKey];
-                }
-                
-                // Index 6: Pests
-                const pestList = sections[6].querySelector('.pest-list');
-                if (pestList && cropData[pestsKey]) {
-                    // Split by periods and clean up
-                    const pestItems = cropData[pestsKey].split('.').filter(item => item.trim().length > 0);
-                    pestList.innerHTML = '';
-                    pestItems.forEach(item => {
-                        const cleanItem = item.trim();
-                        // Check if it contains a dash for name - description format
-                        if (cleanItem.includes(' - ')) {
-                            const parts = cleanItem.split(' - ');
-                            const li = document.createElement('li');
-                            li.innerHTML = `<strong>${parts[0].trim()}</strong> - ${parts.slice(1).join(' - ').trim()}`;
-                            pestList.appendChild(li);
-                        } else {
-                            const li = document.createElement('li');
-                            li.textContent = cleanItem;
-                            pestList.appendChild(li);
-                        }
-                    });
-                }
-                
-                // Index 7: Diseases
-                const diseaseList = sections[7].querySelector('.disease-list');
-                if (diseaseList && cropData[diseasesKey]) {
-                    const diseaseItems = cropData[diseasesKey].split('.').filter(item => item.trim().length > 0);
-                    diseaseList.innerHTML = '';
-                    diseaseItems.forEach(item => {
-                        const cleanItem = item.trim();
-                        if (cleanItem.includes(' - ')) {
-                            const parts = cleanItem.split(' - ');
-                            const li = document.createElement('li');
-                            li.innerHTML = `<strong>${parts[0].trim()}</strong> - ${parts.slice(1).join(' - ').trim()}`;
-                            diseaseList.appendChild(li);
-                        } else {
-                            const li = document.createElement('li');
-                            li.textContent = cleanItem;
-                            diseaseList.appendChild(li);
-                        }
-                    });
-                }
-                
-                // Index 8: Market Tips
-                const marketP = sections[8].querySelector('p');
-                if (marketP && cropData[marketKey]) {
-                    marketP.textContent = cropData[marketKey];
-                }
-            
         
         detailsDiv.style.display = 'block';
         button.textContent = (t.hideDetailsLabel || 'Hide Details');
@@ -262,7 +185,6 @@ function toggleCropDetails(button) {
     }
 }
 
-
 function initCropDetails() {
     const detailsDivs = document.querySelectorAll('.crop-expanded-details');
     detailsDivs.forEach(div => {
@@ -278,6 +200,9 @@ function initCropDetails() {
     });
 }
 
+// ============================================================
+// VOICE/AUDIO FUNCTIONALITY
+// ============================================================
 
 let currentUtterance = null;
 let isPaused = false;
@@ -377,14 +302,12 @@ function applyCropsPageTranslations() {
             btn.textContent = (t.hideDetailsLabel || 'Hide Details');
         }
     });
-// ============================================================
-    // NEW: Update headings in already expanded sections
-    // ============================================================
+
+    // Update headings in already expanded sections
     const expandedDetails = document.querySelectorAll('.crop-expanded-details[style*="display: block"]');
     expandedDetails.forEach(detailsDiv => {
         const sections = detailsDiv.querySelectorAll('.info-section');
         if (sections.length >= 9) {
-            // Update each heading with translated text
             const headingKeys = ['overviewHeading', 'plantingHeading', 'soilHeading', 'landHeading', 
                                  'seedHeading', 'waterHeading', 'pestsHeading', 'diseasesHeading', 'marketHeading'];
             sections.forEach((section, index) => {
@@ -399,18 +322,14 @@ function applyCropsPageTranslations() {
     });
 }
 
-
-
-
+// ============================================================
+// MAIN INITIALIZATION
+// ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize crop details (hide all expanded sections)
     initCropDetails();
-    
-    // Apply translations
     applyCropsPageTranslations();
     
-    // Load voices for speech synthesis
     if ('speechSynthesis' in window) {
         window.speechSynthesis.getVoices();
         window.speechSynthesis.onvoiceschanged = () => {
@@ -419,12 +338,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Listen for language changes
 document.addEventListener('languagechange', () => {
     applyCropsPageTranslations();
 });
 
-
+// ============================================================
+// AUDIO TOGGLE FUNCTION
+// ============================================================
 
 function toggleCropAudio(crop) {
     console.log('🔊 toggleCropAudio called for:', crop);
@@ -465,7 +385,6 @@ function startSpeaking(crop) {
     if ('speechSynthesis' in window) {
         const utterance = new SpeechSynthesisUtterance(text);
         
-        // ===== VOICE SETTINGS =====
         utterance.rate = 0.75;
         utterance.pitch = 1.0;
         utterance.volume = 1.0;
@@ -473,9 +392,7 @@ function startSpeaking(crop) {
         let voices = window.speechSynthesis.getVoices();
         let selectedVoice = null;
         
-        // ===== CHECK LANGUAGE FIRST =====
         if (lang === 'juba') {
-            // Juba Arabic - use Arabic voice
             selectedVoice = voices.find(v => v.lang === 'ar-SA');
             if (!selectedVoice) {
                 selectedVoice = voices.find(v => v.lang.startsWith('ar'));
@@ -484,9 +401,7 @@ function startSpeaking(crop) {
                 selectedVoice = voices.find(v => v.lang === 'en-US') || voices[0];
             }
             utterance.lang = 'ar-SA';
-            
         } else if (lang === 'bari') {
-            // Bari - use English (East African preferred)
             const preferredVoices = ['en-KE', 'en-UG', 'en-TZ', 'en-ZA', 'en-NG'];
             for (let langCode of preferredVoices) {
                 selectedVoice = voices.find(v => v.lang === langCode);
@@ -499,9 +414,7 @@ function startSpeaking(crop) {
                     || voices[0];
             }
             utterance.lang = selectedVoice ? selectedVoice.lang : 'en-US';
-            
         } else {
-            // English - use East African voices
             const preferredVoices = ['en-KE', 'en-UG', 'en-TZ', 'en-ZA', 'en-NG'];
             for (let langCode of preferredVoices) {
                 selectedVoice = voices.find(v => v.lang === langCode);
@@ -556,7 +469,6 @@ function startSpeaking(crop) {
 // EXPOSE FUNCTIONS TO GLOBAL SCOPE
 // ============================================================
 
-// These need to be accessible from HTML onclick attributes
 window.toggleCropDetails = toggleCropDetails;
 window.toggleCropAudio = toggleCropAudio;
 window.initCropDetails = initCropDetails;
