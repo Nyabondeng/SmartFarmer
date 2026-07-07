@@ -497,6 +497,139 @@ function apiLogoutUser() {
     window.location.href = 'index.html';
 }
 
+// ============================================================
+// AUTH & API FUNCTIONS
+// ============================================================
+
+function getAuthToken() {
+    return localStorage.getItem('token');
+}
+
+async function apiRegisterUser(userData) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/register`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userData)
+        });
+        const data = await response.json();
+        if (response.ok) {
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            return { success: true, user: data.user };
+        }
+        return { success: false, error: data.message || 'Registration failed' };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+}
+
+async function apiLoginUser(email, password) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+        const data = await response.json();
+        if (response.ok) {
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            return { success: true, user: data.user };
+        }
+        return { success: false, error: data.message || 'Login failed' };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+}
+
+async function apiGetCropLogs() {
+    const token = getAuthToken();
+    if (!token) {
+        return { success: false, error: 'Please login first' };
+    }
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/crop-logs`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        const data = await response.json();
+        if (response.ok) {
+            return { success: true, logs: data.logs || [] };
+        }
+        return { success: false, error: data.message || 'Failed to fetch logs' };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+}
+
+async function apiSaveCropLog(cropData) {
+    const token = getAuthToken();
+    if (!token) {
+        return { success: false, error: 'Please login first' };
+    }
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/crop-logs`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(cropData)
+        });
+        const data = await response.json();
+        if (response.ok) {
+            return { success: true, log: data.log };
+        }
+        return { success: false, error: data.message || 'Failed to save log' };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+}
+
+async function apiDeleteCropLog(logId) {
+    const token = getAuthToken();
+    if (!token) {
+        return { success: false, error: 'Please login first' };
+    }
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/crop-logs/${logId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        const data = await response.json();
+        if (response.ok) {
+            return { success: true };
+        }
+        return { success: false, error: data.message || 'Failed to delete log' };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+}
+
+async function apiSendContactMessage(formData) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/contact`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        });
+        const data = await response.json();
+        if (response.ok) {
+            return { success: true };
+        }
+        return { success: false, error: data.message || 'Failed to send message' };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
     // Apply navigation translations
@@ -584,5 +717,5 @@ window.getCropLogs = getCropLogs;
 window.saveCropLogs = saveCropLogs;
 window.formatDate = formatDate;
 window.getStatusColor = getStatusColor;
-window.getCurrentUser = getCurrentUser;
 window.deleteCloudLog = deleteCloudLog;
+window.getAuthToken = getAuthToken;
