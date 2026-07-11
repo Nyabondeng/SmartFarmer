@@ -32,7 +32,6 @@ const CROPS = {
     pest: `Smart Farmer\nCassava - Pest Control\n\nWatch for mealybug\n(small white insect).\nRemove infected leaves\nand burn them.\nUse disease-free\ncuttings always.\n\nTip: Sensitive to\nviral diseases.\n\n0. Back\n00. Main Menu`,
     harvest: `Smart Farmer\nCassava - Harvest Guide\n\nReady: 8-18 months.\nLeaves turn yellow\nwhen tubers ready.\n\nStorage:\nFresh: max 2-3 days.\nPeel and sun-dry\nfor flour.\n\nTip: Harvest only\nwhat you need.\n\n0. Back\n00. Main Menu`
   },
-
   '6': {
     name: 'Cowpeas',
     planting: `Smart Farmer\nCowpeas - Planting Guide\n\nPlant May-June.\nSpacing: 60cm x 20cm.\n2 seeds per hole.\nDepth: 3-4cm.\n\nTip: Fixes nitrogen\nin soil.\n\n0. Back\n00. Main Menu`,
@@ -186,7 +185,10 @@ const CROPS = {
 };
 
 function mainMenu() {
-  return `CON Smart Farmer\nFarming Info System\n\nWelcome! Choose a crop:\n\n1. Sorghum\n2. Maize\n3. Millet\n4. Groundnuts\n5. Cassava\n6. Cowpeas\n7. Sesame\n8. Sweet Potato\n9. Beans\n10. Okra\n11. Tomato\n12. Onion\n13. Pumpkin\n14. Yam\n15. Sugarcane\n16. Rice\n17. Sunflower\n18. Banana\n19. Watermelon\n20. Cabbage\n21. Pigeon Peas\n22. Mangoes\n23. Coffee\n24. Tea\n25. Tobacco\n26. Cotton\n27. Soybean\n28. Finger Millet\n29. Pearl Millet\n30. Eggplant\n\n0. Exit`;
+    return {
+        header: '*384*12990#',
+        body: `Smart Farmer\nFarming Info System\n\nWelcome! Choose a crop:\n\n1. Sorghum\n2. Maize\n3. Millet\n4. Groundnuts\n5. Cassava\n6. Cowpeas\n7. Sesame\n8. Sweet Potato\n9. Beans\n10. Okra\n11. Tomato\n12. Onion\n13. Pumpkin\n14. Yam\n15. Sugarcane\n16. Rice\n17. Sunflower\n18. Banana\n19. Watermelon\n20. Cabbage\n21. Pigeon Peas\n22. Mangoes\n23. Coffee\n24. Tea\n25. Tobacco\n26. Cotton\n27. Soybean\n28. Finger Millet\n29. Pearl Millet\n30. Eggplant\n\n0. Exit`
+    };
 }
 
 function cropMenuContent(num) {
@@ -217,11 +219,16 @@ function handleInput() {
             currentMenu  = 'crop';
             const m = cropMenuContent(input);
             updateScreen(m.header, m.body, true, false);
-        } else { showError(); }
+        } else if (input === '0') {
+            updateScreen('Goodbye!', 'Thank you for using Smart Farmer.', false, false);
+            document.getElementById('ussd-input-area').style.display = 'none';
+        } else {
+            showError();
+        }
     } else if (currentMenu === 'crop') {
         if (input === '0') {
             currentMenu = 'main';
-            const m = mainMenuContent();
+            const m = mainMenu();
             updateScreen(m.header, m.body, true, false);
         } else if (input === '1') {
             currentMenu = 'info';
@@ -232,7 +239,9 @@ function handleInput() {
         } else if (input === '3') {
             currentMenu = 'info';
             updateScreen(`*384*12990*${selectedCrop}*3#`, CROPS[selectedCrop].harvest, false, true);
-        } else { showError(); }
+        } else {
+            showError();
+        }
     }
 }
 
@@ -241,9 +250,9 @@ function goBack() {
         currentMenu = 'crop';
         const m = cropMenuContent(selectedCrop);
         updateScreen(m.header, m.body, true, false);
-    } else {
+    } else if (currentMenu === 'crop') {
         currentMenu = 'main';
-        const m = mainMenuContent();
+        const m = mainMenu();
         updateScreen(m.header, m.body, true, false);
     }
 }
@@ -254,7 +263,7 @@ function showError() {
         '<div style="color:#c0392b;margin-top:10px;">Invalid option.<br>Please try again.</div>';
     setTimeout(() => {
         if (currentMenu === 'main') {
-            const m = mainMenuContent();
+            const m = mainMenu();
             updateScreen(m.header, m.body, true, false);
         } else {
             const m = cropMenuContent(selectedCrop);
