@@ -1,4 +1,4 @@
-const CropLog = require("../models/cropLogModel");
+const CropLog = require("../models/CropLogModel");
 
 exports.createLog = async (req, res) => {
 

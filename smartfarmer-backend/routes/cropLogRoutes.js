@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const auth = require("../middleware/authMiddleware");
-
+const CropLog = require('../models/CropLogModel');
 const cropLogController = require("../controllers/cropLogController");
 
 router.post("/", auth, cropLogController.createLog);
