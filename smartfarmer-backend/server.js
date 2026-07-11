@@ -1,7 +1,12 @@
+require("dotenv").config();
+console.log("DATABASE_URL:", process.env.DATABASE_URL);
+const authRoutes = require("./routes/authRoutes");
+const farmerRoutes = require("./routes/farmerRoutes");
+const cropLogRoutes = require("./routes/cropLogRoutes");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const express = require('express');
-const { Pool } = require('pg');
+const pool = require("./config/db");
 const path = require('path');
 const cors = require('cors');
 const app = express();
@@ -23,24 +28,11 @@ app.use(cors({
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use("/api/auth", authRoutes);
+app.use("/api/farmer", farmerRoutes);
+app.use("/api/logs", cropLogRoutes);
 
 
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false 
-    }
-});
-
-
-pool.connect((err, client, release) => {
-    if (err) {
-        console.error('Error connecting to database:', err.stack);
-    } else {
-        console.log('Database connected successfully');
-        release();
-    }
-});
 
 
 
@@ -52,21 +44,12 @@ async function createTables() {
                 id SERIAL PRIMARY KEY,
                 name VARCHAR(100),
                 phone VARCHAR(20) UNIQUE,
+                password VARCHAR(255) NOT NULL,
                 location VARCHAR(100),
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         `);
 
-      await pool.query(`
-            CREATE TABLE IF NOT EXISTS users (
-            id SERIAL PRIMARY KEY,
-            full_name VARCHAR(100) NOT NULL,
-            email VARCHAR(100) UNIQUE NOT NULL,
-            phone VARCHAR(20),
-            password VARCHAR(255) NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
-        `);
 
 
         await pool.query(`
@@ -97,6 +80,7 @@ async function createTables() {
         console.error('Error creating tables:', error.message);
     }
 }
+
 
 
 createTables();
@@ -289,7 +273,7 @@ const CROPS = {
 
 
 function mainMenu() {
-  return `CON Smart Farmer\nFarming Info System\n\nWelcome! Choose a crop:\n\n1. Sorghum\n2. Maize\n3. Millet\n4. Groundnuts\n5. Cassava`;
+  return `CON Smart Farmer\nFarming Info System\n\nWelcome! Choose a crop:\n\n1. Sorghum\n2. Maize\n3. Millet\n4. Groundnuts\n5. Cassava\n6. Cowpeas\n7. Sesame\n8. Sweet Potato\n9. Beans\n10. Okra\n11. Tomato\n12. Onion\n13. Pumpkin\n14. Yam\n15. Sugarcane\n16. Rice\n17. Sunflower\n18. Banana\n19. Watermelon\n20. Cabbage\n21. Pigeon Peas\n22. Mangoes\n23. Coffee\n24. Tea\n25. Tobacco\n26. Cotton\n27. Soybean\n28. Finger Millet\n29. Pearl Millet\n30. Eggplant\n\n0. Exit`;
 }
 
 function cropMenu(cropNum) {

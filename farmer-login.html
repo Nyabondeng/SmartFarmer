@@ -68,17 +68,36 @@
             <div class="auth-container" id="loginForm">
                 <div class="auth-header">
                     <h2>Farmer Login</h2>
-                    <p class="auth-subtitle">Login with your phone number</p>
+                    <p class="auth-subtitle">Login with your phone number and password</p>
                 </div>
 
                 <div class="message" id="authMessage"></div>
 
                 <div class="form-group">
-                    <label for="loginPhone">Phone Number</label>
-                    <div class="input-wrap">
-                        <input type="tel" id="loginPhone" placeholder="e.g., 0928444313" required>
-                    </div>
+                <label for="loginPhone">Phone Number</label>
+                <div class="input-wrap">
+                    <span class="input-icon">📱</span>
+                    <input
+                        type="tel"
+                        id="loginPhone"
+                        placeholder="e.g., 0928444313"
+                        required
+                    >
                 </div>
+            </div>
+
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <div class="input-wrap">
+                    <span class="input-icon">🔒</span>
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter your password"
+                        required
+                    >
+                </div>
+            </div>
 
                 <button class="auth-btn" onclick="loginFarmer()">
                     Login →

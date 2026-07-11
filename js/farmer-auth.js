@@ -1,113 +1,123 @@
 const API_URL = 'https://smartfarmer-m7x3.onrender.com';
 
-
 async function registerFarmer() {
-    const name = document.getElementById('regName').value.trim();
-    const phone = document.getElementById('regPhone').value.trim();
-    const location = document.getElementById('regLocation').value.trim();
 
+    const full_name = document.getElementById("regName").value.trim();
+    const phone = document.getElementById("regPhone").value.trim();
+    const location = document.getElementById("regLocation").value.trim();
 
-    if (!name || !phone) {
-        showMessage('Please enter your full name and phone number.', 'error');
+    const password = document.getElementById("regPassword").value.trim();
+
+    if (!full_name || !phone || !password) {
+        showMessage("Please fill all required fields.", "error");
         return;
     }
 
-
-    const btn = document.querySelector('#registerForm button');
-    const originalText = btn.textContent;
-    btn.textContent = 'Registering...';
-    btn.disabled = true;
-
     try {
-        const response = await fetch(`${API_URL}/api/register`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, phone, location })
+
+        const response = await fetch(`${API_URL}/api/auth/register`, {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                full_name,
+                phone,
+                location,
+                password
+            })
+
         });
 
-        const result = await response.json();
+        const data = await response.json();
 
-        if (result.success) {
+        if (response.ok) {
 
-            localStorage.setItem('farmer_id', result.data.id);
-            localStorage.setItem('farmer_name', result.data.name);
-            localStorage.setItem('farmer_phone', result.data.phone);
+            localStorage.setItem("token", data.token);
 
-            showMessage('✅ ' + result.message, 'success');
+            showMessage("Registration successful!", "success");
 
-            // Redirect after 2 seconds
             setTimeout(() => {
-                window.location.href = 'crop-log.html';
-            }, 2000);
+                window.location.href = "crop-log.html";
+            }, 1500);
 
         } else {
-            showMessage('❌ ' + result.error, 'error');
-            btn.textContent = originalText;
-            btn.disabled = false;
+
+            showMessage(data.message, "error");
+
         }
 
-    } catch (error) {
-        console.error('Registration error:', error);
-        showMessage('❌ Network error. Please try again.', 'error');
-        btn.textContent = originalText;
-        btn.disabled = false;
-    }
-}
+    } catch (err) {
 
+        showMessage("Server error.", "error");
+
+    }
+
+}
 
 async function loginFarmer() {
-    const phone = document.getElementById('loginPhone').value.trim();
 
-    if (!phone) {
-        showMessage('Please enter your phone number.', 'error');
+    const phone = document.getElementById("loginPhone").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
+
+    if (!phone || !password) {
+        showMessage("Please enter phone and password.", "error");
         return;
     }
 
-    const btn = document.querySelector('#loginForm button');
-    const originalText = btn.textContent;
-    btn.textContent = 'Logging in...';
-    btn.disabled = true;
-
     try {
+
         const response = await fetch(`${API_URL}/api/auth/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ phone })
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                phone,
+                password
+            })
+
         });
 
-        const result = await response.json();
+        const data = await response.json();
 
-        if (result.success) {
-            localStorage.setItem('farmer_id', result.data.id);
-            localStorage.setItem('farmer_name', result.data.name);
-            localStorage.setItem('farmer_phone', result.data.phone);
+        if (response.ok) {
 
-            showMessage('✅ ' + result.message, 'success');
+            localStorage.setItem("token", data.token);
+
+            showMessage("Login successful!", "success");
 
             setTimeout(() => {
-                window.location.href = 'crop-log.html';
-            }, 2000);
+                window.location.href = "crop-log.html";
+            }, 1000);
 
         } else {
-            showMessage('❌ ' + result.error, 'error');
-            btn.textContent = originalText;
-            btn.disabled = false;
+
+            showMessage(data.message, "error");
+
         }
 
-    } catch (error) {
-        console.error('Login error:', error);
-        showMessage('❌ Network error. Please try again.', 'error');
-        btn.textContent = originalText;
-        btn.disabled = false;
+    } catch (err) {
+
+        showMessage("Server error.", "error");
+
     }
+
 }
 
 
-function logout() {
-    localStorage.removeItem('farmer_id');
-    localStorage.removeItem('farmer_name');
-    localStorage.removeItem('farmer_phone');
-    window.location.href = 'index.html';
+function logout(){
+
+    localStorage.removeItem("token");
+
+    window.location.href="index.html";
+
 }
 
 

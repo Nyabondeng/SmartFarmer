@@ -170,8 +170,7 @@ This is an initial software demo. The following pages are
 fully implemented and live: Home, About, and Crop Info
 (with English voice output), educational Modules, Crop Info
 
-All the pages are built, Arabic and Bari voice output, the USSD backend, 
-and database connection are planned for the next phase.
+All the pages are built, Arabic voice output is working.
 
 # Proposed Deployment
 Frontend: Netlify (Already deployed)
