@@ -8,6 +8,13 @@ async function registerFarmer() {
 
     const password = document.getElementById("regPassword").value.trim();
 
+    console.log({
+    name,
+    phone,
+    location,
+    password
+});
+
     if (!name || !phone || !password) {
         showMessage("Please fill all required fields.", "error");
         return;
