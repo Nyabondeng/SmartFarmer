@@ -2,13 +2,13 @@ const API_URL = 'https://smartfarmer-m7x3.onrender.com';
 
 async function registerFarmer() {
 
-    const full_name = document.getElementById("regName").value.trim();
+    const name = document.getElementById("regName").value.trim();
     const phone = document.getElementById("regPhone").value.trim();
     const location = document.getElementById("regLocation").value.trim();
 
     const password = document.getElementById("regPassword").value.trim();
 
-    if (!full_name || !phone || !password) {
+    if (!name || !phone || !password) {
         showMessage("Please fill all required fields.", "error");
         return;
     }
@@ -24,7 +24,7 @@ async function registerFarmer() {
             },
 
             body: JSON.stringify({
-                full_name,
+                name,
                 phone,
                 location,
                 password
@@ -46,7 +46,7 @@ async function registerFarmer() {
 
         } else {
 
-            showMessage(data.message, "error");
+            showMessage(data.error, "error");
 
         }
 
@@ -99,7 +99,7 @@ async function loginFarmer() {
 
         } else {
 
-            showMessage(data.message, "error");
+            showMessage(data.error, "error");
 
         }
 
