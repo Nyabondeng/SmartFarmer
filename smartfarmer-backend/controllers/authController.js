@@ -2,40 +2,40 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const pool = require("../config/db");
 
-// Register User
+// Register Farmer
 exports.register = async (req, res) => {
     try {
-        const { full_name, email, phone, password } = req.body;
+        const { name, phone, location, password } = req.body;
 
-        if (!full_name || !email || !password) {
+        if (!name || !phone || !password) {
             return res.status(400).json({
                 success: false,
                 message: "Please fill all required fields."
             });
         }
 
-        // Check if user exists
-        const existingUser = await pool.query(
-            "SELECT * FROM users WHERE email=$1",
-            [email]
+        // Check if farmer already exists
+        const existingFarmer = await pool.query(
+            "SELECT * FROM farmers WHERE phone = $1",
+            [phone]
         );
 
-        if (existingUser.rows.length > 0) {
+        if (existingFarmer.rows.length > 0) {
             return res.status(400).json({
                 success: false,
-                message: "Email already registered."
+                message: "Phone number already registered."
             });
         }
 
-        // Encrypt password
+        // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
+        // Insert farmer
         const result = await pool.query(
-            `INSERT INTO users
-            (full_name,email,phone,password)
-            VALUES($1,$2,$3,$4)
-            RETURNING id,full_name,email,phone`,
-            [full_name, email, phone, hashedPassword]
+            `INSERT INTO farmers (name, phone, location, password)
+             VALUES ($1, $2, $3, $4)
+             RETURNING id, name, phone, location`,
+            [name, phone, location || null, hashedPassword]
         );
 
         res.status(201).json({
@@ -54,77 +54,67 @@ exports.register = async (req, res) => {
     }
 };
 
-// Login User
+
+// Login Farmer
 exports.login = async (req, res) => {
 
     try {
 
-        const { email, password } = req.body;
+        const { phone, password } = req.body;
 
         const result = await pool.query(
-            "SELECT * FROM users WHERE email=$1",
-            [email]
+            "SELECT * FROM farmers WHERE phone = $1",
+            [phone]
         );
 
         if (result.rows.length === 0) {
             return res.status(404).json({
-                success:false,
-                message:"User not found."
+                success: false,
+                message: "Farmer not found."
             });
         }
 
-        const user = result.rows[0];
+        const farmer = result.rows[0];
 
-        const match = await bcrypt.compare(password,user.password);
+        const match = await bcrypt.compare(password, farmer.password);
 
-        if(!match){
+        if (!match) {
             return res.status(401).json({
-                success:false,
-                message:"Incorrect password."
+                success: false,
+                message: "Incorrect password."
             });
         }
 
         const token = jwt.sign(
-
             {
-                id:user.id,
-                email:user.email
+                id: farmer.id,
+                phone: farmer.phone
             },
-
             process.env.JWT_SECRET,
-
             {
-                expiresIn:"7d"
+                expiresIn: "7d"
             }
-
         );
 
         res.json({
-
-            success:true,
-            message:"Login successful.",
+            success: true,
+            message: "Login successful.",
             token,
-
-            user:{
-                id:user.id,
-                full_name:user.full_name,
-                email:user.email,
-                phone:user.phone
+            user: {
+                id: farmer.id,
+                name: farmer.name,
+                phone: farmer.phone,
+                location: farmer.location
             }
-
         });
 
-    }
-
-    catch(error){
+    } catch (error) {
 
         console.error(error);
 
         res.status(500).json({
-
-            success:false,
-            message:error.message
-
+            success: false,
+            message: error.message
         });
 
     }
