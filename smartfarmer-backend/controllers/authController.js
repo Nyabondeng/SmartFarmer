@@ -2,15 +2,6 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const pool = require("../config/db");
 
-
-exports.register = async (req, res) => {
-    console.log("=== REGISTER ENDPOINT HIT ===");
-    console.log(req.body);
-
-    try {
-
-
-
 // Register Farmer
 exports.register = async (req, res) => {
     try {
