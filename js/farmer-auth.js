@@ -20,6 +20,7 @@ async function registerFarmer() {
         return;
     }
 
+
     try {
 
         const response = await fetch(`${API_URL}/api/auth/register`, {
@@ -39,7 +40,7 @@ async function registerFarmer() {
 
         });
 
-        
+
         const data = await response.json();
 
         console.log("Response:", data);
@@ -63,6 +64,13 @@ async function registerFarmer() {
             showMessage(data.message || data.error || JSON.stringify(data), "error");
 
         }
+    } catch (err) {
+
+        showMessage("Server error.", "error");
+
+    }
+
+}
 
 async function loginFarmer() {
 
@@ -96,6 +104,9 @@ async function loginFarmer() {
         if (response.ok) {
 
             localStorage.setItem("token", data.token);
+            localStorage.setItem("farmer_id", data.user.id);
+            localStorage.setItem("farmer_name", data.user.name);
+            localStorage.setItem("farmer_location", data.user.location);
 
             showMessage("Login successful!", "success");
 
@@ -105,7 +116,7 @@ async function loginFarmer() {
 
         } else {
 
-            showMessage(data.error, "error");
+            showMessage(data.message || data.error || JSON.stringify(data), "error");
 
         }
 
