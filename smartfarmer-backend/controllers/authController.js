@@ -2,6 +2,15 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const pool = require("../config/db");
 
+
+exports.register = async (req, res) => {
+    console.log("=== REGISTER ENDPOINT HIT ===");
+    console.log(req.body);
+
+    try {
+
+
+
 // Register Farmer
 exports.register = async (req, res) => {
     try {
@@ -13,6 +22,8 @@ exports.register = async (req, res) => {
                 message: "Please fill all required fields."
             });
         }
+
+        console.log("Checking existing farmer...");
 
         // Check if farmer already exists
         const existingFarmer = await pool.query(
@@ -30,6 +41,9 @@ exports.register = async (req, res) => {
         // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
+
+        console.log("Inserting farmer...");
+        
         // Insert farmer
         const result = await pool.query(
             `INSERT INTO farmers (name, phone, location, password)
