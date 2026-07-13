@@ -39,9 +39,14 @@ async function registerFarmer() {
 
         });
 
+        
         const data = await response.json();
 
+        console.log("Response:", data);
+
         if (response.ok) {
+
+            console.log("Registration Success:", data);
 
             localStorage.setItem("token", data.token);
 
@@ -53,17 +58,11 @@ async function registerFarmer() {
 
         } else {
 
-            showMessage(data.error, "error");
+            console.log("Registration Error:", data);
+
+            showMessage(data.message || data.error || JSON.stringify(data), "error");
 
         }
-
-    } catch (err) {
-
-        showMessage("Server error.", "error");
-
-    }
-
-}
 
 async function loginFarmer() {
 
