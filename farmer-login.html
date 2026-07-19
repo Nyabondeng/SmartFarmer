@@ -126,33 +126,7 @@
     <script src="/js/script.js?v=2"></script>
     <script src="/js/farmer-auth.js?v=2"></script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-    if (isLoggedIn()) {
-        window.location.href = 'index.html';
-        return;
-    }
 
-    document.getElementById('loginForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const phone = document.getElementById('loginPhone').value;
-        const msg = document.getElementById('loginMessage');
-        
-        msg.textContent = 'Logging in...';
-        msg.style.color = 'blue';
-        
-        const result = await apiLoginUser(phone);
-        
-        if (result.success) {
-            msg.textContent = 'Login successful! Redirecting...';
-            msg.style.color = 'green';
-            setTimeout(() => window.location.href = 'index.html', 1000);
-        } else {
-            msg.textContent = result.error || 'Login failed. Please register first.';
-            msg.style.color = 'red';
-        }
-    });
-});
 </script>
 </body>
 </html>
