@@ -13,7 +13,6 @@ const OFFLINE_FILES = [
     '/ussd.html',
     '/farmer-login.html',
     '/farmer-register.html',
-    '/success.html',
     '/offline.html',
     '/manifest.json',
     '/modules/module-planting.html',

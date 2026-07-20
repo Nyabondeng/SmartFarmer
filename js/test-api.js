@@ -11,14 +11,13 @@ async function testApi() {
     }
 
     try {
-        const register = await fetch(`${API_URL}/register`, {
+        const register = await fetch(`${API_URL}/auth/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 name: 'Test Farmer',
-                email: 'test@smartfarmer.com',
-                password: 'password123',
                 phone: '123456789',
+                password: 'password123',
                 location: 'Yei'
             })
         });

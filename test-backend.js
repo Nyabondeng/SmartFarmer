@@ -43,13 +43,16 @@ async function testBackend() {
     // ===== TEST 3: REGISTER USER =====
     console.log('📝 TEST 3: User Registration');
     const testPhone = '0912345678';
+    const testPassword = 'password123';
+    let authToken = null;
     const testUser = {
         name: 'Test Farmer',
         phone: testPhone,
-        location: 'Yei'
+        location: 'Yei',
+        password: testPassword
     };
     try {
-        const response = await fetch(`${API_URL}/register`, {
+        const response = await fetch(`${API_URL}/auth/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(testUser)
@@ -60,6 +63,7 @@ async function testBackend() {
             console.log('✅ Registration PASSED');
             console.log('✅ User:', data.user);
             console.log('✅ Token:', data.token ? 'Received ✅' : 'Not received ❌');
+            authToken = data.token;
         } else {
             console.log('⚠️ User may already exist:', data.message);
         }
@@ -71,10 +75,10 @@ async function testBackend() {
     // ===== TEST 4: LOGIN USER =====
     console.log('🔑 TEST 4: User Login');
     try {
-        const response = await fetch(`${API_URL}/login`, {
+        const response = await fetch(`${API_URL}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ phone: testPhone })
+            body: JSON.stringify({ phone: testPhone, password: testPassword })
         });
         const data = await response.json();
         console.log('✅ Status:', response.status);
@@ -82,6 +86,7 @@ async function testBackend() {
             console.log('✅ Login PASSED');
             console.log('✅ User:', data.user);
             console.log('✅ Token:', data.token ? 'Received ✅' : 'Not received ❌');
+            authToken = data.token;
         } else {
             console.log('⚠️ Login failed:', data.message);
         }
@@ -107,10 +112,12 @@ async function testBackend() {
         console.log('❌ Farmers API FAILED:', error.message, '\n');
     }
 
-    // ===== TEST 6: GET CROP LOGS =====
+    // ===== TEST 6: GET CROP LOGS (requires login) =====
     console.log('📋 TEST 6: Get Crop Logs');
     try {
-        const response = await fetch(`${API_URL}/logs`);
+        const response = await fetch(`${API_URL}/logs`, {
+            headers: { 'Authorization': `Bearer ${authToken}` }
+        });
         const data = await response.json();
         console.log('✅ Status:', response.status);
         if (response.ok) {
@@ -124,27 +131,23 @@ async function testBackend() {
         console.log('❌ Logs API FAILED:', error.message, '\n');
     }
 
-    // ===== TEST 7: SAVE CROP LOG =====
+    // ===== TEST 7: SAVE CROP LOG (requires login) =====
     console.log('💾 TEST 7: Save Crop Log');
     try {
-        // First get a farmer ID
-        const farmersRes = await fetch(`${API_URL}/farmers`);
-        const farmersData = await farmersRes.json();
-        let farmerId = 1;
-        if (farmersData.data && farmersData.data.length > 0) {
-            farmerId = farmersData.data[0].id;
-        }
-        
         const logData = {
-            farmer_id: farmerId,
             crop: 'Sorghum',
             planting_date: '2026-07-03',
-            notes: 'Test log from backend test'
+            notes: 'Test log from backend test',
+            status: 'Planted',
+            location: 'Yei'
         };
-        
+
         const response = await fetch(`${API_URL}/logs`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
+            },
             body: JSON.stringify(logData)
         });
         const data = await response.json();

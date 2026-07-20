@@ -1,5 +1,3 @@
-const API_BASE_URL = 'https://smartfarmer-m7x3.onrender.com';
-
 function getCurrentTranslateLanguage() {
     const selector = document.getElementById('languageSwitcher');
     const selected = selector ? selector.value : 'en';
@@ -288,7 +286,7 @@ function updateUserNav() {
 
         const logoutLi = document.createElement('li');
         logoutLi.className = 'nav-logout-link';
-        logoutLi.innerHTML = `<a href="#" onclick="apiLogoutUser(); return false;">Logout</a>`;
+        logoutLi.innerHTML = `<a href="#" onclick="logoutUser(); return false;">Logout</a>`;
 
         navLinks.appendChild(userLi);
         navLinks.appendChild(logoutLi);
@@ -301,23 +299,13 @@ function updateUserNav() {
 }
 
 function getCurrentUser() {
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
+    const token = localStorage.getItem('token');
+    const name = localStorage.getItem('farmer_name');
+    return (token && name) ? { name: name } : null;
 }
 
 function isLoggedIn() {
     return !!localStorage.getItem('token');
-}
-
-async function deleteCloudLog(logId) {
-    if (confirm('Are you sure you want to delete this log?')) {
-        const result = await apiDeleteCropLog(logId);
-        if (result.success) {
-            await displayCropLogs();
-        } else {
-            alert('Error deleting: ' + result.error);
-        }
-    }
 }
 
 function playAudio(topic) {
@@ -491,143 +479,12 @@ window.addEventListener('beforeinstallprompt', (event) => {
     }
 });
 
-function apiLogoutUser() {
+function logoutUser() {
     localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.removeItem('farmer_id');
+    localStorage.removeItem('farmer_name');
+    localStorage.removeItem('farmer_location');
     window.location.href = 'index.html';
-}
-
-// ============================================================
-// AUTH & API FUNCTIONS
-// ============================================================
-
-function getAuthToken() {
-    return localStorage.getItem('token');
-}
-
-async function apiRegisterUser(userData) {
-    try {
-        const response = await fetch(`${API_BASE_URL}/api/register`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userData)
-        });
-        const data = await response.json();
-        if (response.ok) {
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('user', JSON.stringify(data.user));
-            return { success: true, user: data.user };
-        }
-        return { success: false, error: data.message || 'Registration failed' };
-    } catch (error) {
-        return { success: false, error: error.message };
-    }
-}
-
-async function apiLoginUser(email, password) {
-    try {
-        const response = await fetch(`${API_BASE_URL}/api/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
-        });
-        const data = await response.json();
-        if (response.ok) {
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('user', JSON.stringify(data.user));
-            return { success: true, user: data.user };
-        }
-        return { success: false, error: data.message || 'Login failed' };
-    } catch (error) {
-        return { success: false, error: error.message };
-    }
-}
-
-async function apiGetCropLogs() {
-    const token = getAuthToken();
-    if (!token) {
-        return { success: false, error: 'Please login first' };
-    }
-
-    try {
-        const response = await fetch(`${API_BASE_URL}/api/crop-logs`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        const data = await response.json();
-        if (response.ok) {
-            return { success: true, logs: data.logs || [] };
-        }
-        return { success: false, error: data.message || 'Failed to fetch logs' };
-    } catch (error) {
-        return { success: false, error: error.message };
-    }
-}
-
-async function apiSaveCropLog(cropData) {
-    const token = getAuthToken();
-    if (!token) {
-        return { success: false, error: 'Please login first' };
-    }
-
-    try {
-        const response = await fetch(`${API_BASE_URL}/api/crop-logs`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(cropData)
-        });
-        const data = await response.json();
-        if (response.ok) {
-            return { success: true, log: data.log };
-        }
-        return { success: false, error: data.message || 'Failed to save log' };
-    } catch (error) {
-        return { success: false, error: error.message };
-    }
-}
-
-async function apiDeleteCropLog(logId) {
-    const token = getAuthToken();
-    if (!token) {
-        return { success: false, error: 'Please login first' };
-    }
-
-    try {
-        const response = await fetch(`${API_BASE_URL}/api/crop-logs/${logId}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        const data = await response.json();
-        if (response.ok) {
-            return { success: true };
-        }
-        return { success: false, error: data.message || 'Failed to delete log' };
-    } catch (error) {
-        return { success: false, error: error.message };
-    }
-}
-
-async function apiSendContactMessage(formData) {
-    try {
-        const response = await fetch(`${API_BASE_URL}/api/contact`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-        });
-        const data = await response.json();
-        if (response.ok) {
-            return { success: true };
-        }
-        return { success: false, error: data.message || 'Failed to send message' };
-    } catch (error) {
-        return { success: false, error: error.message };
-    }
 }
 
 
@@ -650,22 +507,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Update user nav
     updateUserNav();
-    
-    // Display crop logs if on crop-log page
-    if (document.getElementById('logList')) {
-        displayCropLogs();
-    }
-    
+
     // Install banner
     showInstallBanner();
-    
-    // Contact form
-    if (document.getElementById('contactForm')) {
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            // ... contact form code ...
-        });
-    }
-    
+
     // Service Worker
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
@@ -691,14 +536,10 @@ window.toggleMenu = toggleMenu;
 window.saveCropLog = saveCropLog;
 window.displayCropLogs = displayCropLogs;
 window.clearAllLogs = clearAllLogs;
-window.deleteCloudLog = deleteCloudLog;
 window.playAudio = playAudio;
 window.translatePage = translatePage;
 window.updateUserNav = updateUserNav;
-window.apiGetCropLogs = apiGetCropLogs;
-window.apiSaveCropLog = apiSaveCropLog;
-window.apiDeleteCropLog = apiDeleteCropLog;
-window.apiSendContactMessage = apiSendContactMessage;
+window.logoutUser = logoutUser;
 window.toggleModuleAudio = toggleModuleAudio;
 window.pauseModuleAudio = pauseModuleAudio;
 window.getCurrentTranslateLanguage = getCurrentTranslateLanguage;
@@ -707,10 +548,7 @@ window.dismissInstallBanner = dismissInstallBanner;
 window.showInstallBanner = showInstallBanner;
 window.editCropLog = editCropLog;
 window.updateCropCount = updateCropCount;
-window.updateUserNav = updateUserNav;
 window.getCropLogs = getCropLogs;
 window.saveCropLogs = saveCropLogs;
 window.formatDate = formatDate;
 window.getStatusColor = getStatusColor;
-window.deleteCloudLog = deleteCloudLog;
-window.getAuthToken = getAuthToken;

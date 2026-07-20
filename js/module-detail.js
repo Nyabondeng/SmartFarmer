@@ -52,7 +52,7 @@
             crops: t.crops || 'Crop Info',
             education: t.education || 'Education',
             cropLog: t.cropLog || 'Crop Log',
-            contact: t.contact || 'Contact',
+            login: t.login || 'Account',
             ussd: t.ussd || 'USSD'
         };
 
@@ -63,7 +63,7 @@
             else if (href.includes('crops.html')) link.textContent = navMap.crops;
             else if (href.includes('education.html')) link.textContent = navMap.education;
             else if (href.includes('crop-log.html')) link.textContent = navMap.cropLog;
-            else if (href.includes('contact.html')) link.textContent = navMap.contact;
+            else if (href.includes('farmer-login.html')) link.textContent = navMap.login;
             else if (href.includes('ussd.html')) link.textContent = navMap.ussd;
         });
 

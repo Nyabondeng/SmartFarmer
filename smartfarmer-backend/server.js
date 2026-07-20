@@ -50,7 +50,10 @@ async function createTables() {
             )
         `);
 
-
+        await pool.query(`
+            ALTER TABLE farmers
+                ADD COLUMN IF NOT EXISTS password VARCHAR(255)
+        `);
 
         await pool.query(`
             CREATE TABLE IF NOT EXISTS crop_logs (
