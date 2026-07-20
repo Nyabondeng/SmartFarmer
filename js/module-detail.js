@@ -56,14 +56,17 @@
         };
 
         document.querySelectorAll('.nav-links a').forEach(link => {
+            // Normalize to the bare page name so this still works after
+            // Netlify's pretty-URLs rewrite strips the ".html" extension
             const href = (link.getAttribute('href') || '').toLowerCase();
-            if (href.includes('index.html')) link.textContent = navMap.home;
-            else if (href.includes('about.html')) link.textContent = navMap.about;
-            else if (href.includes('crops.html')) link.textContent = navMap.crops;
-            else if (href.includes('education.html')) link.textContent = navMap.education;
-            else if (href.includes('crop-log.html')) link.textContent = navMap.cropLog;
-            else if (href.includes('farmer-login.html')) link.textContent = navMap.login;
-            else if (href.includes('ussd.html')) link.textContent = navMap.ussd;
+            const page = href.split('/').pop().replace('.html', '');
+            if (page === '' || page === 'index') link.textContent = navMap.home;
+            else if (page === 'about') link.textContent = navMap.about;
+            else if (page === 'crops') link.textContent = navMap.crops;
+            else if (page === 'education') link.textContent = navMap.education;
+            else if (page === 'crop-log') link.textContent = navMap.cropLog;
+            else if (page === 'farmer-login') link.textContent = navMap.login;
+            else if (page === 'ussd') link.textContent = navMap.ussd;
         });
 
         const backLink = document.querySelector('.back-link');

@@ -294,9 +294,11 @@ function updateUserNav() {
     document.querySelectorAll('.nav-user-link, .nav-logout-link, .nav-account-link')
         .forEach(el => el.remove());
 
-    // The Account link hard-coded in the page's nav (any path form)
+    // The Account link hard-coded in the page's nav. Substring match on
+    // purpose: Netlify's pretty-URLs rewrites "farmer-login.html" to
+    // "/farmer-login" on deploy, which an exact/suffix match would miss.
     const staticAccount = navLinks.querySelector(
-        'a[href$="farmer-login.html"], a[href$="farmer-register.html"]'
+        'a[href*="farmer-login"], a[href*="farmer-register"]'
     );
     const staticAccountLi = staticAccount ? staticAccount.closest('li') : null;
 
