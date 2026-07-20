@@ -372,11 +372,6 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-app.get('/', (req, res) => {
-  res.send('Smart Farmer Backend Running');
-});
-
-
 app.use(express.static(path.join(__dirname, '..')));
 
 
