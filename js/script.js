@@ -290,14 +290,20 @@ function updateUserNav() {
     const navLinks = document.querySelector('.nav-links');
     if (!navLinks) return;
 
-    const existingUser = document.querySelector('.nav-user-link');
-    const existingLogout = document.querySelector('.nav-logout-link');
-    const existingAccount = navLinks.querySelector('a[href="farmer-login.html"], a[href="farmer-register.html"]');
+    // Remove anything this function added on a previous run
+    document.querySelectorAll('.nav-user-link, .nav-logout-link, .nav-account-link')
+        .forEach(el => el.remove());
 
-    if (existingUser) existingUser.remove();
-    if (existingLogout) existingLogout.remove();
+    // The Account link hard-coded in the page's nav (any path form)
+    const staticAccount = navLinks.querySelector(
+        'a[href$="farmer-login.html"], a[href$="farmer-register.html"]'
+    );
+    const staticAccountLi = staticAccount ? staticAccount.closest('li') : null;
 
     if (user) {
+        // Logged in: hide the Account link, show name + logout instead
+        if (staticAccountLi) staticAccountLi.style.display = 'none';
+
         const t = (window.translations || {})[getCurrentTranslateLanguage()] || {};
 
         const userLi = document.createElement('li');
@@ -310,7 +316,10 @@ function updateUserNav() {
 
         navLinks.appendChild(userLi);
         navLinks.appendChild(logoutLi);
-    } else if (!existingAccount) {
+    } else if (staticAccountLi) {
+        // Logged out: show the page's own Account link, add nothing
+        staticAccountLi.style.display = '';
+    } else {
         const accountLi = document.createElement('li');
         accountLi.className = 'nav-account-link';
         accountLi.innerHTML = '<a href="farmer-login.html" data-translate="login">Account</a>';
