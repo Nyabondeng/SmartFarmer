@@ -372,69 +372,6 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-app.get('/api/farmers', async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM farmers ORDER BY id');
-    res.json({ success: true, data: result.rows });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
-app.post('/api/farmers', async (req, res) => {
-  const { name, phone, location } = req.body;
-  try {
-    const result = await pool.query(
-      'INSERT INTO farmers (name, phone, location) VALUES ($1, $2, $3) RETURNING *',
-      [name, phone, location]
-    );
-    res.json({ success: true, data: result.rows[0] });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
-app.get('/api/logs', async (req, res) => {
-  try {
-    const result = await pool.query(`
-      SELECT l.*, f.name as farmer_name, f.phone as farmer_phone
-      FROM crop_logs l
-      LEFT JOIN farmers f ON l.farmer_id = f.id
-      ORDER BY l.created_at DESC
-    `);
-    res.json({ success: true, data: result.rows });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
-app.post('/api/logs', async (req, res) => {
-  const { farmer_id, crop, planting_date, harvest_date, notes } = req.body;
-  try {
-    const result = await pool.query(
-      `INSERT INTO crop_logs (farmer_id, crop, planting_date, harvest_date, notes)
-       VALUES ($1, $2, $3, $4, $5)
-       RETURNING *`,
-      [farmer_id, crop, planting_date, harvest_date, notes]
-    );
-    res.json({ success: true, data: result.rows[0] });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
-app.get('/api/ussd-logs', async (req, res) => {
-  try {
-    const result = await pool.query(
-      'SELECT * FROM ussd_logs ORDER BY created_at DESC LIMIT 50'
-    );
-    res.json({ success: true, data: result.rows });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
-
 app.get('/', (req, res) => {
   res.send('Smart Farmer Backend Running');
 });

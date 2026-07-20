@@ -95,21 +95,19 @@ async function testBackend() {
         console.log('❌ Login FAILED:', error.message, '\n');
     }
 
-    // ===== TEST 5: GET FARMERS =====
-    console.log('👨‍🌾 TEST 5: Get All Farmers');
+    // ===== TEST 5: PROTECTED ROUTE REQUIRES LOGIN =====
+    console.log('🔒 TEST 5: Crop Logs Require Login');
     try {
-        const response = await fetch(`${API_URL}/farmers`);
-        const data = await response.json();
+        const response = await fetch(`${API_URL}/logs`);
         console.log('✅ Status:', response.status);
-        if (response.ok) {
-            console.log('✅ Farmers API PASSED');
-            console.log('✅ Total farmers:', data.data ? data.data.length : 0);
+        if (response.status === 401) {
+            console.log('✅ Protection PASSED (401 without token)');
         } else {
-            console.log('⚠️ Farmers API returned:', data);
+            console.log('⚠️ Expected 401, got:', response.status);
         }
         console.log('');
     } catch (error) {
-        console.log('❌ Farmers API FAILED:', error.message, '\n');
+        console.log('❌ Protection test FAILED:', error.message, '\n');
     }
 
     // ===== TEST 6: GET CROP LOGS (requires login) =====
@@ -241,23 +239,6 @@ async function testBackend() {
         console.log('❌ USSD Crop Details FAILED:', error.message, '\n');
     }
 
-    // ===== TEST 11: GET USSD LOGS =====
-    console.log('📊 TEST 11: Get USSD Logs');
-    try {
-        const response = await fetch(`${API_URL}/ussd-logs`);
-        const data = await response.json();
-        console.log('✅ Status:', response.status);
-        if (response.ok) {
-            console.log('✅ USSD Logs API PASSED');
-            console.log('✅ Total USSD logs:', data.data ? data.data.length : 0);
-        } else {
-            console.log('⚠️ USSD Logs API returned:', data);
-        }
-        console.log('');
-    } catch (error) {
-        console.log('❌ USSD Logs API FAILED:', error.message, '\n');
-    }
-
     // ===== SUMMARY =====
     console.log('📊 =========================================');
     console.log('📊 TEST SUMMARY');
@@ -266,13 +247,12 @@ async function testBackend() {
     console.log('✅ 2. Get Crops: PASS');
     console.log('✅ 3. Registration: PASS (or user exists)');
     console.log('✅ 4. Login: PASS');
-    console.log('✅ 5. Get Farmers: PASS');
+    console.log('✅ 5. Logs Require Login: PASS');
     console.log('✅ 6. Get Crop Logs: PASS');
     console.log('✅ 7. Save Crop Log: PASS');
     console.log('✅ 8. USSD Main Menu: PASS');
     console.log('✅ 9. USSD Crop Selection: PASS');
     console.log('✅ 10. USSD Crop Details: PASS');
-    console.log('✅ 11. USSD Logs: PASS');
     console.log('📊 =========================================');
     console.log('✅ All backend tests completed!');
 }
