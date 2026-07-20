@@ -123,7 +123,6 @@
                   || 'en';
         
         let currentLang = lang;
-        if (currentLang === 'ba') currentLang = 'bari';
         if (currentLang === 'ar') currentLang = 'juba';
         
         // Get translations for current language
@@ -215,9 +214,8 @@
 
     function normalizeLanguage(lang) {
         let normalized = lang || 'en';
-        if (normalized === 'ba') normalized = 'bari';
         if (normalized === 'ar') normalized = 'juba';
-        if (!['en', 'juba', 'bari'].includes(normalized)) normalized = 'en';
+        if (!['en', 'juba'].includes(normalized)) normalized = 'en';
         return normalized;
     }
 

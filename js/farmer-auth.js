@@ -1,5 +1,12 @@
 const API_URL = 'https://smartfarmer-m7x3.onrender.com';
 
+// Current translation dictionary (falls back to English)
+function getAuthT() {
+    const lang = window.getCurrentTranslateLanguage ? window.getCurrentTranslateLanguage() : 'en';
+    const all = window.translations || {};
+    return all[lang] || all.en || {};
+}
+
 async function registerFarmer() {
 
     const name = document.getElementById("regName").value.trim();
@@ -16,7 +23,7 @@ async function registerFarmer() {
 });
 
     if (!name || !phone || !password) {
-        showMessage("Please fill all required fields.", "error");
+        showMessage(getAuthT().messagePleaseFill || "Please fill all required fields.", "error");
         return;
     }
 
@@ -54,7 +61,7 @@ async function registerFarmer() {
             localStorage.setItem("farmer_name", data.user.name);
             localStorage.setItem("farmer_location", data.user.location || "");
 
-            showMessage("Registration successful!", "success");
+            showMessage(getAuthT().messageRegisterSuccess || "Registration successful!", "success");
 
             setTimeout(() => {
                 window.location.href = "crop-log.html";
@@ -69,7 +76,7 @@ async function registerFarmer() {
         }
     } catch (err) {
 
-        showMessage("Server error.", "error");
+        showMessage(getAuthT().messageNetworkError || "Server error.", "error");
 
     }
 
@@ -81,7 +88,7 @@ async function loginFarmer() {
     const password = document.getElementById("loginPassword").value.trim();
 
     if (!phone || !password) {
-        showMessage("Please enter phone and password.", "error");
+        showMessage(getAuthT().messagePhonePassword || "Please enter phone and password.", "error");
         return;
     }
 
@@ -111,7 +118,7 @@ async function loginFarmer() {
             localStorage.setItem("farmer_name", data.user.name);
             localStorage.setItem("farmer_location", data.user.location);
 
-            showMessage("Login successful!", "success");
+            showMessage(getAuthT().messageLoginSuccess || "Login successful!", "success");
 
             setTimeout(() => {
                 window.location.href = "crop-log.html";
@@ -125,7 +132,7 @@ async function loginFarmer() {
 
     } catch (err) {
 
-        showMessage("Server error.", "error");
+        showMessage(getAuthT().messageNetworkError || "Server error.", "error");
 
     }
 
@@ -151,9 +158,10 @@ function checkLoginStatus() {
 
     if (banner) {
         if (farmerId && farmerName) {
+            const t = getAuthT();
             banner.innerHTML = `
-                <p>👨‍🌾 Logged in as: <strong>${farmerName}</strong>
-                <button class="logout-btn" onclick="logout()">Logout</button></p>
+                <p>👨‍🌾 ${t.loggedInAs || 'Logged in as:'} <strong>${farmerName}</strong>
+                <button class="logout-btn" onclick="logout()">${t.logout || 'Logout'}</button></p>
             `;
             banner.style.display = 'block';
         } else {

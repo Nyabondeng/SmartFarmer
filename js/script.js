@@ -1,7 +1,25 @@
+// The saved language is the single source of truth ('en' or 'juba').
+// The dropdown is restored from it on every page load, so the choice
+// survives navigation and both text and voice read the same value.
+function getStoredLanguage() {
+    const stored = localStorage.getItem('smartfarmer_lang')
+        || localStorage.getItem('sf_lang')
+        || localStorage.getItem('language');
+    return (stored === 'juba' || stored === 'ar') ? 'juba' : 'en';
+}
+
+function setStoredLanguage(lang) {
+    localStorage.setItem('smartfarmer_lang', lang);
+    localStorage.setItem('sf_lang', lang);
+    localStorage.setItem('language', lang);
+}
+
 function getCurrentTranslateLanguage() {
     const selector = document.getElementById('languageSwitcher');
-    const selected = selector ? selector.value : 'en';
-    return selected === 'ba' ? 'bari' : (selected === 'ar' ? 'juba' : selected);
+    if (selector && selector.value) {
+        return (selector.value === 'juba' || selector.value === 'ar') ? 'juba' : 'en';
+    }
+    return getStoredLanguage();
 }
 
 
@@ -280,13 +298,15 @@ function updateUserNav() {
     if (existingLogout) existingLogout.remove();
 
     if (user) {
+        const t = (window.translations || {})[getCurrentTranslateLanguage()] || {};
+
         const userLi = document.createElement('li');
         userLi.className = 'nav-user-link';
         userLi.innerHTML = `<a href="#">👤 ${user.name || 'User'}</a>`;
 
         const logoutLi = document.createElement('li');
         logoutLi.className = 'nav-logout-link';
-        logoutLi.innerHTML = `<a href="#" onclick="logoutUser(); return false;">Logout</a>`;
+        logoutLi.innerHTML = `<a href="#" onclick="logoutUser(); return false;">${t.logout || 'Logout'}</a>`;
 
         navLinks.appendChild(userLi);
         navLinks.appendChild(logoutLi);
@@ -309,10 +329,7 @@ function isLoggedIn() {
 }
 
 function playAudio(topic) {
-    const stored = localStorage.getItem('sf_lang') || localStorage.getItem('language') || 'en';
-    let lang = stored;
-    if (lang === 'ba') lang = 'bari';
-    if (lang === 'ar') lang = 'juba';
+    const lang = getCurrentTranslateLanguage();
 
     const voiceKey = topic + 'Voice';
     let message = '';
@@ -336,12 +353,12 @@ function playAudio(topic) {
     };
 
     if (!message) {
-        message = defaultMessages[topic] || 'Information available in English. Voice in Bari and Juba Arabic coming soon.';
+        message = defaultMessages[topic] || 'Information not available.';
     }
 
     console.log('playAudio()', { topic, voiceKey, lang, message });
 
-    if ((lang === 'juba' || lang === 'bari') && topic) {
+    if (lang === 'juba' && topic) {
         const audioPath = `/audio/${lang}/${topic}.mp3`;
         const audio = new Audio(audioPath);
         
@@ -378,7 +395,6 @@ function speakWithSynthesis(message, lang) {
             const mapPref = (p) => {
                 if (!p) return '';
                 if (p === 'juba') return 'ar';
-                if (p === 'bari') return 'en';
                 return p;
             };
 
@@ -412,7 +428,7 @@ function speakWithSynthesis(message, lang) {
                 utterance.voice = voice;
                 utterance.lang = voice.lang || utterance.lang;
             } else {
-                utterance.lang = (prefLang === 'juba') ? 'ar-SA' : ((prefLang === 'bari') ? 'en-US' : prefLang);
+                utterance.lang = (prefLang === 'juba') ? 'ar-SA' : 'en-US';
             }
             utterance.rate = 0.9;
             speechSynthesis.cancel();
@@ -489,18 +505,26 @@ function logoutUser() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Apply navigation translations
-    applyNavigationTranslations();
-    
-    // Translate the page
-    translatePage();
-    
-    // Language switcher listener
+    // Restore the saved language BEFORE translating, so the choice
+    // survives navigation between pages
     const languageSwitcher = document.getElementById('languageSwitcher');
     if (languageSwitcher) {
+        languageSwitcher.value = getStoredLanguage();
+    }
+
+    // Apply navigation translations
+    applyNavigationTranslations();
+
+    // Translate the page
+    translatePage();
+
+    // Language switcher listener
+    if (languageSwitcher) {
         languageSwitcher.addEventListener('change', function() {
+            setStoredLanguage(getCurrentTranslateLanguage());
             applyNavigationTranslations();
             translatePage();
+            updateUserNav();
             document.dispatchEvent(new Event('languagechange'));
         });
     }
@@ -543,6 +567,8 @@ window.logoutUser = logoutUser;
 window.toggleModuleAudio = toggleModuleAudio;
 window.pauseModuleAudio = pauseModuleAudio;
 window.getCurrentTranslateLanguage = getCurrentTranslateLanguage;
+window.getStoredLanguage = getStoredLanguage;
+window.setStoredLanguage = setStoredLanguage;
 window.applyNavigationTranslations = applyNavigationTranslations;
 window.dismissInstallBanner = dismissInstallBanner;
 window.showInstallBanner = showInstallBanner;

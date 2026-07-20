@@ -29,7 +29,6 @@
                     <select id="languageSwitcher">
                         <option value="en">English</option>
                         <option value="juba">Juba Arabic</option>
-                        <option value="bari">Bari</option>
                     </select>
                 </div>
             </nav>
@@ -44,20 +43,20 @@
         <!-- LEFT: branding panel -->
         <div class="auth-left">
             <div class="auth-left-content">
-                <h2>Join Smart Farmer</h2>
-                <p>Create your account and start saving your planting records to the cloud, accessible from any device.</p>
+                <h2 data-translate="registerTitle">Join Smart Farmer</h2>
+                <p data-translate="registerDesc">Create your account and start saving your planting records to the cloud, accessible from any device.</p>
                 <div class="auth-benefits">
                     <div class="benefit-item">
-                        <span>Save records to the cloud</span>
+                        <span data-translate="registerBenefit1">Save records to the cloud</span>
                     </div>
                     <div class="benefit-item">
-                        <span>Access from any device</span>
+                        <span data-translate="registerBenefit2">Access from any device</span>
                     </div>
                     <div class="benefit-item">
-                        <span>Your data is private and safe</span>
+                        <span data-translate="registerBenefit3">Your data is private and safe</span>
                     </div>
                     <div class="benefit-item">
-                        <span>Available in 3 languages</span>
+                        <span data-translate="registerBenefit4">Available in 2 languages</span>
                     </div>
                 </div>
             </div>
@@ -67,50 +66,53 @@
         <div class="auth-right">
             <div class="auth-container" id="registerForm">
                 <div class="auth-header">
-                    <h2>Create Account</h2>
-                    <p class="auth-subtitle">Register as a farmer to get started</p>
+                    <h2 data-translate="registerFormTitle">Create Account</h2>
+                    <p class="auth-subtitle" data-translate="registerSubtitle">Register as a farmer to get started</p>
                 </div>
 
                 <div class="message" id="authMessage"></div>
 
                 <div class="form-group">
-                    <label for="regName">Full Name</label>
+                    <label for="regName" data-translate="registerNameLabel">Full Name</label>
                     <div class="input-wrap">
                         <span class="input-icon">👤</span>
-                        <input type="text" id="regName" placeholder="e.g., John Deng" required>
+                        <input type="text" id="regName" data-translate="registerNamePlaceholder" placeholder="e.g., John Deng" required>
                     </div>
                 </div>
 
                 <div class="form-group">
     <label for="regLocation">
-        Location <span class="optional">(optional)</span>
+        <span data-translate="registerLocationLabel">Location</span> <span class="optional" data-translate="optionalLabel">(optional)</span>
     </label>
     <div class="input-wrap">
         <span class="input-icon">📍</span>
         <input type="text"
                id="regLocation"
+               data-translate="registerLocationPlaceholder"
                placeholder="e.g., Yei County">
     </div>
 </div>
 
         <div class="form-group">
-            <label for="regPhone">Phone Number</label>
+            <label for="regPhone" data-translate="registerPhoneLabel">Phone Number</label>
                 <div class="input-wrap">
                     <span class="input-icon">📱</span>
                         <input type="tel"
                                id="regPhone"
+                               data-translate="registerPhonePlaceholder"
                                placeholder="e.g., 0928444313"
                                required>
                     </div>
                 </div>
 
 <div class="form-group">
-    <label for="regPassword">Password</label>
+    <label for="regPassword" data-translate="registerPasswordLabel">Password</label>
     <div class="input-wrap">
         <span class="input-icon">🔒</span>
         <input
             type="password"
             id="regPassword"
+            data-translate="registerPasswordPlaceholder"
             placeholder="Create a password"
             required
         >
@@ -118,12 +120,12 @@
 </div>
 
 
-                <button class="auth-btn" onclick="registerFarmer()">
+                <button class="auth-btn" onclick="registerFarmer()" data-translate="registerBtn">
                     Create Account →
                 </button>
 
                 <div class="switch-link">
-                    Already have an account? <a href="farmer-login.html">Login here</a>
+                    <span data-translate="registerSwitch">Already have an account?</span> <a href="farmer-login.html" data-translate="loginLink">Login here</a>
                 </div>
             </div>
         </div>
@@ -141,9 +143,9 @@
     </div>
 </footer>    
 
-    <script src="/js/translations.js?v=2"></script>
-    <script src="/js/script.js?v=2"></script>
-    <script src="/js/farmer-auth.js?v=2"></script>
+    <script src="/js/translations.js?v=5"></script>
+    <script src="/js/script.js?v=5"></script>
+    <script src="/js/farmer-auth.js?v=5"></script>
 
 </body>
 </html>

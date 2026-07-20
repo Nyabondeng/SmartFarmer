@@ -73,7 +73,7 @@ const common = {
 
         trustCropsNum: "٣٠",
         trustModulesNum: "١٠",
-        trustLanguagesNum: "٣",
+        trustLanguagesNum: "٢",
 
         footerCopy: "© 2026 سمارت فارمر. جميع الحقوق محفوظة.",
 
@@ -82,47 +82,6 @@ const common = {
         footerEmail: "📧 البريد الإلكتروني: nyabondeng0@gmail.com",
         footerPhone: "📱 الهاتف: +٢١١٩٢٨٤٧٠٤٤٤"
     },
-
-    bari: {
-       
-        home: "Piny",
-        about: "Kony kinyi",
-        crops: "Korop",
-        fertilizer: "Mundu",
-        costForecast: "Gworo kwoi",
-        education: "Gworo kinyi",
-        cropLog: "Korop log",
-        account: "Akawut",
-        ussd: "USSD", 
-
-        // Hero / General
-        welcome: "Jom i Smart Farmer",
-        heroTitle: "Kony lo Smart Farming <br><span class=\"headline-accent\">Tek i Koto</span>",
-        exploreCrops: "Kono Korop",
-        startLearning: "Tek Kujju",
-        trustCrops: "Korop",
-        trustModules: "Module",
-        trustLanguages: "Lugati",
-        trustAvailable: "Lo iye",
-        trustFree: "Free",
-        trustAlways: "Always",
-        tagline: "Kony lo korop ki kujju, kit lo korop, ki kit lo korop ki awi.",
-        getStarted: "Konye",
-
-        // Voice Controls
-        voiceListenLabel: "🔊 Listen",
-        voicePauseLabel: "⏸ Pause",
-        voiceStopLabel: "⏹ Stop",
-        learnMore: "Learn More →",
-
-        // Footer
-        footerText: "© 2026 Smart Farmer. For smallholder farmers in South Sudan.",
-        footerCopy: "© 2026 Smart Farmer. All rights reserved.",
-        installBannerTitle: "Install Smart Farmer",
-        installBannerText: "Save this app to your phone for offline access",
-        installButton: "Install",
-        footerLocation: "📍 Yei County, South Sudan"
-    }
 };
 
 // ============================================
@@ -135,7 +94,7 @@ const about = {
         whoWeAreTitle: "Who We Are",
         whoWeAreText: "Smart Farmer is a digital agricultural information system designed specifically for smallholder farmers in South Sudan. It provides crop information, educational modules, and a planting log that works offline on any device.",
         missionTitle: "Mission",
-        missionText: "To provide accessible farming information to smallholder farmers in Yei County, South Sudan, in their own languages — Arabic, English, and Bari — without requiring internet access.",
+        missionText: "To provide accessible farming information to smallholder farmers in Yei County, South Sudan, in their own languages — Arabic and English — without requiring internet access.",
         visionTitle: "Vision",
         visionText: "A future where every farmer in South Sudan has the knowledge and tools to grow more food, reduce crop losses, and improve their family's food security.",
         offersTitle: "What Smart Farmer Offers",
@@ -155,7 +114,7 @@ const about = {
         whoWeAreText: "المزارع الذكي هو نظام معلومات زراعية رقمي مصمم خصيصاً للمزارعين أصحاب الحيازات الصغيرة في جنوب السودان. يوفر معلومات عن المحاصيل، وحدات تعليمية، وسجل زراعي يعمل دون اتصال بالإنترنت على أي جهاز.",
 
         missionTitle: "الرسالة",
-        missionText: "توفير معلومات زراعية ميسرة للمزارعين أصحاب الحيازات الصغيرة في مقاطعة يي، جنوب السودان، بلغاتهم العربية والإنجليزية والباري، دون الحاجة إلى اتصال بالإنترنت.",
+        missionText: "توفير معلومات زراعية ميسرة للمزارعين أصحاب الحيازات الصغيرة في مقاطعة يي، جنوب السودان، بلغاتهم العربية والإنجليزية، دون الحاجة إلى اتصال بالإنترنت.",
 
         visionTitle: "الرؤية",
         visionText: "مستقبل يتمتع فيه كل مزارع في جنوب السودان بالمعرفة والأدوات اللازمة لزراعة المزيد من الغذاء، وتقليل خسائر المحاصيل، وتحسين الأمن الغذائي لأسرهم.",
@@ -175,20 +134,6 @@ const about = {
     
 
     },
-    bari: {
-        aboutTitle: "Kony e Smart Farmer",
-        whoWeAreTitle: "Ngutu ke",
-        whoWeAreText: "Smart Farmer ko sistemu lo kony lo korop ma ti ronyi ko'di na South Sudan. Epi kony lo korop, kujju, ki buku lo korop ma ijo internet.",
-        missionTitle: "Kony",
-        missionText: "Kony lo korop ma ronyi ko'di na Yei County, South Sudan, ki lugeti Arabic, English, ki Bari ma internet.",
-        visionTitle: "Awinye",
-        visionText: "Ronyi ko'di ke South Sudan do ma lonyo ko adia na ayii ta na toru nyanya, ka lossi ko'di, ki ayii ta na toru nyanya lo juru.",
-        offersTitle: "Smart Farmer Epi",
-        offer1: "Kony lo korop ta mahsulat 5 ki lugeti 3",
-        offer2: "Kujju ta kony, afat, ki hasad",
-        offer3: "Kony lo yia ma aji kutu",
-        offer4: "Buku lo korop ma internet ti talifun"
-    }
 };
 
 // ============================================
@@ -532,7 +477,7 @@ const crops = {
 
 
         cropsHeroStatsCropsValue: "30",
-        cropsHeroStatsLanguagesValue: "3",
+        cropsHeroStatsLanguagesValue: "2",
         cropsHeroStatsAudioValue: "Audio",
         cropsHeroStatsAvailable: "Available",
         cropsHeroStatsFreeValue: "Free",
@@ -865,7 +810,7 @@ const crops = {
         cropsTitle: "معلومات المحاصيل",
         cropsDescription: "تعرف على أفضل المحاصيل لمزرعتك. انقر على أي محصول لرؤية التفاصيل حول الزراعة والرعاية والآفات والحصاد.",
         cropsHeroStatsCropsValue:"٣٠",
-        cropsHeroStatsLanguagesValue:"٣",
+        cropsHeroStatsLanguagesValue:"٢",
         cropsHeroStatsAudioValue:"🔊",
         cropsHeroStatsAvailableValue:"متاح",
         cropsHeroStatsFreeValue:"مجاني",
@@ -1529,193 +1474,6 @@ eggplantMarketTips: "الباذنجان له سوق جاهز في المجتمع
         voiceResumeLabel: "▶ استئناف",
             
    },
-    bari: {
-        // Bari translations for all crops
-        cropsTitle: "Kony lo Korop",
-        cropsDescription: "Wali korop ma maje kanyo i piny. Didi korop kuny le wali kinyi gua korop, le miri, le gworo, le korop, le woro.",
-        sorghumTitle: "Sorghum",
-        maizeTitle: "Maize",
-        milletTitle: "Millet",
-        groundnutsTitle: "Groundnuts",
-        cassavaTitle: "Cassava",
-        cowpeasTitle: "Cowpeas",
-        sesameTitle: "Sesame",
-        sweetpotatoTitle: "Sweet Potato",
-        beansTitle: "Beans",
-        okraTitle: "Okra",
-        tomatoTitle: "Tomato",
-        onionTitle: "Onion",
-        pumpkinTitle: "Pumpkin",
-        yamTitle: "Yam",
-        sugarcaneTitle: "Sugarcane",
-        riceTitle: "Rice",
-        sunflowerTitle: "Sunflower",
-        bananaTitle: "Banana",
-        watermelonTitle: "Watermelon",
-        cabbageTitle: "Cabbage",
-        pigeonpeasTitle: "Pigeon Peas",
-        mangoesTitle: "Mangoes",
-        coffeeTitle: "Coffee",
-        teaTitle: "Tea",
-        tobaccoTitle: "Tobacco",
-        cottonTitle: "Cotton",
-        soybeanTitle: "Soybean",
-        fingermilletTitle: "Finger Millet",
-        pearlmilletTitle: "Pearl Millet",
-        eggplantTitle: "Eggplant",
-
-        // Descriptions
-        sorghumDesc: "Korop le jing gworo ki miri gworo le jing gworo na South Sudan.",
-        maizeDesc: "Korop le jing gworo ki miri gworo le jing gworo.",
-        milletDesc: "Korop le jing gworo ki miri gworo le jing gworo.",
-        groundnutsDesc: "Korop le jing gworo ki miri gworo le jing gworo.",
-        cassavaDesc: "Korop le jing gworo ki miri gworo le jing gworo.",
-        cowpeasDesc: "Legume ma maje ki protein ki miri gworo soil.",
-        sesameDesc: "Oilseed crop ma maje ki market demand ma kwoi.",
-        sweetpotatoDesc: "Root crop ma maje ki nutrition ki gworo i poor soils.",
-        beansDesc: "Legume ma maje ki protein ka fiber.",
-        okraDesc: "Vegetable ma gworo kaju ka yields ma maje.",
-        tomatoDesc: "Vegetable ma maje ki market demand ma kwoi.",
-        onionDesc: "Vegetable ma maje ki storage life ma maje.",
-        pumpkinDesc: "Crop ma jing gworo ki piyo food ka income.",
-        yamDesc: "Root crop ma maje ki market demand ma kwoi.",
-        sugarcaneDesc: "Cash crop ma kony na sugar ka juice production.",
-        riceDesc: "Grain ma maje i irrigated ka rainfed areas.",
-        sunflowerDesc: "Oilseed crop ma maje ki market demand ma kwoi.",
-        bananaDesc: "Fruit ma maje ki uses kadak ka year-round production.",
-        watermelonDesc: "Fruit ma maje ki market demand ma kwoi.",
-        cabbageDesc: "Leafy vegetable ma maje ki market demand ma maje.",
-        pigeonpeasDesc: "Legume ma jing gworo ki miri gworo na soil nitrogen ka produces seeds ma maje.",
-        mangoesDesc: "Fruits ma kuju ka juicy ma maje na piny dutu.",
-        coffeeDesc: "Cash crop ma maje na Green Belt ki lipi ma kwoi ka temperatures ma mede.",
-        teaDesc: "Cash crop ma kony na 1970s, ki lipi ma kwoi ka temperatures ma mede na Green Belt.",
-        tobaccoDesc: "Cash crop ma maje na Green Belt, especially i Yei, Kajo-Keji, Maridi, ka Magwi.",
-        cottonDesc: "Oil seed cash crop ma kony na 1940s, ma maje na Green Belt ka Upper Nile.",
-        soybeanDesc: "Bean ma maje ki nutritional value ma kwoi, ma maje na Green Belt ka Equatoria.",
-        fingermilletDesc: "Indigenous crop ma maje na low rainfall areas. Important part of traditional farming.",
-        pearlmilletDesc: "Grain ma jing gworo na areas ma lipi ti kwoi, especially i Warrap, Bahr el Gazal, ka Unity.",
-        eggplantDesc: "Vegetable ma kony i stews, grilling, ka traditional recipes. Grown i Juba, Yambio, ka Yei.",
-
-        // Labels
-        plantingSeasonLabel: "Gworo:",
-        spacingLabel: "Fasila:",
-        pestControlLabel: "Afat:",
-        harvestLabel: "Woro:",
-        storageLabel: "Teren:",
-        viewDetails: "Wali kinyi",
-
-        // Planting Texts
-        sorghumPlantingText: "May-June",
-        maizePlantingText: "May-June",
-        milletPlantingText: "May-June",
-        groundnutsPlantingText: "May-June",
-        cassavaPlantingText: "March-April",
-        cowpeasPlantingText: "May-June",
-        sesamePlantingText: "May-June",
-        sweetpotatoPlantingText: "May-June",
-        beansPlantingText: "May-June",
-        okraPlantingText: "May-June",
-        tomatoPlantingText: "May-June",
-        onionPlantingText: "May-June",
-        pumpkinPlantingText: "May-June",
-        yamPlantingText: "May-June",
-        sugarcanePlantingText: "May-June",
-        ricePlantingText: "May-June",
-        sunflowerPlantingText: "May-June",
-        bananaPlantingText: "Year-round",
-        watermelonPlantingText: "May-June",
-        cabbagePlantingText: "May-June",
-        pigeonpeasPlantingText: "May-June",
-        mangoesPlantingText: "March-April",
-        coffeePlantingText: "Beginning of rains",
-        teaPlantingText: "Rainy season",
-        tobaccoPlantingText: "Beginning of rains",
-        cottonPlantingText: "May-June",
-        soybeanPlantingText: "May-June",
-        fingermilletPlantingText: "May-June",
-        pearlmilletPlantingText: "May-June",
-        eggplantPlantingText: "May-June",
-
-        // Harvest Texts
-        sorghumHarvestText: "Sept-Oct",
-        maizeHarvestText: "Aug-Sept",
-        milletHarvestText: "Sept-Oct",
-        groundnutsHarvestText: "Oct-Nov",
-        cassavaHarvestText: "8-12 months",
-        cowpeasHarvestText: "Sept-Oct",
-        sesameHarvestText: "Oct-Nov",
-        sweetpotatoHarvestText: "4-6 months",
-        beansHarvestText: "Sept-Oct",
-        okraHarvestText: "Sept-Oct",
-        tomatoHarvestText: "Sept-Oct",
-        onionHarvestText: "Oct-Nov",
-        pumpkinHarvestText: "Oct-Nov",
-        yamHarvestText: "Oct-Nov",
-        sugarcaneHarvestText: "10-12 months",
-        riceHarvestText: "Oct-Nov",
-        sunflowerHarvestText: "Oct-Nov",
-        bananaHarvestText: "8-12 months",
-        watermelonHarvestText: "Sept-Oct",
-        cabbageHarvestText: "Sept-Oct",
-        pigeonpeasHarvestText: "Oct-Nov",
-        mangoesHarvestText: "Nov-Jan",
-        coffeeHarvestText: "Dry season",
-        teaHarvestText: "Year-round",
-        tobaccoHarvestText: "Dry season",
-        cottonHarvestText: "Oct-Nov",
-        soybeanHarvestText: "Sept-Oct",
-        fingermilletHarvestText: "Sept-Oct",
-        pearlmilletHarvestText: "Sept-Oct",
-        eggplantHarvestText: "Aug-Oct",
-
-        // Voice Messages (Bari)
-        sorghumVoice: "Sorghum. Lanyi ti lipi May ka June. Fasila 75 senti x 25 senti. Aki wiri armyworms ba'di lipi. Woro September ka October. Teren dry completamente.",
-        maizeVoice: "Maize. Lanyi ti lipi May ka June. Fasila 75 senti x 50 senti. Aki wiri stalk borer. Woro August ka September. Teren dry on cob, then remove kernels.",
-        milletVoice: "Millet. Lanyi ti lipi May ka June. Fasila 60 senti x 20 senti. Aki wiri birds la stem borers. Woro September ka October. Teren i sealed containers.",
-        groundnutsVoice: "Groundnuts. Lanyi ti lipi May ka June. Fasila 50 senti x 15 senti. Aki wiri leaf spot ka aphids. Woro October ka November. Teren dry thoroughly.",
-        cassavaVoice: "Cassava. Lanyi ti lipi March ka April. Fasila 100 senti x 100 senti. Aki wiri cassava mosaic disease. Woro 8-12 months. Teren only when needed.",
-        cowpeasVoice: "Cowpeas. Lanyi ti lipi May ka June. Fasila 60 senti x 20 senti. Aki wiri aphids ka pod borers. Woro September ka October. Teren dry thoroughly i pods, then shell.",
-        sesameVoice: "Sesame. Lanyi ti lipi May ka June. Fasila 45 senti x 15 senti. Aki wiri leaf spot ka aphids. Woro October ka November. Teren dry well, store i sealed containers.",
-        sweetpotatoVoice: "Sweet Potato. Lanyi ti lipi May ka June. Fasila 30 senti x 20 senti. Aki wiri weevils ka leaf beetles. Woro 4-6 months. Teren i cool, dry, dark place.",
-        beansVoice: "Beans. Lanyi ti lipi May ka June. Fasila 50 senti x 10 senti. Aki wiri aphids ka bean beetles. Woro September ka October. Teren dry completely before storing.",
-        okraVoice: "Okra. Lanyi ti lipi May ka June. Fasila 60 senti x 30 senti. Aki wiri aphids ka fruit borers. Woro September ka October. Teren i cool, dry place.",
-        tomatoVoice: "Tomato. Lanyi ti lipi May ka June. Fasila 60 senti x 40 senti. Aki wiri tomato blight ka fruit borers. Woro September ka October. Teren at room temperature, not refrigerated.",
-        onionVoice: "Onion. Lanyi ti lipi May ka June. Fasila 30 senti x 10 senti. Aki wiri thrips ka onion flies. Woro October ka November. Teren i dry, ventilated place.",
-        pumpkinVoice: "Pumpkin. Lanyi ti lipi May ka June. Fasila 150 senti x 100 senti. Aki wiri fruit flies ka powdery mildew. Woro October ka November. Teren i cool, dry place.",
-        yamVoice: "Yam. Lanyi ti lipi May ka June. Fasila 100 senti x 100 senti. Aki wiri yam beetles ka nematodes. Woro October ka November. Teren i cool, dark, well-ventilated place.",
-        sugarcaneVoice: "Sugarcane. Lanyi ti lipi May ka June. Fasila 150 senti x 60 senti. Aki wiri stalk borers ka aphids. Woro 10-12 months. Teren process soon after harvest.",
-        riceVoice: "Rice. Lanyi ti lipi May ka June. Fasila 20 senti x 20 senti. Aki wiri rice weevils ka stem borers. Woro October ka November. Teren dry completely, store i sealed containers.",
-        sunflowerVoice: "Sunflower. Lanyi ti lipi May ka June. Fasila 60 senti x 30 senti. Aki wiri birds ka head caterpillars. Woro October ka November. Teren dry thoroughly, store i sealed bags.",
-        bananaVoice: "Banana. Lanyi ti lipi year-round. Fasila 300 senti x 300 senti. Aki wiri weevils ka leaf spot. Woro 8-12 months. Teren harvest green, ripen at room temperature.",
-        watermelonVoice: "Watermelon. Lanyi ti lipi May ka June. Fasila 200 senti x 100 senti. Aki wiri fruit flies ka powdery mildew. Woro September ka October. Teren i cool, dry place.",
-        cabbageVoice: "Cabbage. Lanyi ti lipi May ka June. Fasila 60 senti x 40 senti. Aki wiri aphids ka caterpillars. Woro September ka October. Teren i cool, ventilated place.",
-        pigeonpeasVoice: "Pigeon Peas. Lanyi ti lipi May ka June. Fasila 75 senti x 30 senti. Aki wiri pod borers ka wilt. Woro October ka November. Teren dry thoroughly, store i sealed containers.",
-        mangoesVoice: "Mangoes. Lanyi ti lipi March ka April. Fasila 1000 senti x 800 senti. Aki wiri fruit flies ka mealybugs. Woro November ka January. Teren at room temperature until ripe.",
-        coffeeVoice: "Coffee. Lanyi ti lipi beginning of rains. Fasila 250 senti x 250 senti. Aki wiri coffee berry borer. Woro dry season. Teren dry ka store i cool, dry place.",
-        teaVoice: "Tea. Lanyi ti lipi rainy season. Fasila 100 senti x 75 senti. Aki wiri tea mosquito bug. Woro year-round. Teren process ka dry soon after harvest.",
-        tobaccoVoice: "Tobacco. Lanyi ti lipi beginning of rains. Fasila 90 senti x 60 senti. Aki wiri aphids ka hornworms. Woro dry season. Teren cure ka dry before storage.",
-        cottonVoice: "Cotton. Lanyi ti lipi May ka June. Fasila 100 senti x 30 senti. Aki wiri bollworms ka aphids. Woro October ka November. Teren keep dry ka protected from pests.",
-        soybeanVoice: "Soybean. Lanyi ti lipi May ka June. Fasila 50 senti x 10 senti. Aki wiri pod borers. Woro September ka October. Teren dry completely before storing.",
-        fingermilletVoice: "Finger Millet. Lanyi ti lipi May ka June. Fasila 45 senti x 15 senti. Aki wiri birds ka stem borers. Woro September ka October. Teren i sealed containers.",
-        pearlmilletVoice: "Pearl Millet. Lanyi ti lipi May ka June. Fasila 60 senti x 20 senti. Aki wiri birds ka stem borers. Woro September ka October. Teren i sealed containers.",
-        eggplantVoice: "Eggplant. Lanyi ti lipi May ka June. Fasila 60 senti x 45 senti. Aki wiri flea beetles ka fruit borers. Woro August ka October. Teren i cool, dry place",
-
-        // In the 'bari' section:
-        overviewHeading: "Wali kinyi korop",
-        plantingHeading: "Muda ma maje le gworo",
-        soilHeading: "Kit mo",
-        landHeading: "Gworo piny",
-        seedHeading: "Kiasi nyen",
-        waterHeading: "Piyo ma kony",
-        pestsHeading: "Afat ma kony",
-        diseasesHeading: "Rere ma kony",
-        marketHeading: "Kinyi suq",
-
-        voiceListenLabel: "🔊 Wali",
-        voicePauseLabel: "⏸ Kuha",
-        voiceResumeLabel: "▶ Rian",
-
-    }
 };
 
 
@@ -1911,62 +1669,6 @@ const fertilizer = {
         pearlmilletFertilizerDetail: "NPK ١٥-١٥-١٥ عند الزراعة. اليوريا خلال استطالة الساق لتحسين ملء الحبوب.",
         eggplantFertilizerDetail: "NPK ١٥-١٥-١٥ لنمو الثمار. اليوريا خلال النمو المبكر لمزيد من الثمار"
     },
-
-
-    bari: {
-        // Page Titles & Descriptions
-        fertilizerTitle: "Gworo soil mo, gworo korop mo",
-        fertilizerDesc: "Wali fertilizer ma kony, kiasi ma kony, ka time ma kony le gworo yields ma kwoi.",
-        fertilizerGuide: "Fertilizer Application Guide",
-        selectCropFertilizer: "Didi Korop",
-        selectCropSubtitle: "Didi korop le wali fertilizer recommendations ma maje.",
-        searchCrops: "Kony korop...",
-        fertilizerLoading: "Loading fertilizer data...",
-        noFertilizerData: "No fertilizer data available for this korop",
-        footerCopyright: "© 2026 Smart Farmer. All rights reserved.",
-        footerLocation: "📍 Yei County, South Sudan",
-        footerEmail: "📧 nyabondeng0@gmail.com",
-        footerPhone: "📱 +211928470444",
-
-        // Crop-specific fertilizer recommendations (Bari)
-        sorghumFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
-        maizeFertilizer: "NPK 15-15-15: 60 kg/acre at planting. Urea (46% N): 30 kg/acre 6-8 weeks after planting.",
-        milletFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
-        groundnutsFertilizer: "NPK 15-15-15: 30 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
-        cassavaFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
-        cowpeasFertilizer: "NPK 15-15-15: 25 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
-        sesameFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
-        sweetpotatoFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
-        beansFertilizer: "NPK 15-15-15: 25 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
-        okraFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
-        tomatoFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
-        onionFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
-        pumpkinFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
-        yamFertilizer: "NPK 15-15-15: 45 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
-        sugarcaneFertilizer: "NPK 15-15-15: 60 kg/acre at planting. Urea (46% N): 30 kg/acre 6-8 weeks after planting.",
-        riceFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
-        sunflowerFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
-        bananaFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
-        watermelonFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting.",
-        cabbageFertilizer: "NPK 15-15-15: 45 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
-        pigeonpeasFertilizer: "NPK 15-15-15: 25 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
-        mangoesFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
-        coffeeFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
-        teaFertilizer: "NPK 15-15-15: 45 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
-        tobaccoFertilizer: "NPK 15-15-15: 50 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
-        cottonFertilizer: "NPK 15-15-15: 45 kg/acre at planting. Urea (46% N): 25 kg/acre 6-8 weeks after planting.",
-        soybeanFertilizer: "NPK 15-15-15: 30 kg/acre at planting. No urea needed (legume fixes its own nitrogen).",
-        fingermilletFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
-        pearlmilletFertilizer: "NPK 15-15-15: 35 kg/acre at planting. Urea (46% N): 15 kg/acre 6-8 weeks after planting.",
-        eggplantFertilizer: "NPK 15-15-15: 40 kg/acre at planting. Urea (46% N): 20 kg/acre 6-8 weeks after planting",
-
-        amountLabel: "Kiasi:",
-        timingLabel: "Muda:",
-        fertilizerTypesLabel: "Fertilizer Types",
-        applicationScheduleLabel: "Application Schedule",
-        tipLabel: "Tip:",
-        typesLabel: "types"
-    }
 };
 
 
@@ -2288,165 +1990,6 @@ const costForecast = {
         pearlmilletHarvest: "سبتمبر - أكتوبر",
         eggplantHarvest: "أغسطس - أكتوبر"
     },
-
-   
-
-    bari: {
-        // Page Titles & Descriptions
-        forecastTitle: "Gworo piny mo, gworo kony mo",
-        forecastDesc: "Wali gama, yields, ka profits before planting. Wali muda ma maje le gworo.",
-        costSimulator: "Cost Simulator",
-        enterFarmDetails: "Enter Your Farm Details",
-        simulatorSubtitle: "Didi korop ka land size le wali cost estimates ka planting season guidance.",
-        selectCrop: "Didi Korop",
-        landSize: "Land Size (acres)",
-        landSizeHint: "Enter the size of your farm in acres (1 acre ≈ 0.4 hectares)",
-        calculateCost: "Calculate Cost & Profit",
-        resultsTitle: "Results for",
-        bestPlantingSeason: "🌧 Best Planting Season",
-        growingPeriod: "Growing Period",
-        harvestTime: "Harvest Time",
-        warningTitle: "Warning: Sub-optimal Planting Season",
-        warningDesc: "Planting outside the recommended season can significantly reduce your harvest.",
-        estimatedYieldReduction: "Estimated yield reduction:",
-        totalCost: "Total Cost",
-        estimatedYield: "Estimated Yield",
-        estimatedRevenue: "Estimated Revenue",
-        estimatedProfit: "Estimated Profit",
-        costBreakdown: "Cost Breakdown",
-        seedCost: "Seeds",
-        fertilizerCost: "Fertilizer",
-        laborCost: "Labor",
-        resultNote: "These are estimated figures based on average market prices in South Sudan. Actual costs and yields may vary.",
-
-        // Crop Names
-        sorghum: "Sorghum",
-        maize: "Maize",
-        millet: "Millet",
-        groundnuts: "Groundnuts",
-        cassava: "Cassava",
-        cowpeas: "Cowpeas",
-        sesame: "Sesame",
-        sweetpotato: "Sweet Potato",
-        beans: "Beans",
-        okra: "Okra",
-        tomato: "Tomato",
-        onion: "Onion",
-        pumpkin: "Pumpkin",
-        yam: "Yam",
-        sugarcane: "Sugarcane",
-        rice: "Rice",
-        sunflower: "Sunflower",
-        banana: "Banana",
-        watermelon: "Watermelon",
-        cabbage: "Cabbage",
-        pigeonpeas: "Pigeon Peas",
-        mangoes: "Mangoes",
-        coffee: "Coffee",
-        tea: "Tea",
-        tobacco: "Tobacco",
-        cotton: "Cotton",
-        soybean: "Soybean",
-        fingermillet: "Finger Millet",
-        pearlmillet: "Pearl Millet",
-        eggplant: "Eggplant",
-
-        // Season Info
-        sorghumSeason: "May - June (Rainy Season)",
-        maizeSeason: "May - June (Rainy Season)",
-        milletSeason: "May - June (Rainy Season)",
-        groundnutsSeason: "May - June (Rainy Season)",
-        cassavaSeason: "March - April (Rainy Season)",
-        cowpeasSeason: "May - June (Rainy Season)",
-        sesameSeason: "May - June (Rainy Season)",
-        sweetpotatoSeason: "May - June (Rainy Season)",
-        beansSeason: "May - June (Rainy Season)",
-        okraSeason: "May - June (Rainy Season)",
-        tomatoSeason: "May - June (Rainy Season)",
-        onionSeason: "May - June (Rainy Season)",
-        pumpkinSeason: "May - June (Rainy Season)",
-        yamSeason: "May - June (Rainy Season)",
-        sugarcaneSeason: "May - June (Rainy Season)",
-        riceSeason: "May - June (Rainy Season)",
-        sunflowerSeason: "May - June (Rainy Season)",
-        bananaSeason: "Year-round",
-        watermelonSeason: "May - June (Rainy Season)",
-        cabbageSeason: "May - June (Rainy Season)",
-        pigeonpeasSeason: "May - June (Rainy Season)",
-        mangoesSeason: "March - April (Rainy Season)",
-        coffeeSeason: "Beginning of rains",
-        teaSeason: "Rainy season",
-        tobaccoSeason: "Beginning of rains",
-        cottonSeason: "May - June (Rainy Season)",
-        soybeanSeason: "May - June (Rainy Season)",
-        fingermilletSeason: "May - June (Rainy Season)",
-        pearlmilletSeason: "May - June (Rainy Season)",
-        eggplantSeason: "May - June (Rainy Season)",
-
-        // Growing Period
-        sorghumPeriod: "3-4 months",
-        maizePeriod: "3-4 months",
-        milletPeriod: "3-4 months",
-        groundnutsPeriod: "4-5 months",
-        cassavaPeriod: "8-12 months",
-        cowpeasPeriod: "3-4 months",
-        sesamePeriod: "3-4 months",
-        sweetpotatoPeriod: "4-6 months",
-        beansPeriod: "3-4 months",
-        okraPeriod: "3-4 months",
-        tomatoPeriod: "4-5 months",
-        onionPeriod: "4-5 months",
-        pumpkinPeriod: "4-5 months",
-        yamPeriod: "8-10 months",
-        sugarcanePeriod: "10-12 months",
-        ricePeriod: "4-5 months",
-        sunflowerPeriod: "3-4 months",
-        bananaPeriod: "8-12 months",
-        watermelonPeriod: "3-4 months",
-        cabbagePeriod: "3-4 months",
-        pigeonpeasPeriod: "4-5 months",
-        mangoesPeriod: "8-12 months",
-        coffeePeriod: "3-5 years (first harvest)",
-        teaPeriod: "3-5 years (first harvest)",
-        tobaccoPeriod: "3-4 months",
-        cottonPeriod: "5-6 months",
-        soybeanPeriod: "3-4 months",
-        fingermilletPeriod: "3-4 months",
-        pearlmilletPeriod: "3-4 months",
-        eggplantPeriod: "3-4 months",
-
-        // Harvest Time
-        sorghumHarvest: "September - October",
-        maizeHarvest: "August - September",
-        milletHarvest: "September - October",
-        groundnutsHarvest: "October - November",
-        cassavaHarvest: "8-12 months after planting",
-        cowpeasHarvest: "September - October",
-        sesameHarvest: "October - November",
-        sweetpotatoHarvest: "4-6 months",
-        beansHarvest: "September - October",
-        okraHarvest: "September - October",
-        tomatoHarvest: "September - October",
-        onionHarvest: "October - November",
-        pumpkinHarvest: "October - November",
-        yamHarvest: "October - November",
-        sugarcaneHarvest: "10-12 months",
-        riceHarvest: "October - November",
-        sunflowerHarvest: "October - November",
-        bananaHarvest: "8-12 months",
-        watermelonHarvest: "September - October",
-        cabbageHarvest: "September - October",
-        pigeonpeasHarvest: "October - November",
-        mangoesHarvest: "November - January",
-        coffeeHarvest: "Dry season",
-        teaHarvest: "Year-round",
-        tobaccoHarvest: "Dry season",
-        cottonHarvest: "October - November",
-        soybeanHarvest: "September - October",
-        fingermilletHarvest: "September - October",
-        pearlmilletHarvest: "September - October",
-        eggplantHarvest: "August - October"
-    }
 };
 
 const education = {
@@ -2455,7 +1998,7 @@ const education = {
         eduHeroSub: "Modules for smallholder farmers available in audio, text, and offline via USSD.",
         eduStatModulesNum: "10",
         eduStatModulesLabel: "Modules",
-        eduStatLanguagesNum: "3",
+        eduStatLanguagesNum: "2",
         eduStatLanguagesLabel: "Languages",
         eduStatAudioLabel: "Audio",
         eduStatAvailableLabel: "Available",
@@ -2596,7 +2139,7 @@ const education = {
         eduHeroSub: "وحدات تعليمية للمزارعين أصحاب الحيازات الصغيرة متوفرة بالصوت والنص ودون اتصال عبر USSD.",
         eduStatModulesNum: "١٠",
         eduStatModulesLabel: "وحدات",
-        eduStatLanguagesNum: "٣",
+        eduStatLanguagesNum: "٢",
         eduStatLanguagesLabel: "لغات",
         eduStatAudioLabel: "صوت",
         eduStatAvailableLabel: "متوفر",
@@ -2755,177 +2298,6 @@ const education = {
         footerPhone: "📱 الهاتف: +٢١١٩٢٨٤٧٠٤٤٤"
     
     },
-    bari: {
-        educationTitle: "Kujju",
-        eduHeroSub: "Modules for smallholder farmers i audio, text, ka offline via USSD.",
-        eduStatModulesNum: "10",
-        eduStatModulesLabel: "Modules",
-        eduStatLanguagesNum: "3",
-        eduStatLanguagesLabel: "Languages",
-        eduStatAudioLabel: "Audio",
-        eduStatAvailableLabel: "Available",
-        eduStatFreeLabel: "Free",
-        eduStatAlwaysLabel: "Always",
-        filterLabel: "Filter",
-        filterAll: "All modules",
-        filterPlanting: "Planting",
-        filterPest: "Pest control",
-        filterPostharvest: "Post-harvest",
-        filterSoil: "Soil",
-        filterClimate: "Climate",
-        filterWater: "Water",
-        filterMarket: "Market",
-        filterFertilizer: "Fertilizer",
-        filterDisease: "Disease",
-        filterTools: "Tools",
-        langEn: "EN",
-        langJa: "JA",
-        langBa: "BA",
-        allModulesLabel: "All Modules",
-        badgePlanting: "Planting",
-        badgePest: "Pest Control",
-        badgePostharvest: "Post-Harvest",
-        badgeSoil: "Soil",
-        badgeClimate: "Climate",
-        badgeWater: "Water",
-        badgeMarket: "Market",
-        badgeFertilizer: "Fertilizer",
-        badgeDisease: "Disease",
-        badgeTools: "Tools",
-
-        // Module Audio Times
-        module1AudioTime: "2 min audio",
-        module1TipsCount: "5 tips",
-        module2AudioTime: "3 min audio",
-        module2TipsCount: "5 tips",
-        module3AudioTime: "3 min audio",
-        module3TipsCount: "5 tips",
-        module4AudioTime: "3 min audio",
-        module4TipsCount: "5 tips",
-        module5AudioTime: "4 min audio",
-        module5TipsCount: "5 tips",
-        module6AudioTime: "3 min audio",
-        module6TipsCount: "5 tips",
-        module7AudioTime: "4 min audio",
-        module7TipsCount: "5 tips",
-        module8AudioTime: "3 min audio",
-        module8TipsCount: "5 tips",
-        module9AudioTime: "4 min audio",
-        module9TipsCount: "5 tips",
-        module10AudioTime: "3 min audio",
-        module10TipsCount: "5 tips",
-
-        // Module Titles
-        module1Title: "Moduli 1: Lanyi ti lipi",
-        module2Title: "Moduli 2: Afat",
-        module3Title: "Moduli 3: Ba'di woro",
-        module4Title: "Moduli 4: Soil Management",
-        module5Title: "Moduli 5: Climate-Smart Farming",
-        module6Title: "Moduli 6: Water & Irrigation",
-        module7Title: "Moduli 7: Market & Selling",
-        module8Title: "Moduli 8: Fertilizer Use",
-        module9Title: "Moduli 9: Crop Disease Control",
-        module10Title: "Moduli 10: Farm Tools & Equipment",
-
-        // Module Headings
-        module1Heading: "Nasiha maje kanyo lanyi:",
-        module2Heading: "Afat ma ki kana ki kum:",
-        module3Heading: "Kum kanyo ba'di woro:",
-        module4Heading: "How to maintain healthy soil:",
-        module5Heading: "Adapting to changing weather conditions:",
-        module6Heading: "Managing water for healthy crops",
-        module7Heading: "How to sell your crops for the best price",
-        module8Heading: "Feeding your crops the right way",
-        module9Heading: "Spotting and stopping crop diseases early",
-        module10Heading: "Using and caring for your farm tools",
-
-        // Module List Items
-        module1Li1: "Lanyi pe bidayat lipi (May-June)",
-        module1Li2: "Use seed nadhifa, no disease",
-        module1Li3: "Fasila ma lipi, no overcrowd",
-        module1Li4: "Depth 2-5cm depending on crop",
-        module1Li5: "Weed within first 3 weeks",
-        module2Li1: "Armyworms: Check daily, remove by hand.",
-        module2Li2: "Stem borers: Use ash or neem powder.",
-        module2Li3: "Aphids: Spray soapy water.",
-        module2Li4: "Birds: Use scarecrows or nets at harvest.",
-        module2Li5: "Check fields early morning or evening.",
-        module3Li1: "Harvest when grains are hard and dry",
-        module3Li2: "Dry crops completely before storing",
-        module3Li3: "Store in clean, dry, rodent-proof containers",
-        module3Li4: "Use ash or crushed neem leaves to keep insects away",
-        module3Li5: "Sell surplus when market prices are good",
-        module4Li1: "Clear weeds before planting.",
-        module4Li2: "Add compost or animal manure to improve fertility.",
-        module4Li3: "Avoid over-cultivating the land.",
-        module4Li4: "Rotate crops every season to reduce soil exhaustion.",
-        module4Li5: "Use mulch to conserve moisture and reduce erosion.",
-        module5Li1: "Plant early when the rainy season begins.",
-        module5Li2: "Choose drought-resistant crop varieties.",
-        module5Li3: "Harvest and store rainwater when possible.",
-        module5Li4: "Use mulching to reduce water loss.",
-        module5Li5: "Follow local weather forecasts before planting.",
-        module6Li1: "Collect and store rainwater during the wet season.",
-        module6Li2: "Water crops early in the morning to reduce evaporation.",
-        module6Li3: "Use drip or bucket irrigation to save water.",
-        module6Li4: "Avoid waterlogging, ensure fields drain properly.",
-        module6Li5: "Cover soil with mulch to retain moisture longer.",
-        module7Li1: "Track local market prices before selling your harvest.",
-        module7Li2: "Store crops to wait for better market prices when possible.",
-        module7Li3: "Sell in groups with other farmers to get better deals.",
-        module7Li4: "Grade and sort your produce, higher quality earns more.",
-        module7Li5: "Keep simple records of sales and expenses every season.",
-        module8Li1: "Use compost or animal manure as a natural fertilizer first.",
-        module8Li2: "Apply fertilizer at the right growth stage, not too early.",
-        module8Li3: "Do not over-fertilize, it can burn roots and waste money.",
-        module8Li4: "Mix fertilizer into the soil, not on top of leaves.",
-        module8Li5: "Water the soil after applying fertilizer to help it absorb.",
-        module9Li1: "Inspect leaves and stems weekly for spots, wilting, or rot.",
-        module9Li2: "Remove and burn diseased plants immediately to stop spread.",
-        module9Li3: "Avoid working in wet fields, disease spreads faster then.",
-        module9Li4: "Use disease-resistant seed varieties when available.",
-        module9Li5: "Rotate crops each season to break disease cycles in the soil.",
-        module10Li1: "Clean tools after every use to prevent rust and disease spread.",
-        module10Li2: "Sharpen hoes and machetes regularly for easier work.",
-        module10Li3: "Store tools in a dry, shaded place to extend their life.",
-        module10Li4: "Use the right tool for the right job, don't force tools.",
-        module10Li5: "Share or borrow tools with neighbors to reduce costs.",
-
-      
-
-        // ===== EDUCATION MODULE VOICES (BARI) =====
-        module1Voice: "Moduli 1: Lanyi ti korop. Lanyi pe bidayat lipi, May ka June. Use seed nadhifa, no kutu. Fasila ma lipi, no overcrowd. Lanyi seed i depth 2-5 senti depending on korop. Weed within first 3 weeks ba'di lanyi.",
-        module2Voice: "Moduli 2: Afat. Check fields daily for armyworms, remove by hand. Use ash or neem powder around plant stems for stem borers. Spray soapy water for aphids. Use scarecrows or nets for birds during woro time. Check fields early morning or evening.",
-        module3Voice: "Moduli 3: Ba'di woro. Woro at the right time when grains are hard and dry. Dry korop completely before teren. Teren i clean, dry, rodent-proof containers. Use ash or crushed neem leaves to keep insects away. Sell surplus when market prices are good.",
-        module4Voice: "Moduli 4: Soil Management. Clear weeds before lanyi. Add compost or animal manure to improve fertility. Avoid over-cultivating the land. Rotate korop every season to reduce soil exhaustion. Use mulch to conserve moisture and reduce erosion.",
-        module5Voice: "Moduli 5: Climate-Smart Farming. Lanyi early when the rainy season begins. Choose drought-resistant korop varieties. Woro and teren rainwater when possible. Use mulching to reduce water loss. Follow local weather forecasts before lanyi.",
-        module6Voice: "Moduli 6: Water and Irrigation. Collect and teren rainwater during the wet season. Water korop early in the morning to reduce evaporation. Use drip or bucket irrigation to save water. Avoid waterlogging, ensure fields drain properly. Cover soil with mulch to retain moisture longer.",
-        module7Voice: "Moduli 7: Market and Selling. Track local market prices before selling your woro. Teren korop to wait for better market prices when possible. Sell in groups with other farmers to get better deals. Grade and sort your produce, higher quality earns more. Keep simple records of sales and expenses every season.",
-        module8Voice: "Moduli 8: Fertilizer Use. Use compost or animal manure as a natural fertilizer first. Apply fertilizer at the right growth stage, not too early. Do not over-fertilize, it can burn roots and waste money. Mix fertilizer into the soil, not on top of leaves. Water the soil after applying fertilizer to help it absorb.",
-        module9Voice: "Moduli 9: Korop Disease Control. Inspect leaves and stems weekly for spots, wilting, or rot. Remove and burn diseased korop immediately to stop spread. Avoid working in wet fields, disease spreads faster then. Use disease-resistant seed varieties when available. Rotate korop each season to break disease cycles in the soil.",
-        module10Voice: "Moduli 10: Farm Tools and Equipment. Clean tools after every use to prevent rust and disease spread. Sharpen hoes and machetes regularly for easier work. Teren tools in a dry, shaded place to extend their life. Use the right tool for the right job, don't force tools. Share or borrow tools with neighbors to reduce costs.",
-       
-
-        // ===== EDUCATION MODULE VOICES (ENGLISH) =====
-        module1Voice: "Module 1: Planting Techniques. Plant at the beginning of the rainy season, May to June. Use clean, disease-free seeds. Space crops properly to avoid overcrowding. Plant seeds at the right depth, two to five centimeters depending on the crop. Weed within the first three weeks after planting.",
-        module2Voice: "Module 2: Pest Management. Check fields daily for armyworms and remove them by hand. Use ash or neem powder around plant stems for stem borers. Spray with soapy water for aphids. Use scarecrows or nets for birds during harvest time. Always check your fields early morning or evening.",
-        module3Voice: "Module 3: Post-Harvest Handling. Harvest at the right time when grains are hard and dry. Dry crops completely before storing. Store in clean, dry, rodent-proof containers. Use ash or crushed neem leaves to keep insects away. Sell surplus when market prices are good.",
-        module4Voice: "Module 4: Soil Management. Clear weeds before planting. Add compost or animal manure to improve fertility. Avoid over-cultivating the land. Rotate crops every season to reduce soil exhaustion. Use mulch to conserve moisture and reduce erosion.",
-        module5Voice: "Module 5: Climate-Smart Farming. Plant early when the rainy season begins. Choose drought-resistant crop varieties. Harvest and store rainwater when possible. Use mulching to reduce water loss. Follow local weather forecasts before planting.",
-        module6Voice: "Module 6: Water and Irrigation. Collect and store rainwater during the wet season. Water crops early in the morning to reduce evaporation. Use drip or bucket irrigation to save water. Avoid waterlogging, ensure fields drain properly. Cover soil with mulch to retain moisture longer.",
-        module7Voice: "Module 7: Market and Selling. Track local market prices before selling your harvest. Store crops to wait for better market prices when possible. Sell in groups with other farmers to get better deals. Grade and sort your produce, higher quality earns more. Keep simple records of sales and expenses every season.",
-        module8Voice: "Module 8: Fertilizer Use. Use compost or animal manure as a natural fertilizer first. Apply fertilizer at the right growth stage, not too early. Do not over-fertilize, it can burn roots and waste money. Mix fertilizer into the soil, not on top of leaves. Water the soil after applying fertilizer to help it absorb.",
-        module9Voice: "Module 9: Crop Disease Control. Inspect leaves and stems weekly for spots, wilting, or rot. Remove and burn diseased plants immediately to stop spread. Avoid working in wet fields, disease spreads faster then. Use disease-resistant seed varieties when available. Rotate crops each season to break disease cycles in the soil.",
-        module10Voice: "Module 10: Farm Tools and Equipment. Clean tools after every use to prevent rust and disease spread. Sharpen hoes and machetes regularly for easier work. Store tools in a dry, shaded place to extend their life. Use the right tool for the right job, don't force tools. Share or borrow tools with neighbors to reduce costs.",
-
-        // USSD Banner
-        ussdBannerTitle: "No internet? No problem.",
-
-        // USSD Banner
-        ussdBannerTitle: "No internet? No problem.",
-        ussdBannerDesc: "Access all modules anytime via USSD works on any phone, even without data.",
-        ussdBannerBtn: "Access via USSD →"
-    }
 
 };
 
@@ -2933,7 +2305,7 @@ const cropLog = {
   en: {
        // Crop Log Page
         cropLogTitle: "My Crop Monitoring Log",
-        cropLogSubtitle: "Save your planting dates. All data stays on your phone. Works offline.",
+        cropLogSubtitle: "Save your planting dates. Works offline — log in to sync your records to the cloud.",
         cropLogHeroStatsCrops: "Crops",
         cropLogHeroStatsOffline: "Offline",
         cropLogHeroStatsWorksAlways: "Works always",
@@ -2963,12 +2335,26 @@ const cropLog = {
         recordSaved: "Record saved successfully!",
         recordDeleted: "Record deleted successfully!",
         recordUpdated: "Record updated successfully!",
-        appName: "Smart Farmer"
+        appName: "Smart Farmer",
 
+        confirmClearAll: "Are you sure you want to delete all records?",
+        allRecordsCleared: "All records cleared successfully!",
+        fillCropDate: "Please select a crop and enter a planting date.",
+        savedToAccount: "Record saved to your account!",
+        savedOnDevice: "Record saved on this device!",
+        serverUnreachable: "Could not reach the server. Please try again.",
+        serverUnreachableSavedLocal: "Could not reach the server. The record was saved on this device instead.",
+        syncCloud: "☁ Synced to your account — available on any device.",
+        syncLocal: "📱 Stored on this device only. Log in to save records to the cloud.",
+        syncOffline: "📴 Offline — showing records saved on this device.",
+        syncExpired: "Your session expired. Log in again to sync records to the cloud.",
+        uploadOffer: "You have records saved on this device. Upload them to your account so they are available on any device?",
+        uploadDone: "All device records uploaded to your account.",
+        uploadPartial: "Some records could not be uploaded and were kept on this device."
     },
     juba: {
         cropLogTitle: "سجل متابعة محاصيلي",
-        cropLogSubtitle: "احفظ تواريخ زراعتك. جميع البيانات تبقى على هاتفك. تعمل بدون اتصال.",
+        cropLogSubtitle: "احفظ تواريخ زراعتك. تعمل بدون اتصال — سجّل الدخول لمزامنة سجلاتك مع السحابة.",
         cropLogHeroStatsCrops: "المحاصيل",
         cropLogHeroStatsOffline: "بدون اتصال",
         cropLogHeroStatsWorksAlways: "تعمل دائماً",
@@ -2998,43 +2384,23 @@ const cropLog = {
         recordSaved: "تم حفظ السجل بنجاح!",
         recordDeleted: "تم حذف السجل بنجاح!",
         recordUpdated: "تم تحديث السجل بنجاح!",
-        appName: "المزارع الذكي"
+        appName: "المزارع الذكي",
 
+        confirmClearAll: "هل أنت متأكد أنك تريد حذف جميع السجلات؟",
+        allRecordsCleared: "تم مسح جميع السجلات بنجاح!",
+        fillCropDate: "يرجى اختيار محصول وإدخال تاريخ الزراعة.",
+        savedToAccount: "تم حفظ السجل في حسابك!",
+        savedOnDevice: "تم حفظ السجل على هذا الجهاز!",
+        serverUnreachable: "تعذر الوصول إلى الخادم. يرجى المحاولة مرة أخرى.",
+        serverUnreachableSavedLocal: "تعذر الوصول إلى الخادم. تم حفظ السجل على هذا الجهاز بدلاً من ذلك.",
+        syncCloud: "☁ متزامن مع حسابك — متاح من أي جهاز.",
+        syncLocal: "📱 محفوظ على هذا الجهاز فقط. سجّل الدخول لحفظ السجلات في السحابة.",
+        syncOffline: "📴 غير متصل — عرض السجلات المحفوظة على هذا الجهاز.",
+        syncExpired: "انتهت جلستك. سجّل الدخول مرة أخرى لمزامنة السجلات مع السحابة.",
+        uploadOffer: "لديك سجلات محفوظة على هذا الجهاز. هل تريد رفعها إلى حسابك لتكون متاحة من أي جهاز؟",
+        uploadDone: "تم رفع جميع سجلات الجهاز إلى حسابك.",
+        uploadPartial: "تعذر رفع بعض السجلات وتم الاحتفاظ بها على هذا الجهاز."
     },
-    bari: {
-        cropLogTitle: "Korop log",
-        cropLogSubtitle: "Save your planting dates. All data stays on your phone. Works offline.",
-        cropLogHeroStatsCrops: "Korop",
-        cropLogHeroStatsOffline: "Offline",
-        cropLogHeroStatsWorksAlways: "Works always",
-        cropLogHeroStatsPrivate: "Private",
-        cropLogHeroStatsStaysDevice: "Stays on device",
-        newRecord: "New Record",
-        savedRecords: "Saved Records",
-        selectCrop: "Didi Korop",
-        plantingDate: "Planting Date",
-        expectedHarvest: "Expected Harvest",
-        farmLocation: "Farm Location",
-        status: "Status",
-        statusPlanted: "Planted",
-        statusGrowing: "Growing",
-        statusHarvested: "Harvested",
-        statusPending: "Pending",
-        notesLabel: "Notes (optional)",
-        saveRecord: "Save Planting Record",
-        noRecords: "No records yet. Save your first planting date.",
-        clearAll: "Clear All Records",
-        edit: "Edit",
-        delete: "Delete",
-        update: "Update Record",
-        plantingDateLabel: "Planting Date",
-        notesLabelShort: "Notes",
-        confirmDelete: "Are you sure you want to delete this record?",
-        recordSaved: "Record saved successfully!",
-        recordDeleted: "Record deleted successfully!",
-        recordUpdated: "Record updated successfully!",
-        appName: "Smart Farmer"
-    }
 };
 
 const Account = {
@@ -3044,7 +2410,7 @@ const Account = {
         registerBenefit1: "Save records to the cloud",
         registerBenefit2: "Access from any device",
         registerBenefit3: "Your data is private and safe",
-        registerBenefit4: "Available in 3 languages",
+        registerBenefit4: "Available in 2 languages",
         registerFormTitle: "Create Account",
         registerSubtitle: "Register as a farmer to get started",
         registerNameLabel: "Full Name",
@@ -3082,6 +2448,14 @@ const Account = {
         messageLoginSuccess: "Login successful! Redirecting...",
         messageLoginError: "Login failed. Please register first.",
         messageNetworkError: "Network error. Please check your connection.",
+
+        registerPasswordLabel: "Password",
+        registerPasswordPlaceholder: "Create a password",
+        loginPasswordLabel: "Password",
+        loginPasswordPlaceholder: "Enter your password",
+        messagePhonePassword: "Please enter phone and password.",
+        logout: "Logout",
+        loggedInAs: "Logged in as:",
     },
     juba: {
         registerTitle: "انضم إلى المزارع الذكي",
@@ -3089,7 +2463,7 @@ const Account = {
         registerBenefit1: "حفظ السجلات في السحابة",
         registerBenefit2: "الوصول من أي جهاز",
         registerBenefit3: "بياناتك خاصة وآمنة",
-        registerBenefit4: "متوفر بـ 3 لغات",
+        registerBenefit4: "متوفر بلغتين",
         registerFormTitle: "إنشاء حساب",
         registerSubtitle: "سجل كمزارع للبدء",
         registerNameLabel: "الاسم الكامل",
@@ -3126,52 +2500,15 @@ const Account = {
         messageLoginSuccess: "تم تسجيل الدخول بنجاح! جاري التحويل...",
         messageLoginError: "فشل تسجيل الدخول. يرجى التسجيل أولاً.",
         messageNetworkError: "خطأ في الشبكة. يرجى التحقق من اتصالك.",
+
+        registerPasswordLabel: "كلمة المرور",
+        registerPasswordPlaceholder: "أنشئ كلمة مرور",
+        loginPasswordLabel: "كلمة المرور",
+        loginPasswordPlaceholder: "أدخل كلمة المرور",
+        messagePhonePassword: "يرجى إدخال رقم الهاتف وكلمة المرور.",
+        logout: "تسجيل الخروج",
+        loggedInAs: "تم تسجيل الدخول باسم:",
     },
-    bari: {
-        registerTitle: "Nyakuta i Smart Farmer",
-        registerDesc: "Lonyo buku ngutuk i lo korop ma ijo internet, ki duku i kenyi dutu.",
-        registerBenefit1: "Teren lo korop i cloud",
-        registerBenefit2: "Kony i talifon dutu",
-        registerBenefit3: "Data ti kutu",
-        registerBenefit4: "Lugeti 3",
-        registerFormTitle: "Lonyo buku",
-        registerSubtitle: "Ronyi ko'di ma lanyi ti korop",
-        registerNameLabel: "Nying",
-        registerNamePlaceholder: "e.g., John Deng",
-        registerPhoneLabel: "Namba lo talifon",
-        registerPhonePlaceholder: "e.g., 0712345678",
-        registerLocationLabel: "Kony",
-        registerLocationPlaceholder: "e.g., Yei County",
-        optionalLabel: "(opcional)",
-        registerBtn: "Lonyo buku →",
-        registerSwitch: "Buku i kony?",
-        loginLink: "Lonyo i keny",
-
-        // ===== LOGIN PAGE =====
-        loginTitle: "Jom i keny",
-        loginDesc: "Lonyo i keny na wali buku lo korop ka kujju lo korop.",
-        loginBenefit1: "Wali buku lo korop",
-        loginBenefit2: "Wali gama ti lanyi",
-        loginBenefit3: "Miri kony i gama ti lipi",
-        loginBenefit4: "Kony lo korop dutu",
-        loginFormTitle: "Lonyo i keny",
-        loginSubtitle: "Lonyo i keny ki namba lo talifon",
-        loginPhoneLabel: "Namba lo talifon",
-        loginPhonePlaceholder: "e.g., 0928444313",
-        loginBtn: "Lonyo i keny →",
-        loginSwitch: "Buku ti?",
-        registerLink: "Lonyo buku i keny",
-
-        // ===== MESSAGES =====
-        messagePleaseFill: "Lonyo data dutu ma ki.",
-        messageRegistering: "Lonyo buku...",
-        messageRegisterSuccess: "Buku lonyo!...",
-        messageRegisterError: "Lonyo buku sere. Miri keny.",
-        messageLoggingIn: "Lonyo i keny...",
-        messageLoginSuccess: "Lonyo i keny!...",
-        messageLoginError: "Lonyo i keny sere. Lonyo buku pe.",
-        messageNetworkError: "Network sere. Miri Internet."
-    }
 };
 
 
@@ -3205,18 +2542,6 @@ const educationVoices = {
         diseaseVoice: "مكافحة أمراض المحاصيل. افحص الأوراق والسيقان أسبوعياً بحثاً عن بقع أو ذبول أو تعفن. أزل واحرق النباتات المصابة فوراً لوقف الانتشار. تجنب العمل في الحقول الرطبة، فالأمراض تنتشر بشكل أسرع حينها. استخدم أصناف بذور مقاومة للأمراض عندما تكون متوفرة. دور المحاصيل كل موسم لكسر دورات الأمراض في التربة.",
         toolsVoice: "أدوات ومعدات المزرعة. نظف الأدوات بعد كل استخدام لمنع الصدأ وانتشار الأمراض. شحذ المعاول والمناجل بانتظام لتسهيل العمل. خزن الأدوات في مكان جاف ومظلم لإطالة عمرها. استخدم الأداة المناسبة للمهمة المناسبة، لا تجبر الأدوات. شارك أو استعر الأدوات مع الجيران لتقليل التكاليف."
     },
-    bari: {
-        plantingVoice: "Planting tips. Plant at beginning of rainy season. Use clean seeds. Space crops properly. Weed within first 3 weeks.",
-        pestVoice: "Pest control. Check fields daily. Remove armyworms by hand. Use ash around stems. Spray soapy water for aphids.",
-        postharvestVoice: "Post-harvest handling. Harvest when dry. Dry crops completely before storing. Store in clean containers. Use ash to keep insects away.",
-        soilVoice: "Soil management. Clear weeds before planting. Add compost or manure. Rotate crops every season.",
-        climateVoice: "Climate-smart farming. Plant early with rains. Choose drought-resistant crops. Use mulching to reduce water loss.",
-        waterVoice: "Water management. Collect and store rainwater during the wet season. Water crops early in the morning to reduce evaporation. Use drip or bucket irrigation to save water. Avoid waterlogging, ensure fields drain properly. Cover soil with mulch to retain moisture longer.",
-        marketVoice: "Market and selling tips. Track local market prices before selling your harvest. Store crops to wait for better market prices when possible. Sell in groups with other farmers to get better deals. Grade and sort your produce, higher quality earns more. Keep simple records of sales and expenses every season.",
-        fertilizerVoice: "Fertilizer use. Use compost or animal manure as a natural fertilizer first. Apply fertilizer at the right growth stage, not too early. Do not over-fertilize, it can burn roots and waste money. Mix fertilizer into the soil, not on top of leaves. Water the soil after applying fertilizer to help it absorb.",
-        diseaseVoice: "Crop disease control. Inspect leaves and stems weekly for spots, wilting, or rot. Remove and burn diseased plants immediately to stop spread. Avoid working in wet fields, disease spreads faster then. Use disease-resistant seed varieties when available. Rotate crops each season to break disease cycles in the soil.",
-        toolsVoice: "Farm tools and equipment. Clean tools after every use to prevent rust and disease spread. Sharpen hoes and machetes regularly for easier work. Store tools in a dry, shaded place to extend their life. Use the right tool for the right job, don't force tools. Share or borrow tools with neighbors to reduce costs."
-    }
 };
 
 // ============================================
@@ -3518,32 +2843,6 @@ const moduleDetails = {
         toolsHeroTitle: "أدوات <span class=\"highlight\">ومعدات</span> المزرعة",
         toolsHeroText: "تعرف على كيفية اختيار الأدوات وتنظيفها وتخزينها وصيانتها.",
     },
-    bari: {
-        backToEducation: "← Doki i Kujju",
-        listenToThisModule: "🔊 Yia i module ni",
-        prevModule: "← Module ma kolo",
-        nextModule: "Module ma lubo →",
-        plantingHeroTitle: "Kony lo <span class=\"highlight\">Korop</span>",
-        plantingHeroText: "Yia kony lo korop ma aji nyuth i South Sudan, ki yai, kony, ki cing lo korop.",
-        pestHeroTitle: "Kony lo <span class=\"highlight\">Afat</span>",
-        pestHeroText: "Yia kony lo afat ma aji tonyi lo korop ki kony lo cing i South Sudan.",
-        postharvestHeroTitle: "Kony lo <span class=\"highlight\">Hasad</span>",
-        postharvestHeroText: "Yia kony lo hasad, cing, ki buku lo korop ma ki coko.",
-        soilHeroTitle: "Kony lo <span class=\"highlight\">Piny</span>",
-        soilHeroText: "Yia kony lo pinynyi ma aji nyuth, ma aji tonyi, ki tonyi lo korop.",
-        climateHeroTitle: "Kujju lo <span class=\"highlight\">Awi</span>",
-        climateHeroText: "Yia kony lo kony lo korop ki awi ma aji loko.",
-        waterHeroTitle: "Pii ki <span class=\"highlight\">Lulu</span>",
-        waterHeroText: "Yia kony lo pii, lulu, ki kony lo korop ma aji ciko.",
-        marketHeroTitle: "Bara ki <span class=\"highlight\">Kony</span>",
-        marketHeroText: "Yia kony lo banya ma aji nyuth, kony lo lonyo, ki cing lo korop ma ki coko.",
-        fertilizerHeroTitle: "Kony lo <span class=\"highlight\">Mek</span>",
-        fertilizerHeroText: "Yia kony lo kony lo korop ki mek ma aji cing.",
-        diseaseHeroTitle: "Kony lo <span class=\"highlight\">Kuru</span>",
-        diseaseHeroText: "Yia kony lo kuru lo korop ki cing lo yai.",
-        toolsHeroTitle: "Kony lo <span class=\"highlight\">Juk</span>",
-        toolsHeroText: "Yia kony lo juk, cing, ki buku lo juk.",
-    }
 };
 
 // ============================================
@@ -3551,10 +2850,10 @@ const moduleDetails = {
 // ============================================
 
 // Create the master translations object - ONLY ONE DECLARATION
-const translations = { en: {}, juba: {}, bari: {} };
+const translations = { en: {}, juba: {} };
 
 // Merge all sections
-['en', 'juba', 'bari'].forEach(lang => {
+['en', 'juba'].forEach(lang => {
     translations[lang] = {
         // Common (required for all pages)
         ...common[lang],
@@ -3571,12 +2870,14 @@ const translations = { en: {}, juba: {}, bari: {} };
         // Education Voices
         ...educationVoices[lang],
         // Module detail page translations
-        ...moduleDetails[lang]
+        ...moduleDetails[lang],
+        // Login/Register page translations
+        ...Account[lang]
     };
 });
 
 // ===== MERGE EDUCATION TRANSLATIONS INTO MAIN TRANSLATIONS =====
-['en', 'juba', 'bari'].forEach(lang => {
+['en', 'juba'].forEach(lang => {
     if (typeof education !== 'undefined' && education[lang]) {
         translations[lang] = {
             ...translations[lang],
@@ -3587,7 +2888,7 @@ const translations = { en: {}, juba: {}, bari: {} };
 
 // Also merge educationVoices if they exist separately
 if (typeof educationVoices !== 'undefined') {
-    ['en', 'juba', 'bari'].forEach(lang => {
+    ['en', 'juba'].forEach(lang => {
         if (educationVoices[lang]) {
             translations[lang] = {
                 ...translations[lang],
@@ -3605,21 +2906,18 @@ if (typeof educationVoices !== 'undefined') {
 if (typeof crops !== 'undefined') {
     translations.en = { ...translations.en, ...crops.en };
     translations.juba = { ...translations.juba, ...crops.juba };
-    translations.bari = { ...translations.bari, ...crops.bari };
 }
 
 // Merge fertilizer into translations
 if (typeof fertilizer !== 'undefined') {
     translations.en = { ...translations.en, ...fertilizer.en };
     translations.juba = { ...translations.juba, ...fertilizer.juba };
-    translations.bari = { ...translations.bari, ...fertilizer.bari };
 }
 
 // Merge costForecast into translations
 if (typeof costForecast !== 'undefined') {
     translations.en = { ...translations.en, ...costForecast.en };
     translations.juba = { ...translations.juba, ...costForecast.juba };
-    translations.bari = { ...translations.bari, ...costForecast.bari };
 }
 
 // ============================================

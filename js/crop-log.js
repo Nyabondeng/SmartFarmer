@@ -12,6 +12,16 @@ let cloudMode = false;
 // the records currently shown (normalized shape, either source)
 let currentLogs = [];
 
+// last sync banner key, so it can be re-translated on language change
+let lastSyncKey = null;
+
+// Current translation dictionary (falls back to English)
+function getT() {
+    const lang = window.getCurrentTranslateLanguage ? window.getCurrentTranslateLanguage() : 'en';
+    const all = window.translations || {};
+    return all[lang] || all.en || {};
+}
+
 function getToken() {
     return localStorage.getItem('token');
 }
@@ -83,7 +93,7 @@ async function loadCropLogs() {
             if (response.status === 401) {
                 // token expired — behave as logged out
                 cloudMode = false;
-                setSyncStatus('Your session expired. Log in again to sync records to the cloud.');
+                setSyncStatus('syncExpired');
                 currentLogs = getLocalLogs();
                 renderLogs();
                 return;
@@ -92,7 +102,7 @@ async function loadCropLogs() {
             const data = await response.json();
             cloudMode = true;
             currentLogs = (data.data || []).map(normalizeCloudLog);
-            setSyncStatus('☁ Synced to your account — available on any device.');
+            setSyncStatus('syncCloud');
             renderLogs();
 
             offerLocalSync();
@@ -100,7 +110,7 @@ async function loadCropLogs() {
         } catch (err) {
             // server unreachable — fall back to device records
             cloudMode = false;
-            setSyncStatus('📴 Offline — showing records saved on this device.');
+            setSyncStatus('syncOffline');
             currentLogs = getLocalLogs();
             renderLogs();
             return;
@@ -108,7 +118,7 @@ async function loadCropLogs() {
     }
 
     cloudMode = false;
-    setSyncStatus('📱 Stored on this device only. Log in to save records to the cloud.');
+    setSyncStatus('syncLocal');
     currentLogs = getLocalLogs();
     renderLogs();
 }
@@ -119,10 +129,7 @@ async function offerLocalSync() {
     const localLogs = getLocalLogs();
     if (!cloudMode || localLogs.length === 0) return;
 
-    const upload = confirm(
-        `You have ${localLogs.length} record(s) saved on this device. ` +
-        'Upload them to your account so they are available on any device?'
-    );
+    const upload = confirm(getT().uploadOffer || 'Upload records saved on this device to your account?');
     if (!upload) return;
 
     let failed = 0;
@@ -148,9 +155,9 @@ async function offerLocalSync() {
 
     if (failed === 0) {
         saveLocalLogs([]);
-        alert('All device records uploaded to your account.');
+        alert(getT().uploadDone || 'All device records uploaded to your account.');
     } else {
-        alert(`${failed} record(s) could not be uploaded and were kept on this device.`);
+        alert(getT().uploadPartial || 'Some records could not be uploaded and were kept on this device.');
     }
     loadCropLogs();
 }
@@ -163,7 +170,7 @@ async function saveCropLog() {
     const form = readForm();
 
     if (!form.crop || !form.plantDate) {
-        alert('Please select a crop and enter a planting date.');
+        alert(getT().fillCropDate || 'Please select a crop and enter a planting date.');
         return;
     }
 
@@ -185,11 +192,11 @@ async function saveCropLog() {
             if (!response.ok) throw new Error(data.message || 'Save failed');
 
             clearForm();
-            alert('Record saved to your account!');
+            alert(getT().savedToAccount || 'Record saved to your account!');
             loadCropLogs();
             return;
         } catch (err) {
-            alert('Could not reach the server. The record was saved on this device instead.');
+            alert(getT().serverUnreachableSavedLocal || 'Could not reach the server. The record was saved on this device instead.');
             // fall through to local save
         }
     }
@@ -208,12 +215,12 @@ async function saveCropLog() {
     saveLocalLogs(logs);
 
     clearForm();
-    if (!cloudMode && !getToken()) alert('Record saved on this device!');
+    if (!cloudMode && !getToken()) alert(getT().savedOnDevice || 'Record saved on this device!');
     loadCropLogs();
 }
 
 async function deleteCropLog(id) {
-    if (!confirm('Are you sure you want to delete this record?')) {
+    if (!confirm(getT().confirmDelete || 'Are you sure you want to delete this record?')) {
         return;
     }
 
@@ -224,17 +231,17 @@ async function deleteCropLog(id) {
                 headers: authHeaders()
             });
             if (!response.ok) throw new Error('Delete failed');
-            alert('Record deleted successfully!');
+            alert(getT().recordDeleted || 'Record deleted successfully!');
             loadCropLogs();
             return;
         } catch (err) {
-            alert('Could not reach the server. Please try again.');
+            alert(getT().serverUnreachable || 'Could not reach the server. Please try again.');
             return;
         }
     }
 
     saveLocalLogs(getLocalLogs().filter(log => log.id !== id));
-    alert('Record deleted successfully!');
+    alert(getT().recordDeleted || 'Record deleted successfully!');
     loadCropLogs();
 }
 
@@ -250,7 +257,7 @@ function editCropLog(id) {
     document.getElementById('notes').value = record.notes || '';
 
     const saveBtn = document.querySelector('.save-btn');
-    saveBtn.textContent = 'Update Record';
+    saveBtn.textContent = getT().update || 'Update Record';
     saveBtn.onclick = function() {
         updateCropLog(id);
     };
@@ -262,7 +269,7 @@ async function updateCropLog(id) {
     const form = readForm();
 
     if (!form.crop || !form.plantDate) {
-        alert('Please select a crop and enter a planting date.');
+        alert(getT().fillCropDate || 'Please select a crop and enter a planting date.');
         return;
     }
 
@@ -282,7 +289,7 @@ async function updateCropLog(id) {
             });
             if (!response.ok) throw new Error('Update failed');
         } catch (err) {
-            alert('Could not reach the server. Please try again.');
+            alert(getT().serverUnreachable || 'Could not reach the server. Please try again.');
             return;
         }
     } else {
@@ -305,20 +312,20 @@ async function updateCropLog(id) {
 
     clearForm();
     resetSaveButton();
-    alert('Record updated successfully!');
+    alert(getT().recordUpdated || 'Record updated successfully!');
     loadCropLogs();
 }
 
 function resetSaveButton() {
     const saveBtn = document.querySelector('.save-btn');
-    saveBtn.textContent = 'Save Planting Record';
+    saveBtn.textContent = getT().saveRecord || 'Save Planting Record';
     saveBtn.onclick = function() {
         saveCropLog();
     };
 }
 
 async function clearAllLogs() {
-    if (!confirm('Are you sure you want to delete all records?')) {
+    if (!confirm(getT().confirmClearAll || 'Are you sure you want to delete all records?')) {
         return;
     }
 
@@ -337,7 +344,7 @@ async function clearAllLogs() {
         saveLocalLogs([]);
     }
 
-    alert('All records cleared successfully!');
+    alert(getT().allRecordsCleared || 'All records cleared successfully!');
     loadCropLogs();
 }
 
@@ -345,7 +352,8 @@ async function clearAllLogs() {
 // RENDERING
 // ============================================================
 
-function setSyncStatus(text) {
+function setSyncStatus(key) {
+    lastSyncKey = key;
     let el = document.getElementById('syncStatus');
     if (!el) {
         const savedLogs = document.querySelector('.saved-logs');
@@ -356,20 +364,21 @@ function setSyncStatus(text) {
             'background:#f0fdf4;border:1px solid #bbf7d0;font-size:0.85rem;color:#166534;';
         savedLogs.insertBefore(el, savedLogs.firstChild);
     }
-    el.textContent = text;
+    el.textContent = getT()[key] || key;
 }
 
 function renderLogs() {
     const logList = document.getElementById('logList');
     if (!logList) return;
 
+    const t = getT();
     updateCropCount();
 
     if (currentLogs.length === 0) {
         logList.innerHTML = `
             <div class="empty-message">
                 <div class="empty-icon">🌱</div>
-                <p>No records yet. Save your first planting date.</p>
+                <p>${t.noRecords || 'No records yet. Save your first planting date.'}</p>
             </div>
         `;
         return;
@@ -378,41 +387,43 @@ function renderLogs() {
     let html = '<div class="log-items">';
     currentLogs.forEach((log) => {
         const statusColor = getStatusColor(log.status);
-        const statusText = log.status || 'Planted';
+        const status = log.status || 'Planted';
+        const statusText = t['status' + status] || status;
+        const cropText = t[log.crop.toLowerCase().replace(/ /g, '')] || log.crop;
 
         html += `
             <div class="log-item" data-id="${log.id}">
                 <div class="log-item-header">
-                    <span class="log-crop-name">${log.crop}</span>
+                    <span class="log-crop-name">${cropText}</span>
                     <span class="log-status" style="background: ${statusColor};">${statusText}</span>
                 </div>
                 <div class="log-item-details">
                     <div class="log-detail-row">
-                        <span class="log-label">Planting Date:</span>
+                        <span class="log-label">${t.plantingDateLabel || 'Planting Date'}:</span>
                         <span class="log-value">${formatDate(log.plantDate)}</span>
                     </div>
                     ${log.expectedHarvest ? `
                         <div class="log-detail-row">
-                            <span class="log-label">Expected Harvest:</span>
+                            <span class="log-label">${t.expectedHarvest || 'Expected Harvest'}:</span>
                             <span class="log-value">${formatDate(log.expectedHarvest)}</span>
                         </div>
                     ` : ''}
                     ${log.farmLocation ? `
                         <div class="log-detail-row">
-                            <span class="log-label">Farm Location:</span>
+                            <span class="log-label">${t.farmLocation || 'Farm Location'}:</span>
                             <span class="log-value">${log.farmLocation}</span>
                         </div>
                     ` : ''}
                     ${log.notes ? `
                         <div class="log-detail-row">
-                            <span class="log-label">Notes:</span>
+                            <span class="log-label">${t.notesLabelShort || 'Notes'}:</span>
                             <span class="log-value">${log.notes}</span>
                         </div>
                     ` : ''}
                 </div>
                 <div class="log-item-actions">
-                    <button class="edit-btn" onclick="editCropLog(${log.id})">Edit</button>
-                    <button class="delete-btn" onclick="deleteCropLog(${log.id})">Delete</button>
+                    <button class="edit-btn" onclick="editCropLog(${log.id})">${t.edit || 'Edit'}</button>
+                    <button class="delete-btn" onclick="deleteCropLog(${log.id})">${t.delete || 'Delete'}</button>
                 </div>
             </div>
         `;
@@ -439,7 +450,8 @@ function getStatusColor(status) {
 function formatDate(dateString) {
     if (!dateString) return '—';
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
+    const lang = window.getCurrentTranslateLanguage ? window.getCurrentTranslateLanguage() : 'en';
+    return date.toLocaleDateString(lang === 'juba' ? 'ar' : 'en-US', {
         year: 'numeric',
         month: 'short',
         day: 'numeric'
@@ -475,6 +487,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (plantDateInput) {
         plantDateInput.value = today;
     }
+});
+
+// Re-render the records and sync banner in the new language
+document.addEventListener('languagechange', function() {
+    renderLogs();
+    if (lastSyncKey) setSyncStatus(lastSyncKey);
 });
 
 // ============================================================

@@ -29,7 +29,6 @@
                     <select id="languageSwitcher">
                         <option value="en">English</option>
                         <option value="juba">Juba Arabic</option>
-                        <option value="bari">Bari</option>
                     </select>
                 </div>
             </nav>
@@ -44,20 +43,20 @@
         <!-- LEFT: branding panel -->
         <div class="auth-left">
             <div class="auth-left-content">
-                <h2>Welcome Back</h2>
-                <p>Login to access your planting records, crop logs and personalized farming information.</p>
+                <h2 data-translate="loginTitle">Welcome Back</h2>
+                <p data-translate="loginDesc">Login to access your planting records, crop logs and personalized farming information.</p>
                 <div class="auth-benefits">
                     <div class="benefit-item">
-                        <span>View your crop log records</span>
+                        <span data-translate="loginBenefit1">View your crop log records</span>
                     </div>
                     <div class="benefit-item">
-                        <span>Track your planting history</span>
+                        <span data-translate="loginBenefit2">Track your planting history</span>
                     </div>
                     <div class="benefit-item">
-                        <span>Get seasonal reminders</span>
+                        <span data-translate="loginBenefit3">Get seasonal reminders</span>
                     </div>
                     <div class="benefit-item">
-                        <span>Access all crop information</span>
+                        <span data-translate="loginBenefit4">Access all crop information</span>
                     </div>
                 </div>
             </div>
@@ -67,19 +66,20 @@
         <div class="auth-right">
             <div class="auth-container" id="loginForm">
                 <div class="auth-header">
-                    <h2>Farmer Login</h2>
-                    <p class="auth-subtitle">Login with your phone number and password</p>
+                    <h2 data-translate="loginFormTitle">Farmer Login</h2>
+                    <p class="auth-subtitle" data-translate="loginSubtitle">Login with your phone number and password</p>
                 </div>
 
                 <div class="message" id="authMessage"></div>
 
                 <div class="form-group">
-                <label for="loginPhone">Phone Number</label>
+                <label for="loginPhone" data-translate="loginPhoneLabel">Phone Number</label>
                 <div class="input-wrap">
                     <span class="input-icon">📱</span>
                     <input
                         type="tel"
                         id="loginPhone"
+                        data-translate="loginPhonePlaceholder"
                         placeholder="e.g., 0928444313"
                         required
                     >
@@ -87,24 +87,25 @@
             </div>
 
             <div class="form-group">
-                <label for="loginPassword">Password</label>
+                <label for="loginPassword" data-translate="loginPasswordLabel">Password</label>
                 <div class="input-wrap">
                     <span class="input-icon">🔒</span>
                     <input
                         type="password"
                         id="loginPassword"
+                        data-translate="loginPasswordPlaceholder"
                         placeholder="Enter your password"
                         required
                     >
                 </div>
             </div>
 
-                <button class="auth-btn" onclick="loginFarmer()">
+                <button class="auth-btn" onclick="loginFarmer()" data-translate="loginBtn">
                     Login →
                 </button>
 
                 <div class="switch-link">
-                    Don't have an account? <a href="farmer-register.html">Register here</a>
+                    <span data-translate="loginSwitch">Don't have an account?</span> <a href="farmer-register.html" data-translate="registerLink">Register here</a>
                 </div>
             </div>
         </div>
@@ -122,8 +123,8 @@
     </div>
 </footer>    
 
-    <script src="/js/translations.js?v=2"></script>
-    <script src="/js/script.js?v=2"></script>
-    <script src="/js/farmer-auth.js?v=2"></script>
+    <script src="/js/translations.js?v=5"></script>
+    <script src="/js/script.js?v=5"></script>
+    <script src="/js/farmer-auth.js?v=5"></script>
 </body>
 </html>

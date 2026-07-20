@@ -2,20 +2,11 @@
 // CROP DETAILS TOGGLE FUNCTIONALITY
 // ============================================================
 
-function toggleCropDetails(button) {
-    const cropCard = button.closest('.crop-card');
-    const cropName = cropCard ? cropCard.dataset.crop : null;
-    const detailsDiv = button.nextElementSibling;
-    
-    // Check if it's hidden (style display none or not set)
-    const isHidden = detailsDiv.style.display === 'none' || detailsDiv.style.display === '';
-    
-    // Get current language
+function fillCropDetails(cropName, detailsDiv) {
     const lang = getCurrentTranslateLanguage();
     const t = translations[lang] || translations.en || {};
-    
-    if (isHidden) {
-        // Load translated content if available
+
+    {
         if (cropName && translations[lang]) {
             const cropData = translations[lang];
             const overviewKey = cropName + 'Overview';
@@ -169,11 +160,27 @@ function toggleCropDetails(button) {
                 }
             }
         }
-        
+    }
+}
+
+function toggleCropDetails(button) {
+    const cropCard = button.closest('.crop-card');
+    const cropName = cropCard ? cropCard.dataset.crop : null;
+    const detailsDiv = button.nextElementSibling;
+
+    // Check if it's hidden (style display none or not set)
+    const isHidden = detailsDiv.style.display === 'none' || detailsDiv.style.display === '';
+
+    const lang = getCurrentTranslateLanguage();
+    const t = translations[lang] || translations.en || {};
+
+    if (isHidden) {
+        fillCropDetails(cropName, detailsDiv);
+
         detailsDiv.style.display = 'block';
         button.textContent = (t.hideDetailsLabel || 'Hide Details');
         button.classList.add('active');
-        
+
         // Smooth scroll to show the details
         setTimeout(() => {
             detailsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -272,8 +279,10 @@ function updateButtonState(crop, state) {
 
 function getCurrentTranslateLanguage() {
     const selector = document.getElementById('languageSwitcher');
-    const selected = selector ? selector.value : 'en';
-    return selected === 'ba' ? 'bari' : (selected === 'ar' ? 'juba' : selected);
+    const selected = selector && selector.value
+        ? selector.value
+        : (window.getStoredLanguage ? window.getStoredLanguage() : 'en');
+    return (selected === 'juba' || selected === 'ar') ? 'juba' : 'en';
 }
 
 function applyCropsPageTranslations() {
@@ -303,21 +312,13 @@ function applyCropsPageTranslations() {
         }
     });
 
-    // Update headings in already expanded sections
+    // Re-fill already expanded sections (headings AND content) in the new language
     const expandedDetails = document.querySelectorAll('.crop-expanded-details[style*="display: block"]');
     expandedDetails.forEach(detailsDiv => {
-        const sections = detailsDiv.querySelectorAll('.info-section');
-        if (sections.length >= 9) {
-            const headingKeys = ['overviewHeading', 'plantingHeading', 'soilHeading', 'landHeading', 
-                                 'seedHeading', 'waterHeading', 'pestsHeading', 'diseasesHeading', 'marketHeading'];
-            sections.forEach((section, index) => {
-                if (index < headingKeys.length) {
-                    const h4 = section.querySelector('h4');
-                    if (h4 && t[headingKeys[index]]) {
-                        h4.textContent = t[headingKeys[index]];
-                    }
-                }
-            });
+        const cropCard = detailsDiv.closest('.crop-card');
+        const cropName = cropCard ? cropCard.dataset.crop : null;
+        if (cropName) {
+            fillCropDetails(cropName, detailsDiv);
         }
     });
 }
@@ -374,7 +375,7 @@ function toggleCropAudio(crop) {
 }
 
 function startSpeaking(crop) {
-    const lang = document.getElementById('languageSwitcher').value;
+    const lang = getCurrentTranslateLanguage();
     const text = getCropText(crop, lang);
     
     currentCrop = crop;
@@ -399,19 +400,6 @@ function startSpeaking(crop) {
                 selectedVoice = voices.find(v => v.lang === 'en-US') || voices[0];
             }
             utterance.lang = 'ar-SA';
-        } else if (lang === 'bari') {
-            const preferredVoices = ['en-KE', 'en-UG', 'en-TZ', 'en-ZA', 'en-NG'];
-            for (let langCode of preferredVoices) {
-                selectedVoice = voices.find(v => v.lang === langCode);
-                if (selectedVoice) break;
-            }
-            if (!selectedVoice) {
-                selectedVoice = voices.find(v => v.lang.startsWith('en-') && v.lang !== 'en-US' && v.lang !== 'en-GB') 
-                    || voices.find(v => v.lang === 'en-GB')
-                    || voices.find(v => v.lang === 'en-US')
-                    || voices[0];
-            }
-            utterance.lang = selectedVoice ? selectedVoice.lang : 'en-US';
         } else {
             const preferredVoices = ['en-KE', 'en-UG', 'en-TZ', 'en-ZA', 'en-NG'];
             for (let langCode of preferredVoices) {

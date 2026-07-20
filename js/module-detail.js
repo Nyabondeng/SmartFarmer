@@ -7,9 +7,8 @@
 
     function normalizeLanguage(lang) {
         let normalized = lang || 'en';
-        if (normalized === 'ba') normalized = 'bari';
         if (normalized === 'ar') normalized = 'juba';
-        if (!['en', 'juba', 'bari'].includes(normalized)) normalized = 'en';
+        if (!['en', 'juba'].includes(normalized)) normalized = 'en';
         return normalized;
     }
 
@@ -191,6 +190,12 @@
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.rate = 0.85;
                 utterance.lang = lang === 'juba' ? 'ar-SA' : 'en-US';
+                if (lang === 'juba') {
+                    const voices = window.speechSynthesis.getVoices();
+                    const arVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('ar'));
+                    if (arVoice) utterance.voice = arVoice;
+                }
+                window.speechSynthesis.cancel();
                 window.speechSynthesis.speak(utterance);
             } else {
                 alert(text);
@@ -207,10 +212,22 @@
         initCounters();
         translateModulePage();
 
+        // React to the language dropdown: save the choice and re-translate
+        const selector = document.getElementById('languageSwitcher');
+        if (selector) {
+            selector.addEventListener('change', function() {
+                const lang = normalizeLanguage(selector.value);
+                localStorage.setItem('smartfarmer_lang', lang);
+                localStorage.setItem('sf_lang', lang);
+                localStorage.setItem('language', lang);
+                translateModulePage();
+            });
+        }
+
         // Make functions globally accessible
         window.playModuleAudio = function(module) {
-            const selector = document.getElementById('languageSwitcher');
-            const lang = selector ? selector.value : 'en';
+            const sel = document.getElementById('languageSwitcher');
+            const lang = normalizeLanguage(sel ? sel.value : 'en');
             playModuleAudio(module, lang);
         };
 

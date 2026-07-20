@@ -417,7 +417,7 @@ function getFertilizerLanguage() {
     const switcher = document.getElementById('languageSwitcher');
     if (switcher) {
         const val = switcher.value;
-        return val === 'bari' ? 'bari' : val === 'juba' ? 'juba' : 'en';
+        return (val === 'juba' || val === 'ar') ? 'juba' : 'en';
     }
     return 'en';
 }
