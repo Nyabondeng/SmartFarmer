@@ -51,18 +51,44 @@
 <body>
     <div class="offline-container">
         <div class="offline-icon">📡</div>
-        <h1>You Are Offline</h1>
-        <p>Smart Farmer works without internet. Some features may be limited.</p>
-        <button class="btn" onclick="location.reload()">Try Again</button>
+        <h1 data-key="title">You Are Offline</h1>
+        <p data-key="text">Smart Farmer works without internet. Some features may be limited.</p>
+        <button class="btn" onclick="location.reload()" data-key="retry">Try Again</button>
         <div class="tips">
-            <strong>What you can still do offline:</strong>
+            <strong data-key="tipsTitle">What you can still do offline:</strong>
             <ul>
-                <li>✅ View saved crop information</li>
-                <li>✅ Save planting records</li>
-                <li>✅ Access already opened modules</li>
-                <li>✅ Use the crop log</li>
+                <li data-key="tip1">✅ View saved crop information</li>
+                <li data-key="tip2">✅ Save planting records</li>
+                <li data-key="tip3">✅ Access already opened modules</li>
+                <li data-key="tip4">✅ Use the crop log</li>
             </ul>
         </div>
     </div>
+
+    <script>
+        // This page must be self-contained (it is the offline fallback),
+        // so it carries its own small Arabic dictionary.
+        (function () {
+            var juba = {
+                title: 'أنت غير متصل بالإنترنت',
+                text: 'المزارع الذكي يعمل بدون إنترنت. قد تكون بعض الميزات محدودة.',
+                retry: 'حاول مرة أخرى',
+                tipsTitle: 'ما يمكنك فعله بدون اتصال:',
+                tip1: '✅ عرض معلومات المحاصيل المحفوظة',
+                tip2: '✅ حفظ سجلات الزراعة',
+                tip3: '✅ الوصول إلى الوحدات المفتوحة سابقاً',
+                tip4: '✅ استخدام سجل المحاصيل'
+            };
+            var lang = localStorage.getItem('smartfarmer_lang')
+                || localStorage.getItem('sf_lang')
+                || localStorage.getItem('language');
+            if (lang === 'juba' || lang === 'ar') {
+                document.querySelectorAll('[data-key]').forEach(function (el) {
+                    var v = juba[el.getAttribute('data-key')];
+                    if (v) el.textContent = v;
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

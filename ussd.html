@@ -44,9 +44,9 @@
 
     <div class="ussd-hero">
 
-        <h1>Access Smart Farmer <em>without internet</em></h1>
-        <p>Use our USSD service on any phone, no data, no smartphone needed.</p>
-        <div class="ussd-dial-badge">Dial <strong>*384*12990#</strong> on any phone</div>
+        <h1 data-translate="ussdHeroTitle" data-translate-html>Access Smart Farmer <em>without internet</em></h1>
+        <p data-translate="ussdHeroText">Use our USSD service on any phone, no data, no smartphone needed.</p>
+        <div class="ussd-dial-badge" data-translate="ussdDialBadge" data-translate-html>Dial <strong>*384*12990#</strong> on any phone</div>
     </div>
 
     <main>
@@ -54,7 +54,7 @@
 
 
             <div class="simulator-panel">
-                <div class="section-label">USSD Simulator</div>
+                <div class="section-label" data-translate="ussdSimLabel">USSD Simulator</div>
                 <div class="phone-frame">
                     <div class="phone-speaker"></div>
                     <div class="ussd-screen">
@@ -74,8 +74,9 @@
                         </div>
                         <div class="ussd-input-area" id="ussd-input-area">
                             <input type="text" class="ussd-input" id="ussd-input"
+                                   data-translate="ussdInputPlaceholder"
                                    placeholder="Enter number..." maxlength="2">
-                            <button class="ussd-send-btn" onclick="handleInput()">Send</button>
+                            <button class="ussd-send-btn" onclick="handleInput()" data-translate="ussdSendBtn">Send</button>
                         </div>
                         <button class="ussd-back-btn" id="ussd-back-btn"
                                 style="display:none" onclick="goBack()">0. Back</button>
@@ -86,34 +87,34 @@
 
 
             <div class="instructions-panel">
-                <div class="section-label">How to Use</div>
+                <div class="section-label" data-translate="ussdHowToUse">How to Use</div>
                 <div class="instructions-card">
                     <div class="step">
                         <div class="step-num">1</div>
                         <div>
-                            <p class="step-title">Select a crop</p>
-                            <p class="step-desc">Type a number (1–30) to select a crop and press <strong>Send</strong></p>
+                            <p class="step-title" data-translate="ussdStep1Title">Select a crop</p>
+                            <p class="step-desc" data-translate="ussdStep1Desc" data-translate-html>Type a number (1–30) to select a crop and press <strong>Send</strong></p>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-num">2</div>
                         <div>
-                            <p class="step-title">Choose a topic</p>
-                            <p class="step-desc">Type 1, 2, or 3 to choose Planting Guide, Pest Control, or Harvest Guide</p>
+                            <p class="step-title" data-translate="ussdStep2Title">Choose a topic</p>
+                            <p class="step-desc" data-translate="ussdStep2Desc">Type 1, 2, or 3 to choose Planting Guide, Pest Control, or Harvest Guide</p>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-num">3</div>
                         <div>
-                            <p class="step-title">Go back</p>
-                            <p class="step-desc">Press <strong>0. Back</strong> to return to the previous menu</p>
+                            <p class="step-title" data-translate="ussdStep3Title">Go back</p>
+                            <p class="step-desc" data-translate="ussdStep3Desc" data-translate-html>Press <strong>0. Back</strong> to return to the previous menu</p>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-num">4</div>
                         <div>
-                            <p class="step-title">Use on a real phone</p>
-                            <p class="step-desc">Dial <strong>*384*12990#</strong> on phone to access this service</p>
+                            <p class="step-title" data-translate="ussdStep4Title">Use on a real phone</p>
+                            <p class="step-desc" data-translate="ussdStep4Desc" data-translate-html>Dial <strong>*384*12990#</strong> on phone to access this service</p>
                         </div>
                     </div>
                 </div>
@@ -123,22 +124,22 @@
                     <div class="info-card">
                         <div class="info-card-icon">📵</div>
                         <div>
-                            <p class="info-card-title">No internet needed</p>
-                            <p class="info-card-desc">Works on phone with no data connection</p>
+                            <p class="info-card-title" data-translate="ussdCard1Title">No internet needed</p>
+                            <p class="info-card-desc" data-translate="ussdCard1Desc">Works on phone with no data connection</p>
                         </div>
                     </div>
                     <div class="info-card">
                         <div class="info-card-icon">🌍</div>
                         <div>
-                            <p class="info-card-title">3 languages</p>
-                            <p class="info-card-desc">Available in English, Juba Arabic and Bari</p>
+                            <p class="info-card-title" data-translate="ussdCard2Title">2 languages</p>
+                            <p class="info-card-desc" data-translate="ussdCard2Desc">Web app available in English and Juba Arabic</p>
                         </div>
                     </div>
                     <div class="info-card">
                         <div class="info-card-icon">🆓</div>
                         <div>
-                            <p class="info-card-title">Free to use</p>
-                            <p class="info-card-desc">No cost to farmers, always free</p>
+                            <p class="info-card-title" data-translate="ussdCard3Title">Free to use</p>
+                            <p class="info-card-desc" data-translate="ussdCard3Desc">No cost to farmers, always free</p>
                         </div>
                     </div>
                 </div>
@@ -149,22 +150,18 @@
 
     <footer>
     <div class="footer-content">
-        <p class="footer-copy">&copy; 2026 Smart Farmer. All rights reserved.</p>
+        <p class="footer-copy" data-translate="footerCopy">&copy; 2026 Smart Farmer. All rights reserved.</p>
         <div class="footer-contacts">
-            <a href="mailto:nyabondeng0@gmail.com">📧 nyabondeng0@gmail.com</a>
-            <a href="https://wa.me/211928470444">📱 +211928470444</a>
-            <span>📍 Yei County, South Sudan</span>
+            <a href="mailto:nyabondeng0@gmail.com" data-translate="footerEmail">📧 nyabondeng0@gmail.com</a>
+            <a href="https://wa.me/211928470444" data-translate="footerPhone">📱 +211928470444</a>
+            <span data-translate="footerLocation">📍 Yei County, South Sudan</span>
         </div>
     </div>
 </footer>    
 
-    <script src="js/ussd.js?v=5"></script>
-    <script>
-        function toggleMenu() {
-            const nav = document.querySelector('.nav-links');
-            if (nav) nav.classList.toggle('active');
-        }
-    </script>
+    <script src="js/translations.js?v=6"></script>
+    <script src="js/script.js?v=6"></script>
+    <script src="js/ussd.js?v=6"></script>
 
 </body>
 </html>

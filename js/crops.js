@@ -321,6 +321,35 @@ function applyCropsPageTranslations() {
             fillCropDetails(cropName, detailsDiv);
         }
     });
+
+    translateSeasonBadges(lang);
+}
+
+// Translate the month names in the crop season badges (e.g. "🌧 May – June")
+function translateSeasonBadges(lang) {
+    const monthMap = {
+        'January': 'يناير', 'February': 'فبراير', 'March': 'مارس', 'April': 'أبريل',
+        'May': 'مايو', 'June': 'يونيو', 'July': 'يوليو', 'August': 'أغسطس',
+        'September': 'سبتمبر', 'October': 'أكتوبر', 'November': 'نوفمبر', 'December': 'ديسمبر',
+        'Jan': 'يناير', 'Feb': 'فبراير', 'Mar': 'مارس', 'Apr': 'أبريل',
+        'Jun': 'يونيو', 'Jul': 'يوليو', 'Aug': 'أغسطس', 'Sept': 'سبتمبر',
+        'Sep': 'سبتمبر', 'Oct': 'أكتوبر', 'Nov': 'نوفمبر', 'Dec': 'ديسمبر',
+        'Year-round': 'طوال السنة', 'Year round': 'طوال السنة'
+    };
+    document.querySelectorAll('.crop-season-badge').forEach(badge => {
+        if (!badge.dataset.orig) badge.dataset.orig = badge.textContent;
+        if (lang === 'juba') {
+            let txt = badge.dataset.orig;
+            Object.keys(monthMap)
+                .sort((a, b) => b.length - a.length)
+                .forEach(m => {
+                    txt = txt.replace(new RegExp('\\b' + m + '\\b', 'g'), monthMap[m]);
+                });
+            badge.textContent = txt;
+        } else {
+            badge.textContent = badge.dataset.orig;
+        }
+    });
 }
 
 // ============================================================
