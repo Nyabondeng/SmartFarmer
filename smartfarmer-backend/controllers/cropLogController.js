@@ -9,9 +9,18 @@ exports.createLog = async (req, res) => {
             crop,
             planting_date,
             harvest_date,
-            notes
+            notes,
+            status,
+            location
 
         } = req.body;
+
+        if (!crop || !planting_date) {
+            return res.status(400).json({
+                success: false,
+                message: "Crop and planting date are required."
+            });
+        }
 
         const log = await CropLog.create(
 
@@ -21,9 +30,13 @@ exports.createLog = async (req, res) => {
 
             planting_date,
 
-            harvest_date,
+            harvest_date || null,
 
-            notes
+            notes,
+
+            status,
+
+            location
 
         );
 
@@ -99,11 +112,22 @@ exports.updateLog = async (req, res) => {
 
             req.body.planting_date,
 
-            req.body.harvest_date,
+            req.body.harvest_date || null,
 
-            req.body.notes
+            req.body.notes,
+
+            req.body.status,
+
+            req.body.location
 
         );
+
+        if (!log) {
+            return res.status(404).json({
+                success: false,
+                message: "Crop log not found."
+            });
+        }
 
         res.json({
 

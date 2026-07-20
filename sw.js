@@ -1,5 +1,4 @@
-const CACHE_NAME = 'smartfarmer-v' + Date.now();
-const OFFLINE_CACHE = 'smartfarmer-offline-v1';
+const OFFLINE_CACHE = 'smartfarmer-offline-v2';
 
 // Files to cache for offline use
 const OFFLINE_FILES = [
@@ -9,20 +8,44 @@ const OFFLINE_FILES = [
     '/crops.html',
     '/education.html',
     '/crop-log.html',
+    '/cost-forecast.html',
+    '/fertilizer.html',
     '/ussd.html',
     '/farmer-login.html',
     '/farmer-register.html',
+    '/success.html',
+    '/offline.html',
+    '/manifest.json',
+    '/modules/module-planting.html',
+    '/modules/module-pest.html',
+    '/modules/module-postharvest.html',
+    '/modules/module-soil.html',
+    '/modules/module-climate.html',
+    '/modules/module-water.html',
+    '/modules/module-market.html',
+    '/modules/module-disease.html',
+    '/modules/module-fertilizer.html',
+    '/modules/module-tools.html',
     '/styles/styles.css',
     '/styles/crops.css',
     '/styles/education.css',
     '/styles/about.css',
     '/styles/crop-log.css',
+    '/styles/cost-forecast.css',
+    '/styles/fertilizer.css',
     '/styles/ussd.css',
     '/styles/farmer-auth.css',
+    '/styles/footer.css',
+    '/styles/navbar.css',
+    '/styles/module-detail.css',
     '/js/translations.js',
     '/js/script.js',
     '/js/crops.js',
     '/js/education.js',
+    '/js/crop-log.js',
+    '/js/cost-forecast.js',
+    '/js/fertilizer.js',
+    '/js/module-detail.js',
     '/js/farmer-auth.js',
     '/js/ussd.js',
     '/images/smartfarmer.png'
@@ -34,9 +57,7 @@ self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(OFFLINE_CACHE).then(cache => {
             console.log('[SW] Caching offline files');
-            return cache.addAll(
-                OFFLINE_FILES.filter(url => !url.startsWith('chrome-extension'))
-            );
+            return cache.addAll(OFFLINE_FILES);
         }).then(() => self.skipWaiting())
     );
 });
@@ -66,6 +87,9 @@ self.addEventListener('fetch', event => {
     // Skip POST requests
     if (event.request.method !== 'GET') return;
 
+    // Leave cross-origin requests (backend API, fonts) to the network
+    if (new URL(event.request.url).origin !== self.location.origin) return;
+
     event.respondWith(
         // Always try network first
         fetch(event.request)
@@ -81,14 +105,18 @@ self.addEventListener('fetch', event => {
                 return networkResponse;
             })
             .catch(() => {
-                // Network failed — serve from cache (offline mode)
-                return caches.match(event.request).then(cachedResponse => {
+                // Network failed — serve from cache (offline mode).
+                // ignoreSearch so "/js/script.js?v=2" matches the cached "/js/script.js"
+                return caches.match(event.request, { ignoreSearch: true }).then(cachedResponse => {
                     if (cachedResponse) {
                         console.log('[SW] Serving from cache (offline):', event.request.url);
                         return cachedResponse;
                     }
-                    // Nothing in cache either — return offline page
-                    return caches.match('/index.html');
+                    // Page navigation with nothing cached — show the offline page
+                    if (event.request.mode === 'navigate') {
+                        return caches.match('/offline.html');
+                    }
+                    return Response.error();
                 });
             })
     );

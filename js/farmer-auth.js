@@ -50,6 +50,9 @@ async function registerFarmer() {
             console.log("Registration Success:", data);
 
             localStorage.setItem("token", data.token);
+            localStorage.setItem("farmer_id", data.user.id);
+            localStorage.setItem("farmer_name", data.user.name);
+            localStorage.setItem("farmer_location", data.user.location || "");
 
             showMessage("Registration successful!", "success");
 
@@ -132,6 +135,9 @@ async function loginFarmer() {
 function logout(){
 
     localStorage.removeItem("token");
+    localStorage.removeItem("farmer_id");
+    localStorage.removeItem("farmer_name");
+    localStorage.removeItem("farmer_location");
 
     window.location.href="index.html";
 

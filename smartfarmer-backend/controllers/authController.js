@@ -43,10 +43,24 @@ exports.register = async (req, res) => {
             [name, phone, location || null, hashedPassword]
         );
 
+        const newFarmer = result.rows[0];
+
+        const token = jwt.sign(
+            {
+                id: newFarmer.id,
+                phone: newFarmer.phone
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: "7d"
+            }
+        );
+
         res.status(201).json({
             success: true,
             message: "Registration successful.",
-            user: result.rows[0]
+            token,
+            user: newFarmer
         });
 
     } catch (error) {

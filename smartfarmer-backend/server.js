@@ -64,6 +64,12 @@ async function createTables() {
             )
         `);
 
+        await pool.query(`
+            ALTER TABLE crop_logs
+                ADD COLUMN IF NOT EXISTS status VARCHAR(20) DEFAULT 'Planted',
+                ADD COLUMN IF NOT EXISTS location VARCHAR(100)
+        `);
+
 
         await pool.query(`
             CREATE TABLE IF NOT EXISTS ussd_logs (

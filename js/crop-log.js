@@ -1,80 +1,247 @@
-// Get crop logs from localStorage
-function getCropLogs() {
-    const logs = localStorage.getItem('cropLogs');
-    return logs ? JSON.parse(logs) : [];
+// ============================================================
+// CROP LOG — cloud + offline hybrid
+// Logged in  -> records saved to the backend (/api/logs)
+// Logged out -> records saved to localStorage on this device
+// ============================================================
+
+const CROPLOG_API = 'https://smartfarmer-m7x3.onrender.com';
+
+// true when the user is logged in AND the server is reachable
+let cloudMode = false;
+
+// the records currently shown (normalized shape, either source)
+let currentLogs = [];
+
+function getToken() {
+    return localStorage.getItem('token');
 }
 
-// Save crop logs to localStorage
-function saveCropLogs(logs) {
-    localStorage.setItem('cropLogs', JSON.stringify(logs));
-}
-
-// Save a new crop log record
-function saveCropLog() {
-    const crop = document.getElementById('cropSelect').value;
-    const plantDate = document.getElementById('plantDate').value;
-    const expectedHarvest = document.getElementById('expectedHarvest').value;
-    const farmLocation = document.getElementById('farmLocation').value;
-    const status = document.getElementById('cropStatus').value;
-    const notes = document.getElementById('notes').value;
-
-    // Validate required fields
-    if (!crop || !plantDate) {
-        alert('Please select a crop and enter a planting date.');
-        return;
-    }
-
-    const logs = getCropLogs();
-    const newRecord = {
-        id: Date.now(),
-        crop: crop,
-        plantDate: plantDate,
-        expectedHarvest: expectedHarvest || '',
-        farmLocation: farmLocation || '',
-        status: status || 'Planted',
-        notes: notes || '',
-        createdAt: new Date().toISOString()
+function authHeaders() {
+    return {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + getToken()
     };
+}
 
-    logs.unshift(newRecord); // Add to beginning of array
-    saveCropLogs(logs);
-    displayCropLogs();
-    updateCropCount();
+// Convert a backend row to the shape the page renders
+function normalizeCloudLog(row) {
+    return {
+        id: row.id,
+        crop: row.crop,
+        plantDate: row.planting_date ? row.planting_date.slice(0, 10) : '',
+        expectedHarvest: row.harvest_date ? row.harvest_date.slice(0, 10) : '',
+        farmLocation: row.location || '',
+        status: row.status || 'Planted',
+        notes: row.notes || ''
+    };
+}
 
-    // Clear form
+// Read the values currently in the form
+function readForm() {
+    return {
+        crop: document.getElementById('cropSelect').value,
+        plantDate: document.getElementById('plantDate').value,
+        expectedHarvest: document.getElementById('expectedHarvest').value,
+        farmLocation: document.getElementById('farmLocation').value,
+        status: document.getElementById('cropStatus').value,
+        notes: document.getElementById('notes').value
+    };
+}
+
+function clearForm() {
     document.getElementById('plantDate').value = '';
     document.getElementById('expectedHarvest').value = '';
     document.getElementById('farmLocation').value = '';
     document.getElementById('notes').value = '';
     document.getElementById('cropStatus').value = 'Planted';
-    
-    // Show success message
-    alert('Record saved successfully!');
 }
 
-// Delete a crop log record
-function deleteCropLog(id) {
+// ============================================================
+// LOCAL STORAGE (guest / offline mode)
+// ============================================================
+
+function getLocalLogs() {
+    const logs = localStorage.getItem('cropLogs');
+    return logs ? JSON.parse(logs) : [];
+}
+
+function saveLocalLogs(logs) {
+    localStorage.setItem('cropLogs', JSON.stringify(logs));
+}
+
+// ============================================================
+// LOADING
+// ============================================================
+
+async function loadCropLogs() {
+    if (getToken()) {
+        try {
+            const response = await fetch(`${CROPLOG_API}/api/logs`, {
+                headers: authHeaders()
+            });
+
+            if (response.status === 401) {
+                // token expired — behave as logged out
+                cloudMode = false;
+                setSyncStatus('Your session expired. Log in again to sync records to the cloud.');
+                currentLogs = getLocalLogs();
+                renderLogs();
+                return;
+            }
+
+            const data = await response.json();
+            cloudMode = true;
+            currentLogs = (data.data || []).map(normalizeCloudLog);
+            setSyncStatus('☁ Synced to your account — available on any device.');
+            renderLogs();
+
+            offerLocalSync();
+            return;
+        } catch (err) {
+            // server unreachable — fall back to device records
+            cloudMode = false;
+            setSyncStatus('📴 Offline — showing records saved on this device.');
+            currentLogs = getLocalLogs();
+            renderLogs();
+            return;
+        }
+    }
+
+    cloudMode = false;
+    setSyncStatus('📱 Stored on this device only. Log in to save records to the cloud.');
+    currentLogs = getLocalLogs();
+    renderLogs();
+}
+
+// If the user logged in but still has records on the device,
+// offer to upload them once so nothing is lost.
+async function offerLocalSync() {
+    const localLogs = getLocalLogs();
+    if (!cloudMode || localLogs.length === 0) return;
+
+    const upload = confirm(
+        `You have ${localLogs.length} record(s) saved on this device. ` +
+        'Upload them to your account so they are available on any device?'
+    );
+    if (!upload) return;
+
+    let failed = 0;
+    for (const log of localLogs) {
+        try {
+            const response = await fetch(`${CROPLOG_API}/api/logs`, {
+                method: 'POST',
+                headers: authHeaders(),
+                body: JSON.stringify({
+                    crop: log.crop,
+                    planting_date: log.plantDate,
+                    harvest_date: log.expectedHarvest || null,
+                    notes: log.notes || '',
+                    status: log.status || 'Planted',
+                    location: log.farmLocation || ''
+                })
+            });
+            if (!response.ok) failed++;
+        } catch (err) {
+            failed++;
+        }
+    }
+
+    if (failed === 0) {
+        saveLocalLogs([]);
+        alert('All device records uploaded to your account.');
+    } else {
+        alert(`${failed} record(s) could not be uploaded and were kept on this device.`);
+    }
+    loadCropLogs();
+}
+
+// ============================================================
+// SAVE / UPDATE / DELETE
+// ============================================================
+
+async function saveCropLog() {
+    const form = readForm();
+
+    if (!form.crop || !form.plantDate) {
+        alert('Please select a crop and enter a planting date.');
+        return;
+    }
+
+    if (cloudMode) {
+        try {
+            const response = await fetch(`${CROPLOG_API}/api/logs`, {
+                method: 'POST',
+                headers: authHeaders(),
+                body: JSON.stringify({
+                    crop: form.crop,
+                    planting_date: form.plantDate,
+                    harvest_date: form.expectedHarvest || null,
+                    notes: form.notes || '',
+                    status: form.status || 'Planted',
+                    location: form.farmLocation || ''
+                })
+            });
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.message || 'Save failed');
+
+            clearForm();
+            alert('Record saved to your account!');
+            loadCropLogs();
+            return;
+        } catch (err) {
+            alert('Could not reach the server. The record was saved on this device instead.');
+            // fall through to local save
+        }
+    }
+
+    const logs = getLocalLogs();
+    logs.unshift({
+        id: Date.now(),
+        crop: form.crop,
+        plantDate: form.plantDate,
+        expectedHarvest: form.expectedHarvest || '',
+        farmLocation: form.farmLocation || '',
+        status: form.status || 'Planted',
+        notes: form.notes || '',
+        createdAt: new Date().toISOString()
+    });
+    saveLocalLogs(logs);
+
+    clearForm();
+    if (!cloudMode && !getToken()) alert('Record saved on this device!');
+    loadCropLogs();
+}
+
+async function deleteCropLog(id) {
     if (!confirm('Are you sure you want to delete this record?')) {
         return;
     }
 
-    let logs = getCropLogs();
-    logs = logs.filter(log => log.id !== id);
-    saveCropLogs(logs);
-    displayCropLogs();
-    updateCropCount();
-    
+    if (cloudMode) {
+        try {
+            const response = await fetch(`${CROPLOG_API}/api/logs/${id}`, {
+                method: 'DELETE',
+                headers: authHeaders()
+            });
+            if (!response.ok) throw new Error('Delete failed');
+            alert('Record deleted successfully!');
+            loadCropLogs();
+            return;
+        } catch (err) {
+            alert('Could not reach the server. Please try again.');
+            return;
+        }
+    }
+
+    saveLocalLogs(getLocalLogs().filter(log => log.id !== id));
     alert('Record deleted successfully!');
+    loadCropLogs();
 }
 
-// Edit a crop log record - populate form with existing data
 function editCropLog(id) {
-    const logs = getCropLogs();
-    const record = logs.find(log => log.id === id);
-    
+    const record = currentLogs.find(log => log.id === id);
     if (!record) return;
 
-    // Populate form with existing data
     document.getElementById('cropSelect').value = record.crop;
     document.getElementById('plantDate').value = record.plantDate;
     document.getElementById('expectedHarvest').value = record.expectedHarvest || '';
@@ -82,76 +249,123 @@ function editCropLog(id) {
     document.getElementById('cropStatus').value = record.status || 'Planted';
     document.getElementById('notes').value = record.notes || '';
 
-    // Change button to update
     const saveBtn = document.querySelector('.save-btn');
     saveBtn.textContent = 'Update Record';
     saveBtn.onclick = function() {
         updateCropLog(id);
     };
 
-    // Scroll to form
     document.querySelector('.log-form').scrollIntoView({ behavior: 'smooth' });
 }
 
-// Update an existing crop log record
-function updateCropLog(id) {
-    const crop = document.getElementById('cropSelect').value;
-    const plantDate = document.getElementById('plantDate').value;
-    const expectedHarvest = document.getElementById('expectedHarvest').value;
-    const farmLocation = document.getElementById('farmLocation').value;
-    const status = document.getElementById('cropStatus').value;
-    const notes = document.getElementById('notes').value;
+async function updateCropLog(id) {
+    const form = readForm();
 
-    if (!crop || !plantDate) {
+    if (!form.crop || !form.plantDate) {
         alert('Please select a crop and enter a planting date.');
         return;
     }
 
-    let logs = getCropLogs();
-    const index = logs.findIndex(log => log.id === id);
-    
-    if (index !== -1) {
-        logs[index] = {
-            ...logs[index],
-            crop: crop,
-            plantDate: plantDate,
-            expectedHarvest: expectedHarvest || '',
-            farmLocation: farmLocation || '',
-            status: status || 'Planted',
-            notes: notes || '',
-            updatedAt: new Date().toISOString()
-        };
-        
-        saveCropLogs(logs);
-        displayCropLogs();
-        updateCropCount();
-
-        // Reset form
-        document.getElementById('plantDate').value = '';
-        document.getElementById('expectedHarvest').value = '';
-        document.getElementById('farmLocation').value = '';
-        document.getElementById('notes').value = '';
-        document.getElementById('cropStatus').value = 'Planted';
-
-        // Reset button
-        const saveBtn = document.querySelector('.save-btn');
-        saveBtn.textContent = 'Save Planting Record';
-        saveBtn.onclick = function() {
-            saveCropLog();
-        };
-
-        alert('Record updated successfully!');
+    if (cloudMode) {
+        try {
+            const response = await fetch(`${CROPLOG_API}/api/logs/${id}`, {
+                method: 'PUT',
+                headers: authHeaders(),
+                body: JSON.stringify({
+                    crop: form.crop,
+                    planting_date: form.plantDate,
+                    harvest_date: form.expectedHarvest || null,
+                    notes: form.notes || '',
+                    status: form.status || 'Planted',
+                    location: form.farmLocation || ''
+                })
+            });
+            if (!response.ok) throw new Error('Update failed');
+        } catch (err) {
+            alert('Could not reach the server. Please try again.');
+            return;
+        }
+    } else {
+        const logs = getLocalLogs();
+        const index = logs.findIndex(log => log.id === id);
+        if (index !== -1) {
+            logs[index] = {
+                ...logs[index],
+                crop: form.crop,
+                plantDate: form.plantDate,
+                expectedHarvest: form.expectedHarvest || '',
+                farmLocation: form.farmLocation || '',
+                status: form.status || 'Planted',
+                notes: form.notes || '',
+                updatedAt: new Date().toISOString()
+            };
+            saveLocalLogs(logs);
+        }
     }
+
+    clearForm();
+    resetSaveButton();
+    alert('Record updated successfully!');
+    loadCropLogs();
 }
 
-// Display all crop logs
-function displayCropLogs() {
-    const logList = document.getElementById('logList');
-    const logs = getCropLogs();
+function resetSaveButton() {
+    const saveBtn = document.querySelector('.save-btn');
+    saveBtn.textContent = 'Save Planting Record';
+    saveBtn.onclick = function() {
+        saveCropLog();
+    };
+}
 
+async function clearAllLogs() {
+    if (!confirm('Are you sure you want to delete all records?')) {
+        return;
+    }
+
+    if (cloudMode) {
+        for (const log of currentLogs) {
+            try {
+                await fetch(`${CROPLOG_API}/api/logs/${log.id}`, {
+                    method: 'DELETE',
+                    headers: authHeaders()
+                });
+            } catch (err) {
+                // keep going; reload shows what is left
+            }
+        }
+    } else {
+        saveLocalLogs([]);
+    }
+
+    alert('All records cleared successfully!');
+    loadCropLogs();
+}
+
+// ============================================================
+// RENDERING
+// ============================================================
+
+function setSyncStatus(text) {
+    let el = document.getElementById('syncStatus');
+    if (!el) {
+        const savedLogs = document.querySelector('.saved-logs');
+        if (!savedLogs) return;
+        el = document.createElement('div');
+        el.id = 'syncStatus';
+        el.style.cssText = 'padding:8px 12px;margin-bottom:12px;border-radius:8px;' +
+            'background:#f0fdf4;border:1px solid #bbf7d0;font-size:0.85rem;color:#166534;';
+        savedLogs.insertBefore(el, savedLogs.firstChild);
+    }
+    el.textContent = text;
+}
+
+function renderLogs() {
+    const logList = document.getElementById('logList');
     if (!logList) return;
 
-    if (logs.length === 0) {
+    updateCropCount();
+
+    if (currentLogs.length === 0) {
         logList.innerHTML = `
             <div class="empty-message">
                 <div class="empty-icon">🌱</div>
@@ -162,10 +376,10 @@ function displayCropLogs() {
     }
 
     let html = '<div class="log-items">';
-    logs.forEach((log) => {
+    currentLogs.forEach((log) => {
         const statusColor = getStatusColor(log.status);
         const statusText = log.status || 'Planted';
-        
+
         html += `
             <div class="log-item" data-id="${log.id}">
                 <div class="log-item-header">
@@ -207,7 +421,11 @@ function displayCropLogs() {
     logList.innerHTML = html;
 }
 
-// Helper function to get status color
+// Kept for compatibility with older callers
+function displayCropLogs() {
+    loadCropLogs();
+}
+
 function getStatusColor(status) {
     const colors = {
         'Planted': '#3b82f6',
@@ -218,7 +436,6 @@ function getStatusColor(status) {
     return colors[status] || '#6b7280';
 }
 
-// Helper function to format date
 function formatDate(dateString) {
     if (!dateString) return '—';
     const date = new Date(dateString);
@@ -229,24 +446,11 @@ function formatDate(dateString) {
     });
 }
 
-// Update crop count in hero stats
 function updateCropCount() {
-    const logs = getCropLogs();
     const countEl = document.getElementById('totalCropsCount');
     if (countEl) {
-        countEl.textContent = logs.length;
+        countEl.textContent = currentLogs.length;
     }
-}
-
-// Clear all crop logs
-function clearAllLogs() {
-    if (!confirm('Are you sure you want to delete all records?')) {
-        return;
-    }
-    saveCropLogs([]);
-    displayCropLogs();
-    updateCropCount();
-    alert('All records cleared successfully!');
 }
 
 // ============================================================
@@ -263,8 +467,7 @@ function toggleMenu() {
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    displayCropLogs();
-    updateCropCount();
+    loadCropLogs();
 
     // Set default date to today
     const today = new Date().toISOString().split('T')[0];
