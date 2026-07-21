@@ -65,12 +65,16 @@ function translatePage() {
         return;
     }
 
-    const elements = document.querySelectorAll('[data-translate]');
+    // Accept the key from either attribute form:
+    //   data-translate="key"  (optionally with a data-translate-html flag)
+    //   data-translate-html="key"
+    const elements = document.querySelectorAll('[data-translate], [data-translate-html]');
     elements.forEach(el => {
-        const key = el.getAttribute('data-translate');
+        const key = el.getAttribute('data-translate') || el.getAttribute('data-translate-html');
+        if (!key) return;
         if (el.closest('.nav-links')) return;
         if (el.closest('.crop-expanded-details')) return;
-        
+
         if (t[key]) {
             if (el.hasAttribute('placeholder')) {
                 el.placeholder = t[key];
