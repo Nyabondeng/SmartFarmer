@@ -439,6 +439,270 @@ const cropData = {
 };
 
 // ============================================================
+// JUBA ARABIC OVERLAY - DISPLAYED TEXT FIELDS ONLY
+// (numeric cost/yield fields stay in cropData above)
+// ============================================================
+
+const cropDataJuba = {
+    sorghum: {
+        name: 'الذرة الرفيعة',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'سبتمبر - أكتوبر',
+        alternativeSeasons: [
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة قد تؤدي إلى انخفاض الإنتاج بسبب نقص الرطوبة.' }
+        ]
+    },
+    maize: {
+        name: 'الذرة الشامية',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'أغسطس - سبتمبر',
+        alternativeSeasons: [
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تعرض المحصول لخطر الجفاف خلال مرحلة التزهير الحرجة.' },
+            { months: 'مارس - أبريل', warning: 'الزراعة المبكرة ممكنة إذا كانت رطوبة التربة كافية.' }
+        ]
+    },
+    millet: {
+        name: 'الدخن',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'سبتمبر - أكتوبر',
+        alternativeSeasons: [
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة قد تقلل امتلاء الحبوب والإنتاج.' }
+        ]
+    },
+    groundnuts: {
+        name: 'الفول السوداني',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'أكتوبر - نوفمبر',
+        alternativeSeasons: [
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل بشكل كبير تكوين القرون والإنتاج.' }
+        ]
+    },
+    cassava: {
+        name: 'الكسافا',
+        bestSeason: 'مارس - أبريل (الأمطار المبكرة)',
+        harvestTime: '8-12 شهراً بعد الزراعة',
+        alternativeSeasons: [
+            { months: 'مايو - يونيو', warning: 'إنتاج أقل قليلاً لكنه لا يزال مقبولاً.' },
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل حجم الدرنات وجودتها.' }
+        ]
+    },
+    cowpeas: {
+        name: 'اللوبيا',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'سبتمبر - أكتوبر',
+        alternativeSeasons: [
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل عقد القرون وجودة البذور.' }
+        ]
+    },
+    sesame: {
+        name: 'السمسم',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'أكتوبر - نوفمبر',
+        alternativeSeasons: [
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل محتوى الزيت والإنتاج.' }
+        ]
+    },
+    sweetpotato: {
+        name: 'البطاطا الحلوة',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: '4-6 أشهر بعد الزراعة',
+        alternativeSeasons: [
+            { months: 'مارس - أبريل', warning: 'الزراعة المبكرة ممكنة مع الري.' },
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل حجم الدرنات.' }
+        ]
+    },
+    beans: {
+        name: 'الفول',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'سبتمبر - أكتوبر',
+        alternativeSeasons: [
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل تكوين القرون وجودة الحبوب.' }
+        ]
+    },
+    okra: {
+        name: 'البامية',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'سبتمبر - أكتوبر',
+        alternativeSeasons: [
+            { months: 'مارس - أبريل', warning: 'الزراعة المبكرة ممكنة مع رطوبة كافية.' },
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل الإنتاج وجودة القرون.' }
+        ]
+    },
+    tomato: {
+        name: 'الطماطم',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'سبتمبر - أكتوبر',
+        alternativeSeasons: [
+            { months: 'مارس - أبريل', warning: 'الزراعة المبكرة ممكنة مع الري.' },
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تزيد خطر الأمراض وتقلل الإنتاج.' }
+        ]
+    },
+    onion: {
+        name: 'البصل',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'أكتوبر - نوفمبر',
+        alternativeSeasons: [
+            { months: 'مارس - أبريل', warning: 'الزراعة المبكرة ممكنة في التربة جيدة الصرف.' },
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل بشكل كبير حجم البصيلات والإنتاج.' }
+        ]
+    },
+    pumpkin: {
+        name: 'القرع',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'أكتوبر - نوفمبر',
+        alternativeSeasons: [
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل حجم الثمار.' }
+        ]
+    },
+    yam: {
+        name: 'اليام',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'أكتوبر - نوفمبر',
+        alternativeSeasons: [
+            { months: 'مارس - أبريل', warning: 'الزراعة المبكرة ممكنة مع رطوبة كافية.' },
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل حجم الدرنات.' }
+        ]
+    },
+    sugarcane: {
+        name: 'قصب السكر',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: '10-12 شهراً بعد الزراعة',
+        alternativeSeasons: [
+            { months: 'مارس - أبريل', warning: 'الزراعة المبكرة ممكنة مع الري.' },
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل محتوى السكر.' }
+        ]
+    },
+    rice: {
+        name: 'الأرز',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'أكتوبر - نوفمبر',
+        alternativeSeasons: [
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل التفريع وامتلاء الحبوب.' }
+        ]
+    },
+    sunflower: {
+        name: 'دوار الشمس',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'أكتوبر - نوفمبر',
+        alternativeSeasons: [
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل عقد البذور ومحتوى الزيت.' }
+        ]
+    },
+    banana: {
+        name: 'الموز',
+        bestSeason: 'طوال السنة (مع ري كافٍ)',
+        harvestTime: '8-12 شهراً بعد الزراعة',
+        alternativeSeasons: [
+            { months: 'مايو - يونيو', warning: 'الأفضل الزراعة في بداية الأمطار للحصول على نمو مثالي.' },
+            { months: 'يوليو - أغسطس', warning: 'قد تحتاج إلى ري إذا استمرت ظروف الجفاف.' }
+        ]
+    },
+    watermelon: {
+        name: 'البطيخ',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'سبتمبر - أكتوبر',
+        alternativeSeasons: [
+            { months: 'مارس - أبريل', warning: 'الزراعة المبكرة ممكنة مع الري.' },
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل حجم الثمار وجودتها.' }
+        ]
+    },
+    cabbage: {
+        name: 'الملفوف',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'سبتمبر - أكتوبر',
+        alternativeSeasons: [
+            { months: 'مارس - أبريل', warning: 'الزراعة المبكرة ممكنة مع رطوبة كافية.' },
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تزيد ضغط الآفات.' }
+        ]
+    },
+    pigeonpeas: {
+        name: 'اللوبيا',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'أكتوبر - نوفمبر',
+        alternativeSeasons: [
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل عقد القرون.' }
+        ]
+    },
+    mangoes: {
+        name: 'المانجو',
+        bestSeason: 'مارس - أبريل (قبل الأمطار)',
+        harvestTime: 'نوفمبر - يناير',
+        alternativeSeasons: [
+            { months: 'مايو - يونيو', warning: 'الزراعة أثناء الأمطار الغزيرة قد تسبب تعفن الجذور.' },
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تؤخر تأسيس الأشجار.' }
+        ]
+    },
+    coffee: {
+        name: 'القهوة',
+        bestSeason: 'بداية الأمطار (منطقة الحزام الأخضر)',
+        harvestTime: 'موسم الجفاف',
+        alternativeSeasons: [
+            { months: 'مايو - يونيو', warning: 'الزراعة في بداية الأمطار مثالية لتأسيس النبات.' },
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تجهد النباتات الصغيرة.' }
+        ]
+    },
+    tea: {
+        name: 'الشاي',
+        bestSeason: 'موسم الأمطار (منطقة الحزام الأخضر)',
+        harvestTime: 'طوال السنة',
+        alternativeSeasons: [
+            { months: 'مايو - يونيو', warning: 'الزراعة في بداية الأمطار مثالية.' },
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة قد تتطلب الري.' }
+        ]
+    },
+    tobacco: {
+        name: 'التبغ',
+        bestSeason: 'بداية الأمطار (ياي، كاجو-كيجي، ماريدي، ماقوي)',
+        harvestTime: 'موسم الجفاف',
+        alternativeSeasons: [
+            { months: 'مايو - يونيو', warning: 'ازرع في بداية الأمطار للحصول على نمو مثالي.' },
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل جودة الأوراق.' }
+        ]
+    },
+    cotton: {
+        name: 'القطن',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'أكتوبر - نوفمبر',
+        alternativeSeasons: [
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل نمو جوز القطن.' }
+        ]
+    },
+    soybean: {
+        name: 'فول الصويا',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'سبتمبر - أكتوبر',
+        alternativeSeasons: [
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل امتلاء القرون وحجم الحبوب.' }
+        ]
+    },
+    fingermillet: {
+        name: 'دخن الإصبع',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'سبتمبر - أكتوبر',
+        alternativeSeasons: [
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل امتلاء الحبوب.' }
+        ]
+    },
+    pearlmillet: {
+        name: 'دخن اللؤلؤ',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'سبتمبر - أكتوبر',
+        alternativeSeasons: [
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل الإنتاج لكنها لا تزال ممكنة في المناطق الأكثر جفافاً.' }
+        ]
+    },
+    eggplant: {
+        name: 'الباذنجان',
+        bestSeason: 'مايو - يونيو (بداية الأمطار)',
+        harvestTime: 'أغسطس - أكتوبر',
+        alternativeSeasons: [
+            { months: 'مارس - أبريل', warning: 'الزراعة المبكرة ممكنة في جوبا ويامبيو وياي مع الري.' },
+            { months: 'يوليو - أغسطس', warning: 'الزراعة المتأخرة تقلل عقد الثمار وجودتها.' }
+        ]
+    }
+};
+
+// ============================================================
 // DOM ELEMENTS - WITH NULL CHECKS
 // ============================================================
 
@@ -633,6 +897,24 @@ function formatNumber(num) {
     return Number(num).toLocaleString();
 }
 
+// Returns a copy of the crop with displayed text fields replaced by the
+// Juba Arabic overlay when the current language is 'juba'. Numeric fields
+// (costs, yields, yieldReduction) always come from the English cropData.
+function localizeCrop(crop, cropKey, lang) {
+    if (lang !== 'juba' || !cropDataJuba[cropKey]) {
+        return crop;
+    }
+    const juba = cropDataJuba[cropKey];
+    const localized = { ...crop, ...juba };
+    if (crop.alternativeSeasons && juba.alternativeSeasons) {
+        localized.alternativeSeasons = crop.alternativeSeasons.map(function(season, index) {
+            const jubaSeason = juba.alternativeSeasons[index];
+            return jubaSeason ? { ...season, ...jubaSeason } : season;
+        });
+    }
+    return localized;
+}
+
 // ============================================================
 // MAIN CALCULATE FUNCTION - WITH NULL CHECKS
 // ============================================================
@@ -670,21 +952,24 @@ function calculateCosts() {
 
     // Get translations
     const lang = getCurrentLanguage();
-    const t = (typeof costForecast !== 'undefined' && costForecast[lang]) ? costForecast[lang] : 
+    const t = (typeof costForecast !== 'undefined' && costForecast[lang]) ? costForecast[lang] :
               (typeof translations !== 'undefined' && translations[lang]) ? translations[lang] : {};
+
+    // Crop with displayed text localized for the current language
+    const localized = localizeCrop(crop, cropKey, lang);
 
     // ============================================================
     // UPDATE SEASON INFO - WITH NULL CHECKS
     // ============================================================
-    
+
     const seasonValue = document.getElementById('seasonValue');
-    if (seasonValue) seasonValue.textContent = crop.bestSeason;
-    
+    if (seasonValue) seasonValue.textContent = localized.bestSeason;
+
     const growingPeriod = document.getElementById('growingPeriod');
     if (growingPeriod) growingPeriod.textContent = crop.growingMonths + ' ' + (t.months || 'months');
-    
+
     const harvestTime = document.getElementById('harvestTime');
-    if (harvestTime) harvestTime.textContent = crop.harvestTime;
+    if (harvestTime) harvestTime.textContent = localized.harvestTime;
 
     // ============================================================
     // UPDATE WARNING - WITH NULL CHECKS
@@ -693,8 +978,8 @@ function calculateCosts() {
     const warningEl = document.getElementById('seasonWarning');
     const yieldReductionEl = document.getElementById('yieldReduction');
     
-    if (crop.alternativeSeasons && crop.alternativeSeasons.length > 0) {
-        const altSeason = crop.alternativeSeasons[0];
+    if (localized.alternativeSeasons && localized.alternativeSeasons.length > 0) {
+        const altSeason = localized.alternativeSeasons[0];
         if (warningEl) {
             warningEl.classList.add('show');
             if (altSeason.yieldReduction >= 30) {
@@ -729,7 +1014,14 @@ function calculateCosts() {
     // ============================================================
     
     const resultCropName = document.getElementById('resultCropName');
-    if (resultCropName) resultCropName.textContent = crop.name;
+    if (resultCropName) {
+        // Prefer the translated crop name from the translation tables,
+        // then the localized overlay name, then the English name.
+        const translatedName = (typeof translations !== 'undefined' && translations[lang] && translations[lang][cropKey])
+            ? translations[lang][cropKey]
+            : (t[cropKey] || localized.name);
+        resultCropName.textContent = translatedName;
+    }
     
     const seedCostEl = document.getElementById('seedCost');
     if (seedCostEl) seedCostEl.textContent = formatCurrency(seedCost);

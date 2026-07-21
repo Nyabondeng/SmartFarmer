@@ -2516,6 +2516,15 @@ const Account = {
         messagePhonePassword: "Please enter phone and password.",
         logout: "Logout",
         loggedInAs: "Logged in as:",
+
+        accountPageTitle: "My Account",
+        accountPageSubtitle: "Your farmer profile",
+        accountName: "Name",
+        accountPhone: "Phone Number",
+        accountLocation: "Location",
+        accountSince: "Member since",
+        accountViewLogs: "View My Crop Log →",
+        accountLoading: "Loading your profile...",
     },
     juba: {
         registerTitle: "انضم إلى المزارع الذكي",
@@ -2568,6 +2577,15 @@ const Account = {
         messagePhonePassword: "يرجى إدخال رقم الهاتف وكلمة المرور.",
         logout: "تسجيل الخروج",
         loggedInAs: "تم تسجيل الدخول باسم:",
+
+        accountPageTitle: "حسابي",
+        accountPageSubtitle: "ملفك الشخصي كمزارع",
+        accountName: "الاسم",
+        accountPhone: "رقم الهاتف",
+        accountLocation: "الموقع",
+        accountSince: "عضو منذ",
+        accountViewLogs: "عرض سجل محاصيلي ←",
+        accountLoading: "جاري تحميل ملفك الشخصي...",
     },
 };
 

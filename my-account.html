@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Farmer - My Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/farmer-auth.css?v=2">
+    <link rel="stylesheet" href="styles/footer.css?v=2">
+    <style>
+        .profile-card {
+            max-width: 480px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            padding: 32px;
+        }
+        .profile-card h2 {
+            color: #1E6A33;
+            margin-bottom: 4px;
+            font-family: 'Fraunces', serif;
+        }
+        .profile-subtitle { color: #666; margin-bottom: 24px; }
+        .profile-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eef2ee;
+        }
+        .profile-label { color: #666; font-size: 0.9rem; }
+        .profile-value { font-weight: 600; color: #1a1a1a; }
+        .profile-actions { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+        .profile-btn {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .profile-btn.primary { background: #1E6A33; color: #fff; }
+        .profile-btn.secondary { background: #fff; color: #b91c1c; border: 1px solid #fca5a5; }
+        .profile-loading { text-align: center; color: #666; padding: 24px 0; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container--nav">
+            <div class="logo">
+                <img src="/images/smartfarmer.png" alt="Smart Farmer Logo">
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-translate="home">Home</a></li>
+                    <li><a href="about.html" data-translate="about">About</a></li>
+                    <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
+                    <li><a href="education.html" data-translate="education">Education</a></li>
+                    <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
+                    <li><a href="farmer-login.html" data-translate="login">Account</a></li>
+                    <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
+                </ul>
+                <div class="language-selector">
+                    <select id="languageSwitcher">
+                        <option value="en">English</option>
+                        <option value="juba">Juba Arabic</option>
+                    </select>
+                </div>
+            </nav>
+            <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle Navigation">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="profile-card">
+            <h2 data-translate="accountPageTitle">My Account</h2>
+            <p class="profile-subtitle" data-translate="accountPageSubtitle">Your farmer profile</p>
+
+            <div id="profileLoading" class="profile-loading" data-translate="accountLoading">Loading your profile...</div>
+
+            <div id="profileDetails" style="display:none;">
+                <div class="profile-row">
+                    <span class="profile-label" data-translate="accountName">Name</span>
+                    <span class="profile-value" id="profileName">—</span>
+                </div>
+                <div class="profile-row">
+                    <span class="profile-label" data-translate="accountPhone">Phone Number</span>
+                    <span class="profile-value" id="profilePhone">—</span>
+                </div>
+                <div class="profile-row">
+                    <span class="profile-label" data-translate="accountLocation">Location</span>
+                    <span class="profile-value" id="profileLocation">—</span>
+                </div>
+                <div class="profile-row">
+                    <span class="profile-label" data-translate="accountSince">Member since</span>
+                    <span class="profile-value" id="profileSince">—</span>
+                </div>
+            </div>
+
+            <div class="profile-actions">
+                <a href="crop-log.html" class="profile-btn primary" data-translate="accountViewLogs">View My Crop Log →</a>
+                <button class="profile-btn secondary" onclick="logout()" data-translate="logout">Logout</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+    <div class="footer-content">
+        <p class="footer-copy" data-translate="footerCopy">&copy; 2026 Smart Farmer. All rights reserved.</p>
+        <div class="footer-contacts">
+            <a href="mailto:nyabondeng0@gmail.com" data-translate="footerEmail">📧 nyabondeng0@gmail.com</a>
+            <a href="https://wa.me/211928470444" data-translate="footerPhone">📱 +211928470444</a>
+            <span data-translate="footerLocation">📍 Yei County, South Sudan</span>
+        </div>
+    </div>
+</footer>
+
+    <script src="/js/translations.js?v=9"></script>
+    <script src="/js/script.js?v=9"></script>
+    <script src="/js/farmer-auth.js?v=9"></script>
+    <script>
+        (async function loadProfile() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'farmer-login.html';
+                return;
+            }
+
+            const show = (p) => {
+                document.getElementById('profileName').textContent = p.name || '—';
+                document.getElementById('profilePhone').textContent = p.phone || '—';
+                document.getElementById('profileLocation').textContent = p.location || '—';
+                if (p.created_at) {
+                    const lang = window.getCurrentTranslateLanguage ? window.getCurrentTranslateLanguage() : 'en';
+                    document.getElementById('profileSince').textContent =
+                        new Date(p.created_at).toLocaleDateString(lang === 'juba' ? 'ar' : 'en-US',
+                            { year: 'numeric', month: 'long' });
+                }
+                document.getElementById('profileLoading').style.display = 'none';
+                document.getElementById('profileDetails').style.display = 'block';
+            };
+
+            try {
+                const response = await fetch('https://smartfarmer-m7x3.onrender.com/api/farmer/profile', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (response.status === 401) {
+                    logout();
+                    return;
+                }
+                const data = await response.json();
+                if (data.success && data.user) {
+                    show(data.user);
+                    return;
+                }
+                throw new Error(data.message || 'Profile not available');
+            } catch (err) {
+                // Offline or server unreachable — show what we stored at login
+                show({
+                    name: localStorage.getItem('farmer_name'),
+                    phone: '',
+                    location: localStorage.getItem('farmer_location')
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

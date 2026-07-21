@@ -45,6 +45,10 @@
         const t = translations[lang] || translations.en || {};
         const pageKey = getCurrentModuleKey();
 
+        // Mirror the page for Arabic (right-to-left)
+        document.documentElement.setAttribute('dir', lang === 'juba' ? 'rtl' : 'ltr');
+        document.documentElement.setAttribute('lang', lang === 'juba' ? 'ar' : 'en');
+
         const navMap = {
             home: t.home || 'Home',
             about: t.about || 'About',

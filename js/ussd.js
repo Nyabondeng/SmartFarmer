@@ -1,6 +1,15 @@
-let currentMenu  = 'main';
-let selectedCrop = null;
+// USSD simulator — talks to the real backend USSD endpoint when reachable,
+// and falls back to the built-in client-side simulation when offline.
+const USSD_ENDPOINT     = 'https://smartfarmer-m7x3.onrender.com/ussd';
+const USSD_SERVICE_CODE = '*384*12990#';
+const USSD_TIMEOUT_MS   = 8000;
 
+let inputPath    = [];                     // accumulated USSD entries, joined by '*'
+let sessionId    = 'sim-' + Date.now();    // one id per USSD session
+let sessionEnded = false;
+let busy         = false;
+
+// Local fallback data (mirrors the backend menu structure)
 const CROPS = {
   '1': {
     name: 'Sorghum',
@@ -198,83 +207,161 @@ function cropMenuContent(num) {
     };
 }
 
-function updateScreen(header, body, showInput, showBack) {
+function currentHeader() {
+    return inputPath.length === 0
+        ? USSD_SERVICE_CODE
+        : `*384*12990*${inputPath.join('*')}#`;
+}
+
+function escapeHtml(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+function updateScreen(header, body, showInput, showBack, extraHtml) {
     document.getElementById('ussd-header').textContent = header;
     const lines = body.split('\n');
     document.getElementById('ussd-body').innerHTML = lines.map((line, i) => {
-        if (i === 0) return `<div class="ussd-title">${line}</div>`;
-        if (i === 1) return `<div class="ussd-subtitle">${line}</div>`;
-        return `<div>${line}</div>`;
-    }).join('');
+        const safe = escapeHtml(line);
+        if (i === 0) return `<div class="ussd-title">${safe}</div>`;
+        if (i === 1) return `<div class="ussd-subtitle">${safe}</div>`;
+        return `<div>${safe || '&nbsp;'}</div>`;
+    }).join('') + (extraHtml || '');
     document.getElementById('ussd-input-area').style.display = showInput ? 'flex' : 'none';
     document.getElementById('ussd-back-btn').style.display   = showBack  ? 'block' : 'none';
     document.getElementById('ussd-input').value = '';
 }
 
-function handleInput() {
-    const input = document.getElementById('ussd-input').value.trim();
-    if (currentMenu === 'main') {
-        if (CROPS[input]) {
-            selectedCrop = input;
-            currentMenu  = 'crop';
-            const m = cropMenuContent(input);
-            updateScreen(m.header, m.body, true, false);
-        } else if (input === '0') {
-            updateScreen('Goodbye!', 'Thank you for using Smart Farmer.', false, false);
-            document.getElementById('ussd-input-area').style.display = 'none';
-        } else {
-            showError();
-        }
-    } else if (currentMenu === 'crop') {
-        if (input === '0') {
-            currentMenu = 'main';
-            const m = mainMenu();
-            updateScreen(m.header, m.body, true, false);
-        } else if (input === '1') {
-            currentMenu = 'info';
-            updateScreen(`*384*12990*${selectedCrop}*1#`, CROPS[selectedCrop].planting, false, true);
-        } else if (input === '2') {
-            currentMenu = 'info';
-            updateScreen(`*384*12990*${selectedCrop}*2#`, CROPS[selectedCrop].pest, false, true);
-        } else if (input === '3') {
-            currentMenu = 'info';
-            updateScreen(`*384*12990*${selectedCrop}*3#`, CROPS[selectedCrop].harvest, false, true);
-        } else {
-            showError();
+// ---- Live mode: POST the accumulated path to the real backend ----
+
+function requestBackend(text) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), USSD_TIMEOUT_MS);
+    const params = new URLSearchParams({
+        sessionId:   sessionId,
+        serviceCode: USSD_SERVICE_CODE,
+        phoneNumber: '+211000000000',
+        text:        text
+    });
+    return fetch(USSD_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
+        signal: controller.signal
+    }).then((res) => {
+        if (!res.ok) throw new Error('USSD backend HTTP ' + res.status);
+        return res.text();
+    }).then((raw) => {
+        const reply = raw.trim() ? raw : '';
+        if (!/^(CON|END)[ \n]/.test(reply)) throw new Error('Unexpected USSD response');
+        return reply;
+    }).finally(() => clearTimeout(timer));
+}
+
+// ---- Offline fallback: replay the accumulated path through the local menus ----
+
+function localUssd(text) {
+    const segs = text === '' ? [] : text.split('*');
+    let level = 'main', crop = null, topic = null, invalid = false;
+
+    for (const seg of segs) {
+        invalid = false;
+        if (level === 'main') {
+            if (CROPS[seg])          { level = 'crop'; crop = seg; }
+            else if (seg === '0')    return 'END Thank you for using\nSmart Farmer.';
+            else invalid = true;
+        } else if (level === 'crop') {
+            if (seg === '1' || seg === '2' || seg === '3') { level = 'info'; topic = seg; }
+            else if (seg === '0')    { level = 'main'; crop = null; }
+            else invalid = true;
+        } else { // info screen
+            if (seg === '0')         { level = 'crop'; topic = null; }
+            else if (seg === '00')   { level = 'main'; crop = null; topic = null; }
+            else invalid = true;
         }
     }
+
+    let body;
+    if (level === 'main')      body = mainMenu().body;
+    else if (level === 'crop') body = cropMenuContent(crop).body;
+    else {
+        const key = topic === '1' ? 'planting' : topic === '2' ? 'pest' : 'harvest';
+        body = CROPS[crop][key];
+    }
+    if (invalid) body += '\n\nInvalid option. Try again.';
+    return 'CON ' + body;
+}
+
+// ---- Shared rendering for both modes ----
+
+function renderReply(reply, offline) {
+    const ended = reply.startsWith('END');
+    const body  = reply.replace(/^(CON|END)[ \n]/, '');
+    const note  = offline
+        ? '<div style="opacity:.55;font-size:.75em;margin-top:10px;">offline mode</div>'
+        : '';
+
+    if (ended) {
+        sessionEnded = true;
+        const redial = `<button class="ussd-send-btn" style="margin-top:14px;" onclick="restartUssd()">Dial ${USSD_SERVICE_CODE} again</button>`;
+        updateScreen(currentHeader(), body, false, false, redial + note);
+    } else {
+        updateScreen(currentHeader(), body, true, inputPath.length > 0, note);
+        const input = document.getElementById('ussd-input');
+        if (input) input.focus();
+    }
+}
+
+function submitPath() {
+    if (busy) return;
+    busy = true;
+    const text = inputPath.join('*');
+    document.getElementById('ussd-body').innerHTML =
+        '<div class="ussd-subtitle">USSD code running...</div>';
+
+    requestBackend(text)
+        .then((reply) => {
+            console.log('[USSD] live mode');
+            renderReply(reply, false);
+        })
+        .catch((err) => {
+            console.log('[USSD] offline fallback:', err.message);
+            renderReply(localUssd(text), true);
+        })
+        .finally(() => { busy = false; });
+}
+
+function handleInput() {
+    if (busy || sessionEnded) return;
+    const input = document.getElementById('ussd-input').value.trim();
+    if (!input) return;
+    inputPath.push(input);
+    submitPath();
 }
 
 function goBack() {
-    if (currentMenu === 'info') {
-        currentMenu = 'crop';
-        const m = cropMenuContent(selectedCrop);
-        updateScreen(m.header, m.body, true, false);
-    } else if (currentMenu === 'crop') {
-        currentMenu = 'main';
-        const m = mainMenu();
-        updateScreen(m.header, m.body, true, false);
-    }
+    if (busy || sessionEnded) return;
+    inputPath.push('0');   // '0' = back one level; users can type '00' for the main menu
+    submitPath();
 }
 
-function showError() {
-    document.getElementById('ussd-body').innerHTML =
-        '<div class="ussd-title">Smart Farmer</div>' +
-        '<div style="color:#c0392b;margin-top:10px;">Invalid option.<br>Please try again.</div>';
-    setTimeout(() => {
-        if (currentMenu === 'main') {
-            const m = mainMenu();
-            updateScreen(m.header, m.body, true, false);
-        } else {
-            const m = cropMenuContent(selectedCrop);
-            updateScreen(m.header, m.body, true, false);
-        }
-    }, 1500);
+function restartUssd() {
+    inputPath    = [];
+    sessionId    = 'sim-' + Date.now();
+    sessionEnded = false;
+    busy         = false;
+    submitPath();          // dial with empty text -> main menu
 }
 
 document.getElementById('ussd-input').addEventListener('keypress', (e) => {
     if (e.key === 'Enter') handleInput();
 });
+
+// Initial dial
+restartUssd();
 
 function toggleMenu() {
     document.querySelector('.nav-links').classList.toggle('active');

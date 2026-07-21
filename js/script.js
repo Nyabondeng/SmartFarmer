@@ -59,7 +59,11 @@ function applyNavigationTranslations() {
 function translatePage() {
     const lang = getCurrentTranslateLanguage();
     const t = window.translations ? window.translations[lang] : null;
-    
+
+    // Mirror the page for Arabic (right-to-left)
+    document.documentElement.setAttribute('dir', lang === 'juba' ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', lang === 'juba' ? 'ar' : 'en');
+
     if (!t) {
         console.warn('Translations not loaded for language:', lang);
         return;
@@ -314,7 +318,7 @@ function updateUserNav() {
 
         const userLi = document.createElement('li');
         userLi.className = 'nav-user-link';
-        userLi.innerHTML = `<a href="#">👤 ${user.name || 'User'}</a>`;
+        userLi.innerHTML = `<a href="my-account.html">👤 ${user.name || 'User'}</a>`;
 
         const logoutLi = document.createElement('li');
         logoutLi.className = 'nav-logout-link';

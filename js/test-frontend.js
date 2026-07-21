@@ -171,68 +171,6 @@ const translations = {
         harvestLabel: "الحصاد:",
         storageLabel: "التخزين:",
     },
-    bari: {
-        home: "Piny",
-        about: "Kony e",
-        crops: "Kony lo korop",
-        education: "Kujju",
-        cropLog: "Buku lo korop",
-        contact: "Konye",
-        ussd: "USSD",
-        login: "Account",
-        register: "Register",
-        logout: "Logout",
-        module1Title: "Moduli 1: Lanyi ti korop",
-        module2Title: "Moduli 2: Afat",
-        module3Title: "Moduli 3: Ba'di woro",
-        module4Title: "Moduli 4: Soil Management",
-        module5Title: "Moduli 5: Climate-Smart Farming",
-        module6Title: "Moduli 6: Water & Irrigation",
-        module7Title: "Moduli 7: Market & Selling",
-        module8Title: "Moduli 8: Fertilizer Use",
-        module9Title: "Moduli 9: Korop Disease Control",
-        module10Title: "Moduli 10: Farm Tools & Equipment",
-        sorghumTitle: "Sorghum",
-        maizeTitle: "Maize",
-        milletTitle: "Millet",
-        groundnutsTitle: "Groundnuts",
-        cassavaTitle: "Cassava",
-        cowpeasTitle: "Cowpeas",
-        sesameTitle: "Sesame",
-        sweetpotatoTitle: "Sweet Potato",
-        beansTitle: "Beans",
-        okraTitle: "Okra",
-        tomatoTitle: "Tomato",
-        onionTitle: "Onion",
-        pumpkinTitle: "Pumpkin",
-        yamTitle: "Yam",
-        sugarcaneTitle: "Sugarcane",
-        riceTitle: "Rice",
-        sunflowerTitle: "Sunflower",
-        bananaTitle: "Banana",
-        watermelonTitle: "Watermelon",
-        cabbageTitle: "Cabbage",
-        pigeonpeasTitle: "Pigeon Peas",
-        mangoesTitle: "Mangoes",
-        coffeeTitle: "Coffee",
-        teaTitle: "Tea",
-        tobaccoTitle: "Tobacco",
-        cottonTitle: "Cotton",
-        soybeanTitle: "Soybean",
-        fingermilletTitle: "Finger Millet",
-        pearlmilletTitle: "Pearl Millet",
-        eggplantTitle: "Eggplant",
-        module1Li1: "Lanyi pe bidayat lipi (May-June)",
-        module1Li2: "Use seed nadhifa, no disease",
-        module1Li3: "Fasila ma lipi, no overcrowd",
-        module1Li4: "Depth 2-5cm depending on crop",
-        module1Li5: "Weed within first 3 weeks",
-        plantingSeasonLabel: "Gworo:",
-        spacingLabel: "Fasila:",
-        pestControlLabel: "Afat:",
-        harvestLabel: "Woro:",
-        storageLabel: "Teren:",
-    }
 };
 
 
@@ -312,18 +250,6 @@ arabicKeys.forEach(key => {
 });
 console.log('');
 
-// ===== TEST 6: Bari Translations =====
-console.log('🌍 TEST 6: Bari Translations');
-const bariKeys = ['home', 'about', 'crops', 'module1Title', 'module2Title'];
-bariKeys.forEach(key => {
-    if (translations.bari[key]) {
-        console.log(`✅ ${key}: ${translations.bari[key]}`);
-    } else {
-        console.log(`❌ ${key}: MISSING`);
-    }
-});
-console.log('');
-
 // ===== TEST 7: Voice API =====
 console.log('TEST 7: Voice API');
 console.log(`✅ Speech Synthesis available: ${typeof speechSynthesis !== 'undefined'}`);
@@ -354,9 +280,6 @@ console.log(`   ${translations.en.module1Li5}`);
 console.log('\n Arabic (Juba):');
 console.log(`   ${translations.juba.module1Title}`);
 console.log(`   ${translations.juba.module1Li1}`);
-console.log('\n Bari:');
-console.log(`   ${translations.bari.module1Title}`);
-console.log(`   ${translations.bari.module1Li1}`);
 
 // ===== TEST 10: Labels =====
 console.log('\n TEST 10: Crop Labels');

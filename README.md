@@ -1,186 +1,110 @@
-# SmartFarmer
+# Smart Farmer
 
-Hello there...
-
-Welcome to Smart Farmer. Smart Farmer is a mobile-first agricultural information platform designed to support smallholder farmers in South Sudan. The application provides crop information, educational farming resources, planting records, and a USSD simulator prototype to improve access to agricultural knowledge.
+Smart Farmer is a dual-platform agricultural information system designed to support smallholder farmers in Yei County, South Sudan. It combines an offline-capable web application with a USSD service prototype, so farmers can access crop information, educational content, and planting records on any device — from smartphones to basic feature phones.
 
 This project was developed as part of the BSc Software Engineering program at African Leadership University.
 
-Developer: Nyabon Deng Adut
+**Developer:** Nyabon Deng Adut
+**Program:** BSc Software Engineering
+**Supervisor:** Tunde Isiaq Gbadamosi
 
-Program: BSc Software Engineering
+## Live Deployment
 
-Supervisor: Tunde Isiaq Gbadamosi
+| Component | Platform | URL |
+|---|---|---|
+| Frontend (PWA) | Netlify | https://smrtfarmer.netlify.app |
+| Backend API | Render | https://smartfarmer-m7x3.onrender.com |
+| USSD channel | Africa's Talking sandbox | `*384*12990#` |
+| Database | PostgreSQL (Render) | — |
 
-Live Demo
-https://smrtfarmer.netlify.app/
-Smart Farmer is deployed on Netlify:
-Demo: 
-# Features
-Educational Modules
+## Features
 
-The platform provides educational content covering:
+### Crop Information
+Detailed guides for 30 crops grown in South Sudan (sorghum, maize, millet, groundnuts, cassava, and more): planting seasons, spacing, soil, pests, diseases, and market tips, with voice output.
 
-Planting techniques
-Pest management
-Post-harvest handling
-Crop Information
-Water and and irrigation, etc
+### Education Modules
+Ten learning modules covering planting techniques, pest management, post-harvest handling, soil, climate-smart farming, water, market access, disease, fertilizer, and tools — each with audio narration.
 
-Farmers can access information on major crops grown in South Sudan, including:
+### Farmer Accounts & Cloud Crop Log
+Farmers can register with a phone number and password (bcrypt-hashed, JWT sessions). The crop monitoring log works in two modes:
+- **Logged in:** records sync to the cloud and follow the farmer across devices
+- **Logged out / offline:** records stay in the browser's local storage, with a one-tap upload offer after logging in
 
-maize 
-millet 
-groundnuts
-cassava 
-cowpeas 
-sesame 
-sweetpotato 
-beans
-okra
-tomato
-onion 
-pumpkin
-yam 
-sugarcane 
-rice 
-sunflower 
-banana 
-watermelon 
-cabbage 
-pigeonpeas 
-mangoes 
-coffee 
-tea 
-tobacco 
-cotton:  
-soybean 
-fingermillet 
-pearlmillet 
-eggplant:
+### Cost Forecast & Fertilizer Guide
+A planting cost/profit simulator and per-crop fertilizer recommendations.
 
-# Planting Log
+### USSD
+A working backend USSD endpoint (Africa's Talking sandbox) plus an interactive on-site simulator that talks to the live endpoint and falls back to a built-in simulation when offline.
 
-Farmers can record and manage planting activities through a simple crop monitoring log.
+### Two Languages, Fully Translated
+English and Juba Arabic across every page — including right-to-left layout, translated voice output, dates, and dynamic content. The language choice persists across pages.
 
-Multi-Language Support
+### Offline-First PWA
+A service worker caches all pages and assets; the app keeps working without a connection and shows a dedicated offline page for uncached content.
 
-The application is designed to support Arabic, English and Bari. English voice and Arabic output are currently implemented; Bari is translated but not voice output.
+## Technology Stack
 
-USSD Simulator
+**Frontend:** HTML5, CSS3, JavaScript (vanilla), Service Worker / PWA
+**Backend:** Node.js, Express.js, PostgreSQL, JWT + bcrypt
+**USSD:** Africa's Talking API (sandbox)
+**Hosting:** Netlify (frontend), Render (backend + database)
+**Design:** Figma
 
-A USSD interface has been prototyped in Figma, demonstrating how farmers can access agricultural information through feature phones via 131#.
+## Running Locally
 
-Voice Assistance
+The backend serves both the API and the frontend:
 
-The application uses browser speech synthesis to read crop information aloud for users with limited literacy.
+```bash
+cd smartfarmer-backend
+npm install
+npm start
+```
 
-Responsive Design
+Then open **http://localhost:3000**.
 
-The application follows a mobile-first design approach and adapts to different screen sizes.
+You will need a `smartfarmer-backend/.env` file with:
+
+```
+PORT=3000
+DATABASE_URL=<your PostgreSQL connection string>
+JWT_SECRET=<a long random string>
+```
+
+Database tables are created automatically on first start.
+
+Frontend-only alternative: open the project in VS Code and use the Live Server extension on `index.html` (API calls will go to the live Render backend).
+
+## API Overview
+
+| Endpoint | Auth | Purpose |
+|---|---|---|
+| `POST /api/auth/register` | — | Register farmer (name, phone, password, location) |
+| `POST /api/auth/login` | — | Login, returns JWT |
+| `GET /api/farmer/profile` | Bearer | Farmer profile |
+| `GET/POST /api/logs`, `PUT/DELETE /api/logs/:id` | Bearer | Crop log CRUD (per-farmer) |
+| `POST /ussd` | — | USSD callback (Africa's Talking) |
+| `GET /api/crops` | — | Crop list |
+| `GET /api/health` | — | Health check |
 
 ## Testing
 
-Testing was conducted across multiple pages, input types, 
-and device configurations to verify functionality.
+- `node test-backend.js` — live API test suite (health, crops, register, login, auth protection, crop logs, USSD flows)
+- Screenshots of manual testing are in the `Screenshots/` folder
 
-### Testing Screenshots
+## Design Resources
 
-Screenshots of all tests are available in the 
-`/screenshots` folder of this repository.
+- Figma prototype: https://www.figma.com/design/mxazJuKrc45lla3wxTjcgf/Smart-Farmer-App?node-id=0-1
+- Wireframes & documentation: https://docs.google.com/document/d/1csu_92AEcQ9iLpueJEOzYsfSYh4TSLN3nRx6udDLXoo/edit
 
-#### Core Functionality Tests
-- Home page loading and navigation
-- Crop Info page with voice output
-- USSD Simulator main menu
+## Known Limitations
 
-#### Input Validation Tests
-- USSD valid input (crop selection)
-- USSD invalid input (error handling)
-- Crop Log form submission
-- Crop Log saved records display
+- USSD runs in the Africa's Talking sandbox; live deployment requires a direct agreement with a South Sudan telecom operator (MTN/Zain), as no USSD aggregator currently covers South Sudan
+- Voice output uses the device's speech synthesis; Arabic voice requires an Arabic TTS voice on the device (recorded audio files are a planned enhancement)
+- Cost forecast uses estimated figures (no public market-price API for South Sudan exists yet)
+- Bari language support was descoped to deliver two fully-supported languages
 
-#### Cross-Device and Cross-Browser Tests
-- Mobile view (iPhone 12 Pro) via Chrome DevTools
-- Microsoft Edge browser
-- USSD page on mobile view
+## Contact
 
-# Technologies Used
-Frontend
-HTML5
-CSS
-JavaScript
-
-# Design Tools
-Figma
-GitHub
-
-# Deployment
-Netlify
-
-Running the Project Locally
-Clone the repository:
-git clone https://github.com/Nyabondeng/smartfarmer.git
-Navigate to the project folder.
-Open the project using Visual Studio Code.
-Run the project using the Live Server extension or open index.html directly in a browser.
-
-# Design Resources
-Figma Prototype
-
-https://www.figma.com/design/mxazJuKrc45lla3wxTjcgf/Smart-Farmer-App?node-id=0-1&p=f&t=Vns30Do8GynahRZA-0
-
-The Figma prototype includes wireframes and mockups for all 9 screens: Welcome screen, About, Crop Info, Education, Crop Log, contact, Language Switcher overlay, and a 3-screen USSD Simulator (*384*12990# main menu, crop submenu, and information screen)
-
-# Wireframes
-Wireframes and design documentation are included 
-
-https://docs.google.com/document/d/1csu_92AEcQ9iLpueJEOzYsfSYh4TSLN3nRx6udDLXoo/edit?tab=t.0
-
-# Planned Backend Architecture
-
-The current version focuses on frontend functionality and user experience validation.
-
-The proposed backend architecture includes:
-
-Backend Technologies
-Node.js
-Express.js
-PostgreSQL
-Africa's Talking API (USSD Integration)
-
-# Technical Scope: The platform will include:
-USSD dashboard accessible via short code (e.g., *384*12990#) on any phone
-An offline web application for farmers with a smartphone or a basic browser
-Crop information for crops
-Educational modules (planting, pest management, post-harvest handling, etc)
-Voice output in Bari and Arabic (on web)
-Basic crop monitoring log using local storage (on web)
-
-# Out of Scope:
-AI-based yield predictions
-National deployment
-Native mobile apps
-Integration with government systems or financial services
-Automated sensor-based monitoring
-
-## Current Status
-
-This is an initial software demo. The following pages are 
-fully implemented and live: Home, About, and Crop Info
-(with English voice output), educational Modules, Crop Info
-
-All the pages are built, Arabic voice output is working.
-
-# Proposed Deployment
-Frontend: Netlify (Already deployed)
-Backend: Render
-Database: PostgreSQL
-
-
-Contact
 Nyabon Deng Adut
-
-Email: nyabondeng0@gmail.com
-
-GitHub: https://github.com/Nyabondeng
+📧 nyabondeng0@gmail.com
+🔗 https://github.com/Nyabondeng
