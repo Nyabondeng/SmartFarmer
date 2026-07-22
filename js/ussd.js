@@ -265,11 +265,16 @@ function requestBackend(text) {
 
 function localUssd(text) {
     const segs = text === '' ? [] : text.split('*');
-    let level = 'main', crop = null, topic = null, invalid = false;
+    let level = 'lang', crop = null, topic = null, invalid = false;
 
     for (const seg of segs) {
         invalid = false;
-        if (level === 'main') {
+        if (level === 'lang') {
+            // Mirror the backend's language menu; the offline fallback
+            // only has English content, so both choices continue in English
+            if (seg === '1' || seg === '2') { level = 'main'; }
+            else invalid = true;
+        } else if (level === 'main') {
             if (CROPS[seg])          { level = 'crop'; crop = seg; }
             else if (seg === '0')    return 'END Thank you for using\nSmart Farmer.';
             else invalid = true;
@@ -285,7 +290,8 @@ function localUssd(text) {
     }
 
     let body;
-    if (level === 'main')      body = mainMenu().body;
+    if (level === 'lang')      body = 'Smart Farmer\nChoose language / اختر اللغة:\n\n1. English\n2. عربي جوبا';
+    else if (level === 'main') body = mainMenu().body;
     else if (level === 'crop') body = cropMenuContent(crop).body;
     else {
         const key = topic === '1' ? 'planting' : topic === '2' ? 'pest' : 'harvest';

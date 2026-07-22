@@ -280,28 +280,74 @@ const CROPS = {
 };
 
 
+// Arabic version of the USSD crop content (same shape as CROPS)
+const CROPS_AR = require('./ussd-arabic');
+
 // USSD screens can only display ~160-180 characters, so the crop list
 // is paginated: 99 = next page, 98 = previous page.
 const CROPS_PER_PAGE = 8;
 
-function mainMenu(page = 0, invalid = false) {
+const USSD_UI = {
+  en: {
+    chooseCrop: 'Choose a crop:',
+    invalid: 'Invalid choice. Try again:',
+    more: '99. More',
+    back: '98. Back',
+    exitOpt: '0. Exit',
+    selectInfo: 'Select information:',
+    topics: '1. Planting Guide\n2. Pest Control\n3. Harvest Guide',
+    backToCrops: '0. Back to crops',
+    exitMsg: 'END Smart Farmer\nThank you for using\nSmart Farmer!'
+  },
+  juba: {
+    chooseCrop: 'اختر محصولاً:',
+    invalid: 'اختيار غير صحيح. حاول مرة أخرى:',
+    more: '99. المزيد',
+    back: '98. رجوع',
+    exitOpt: '0. خروج',
+    selectInfo: 'اختر المعلومات:',
+    topics: '1. دليل الزراعة\n2. مكافحة الآفات\n3. دليل الحصاد',
+    backToCrops: '0. الرجوع للمحاصيل',
+    exitMsg: 'END سمارت فارمر\nشكراً لاستخدامك\nسمارت فارمر!'
+  }
+};
+
+function cropSet(lang) {
+  return lang === 'juba' ? CROPS_AR : CROPS;
+}
+
+function languageMenu(invalid = false) {
+  let menu = 'CON Smart Farmer\n';
+  if (invalid) menu += 'Invalid choice. / اختيار غير صحيح.\n';
+  menu += 'Choose language / اختر اللغة:\n\n1. English\n2. عربي جوبا';
+  return menu;
+}
+
+function mainMenu(lang, page = 0, invalid = false) {
+  const ui = USSD_UI[lang];
+  const set = cropSet(lang);
   const keys = Object.keys(CROPS);
   const totalPages = Math.ceil(keys.length / CROPS_PER_PAGE);
   const slice = keys.slice(page * CROPS_PER_PAGE, (page + 1) * CROPS_PER_PAGE);
 
   let menu = 'CON Smart Farmer\n';
-  menu += invalid ? 'Invalid choice. Try again:\n\n' : 'Choose a crop:\n\n';
-  slice.forEach(k => { menu += `${k}. ${CROPS[k].name}\n`; });
+  menu += (invalid ? ui.invalid : ui.chooseCrop) + '\n\n';
+  slice.forEach(k => {
+    const name = (set[k] && set[k].name) || CROPS[k].name;
+    menu += `${k}. ${name}\n`;
+  });
   menu += '\n';
-  if (page < totalPages - 1) menu += '99. More\n';
-  if (page > 0) menu += '98. Back\n';
-  if (page === 0) menu += '0. Exit';
+  if (page < totalPages - 1) menu += ui.more + '\n';
+  if (page > 0) menu += ui.back + '\n';
+  if (page === 0) menu += ui.exitOpt;
   return menu.trimEnd();
 }
 
-function cropMenu(cropNum) {
-  const crop = CROPS[cropNum];
-  return `CON Smart Farmer\n${crop.name}\n\nSelect information:\n\n1. Planting Guide\n2. Pest Control\n3. Harvest Guide\n\n0. Back to crops`;
+function cropMenu(lang, cropNum) {
+  const ui = USSD_UI[lang];
+  const set = cropSet(lang);
+  const name = (set[cropNum] && set[cropNum].name) || CROPS[cropNum].name;
+  return `CON Smart Farmer\n${name}\n\n${ui.selectInfo}\n\n${ui.topics}\n\n${ui.backToCrops}`;
 }
 
 
@@ -319,12 +365,14 @@ app.post('/ussd', async (req, res) => {
   }
 
   // Walk the accumulated input tokens, tracking menu state.
+  // First screen: 1 = English, 2 = Juba Arabic.
   // At the crop list: 99 = next page, 98 = previous page, 0 = exit.
   // At the crop menu: 1-3 = topic, 0 = back to crop list.
   // After a topic (web simulator replays): 0 = crop menu, 00 = crop list.
   const tokens = text ? text.split('*').filter(t => t !== '') : [];
   const totalPages = Math.ceil(Object.keys(CROPS).length / CROPS_PER_PAGE);
 
+  let lang = null;
   let page = 0;
   let crop = null;
   let topic = null;
@@ -333,7 +381,11 @@ app.post('/ussd', async (req, res) => {
 
   for (const tok of tokens) {
     invalid = false;
-    if (topic) {
+    if (!lang) {
+      if (tok === '1') { lang = 'en'; }
+      else if (tok === '2') { lang = 'juba'; }
+      else { invalid = true; }
+    } else if (topic) {
       if (tok === '00') { crop = null; topic = null; page = 0; }
       else { topic = null; } // '0' or anything else: back to the crop menu
     } else if (crop) {
@@ -350,18 +402,21 @@ app.post('/ussd', async (req, res) => {
   }
 
   let response = '';
-  if (exit) {
-    response = 'END Smart Farmer\nThank you for using\nSmart Farmer!';
+  if (!lang) {
+    response = languageMenu(invalid);
+  } else if (exit) {
+    response = USSD_UI[lang].exitMsg;
   } else if (crop && topic) {
-    const c = CROPS[crop];
+    const set = cropSet(lang);
+    const c = set[crop] || CROPS[crop];
     const detail = (topic === '1' ? c.planting : topic === '2' ? c.pest : c.harvest)
       // END closes the session, so navigation options would be dead text
       .replace(/\n+0\. Back\n00\. Main Menu\s*$/, '');
     response = `END ${detail}`;
   } else if (crop) {
-    response = cropMenu(crop);
+    response = cropMenu(lang, crop);
   } else {
-    response = mainMenu(page, invalid);
+    response = mainMenu(lang, page, invalid);
   }
 
   res.set('Content-Type', 'text/plain');
