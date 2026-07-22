@@ -1,5 +1,4 @@
 require("dotenv").config();
-console.log("DATABASE_URL:", process.env.DATABASE_URL);
 const authRoutes = require("./routes/authRoutes");
 const farmerRoutes = require("./routes/farmerRoutes");
 const cropLogRoutes = require("./routes/cropLogRoutes");
@@ -281,8 +280,23 @@ const CROPS = {
 };
 
 
-function mainMenu() {
-  return `CON Smart Farmer\nFarming Info System\n\nWelcome! Choose a crop:\n\n1. Sorghum\n2. Maize\n3. Millet\n4. Groundnuts\n5. Cassava\n6. Cowpeas\n7. Sesame\n8. Sweet Potato\n9. Beans\n10. Okra\n11. Tomato\n12. Onion\n13. Pumpkin\n14. Yam\n15. Sugarcane\n16. Rice\n17. Sunflower\n18. Banana\n19. Watermelon\n20. Cabbage\n21. Pigeon Peas\n22. Mangoes\n23. Coffee\n24. Tea\n25. Tobacco\n26. Cotton\n27. Soybean\n28. Finger Millet\n29. Pearl Millet\n30. Eggplant\n\n0. Exit`;
+// USSD screens can only display ~160-180 characters, so the crop list
+// is paginated: 99 = next page, 98 = previous page.
+const CROPS_PER_PAGE = 8;
+
+function mainMenu(page = 0, invalid = false) {
+  const keys = Object.keys(CROPS);
+  const totalPages = Math.ceil(keys.length / CROPS_PER_PAGE);
+  const slice = keys.slice(page * CROPS_PER_PAGE, (page + 1) * CROPS_PER_PAGE);
+
+  let menu = 'CON Smart Farmer\n';
+  menu += invalid ? 'Invalid choice. Try again:\n\n' : 'Choose a crop:\n\n';
+  slice.forEach(k => { menu += `${k}. ${CROPS[k].name}\n`; });
+  menu += '\n';
+  if (page < totalPages - 1) menu += '99. More\n';
+  if (page > 0) menu += '98. Back\n';
+  if (page === 0) menu += '0. Exit';
+  return menu.trimEnd();
 }
 
 function cropMenu(cropNum) {
@@ -304,51 +318,50 @@ app.post('/ussd', async (req, res) => {
     console.error('Error logging USSD:', error.message);
   }
 
-  const textArray = text ? text.split('*') : [];
-  const level = textArray.length;
+  // Walk the accumulated input tokens, tracking menu state.
+  // At the crop list: 99 = next page, 98 = previous page, 0 = exit.
+  // At the crop menu: 1-3 = topic, 0 = back to crop list.
+  // After a topic (web simulator replays): 0 = crop menu, 00 = crop list.
+  const tokens = text ? text.split('*').filter(t => t !== '') : [];
+  const totalPages = Math.ceil(Object.keys(CROPS).length / CROPS_PER_PAGE);
+
+  let page = 0;
+  let crop = null;
+  let topic = null;
+  let exit = false;
+  let invalid = false;
+
+  for (const tok of tokens) {
+    invalid = false;
+    if (topic) {
+      if (tok === '00') { crop = null; topic = null; page = 0; }
+      else { topic = null; } // '0' or anything else: back to the crop menu
+    } else if (crop) {
+      if (tok === '0') { crop = null; }
+      else if (tok === '1' || tok === '2' || tok === '3') { topic = tok; }
+      else { invalid = true; }
+    } else {
+      if (tok === '99') { page = Math.min(page + 1, totalPages - 1); }
+      else if (tok === '98') { page = Math.max(page - 1, 0); }
+      else if (tok === '0') { exit = true; break; }
+      else if (CROPS[tok]) { crop = tok; }
+      else { invalid = true; }
+    }
+  }
+
   let response = '';
-
-  if (text === '') {
-    response = mainMenu();
-  } else if (level === 1) {
-    const cropChoice = textArray[0];
-    if (CROPS[cropChoice]) {
-      response = cropMenu(cropChoice);
-    } else {
-      response = `CON Smart Farmer\n\nInvalid option.\nPlease try again.\n\n0. Back to main menu`;
-    }
-  } else if (level === 2) {
-    const cropChoice = textArray[0];
-    const infoChoice = textArray[1];
-
-    if (infoChoice === '0') {
-      response = mainMenu();
-    } else if (CROPS[cropChoice]) {
-      const crop = CROPS[cropChoice];
-      if (infoChoice === '1') {
-        response = `END ${crop.planting}`;
-      } else if (infoChoice === '2') {
-        response = `END ${crop.pest}`;
-      } else if (infoChoice === '3') {
-        response = `END ${crop.harvest}`;
-      } else {
-        response = cropMenu(cropChoice);
-      }
-    } else {
-      response = mainMenu();
-    }
-  } else if (level === 3) {
-    const cropChoice = textArray[0];
-    const backChoice = textArray[2];
-    if (backChoice === '0') {
-      response = cropMenu(cropChoice);
-    } else if (backChoice === '00') {
-      response = mainMenu();
-    } else {
-      response = mainMenu();
-    }
+  if (exit) {
+    response = 'END Smart Farmer\nThank you for using\nSmart Farmer!';
+  } else if (crop && topic) {
+    const c = CROPS[crop];
+    const detail = (topic === '1' ? c.planting : topic === '2' ? c.pest : c.harvest)
+      // END closes the session, so navigation options would be dead text
+      .replace(/\n+0\. Back\n00\. Main Menu\s*$/, '');
+    response = `END ${detail}`;
+  } else if (crop) {
+    response = cropMenu(crop);
   } else {
-    response = mainMenu();
+    response = mainMenu(page, invalid);
   }
 
   res.set('Content-Type', 'text/plain');
