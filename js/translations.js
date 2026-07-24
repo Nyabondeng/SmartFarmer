@@ -2483,6 +2483,9 @@ const Account = {
         registerBtn: "Create Account →",
         registerSwitch: "Already have an account?",
         loginLink: "Login here",
+        registerConsent: "By creating an account you confirm you are 18+ and agree to our",
+        privacyPolicyLink: "Privacy Policy & Terms",
+        privacyPolicy: "Privacy Policy",
 
         // ===== LOGIN PAGE =====
         loginTitle: "Welcome Back",
@@ -2545,6 +2548,9 @@ const Account = {
         registerBtn: "إنشاء حساب →",
         registerSwitch: "لديك حساب بالفعل؟",
         loginLink: "تسجيل الدخول هنا",
+        registerConsent: "بإنشاء حساب فإنك تؤكد أن عمرك 18 عاماً أو أكثر وتوافق على",
+        privacyPolicyLink: "سياسة الخصوصية والشروط",
+        privacyPolicy: "سياسة الخصوصية",
 
 
         loginTitle: "مرحباً بعودتك",
