@@ -1,8 +1,41 @@
 # Report Update Guide
 
 Concrete edits to bring the research report in line with the current system
-(as of 21 July 2026). Work through these chapter by chapter before submission,
+(as of 22 July 2026). Work through these chapter by chapter before submission,
 then delete this file.
+
+## Suggested framing for the Bari descoping (use in scope + limitations)
+
+> Bari was descoped not due to application constraints — the platform's
+> translation architecture supports any Unicode language — but due to
+> resource constraints unique to low-resource languages: no machine
+> translation or text-to-speech technology for Bari exists, so complete
+> support requires a human Bari translator and recorded audio by a native
+> speaker. Within the project timeline, delivering two complete languages
+> was prioritised over three partial ones. Adding Bari later requires no
+> architectural changes: the translation dictionary accepts additional
+> languages, and the audio system automatically plays recorded clips
+> when present.
+
+## NEW since the first version of this guide (22 July): USSD upgrades
+
+a. **USSD menu pagination.** USSD screens display only ~160-182 characters,
+   so the 30-crop menu is now paginated 8 crops per page with 99 = More and
+   98 = Back — the pattern farmers know from mobile-money menus. Describe
+   this in Chapter 4 (it shows understanding of a real USSD protocol
+   constraint) and update the navigation-steps table in Chapter 5 (reaching
+   a guide is now: language → [page] → crop → topic).
+b. **Bilingual USSD.** The first USSD screen asks the farmer to choose
+   1 = English or 2 = Juba Arabic; the entire flow (menus and all 90 crop
+   guides) then runs in that language. This directly serves the low-literacy
+   Arabic-speaking target population — worth highlighting in the results and
+   conclusions (it strengthens RQ2 and conclusion 6.2.2/6.2.3).
+c. **New limitation to add:** on live networks, Arabic USSD uses UCS-2
+   encoding, which halves the per-screen budget to ~90 characters; some
+   longer Arabic guides may need shortening for a real carrier deployment
+   (not an issue in the Africa's Talking sandbox).
+d. **New screenshots:** the language-choice USSD screen, an Arabic crop
+   menu page, and an Arabic crop guide in the Africa's Talking simulator.
 
 ## Everywhere (global find-and-replace)
 
