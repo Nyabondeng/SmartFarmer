@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Farmer - Terms &amp; Conditions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/farmer-auth.css?v=2">
+    <link rel="stylesheet" href="styles/footer.css?v=2">
+    <style>
+        :root { --terms-green: #2E7D32; --terms-green-dark: #1f5a24; }
+
+        .terms-wrap {
+            max-width: 780px;
+            margin: 36px auto 56px;
+            padding: 0 20px;
+        }
+
+        /* Consent banner */
+        .consent-banner {
+            background: linear-gradient(135deg, #e8f5e9, #f1f8f1);
+            border: 1px solid #cfe6d1;
+            border-radius: 16px;
+            padding: 32px 30px;
+            text-align: center;
+            margin-bottom: 36px;
+        }
+        .consent-banner h1 {
+            font-family: 'Fraunces', serif;
+            color: var(--terms-green-dark);
+            font-size: 1.7rem;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+        .consent-banner p {
+            color: #3f5a41;
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 560px;
+            margin: 0 auto 22px;
+        }
+        .consent-btn {
+            background: var(--terms-green);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 26px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .consent-btn:hover { background: var(--terms-green-dark); }
+        .consent-btn:active { transform: translateY(1px); }
+        .consent-btn.confirmed { background: var(--terms-green-dark); }
+
+        /* Clause cards */
+        .clause-grid { display: flex; flex-direction: column; gap: 20px; }
+        .clause-card {
+            background: #fff;
+            border-radius: 14px;
+            border-top: 5px solid var(--terms-green);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+            padding: 24px 26px;
+        }
+        .clause-card h2 {
+            color: var(--terms-green);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .clause-card > p {
+            color: #3a3a3a;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .why-box {
+            background: #f1f8f1;
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .why-box .why-label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--terms-green);
+            margin-bottom: 6px;
+        }
+        .why-box p { color: #46644a; font-size: 0.92rem; line-height: 1.6; margin: 0; }
+
+        @media (max-width: 600px) {
+            .terms-wrap { margin: 22px auto 40px; padding: 0 14px; }
+            .consent-banner { padding: 26px 20px; }
+            .consent-banner h1 { font-size: 1.4rem; }
+            .clause-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container--nav">
+            <div class="logo">
+                <a href="index.html"><img src="/images/smartfarmer.png" alt="Smart Farmer Logo"></a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-translate="home">Home</a></li>
+                    <li><a href="about.html" data-translate="about">About</a></li>
+                    <li><a href="crops.html" data-translate="crops">Crop Info</a></li>
+                    <li><a href="education.html" data-translate="education">Education</a></li>
+                    <li><a href="crop-log.html" data-translate="cropLog">Crop Log</a></li>
+                    <li><a href="farmer-login.html" data-translate="login">Account</a></li>
+                    <li><a href="ussd.html" data-translate="ussd">USSD</a></li>
+                </ul>
+                <div class="language-selector">
+                    <select id="languageSwitcher">
+                        <option value="en">English</option>
+                        <option value="juba">Juba Arabic</option>
+                    </select>
+                </div>
+            </nav>
+            <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle Navigation">☰</button>
+        </div>
+    </header>
+
+    <main class="terms-wrap">
+
+        <!-- Consent banner -->
+        <section class="consent-banner">
+            <h1 data-translate="tcBannerHeading">By using Smart Farmer, you agree to these terms</h1>
+            <p data-translate="tcBannerText">Please read all clauses carefully before creating an account. You must be 18 years or older to register.</p>
+            <button class="consent-btn" id="consentBtn" onclick="confirmTerms()" data-translate="tcBannerBtn">I Have Read and Understood These Terms</button>
+        </section>
+
+        <!-- Clause cards -->
+        <div class="clause-grid">
+
+            <article class="clause-card">
+                <h2 data-translate="tcClause1Title">Clause 1: Data We Collect</h2>
+                <p data-translate="tcClause1Body">Smart Farmer collects your name, contact information, and login credentials. Your region and preferred crops are optional. Location data requires your explicit consent.</p>
+                <div class="why-box">
+                    <span class="why-label" data-translate="tcWhyLabel">Why This Matters</span>
+                    <p data-translate="tcClause1Why">We keep the data we collect to a minimum, so there is less risk to your privacy. Nothing about your location is collected unless you choose to share it.</p>
+                </div>
+            </article>
+
+            <article class="clause-card">
+                <h2 data-translate="tcClause2Title">Clause 2: How We Use Your Data</h2>
+                <p data-translate="tcClause2Body">Your data is used only to personalise your crop information and improve the platform. We never sell or share your data without your explicit consent.</p>
+                <div class="why-box">
+                    <span class="why-label" data-translate="tcWhyLabel">Why This Matters</span>
+                    <p data-translate="tcClause2Why">Your information stays with Smart Farmer. It is never sold to advertisers or passed to outsiders, so you stay in control of it.</p>
+                </div>
+            </article>
+
+            <article class="clause-card">
+                <h2 data-translate="tcClause3Title">Clause 3: Your Right to Delete Your Account</h2>
+                <p data-translate="tcClause3Body">You can delete your account at any time. All of your personal data is permanently removed within 30 days.</p>
+                <div class="why-box">
+                    <span class="why-label" data-translate="tcWhyLabel">Why This Matters</span>
+                    <p data-translate="tcClause3Why">You are never locked in. If you change your mind, your account and your records leave our systems for good.</p>
+                </div>
+            </article>
+
+            <article class="clause-card">
+                <h2 data-translate="tcClause4Title">Clause 4: Accuracy Disclaimer</h2>
+                <p data-translate="tcClause4Body">Crop information is for guidance only. You should consult your local agricultural extension officer before making major decisions.</p>
+                <div class="why-box">
+                    <span class="why-label" data-translate="tcWhyLabel">Why This Matters</span>
+                    <p data-translate="tcClause4Why">Conditions differ from one farm to the next. Extension officers know your area, so their advice should always come before any app.</p>
+                </div>
+            </article>
+
+            <article class="clause-card">
+                <h2 data-translate="tcClause5Title">Clause 5: Informed Consent</h2>
+                <p data-translate="tcClause5Body">By registering, you confirm that you are 18 or older, that you have read these terms, and that you consent to data collection. Consent can be withdrawn by deleting your account.</p>
+                <div class="why-box">
+                    <span class="why-label" data-translate="tcWhyLabel">Why This Matters</span>
+                    <p data-translate="tcClause5Why">Agreeing with full understanding protects you. You give permission freely, and you can take it back at any time.</p>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer>
+    <div class="footer-content">
+        <p class="footer-copy" data-translate="footerCopy">&copy; 2026 Smart Farmer. All rights reserved.</p>
+        <div class="footer-contacts">
+            <a href="mailto:nyabondeng0@gmail.com" data-translate="footerEmail">📧 nyabondeng0@gmail.com</a>
+            <a href="https://wa.me/211928470444" data-translate="footerPhone">📱 +211928470444</a>
+            <span data-translate="footerLocation">📍 Yei County, South Sudan</span>
+            <a href="privacy-policy.html" data-translate="privacyPolicy">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
+    <script src="/js/translations.js?v=12"></script>
+    <script src="/js/script.js?v=12"></script>
+    <script>
+        function confirmTerms() {
+            const lang = window.getCurrentTranslateLanguage ? window.getCurrentTranslateLanguage() : 'en';
+            const t = (window.translations || {})[lang] || {};
+            alert(t.tcAlert || 'Thank you for confirming. You may now use Smart Farmer.');
+            const btn = document.getElementById('consentBtn');
+            if (btn) btn.classList.add('confirmed');
+        }
+    </script>
+</body>
+</html>
