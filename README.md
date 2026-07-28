@@ -1,6 +1,6 @@
 # Smart Farmer
 
-Smart Farmer is a dual-platform agricultural information system designed to support smallholder farmers in Yei County, South Sudan. It combines an offline-capable web application with a USSD service prototype, so farmers can access crop information, educational content, and planting records on any device — from smartphones to basic feature phones.
+Smart Farmer is a dual-platform agricultural information system designed to support smallholder farmers South Sudan. It combines an offline-capable web application with a USSD service prototype, so farmers can access crop information, educational content, and planting records on any device from smartphones to basic feature phones.
 
 This project was developed as part of the BSc Software Engineering program at African Leadership University.
 
@@ -23,7 +23,7 @@ This project was developed as part of the BSc Software Engineering program at Af
 Detailed guides for 30 crops grown in South Sudan (sorghum, maize, millet, groundnuts, cassava, and more): planting seasons, spacing, soil, pests, diseases, and market tips, with voice output.
 
 ### Education Modules
-Ten learning modules covering planting techniques, pest management, post-harvest handling, soil, climate-smart farming, water, market access, disease, fertilizer, and tools — each with audio narration.
+Ten learning modules covering planting techniques, pest management, post-harvest handling, soil, climate-smart farming, water, market access, disease, fertilizer, and tools, each with audio narration.
 
 ### Farmer Accounts & Cloud Crop Log
 Farmers can register with a phone number and password (bcrypt-hashed, JWT sessions). The crop monitoring log works in two modes:
