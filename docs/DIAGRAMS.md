@@ -1,8 +1,13 @@
 # Smart Farmer — System Diagrams
 
 These diagrams reflect the **system as built**. They render automatically on
-GitHub. To export a diagram as an image for the report, paste its code block
-into <https://mermaid.live> and download it as PNG or SVG.
+GitHub.
+
+**Report-ready images:** high-resolution PNG versions of all four diagrams are
+in [`docs/img/`](img/) (`1-use-case.png`, `2-class.png`, `3-erd.png`,
+`4-offline-flow.png`) — drop these straight into the report. The editable
+source for each is the matching `.mmd` file; to re-export, paste it into
+<https://mermaid.live>.
 
 ---
 

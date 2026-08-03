@@ -1,0 +1,58 @@
+classDiagram
+    class Farmer {
+      +int id
+      +string name
+      +string phone
+      +string password
+      +string location
+      +datetime created_at
+      +register()
+      +login()
+    }
+    class CropLog {
+      +int id
+      +int farmer_id
+      +string crop
+      +date planting_date
+      +date harvest_date
+      +string status
+      +string location
+      +string notes
+      +datetime created_at
+      +create()
+      +findByFarmer()
+      +update()
+      +delete()
+    }
+    class Crop {
+      +string id
+      +string name
+      +string planting
+      +string pest
+      +string harvest
+      +getInfo(topic)
+    }
+    class USSDHandler {
+      +string sessionId
+      +string phoneNumber
+      +string text
+      +handleRequest()
+      +validateInput()
+      +paginate()
+    }
+    class AuthService {
+      +hashPassword()
+      +comparePassword()
+      +signToken()
+      +verifyToken()
+    }
+    class OfflineStore {
+      +getAll()
+      +replaceAll()
+    }
+
+    Farmer "1" --> "*" CropLog : records
+    CropLog ..> Crop : references
+    Farmer ..> AuthService : uses
+    USSDHandler ..> Crop : reads guides
+    CropLog ..> OfflineStore : cached offline

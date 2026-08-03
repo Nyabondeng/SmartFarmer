@@ -1,0 +1,19 @@
+flowchart TD
+    A["Farmer opens the app"] --> B{Online?}
+
+    B -->|"First visit, online"| C["Service Worker caches all pages, scripts, styles"]
+    C --> D["App shell available offline"]
+
+    B -->|"Later, offline"| E["Service Worker serves cached shell"]
+
+    D --> F{Saving a crop record?}
+    E --> F
+
+    F -->|"Logged in and online"| G[("PostgreSQL cloud via /api/logs")]
+    F -->|"Offline or guest"| H[("IndexedDB on-device database")]
+
+    H -->|"On next login"| I["One-tap upload syncs to cloud"]
+    I --> G
+
+    classDef store fill:#e7f2e8,stroke:#2E7D32,color:#173b1e;
+    class G,H store;

@@ -1,0 +1,28 @@
+erDiagram
+    FARMER ||--o{ CROP_LOG : "has"
+    FARMER {
+      int farmer_id PK
+      string name
+      string phone "unique"
+      string password "bcrypt hash"
+      string location
+      timestamp created_at
+    }
+    CROP_LOG {
+      int id PK
+      int farmer_id FK
+      string crop
+      date planting_date
+      date harvest_date
+      string status
+      string location
+      string notes
+      timestamp created_at
+    }
+    USSD_LOG {
+      int id PK
+      string phone
+      string session_id
+      string menu_path
+      timestamp created_at
+    }

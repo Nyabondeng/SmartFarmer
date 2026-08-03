@@ -1,0 +1,32 @@
+flowchart LR
+    farmerWeb(["Farmer (web)"])
+    farmerUSSD(["Farmer (basic phone)"])
+    at(["Africa's Talking"])
+
+    subgraph SYS["Smart Farmer System"]
+        direction TB
+        UC1(["View crop information"])
+        UC2(["Play voice output"])
+        UC3(["Take education module"])
+        UC4(["Register / Log in"])
+        UC5(["Save crop record"])
+        UC6(["View cost forecast"])
+        UC7(["Switch language (EN / Arabic)"])
+        UC8(["Dial USSD service"])
+        UC9(["Choose USSD language"])
+        UC10(["Browse crops & read guide (USSD)"])
+    end
+
+    farmerWeb --- UC1
+    farmerWeb --- UC3
+    farmerWeb --- UC4
+    farmerWeb --- UC5
+    farmerWeb --- UC6
+    farmerWeb --- UC7
+    farmerUSSD --- UC8
+    UC8 --> UC9
+    UC9 --> UC10
+    at --- UC8
+
+    UC1 -. extend .-> UC2
+    UC5 -. include .-> UC4
