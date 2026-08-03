@@ -1,4 +1,4 @@
-const OFFLINE_CACHE = 'smartfarmer-offline-v10';
+const OFFLINE_CACHE = 'smartfarmer-offline-v11';
 
 // Files to cache for offline use
 const OFFLINE_FILES = [
@@ -44,6 +44,7 @@ const OFFLINE_FILES = [
     '/js/crops.js',
     '/js/education.js',
     '/js/crop-log.js',
+    '/js/offline-store.js',
     '/js/cost-forecast.js',
     '/js/fertilizer.js',
     '/js/module-detail.js',

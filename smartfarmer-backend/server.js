@@ -343,11 +343,12 @@ function mainMenu(lang, page = 0, invalid = false) {
   return menu.trimEnd();
 }
 
-function cropMenu(lang, cropNum) {
+function cropMenu(lang, cropNum, invalid = false) {
   const ui = USSD_UI[lang];
   const set = cropSet(lang);
   const name = (set[cropNum] && set[cropNum].name) || CROPS[cropNum].name;
-  return `CON Smart Farmer\n${name}\n\n${ui.selectInfo}\n\n${ui.topics}\n\n${ui.backToCrops}`;
+  const notice = invalid ? `${ui.invalid}\n` : '';
+  return `CON Smart Farmer\n${name}\n\n${notice}${ui.selectInfo}\n\n${ui.topics}\n\n${ui.backToCrops}`;
 }
 
 
@@ -364,12 +365,24 @@ app.post('/ussd', async (req, res) => {
     console.error('Error logging USSD:', error.message);
   }
 
-  // Walk the accumulated input tokens, tracking menu state.
-  // First screen: 1 = English, 2 = Juba Arabic.
-  // At the crop list: 99 = next page, 98 = previous page, 0 = exit.
-  // At the crop menu: 1-3 = topic, 0 = back to crop list.
-  // After a topic (web simulator replays): 0 = crop menu, 00 = crop list.
-  const tokens = text ? text.split('*').filter(t => t !== '') : [];
+  // ── USSD input handling & error strategy ─────────────────────────────
+  // A USSD session sends the FULL accumulated key path each time, joined by
+  // '*'. We replay that path through a small state machine (language → crop
+  // list → crop → topic) and validate EVERY step. Any input that is not a
+  // valid option at the current step sets `invalid = true`, and the same
+  // menu is re-shown with an "Invalid choice / اختيار غير صحيح" notice
+  // instead of crashing or ending the session. This covers, for example, a
+  // farmer typing "99" as a crop number (it is the "More" page command), a
+  // number with no matching crop, an out-of-range topic, or stray spaces.
+  //
+  // Valid options per step:
+  //   Language screen : 1 = English, 2 = Juba Arabic
+  //   Crop list       : 1-30 = crop, 99 = next page, 98 = previous page, 0 = exit
+  //   Crop menu       : 1 = planting, 2 = pest, 3 = harvest, 0 = back to list
+  //   (web simulator replays) after a topic: 0 = crop menu, 00 = crop list
+  const tokens = text
+    ? text.split('*').map(t => t.trim()).filter(t => t !== '')
+    : [];
   const totalPages = Math.ceil(Object.keys(CROPS).length / CROPS_PER_PAGE);
 
   let lang = null;
@@ -414,7 +427,7 @@ app.post('/ussd', async (req, res) => {
       .replace(/\n+0\. Back\n00\. Main Menu\s*$/, '');
     response = `END ${detail}`;
   } else if (crop) {
-    response = cropMenu(lang, crop);
+    response = cropMenu(lang, crop, invalid);
   } else {
     response = mainMenu(lang, page, invalid);
   }

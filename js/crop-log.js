@@ -1,7 +1,8 @@
 // ============================================================
 // CROP LOG — cloud + offline hybrid
-// Logged in  -> records saved to the backend (/api/logs)
-// Logged out -> records saved to localStorage on this device
+// Logged in  -> records saved to the backend (PostgreSQL via /api/logs)
+// Offline / guest -> records saved to the on-device IndexedDB database
+//                    (js/offline-store.js), with a localStorage fallback
 // ============================================================
 
 const CROPLOG_API = 'https://smartfarmer-m7x3.onrender.com';
@@ -67,15 +68,20 @@ function clearForm() {
 }
 
 // ============================================================
-// LOCAL STORAGE (guest / offline mode)
+// ON-DEVICE DATABASE (guest / offline mode)
+// Delegates to the IndexedDB-backed OfflineStore; if that script is
+// somehow unavailable, falls back to localStorage directly so records
+// are never lost.
 // ============================================================
 
-function getLocalLogs() {
-    const logs = localStorage.getItem('cropLogs');
-    return logs ? JSON.parse(logs) : [];
+async function getLocalLogs() {
+    if (window.OfflineStore) return await window.OfflineStore.getAll();
+    try { return JSON.parse(localStorage.getItem('cropLogs')) || []; }
+    catch (e) { return []; }
 }
 
-function saveLocalLogs(logs) {
+async function saveLocalLogs(logs) {
+    if (window.OfflineStore) return await window.OfflineStore.replaceAll(logs);
     localStorage.setItem('cropLogs', JSON.stringify(logs));
 }
 
@@ -94,7 +100,7 @@ async function loadCropLogs() {
                 // token expired — behave as logged out
                 cloudMode = false;
                 setSyncStatus('syncExpired');
-                currentLogs = getLocalLogs();
+                currentLogs = await getLocalLogs();
                 renderLogs();
                 return;
             }
@@ -111,7 +117,7 @@ async function loadCropLogs() {
             // server unreachable — fall back to device records
             cloudMode = false;
             setSyncStatus('syncOffline');
-            currentLogs = getLocalLogs();
+            currentLogs = await getLocalLogs();
             renderLogs();
             return;
         }
@@ -119,14 +125,14 @@ async function loadCropLogs() {
 
     cloudMode = false;
     setSyncStatus('syncLocal');
-    currentLogs = getLocalLogs();
+    currentLogs = await getLocalLogs();
     renderLogs();
 }
 
 // If the user logged in but still has records on the device,
 // offer to upload them once so nothing is lost.
 async function offerLocalSync() {
-    const localLogs = getLocalLogs();
+    const localLogs = await getLocalLogs();
     if (!cloudMode || localLogs.length === 0) return;
 
     const upload = confirm(getT().uploadOffer || 'Upload records saved on this device to your account?');
@@ -154,7 +160,7 @@ async function offerLocalSync() {
     }
 
     if (failed === 0) {
-        saveLocalLogs([]);
+        await saveLocalLogs([]);
         alert(getT().uploadDone || 'All device records uploaded to your account.');
     } else {
         alert(getT().uploadPartial || 'Some records could not be uploaded and were kept on this device.');
@@ -201,7 +207,7 @@ async function saveCropLog() {
         }
     }
 
-    const logs = getLocalLogs();
+    const logs = await getLocalLogs();
     logs.unshift({
         id: Date.now(),
         crop: form.crop,
@@ -212,7 +218,7 @@ async function saveCropLog() {
         notes: form.notes || '',
         createdAt: new Date().toISOString()
     });
-    saveLocalLogs(logs);
+    await saveLocalLogs(logs);
 
     clearForm();
     if (!cloudMode && !getToken()) alert(getT().savedOnDevice || 'Record saved on this device!');
@@ -240,7 +246,7 @@ async function deleteCropLog(id) {
         }
     }
 
-    saveLocalLogs(getLocalLogs().filter(log => log.id !== id));
+    await saveLocalLogs((await getLocalLogs()).filter(log => log.id !== id));
     alert(getT().recordDeleted || 'Record deleted successfully!');
     loadCropLogs();
 }
@@ -293,7 +299,7 @@ async function updateCropLog(id) {
             return;
         }
     } else {
-        const logs = getLocalLogs();
+        const logs = await getLocalLogs();
         const index = logs.findIndex(log => log.id === id);
         if (index !== -1) {
             logs[index] = {
@@ -306,7 +312,7 @@ async function updateCropLog(id) {
                 notes: form.notes || '',
                 updatedAt: new Date().toISOString()
             };
-            saveLocalLogs(logs);
+            await saveLocalLogs(logs);
         }
     }
 
@@ -341,7 +347,7 @@ async function clearAllLogs() {
             }
         }
     } else {
-        saveLocalLogs([]);
+        await saveLocalLogs([]);
     }
 
     alert(getT().allRecordsCleared || 'All records cleared successfully!');
