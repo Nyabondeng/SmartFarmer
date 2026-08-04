@@ -1,32 +1,25 @@
 flowchart LR
-    farmerWeb(["Farmer (web)"])
-    farmerUSSD(["Farmer (basic phone)"])
-    at(["Africa's Talking"])
+    farmer(["Smallholder Farmer<br/>(basic phone or browser)"])
+    at(["Africa's Talking<br/>USSD Gateway"])
 
     subgraph SYS["Smart Farmer System"]
         direction TB
-        UC1(["View crop information"])
-        UC2(["Play voice output"])
-        UC3(["Take education module"])
-        UC4(["Register / Log in"])
-        UC5(["Save crop record"])
-        UC6(["View cost forecast"])
-        UC7(["Switch language (EN / Arabic)"])
-        UC8(["Dial USSD service"])
-        UC9(["Choose USSD language"])
-        UC10(["Browse crops & read guide (USSD)"])
+        UC1(["Register / Log in"])
+        UC2(["Dial USSD Menu<br/>(*384*12990#)"])
+        UC3(["Browse Crop Information<br/>planting · pest · harvest"])
+        UC4(["Take Educational Modules"])
+        UC5(["Record Planting Log"])
+        UC6(["Switch Language<br/>English / Arabic"])
+        UC7(["Listen to Voice Output"])
     end
 
-    farmerWeb --- UC1
-    farmerWeb --- UC3
-    farmerWeb --- UC4
-    farmerWeb --- UC5
-    farmerWeb --- UC6
-    farmerWeb --- UC7
-    farmerUSSD --- UC8
-    UC8 --> UC9
-    UC9 --> UC10
-    at --- UC8
+    farmer --- UC1
+    farmer --- UC2
+    farmer --- UC4
+    farmer --- UC5
+    farmer --- UC6
+    at --- UC2
 
-    UC1 -. extend .-> UC2
-    UC5 -. include .-> UC4
+    UC2 -. include .-> UC3
+    UC3 -. extend .-> UC7
+    UC4 -. extend .-> UC7

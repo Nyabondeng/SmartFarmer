@@ -1,0 +1,26 @@
+flowchart TD
+    A(["Farmer in Yei County"]) --> B["Farmer picks up phone"]
+    B --> C{"What type of phone?"}
+
+    C -->|"Basic phone"| D["Dial USSD code<br/>*384*12990#"]
+    C -->|"Smartphone"| E["Open web browser<br/>offline web app"]
+
+    D --> F["USSD menu appears<br/>text-based, no internet"]
+    F --> G["Select crop<br/>sorghum, maize, millet,<br/>groundnuts, cassava"]
+    G --> H["View information<br/>planting, pest control,<br/>harvest tips"]
+
+    E --> I["Web app loads<br/>from cache, works offline"]
+    I --> J["Browse modules<br/>crop info, voice output,<br/>planting log"]
+    J --> K["Listen or read<br/>voice output in Arabic"]
+
+    H --> L["Apply knowledge to farming<br/>better planting and pest decisions"]
+    K --> L
+    L --> M["Improved crop yield<br/>and food security"]
+    M --> N(["Researcher (Nyabon)<br/>interviews, observation, analysis"])
+
+    classDef ussd fill:#e7f2e8,stroke:#2E7D32,color:#173b1e;
+    classDef web fill:#e8eef8,stroke:#3157a8,color:#12233f;
+    classDef shared fill:#eef1f2,stroke:#6b7280,color:#1f2937;
+    class D,F,G,H ussd;
+    class E,I,J,K web;
+    class A,B,C,L,M,N shared;
